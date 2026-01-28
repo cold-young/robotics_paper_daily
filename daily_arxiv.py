@@ -116,8 +116,6 @@ def get_daily_papers(topic, query="slam", max_results=2):
         ver_pos = paper_id.find("v")
         paper_key = paper_id[0:ver_pos] if ver_pos != -1 else paper_id
         paper_url = arxiv_url + "abs/" + paper_key
-        pdf_url = f"https://arxiv.org/pdf/{paper_key}.pdf"
-
         repo_url = None
         project_url = None
         if comments:
@@ -130,10 +128,10 @@ def get_daily_papers(topic, query="slam", max_results=2):
 
         abstract_html = f"<details>Abstract{paper_abstract}</details>"
 
-        links = f"[ArXiv]({paper_url}) / [PDF]({pdf_url})"
-        if repo_url != "null":
+        links = f"[ArXiv]({paper_url})"
+        if repo_url != None:
             links += f" / [Code]({repo_url})"
-        if project_url != "null":
+        if project_url != None:
             links += f" / [Web]({project_url})"
 
         content[paper_key] = (
