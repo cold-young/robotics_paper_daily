@@ -317,10 +317,11 @@ def json_to_md(
 
             day_content = data[keyword]
             f.write(f"## {keyword}\n\n")
-            f.write(f"<details>\n")
-            f.write(
-                f"  <summary><b>{keyword} Papers (Click to expand)</b></summary>\n\n"
-            )
+            if to_web == False: 
+                f.write(f"<details>\n")
+                f.write(
+                    f"  <summary><b>{keyword} Papers (Click to expand)</b></summary>\n\n"
+                )
             if use_title == True:
                 if to_web == False:
                     f.write(
@@ -339,14 +340,14 @@ def json_to_md(
                     # 수식 가독성 처리 및 내용 작성
                     f.write(pretty_math(v))
 
-            f.write(f"\n</details>\n\n")
-
-            # Back to top
-            # if use_b2t:
-            #     top_anchor = f"updated-on-{DateNow.replace('.', '')}"
-            #     f.write(
-            #         f"<p align=right>(<a href=#{top_anchor}>back to top</a>)</p>\n\n"
-            #     )
+            if to_web == False:
+                f.write(f"\n</details>\n\n")
+            else:
+                f.write(f"\n")
+                top_anchor = f"updated-on-{DateNow.replace('.', '')}"
+                f.write(
+                    f"<p align=right>(<a href=#{top_anchor}>back to top</a>)</p>\n\n"
+                )
 
         # 하단 링크 정보 (사용자 계정 및 리포지토리 이름 반영)
         if show_badge == True:
@@ -447,7 +448,6 @@ def demo(**config):
     if publish_gitpage:
         json_file = config["json_gitpage_path"]
         md_file = config["md_gitpage_path"]
-        # TODO: duplicated update paper links!!!
         if config["update_paper_links"]:
             update_paper_links(json_file)
         else:
