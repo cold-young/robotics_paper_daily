@@ -344,10 +344,10 @@ def json_to_md(
                 f.write(f"\n</details>\n\n")
             else:
                 f.write(f"\n")
-                top_anchor = f"updated-on-{DateNow.replace('.', '')}"
-                f.write(
-                    f"<p align=right>(<a href=#{top_anchor}>back to top</a>)</p>\n\n"
-                )
+                top_info = f"#Updated on {DateNow}"
+                top_info = top_info.replace(' ','-').replace('.','')
+                f.write(f"<p align=right>(<a href={top_info.lower()}>back to top</a>)</p>\n\n")
+            
 
         # 하단 링크 정보 (사용자 계정 및 리포지토리 이름 반영)
         if show_badge == True:
