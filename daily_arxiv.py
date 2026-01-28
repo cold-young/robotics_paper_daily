@@ -87,13 +87,7 @@ def get_code_link(qword:str) -> str:
         code_link = results["items"][0]["html_url"]
     return code_link
   
-def get_daily_papers(topic,query="slam", max_results=2):
-    """
-    @param topic: str
-    @param query: str
-    @return paper_with_code: dict
-    """
-    # output 
+def get_daily_papers(topic, query="slam", max_results=2):
     content = dict() 
     content_to_web = dict()
     search_engine = arxiv.Search(
@@ -103,57 +97,34 @@ def get_daily_papers(topic,query="slam", max_results=2):
     )
 
     for result in search_engine.results():
-
-        paper_id            = result.get_short_id()
-        paper_title         = result.title
-        paper_url           = result.entry_id
-        code_url            = base_url + paper_id #TODO
-        paper_abstract      = result.summary.replace("\n"," ")
-        paper_authors       = get_authors(result.authors)
-        paper_first_author  = get_authors(result.authors,first_author = True)
-        paper_last_author   = get_authors(result.authors,last_author = True)
-        primary_category    = result.primary_category
-        publish_time        = result.published.date()
-        update_time         = result.updated.date()
-        comments            = result.comment
-
-        logging.info(f"Time = {update_time} title = {paper_title} author = {paper_first_author}")
+        paper_id = result.get_short_id()
+        paper_title = result.title
+        paper_url = result.entry_id
+        paper_abstract = result.summary.replace("\n"," ")
+        paper_last_author = get_authors(result.authors, last_author=True)
+        update_time = result.published.date() # 또는 updated.date()
+        comments = result.comment
 
         ver_pos = paper_id.find('v')
-        if ver_pos == -1:
-            paper_key = paper_id
-        else:
-            paper_key = paper_id[0:ver_pos]    
+        paper_key = paper_id[0:ver_pos] if ver_pos != -1 else paper_id
         paper_url = arxiv_url + 'abs/' + paper_key
         
         repo_url = None
-        
         if comments:
             urls = re.findall(r'(https?://[^\s,;]+)', comments)
             if urls:
-                repo_url = urls[0]  # 取第一个链接
+                repo_url = urls[0]
+
+        abstract_html = f"<details><summary>Abstract</summary><p>{paper_abstract}</p></details>"
         
-        if repo_url is not None:
-            content[paper_key] = "|**{}**|**{}**|{} Team|[{}]({})|**[link]({})**|\n".format(
-                   update_time,paper_title,paper_last_author,paper_key,paper_url,repo_url)
-            content_to_web[paper_key] = "- {}, **{}**, {} Team, Paper: [{}]({}), Code: **[{}]({})**".format(
-                   update_time,paper_title,paper_last_author,paper_url,paper_url,repo_url,repo_url)
+        if repo_url:
+            content[paper_key] = f"|**{update_time}**|**[{paper_title}]({paper_url})**<br>{abstract_html}|{paper_last_author} Team|**[link]({repo_url})**|\n"
+            content_to_web[paper_key] = f"- {update_time}, **{paper_title}**, {paper_last_author} Team, Paper: [{paper_url}]({paper_url}), Code: **[{repo_url}]({repo_url})**\n"
         else:
-            content[paper_key] = "|**{}**|**{}**|{} Team|[{}]({})|null|\n".format(
-                   update_time,paper_title,paper_last_author,paper_key,paper_url)
-            content_to_web[paper_key] = "- {}, **{}**, {} Team, Paper: [{}]({})".format(
-                   update_time,paper_title,paper_last_author,paper_url,paper_url)
+            content[paper_key] = f"|**{update_time}**|**[{paper_title}]({paper_url})**<br>{abstract_html}|{paper_last_author} Team|null|\n"
+            content_to_web[paper_key] = f"- {update_time}, **{paper_title}**, {paper_last_author} Team, Paper: [{paper_url}]({paper_url})\n"
 
-        comments = None
-        if comments != None:
-            content_to_web[paper_key] += f", {comments}\n"
-        else:
-            content_to_web[paper_key] += f"\n"
-
-    data = {topic:content}
-    data_web = {topic:content_to_web}
-    return data,data_web 
-
+    return {topic: content}, {topic: content_to_web}
 def update_paper_links(filename):
     '''
     weekly update paper links in json file 
@@ -193,33 +164,50 @@ def update_paper_links(filename):
                     continue
         with open(filename,"w") as f:
             json.dump(json_data,f)
-
-def update_json_file(filename,data_dict):
-    '''
-    daily update json file using data_dict
-    '''
-    with open(filename,"r") as f:
-        content = f.read()
-        if not content:
-            m = {}
-        else:
-            m = json.loads(content)
+        
+def update_json_file(filename, data_dict):
+    # 1. 기존 데이터 로드
+    if os.path.exists(filename):
+        with open(filename, "r") as f:
+            content = f.read()
+            json_data = json.loads(content) if content else {}
+    else:
+        json_data = {}
             
-    json_data = m.copy() 
-    
-    # update papers in each keywords         
+    # 2. 새 데이터 업데이트
     for data in data_dict:
         for keyword in data.keys():
-            papers = data[keyword]
-
-            if keyword in json_data.keys():
-                json_data[keyword].update(papers)
+            if keyword in json_data:
+                json_data[keyword].update(data[keyword])
             else:
-                json_data[keyword] = papers
-
-    with open(filename,"w") as f:
-        json.dump(json_data,f)
+                json_data[keyword] = data[keyword]
     
+    # 3. 아카이브 분리 (30일 기준)
+    recent_data, archived_data = prune_old_papers(json_data, days_limit=30)
+    
+    # 4. 최근 데이터 저장 (메인 README용)
+    with open(filename, "w") as f:
+        json.dump(recent_data, f)
+        
+    # 5. 아카이브 데이터 누적 저장
+    archive_filename = filename.replace(".json", "_archive.json")
+    if archived_data:
+        old_archive = {}
+        if os.path.exists(archive_filename):
+            with open(archive_filename, "r") as f:
+                content = f.read()
+                old_archive = json.loads(content) if content else {}
+        
+        # 아카이브 데이터 병합
+        for kw, papers in archived_data.items():
+            if kw in old_archive:
+                old_archive[kw].update(papers)
+            else:
+                old_archive[kw] = papers
+                
+        with open(archive_filename, "w") as f:
+            json.dump(old_archive, f)
+
 def json_to_md(filename,md_filename,
                task = '',
                to_web = False, 
@@ -327,25 +315,48 @@ def json_to_md(filename,md_filename,
                 f.write(f"<p align=right>(<a href={top_info.lower()}>back to top</a>)</p>\n\n")
             
         if show_badge == True:
-            # we don't like long string, break it!
             f.write((f"[contributors-shield]: https://img.shields.io/github/"
-                     f"contributors/Vincentqyw/cv-arxiv-daily.svg?style=for-the-badge\n"))
-            f.write((f"[contributors-url]: https://github.com/Vincentqyw/"
+                     f"contributors/cold-young/cv-arxiv-daily.svg?style=for-the-badge\n"))
+            f.write((f"[contributors-url]: https://github.com/cold-young/"
                      f"cv-arxiv-daily/graphs/contributors\n"))
-            f.write((f"[forks-shield]: https://img.shields.io/github/forks/Vincentqyw/"
+            f.write((f"[forks-shield]: https://img.shields.io/github/forks/cold-young/"
                      f"cv-arxiv-daily.svg?style=for-the-badge\n"))
-            f.write((f"[forks-url]: https://github.com/Vincentqyw/"
+            f.write((f"[forks-url]: https://github.com/cold-young/"
                      f"cv-arxiv-daily/network/members\n"))
-            f.write((f"[stars-shield]: https://img.shields.io/github/stars/Vincentqyw/"
+            f.write((f"[stars-shield]: https://img.shields.io/github/stars/cold-young/"
                      f"cv-arxiv-daily.svg?style=for-the-badge\n"))
-            f.write((f"[stars-url]: https://github.com/Vincentqyw/"
+            f.write((f"[stars-url]: https://github.com/cold-young/"
                      f"cv-arxiv-daily/stargazers\n"))
-            f.write((f"[issues-shield]: https://img.shields.io/github/issues/Vincentqyw/"
+            f.write((f"[issues-shield]: https://img.shields.io/github/issues/cold-young/"
                      f"cv-arxiv-daily.svg?style=for-the-badge\n"))
-            f.write((f"[issues-url]: https://github.com/Vincentqyw/"
+            f.write((f"[issues-url]: https://github.com/cold-young/"
                      f"cv-arxiv-daily/issues\n\n"))
                 
     logging.info(f"{task} finished")        
+
+def prune_old_papers(json_data, days_limit=60):
+    import datetime
+    recent_data = {}
+    archived_data = {}
+    threshold_date = datetime.date.today() - datetime.timedelta(days=days_limit)
+    for keyword, papers in json_data.items():
+        recent_data[keyword] = {}
+        archived_data[keyword] = {}
+        for p_id, p_content in papers.items():
+            try:
+                date_str = p_content.split('|')[1].replace('**', '').strip()
+                p_date = datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
+                
+                if p_date >= threshold_date:
+                    recent_data[keyword][p_id] = p_content
+                else:
+                    archived_data[keyword][p_id] = p_content
+            except:
+                recent_data[keyword][p_id] = p_content # 파싱 실패 시 유지
+                
+    return recent_data, archived_data
+
+
 
 def demo(**config):
     # TODO: use config
@@ -430,4 +441,4 @@ if __name__ == "__main__":
     except subprocess.CalledProcessError as e:
         pass
 
-    
+
