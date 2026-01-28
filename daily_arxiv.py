@@ -243,7 +243,7 @@ def json_to_md(
     use_title=True,
     use_tc=True,
     show_badge=True,
-    use_b2t=True,
+    use_b2t=False,
 ):
     """
     @param filename: str (JSON 파일 경로)
@@ -342,11 +342,11 @@ def json_to_md(
             f.write(f"\n</details>\n\n")
 
             # Back to top
-            if use_b2t:
-                top_anchor = f"updated-on-{DateNow.replace('.', '')}"
-                f.write(
-                    f"<p align=right>(<a href=#{top_anchor}>back to top</a>)</p>\n\n"
-                )
+            # if use_b2t:
+            #     top_anchor = f"updated-on-{DateNow.replace('.', '')}"
+            #     f.write(
+            #         f"<p align=right>(<a href=#{top_anchor}>back to top</a>)</p>\n\n"
+            #     )
 
         # 하단 링크 정보 (사용자 계정 및 리포지토리 이름 반영)
         if show_badge == True:
