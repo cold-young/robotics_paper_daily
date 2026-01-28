@@ -287,10 +287,10 @@ def json_to_md(filename, md_filename, keyword_list, # keyword_list 인자 추가
 
             if use_title == True:
                 if to_web == False:
-                    f.write("|Publish Date|Title & Abstract|Authors|Code|\n|---|---|---|---|\n")
+                    f.write("|Publish Date|Title & Abstract|Authors|PDF|Code|\n|---|---|---|---|---|\n")
                 else:
-                    f.write("| Publish Date | Title & Abstract | Authors | Code |\n")
-                    f.write("|:---------|:-----------------------|:---------|:------|\n")
+                    f.write("| Publish Date | Title & Abstract | Authors | PDF | Code |\n")
+                    f.write("|:---------|:-----------------------|:---------|:-----|:------|\n")
 
             # 날짜별 정렬
             day_content = sort_papers(day_content)
@@ -310,7 +310,7 @@ def json_to_md(filename, md_filename, keyword_list, # keyword_list 인자 추가
         # 하단 링크 정보 (사용자 계정 및 리포지토리 이름 반영)
         if show_badge == True:
             user = "cold-young"
-            repo = "robotics-arxiv-daily"
+            repo = "robotics-paper-daily"
             f.write(f"[contributors-shield]: https://img.shields.io/github/contributors/{user}/{repo}.svg?style=for-the-badge\n")
             f.write(f"[contributors-url]: https://github.com/{user}/{repo}/graphs/contributors\n")
             f.write(f"[forks-shield]: https://img.shields.io/github/forks/{user}/{repo}.svg?style=for-the-badge\n")
@@ -356,7 +356,6 @@ def demo(**config):
     max_results = config['max_results']
     publish_readme = config['publish_readme']
     publish_gitpage = config['publish_gitpage']
-    publish_wechat = config['publish_wechat']
     show_badge = config['show_badge']
 
     b_update = config['update_paper_links']
