@@ -208,7 +208,7 @@ def update_json_file(filename, data_dict):
         with open(archive_filename, "w") as f:
             json.dump(old_archive, f)
 
-def json_to_md(filename,md_filename,
+def json_to_md(filename, md_filename, keyword_list, # keyword_list 인자 추가
                task = '',
                to_web = False, 
                use_title = True, 
@@ -216,8 +216,9 @@ def json_to_md(filename,md_filename,
                show_badge = True,
                use_b2t = True):
     """
-    @param filename: str
-    @param md_filename: str
+    @param filename: str (JSON 파일 경로)
+    @param md_filename: str (생성할 마크다운 파일 경로)
+    @param keyword_list: list (정렬 순서를 위한 키워드 리스트)
     @return None
     """
     def pretty_math(s:str) -> str:
@@ -235,104 +236,91 @@ def json_to_md(filename,md_filename,
         return ret
   
     DateNow = datetime.date.today()
-    DateNow = str(DateNow)
-    DateNow = DateNow.replace('-','.')
+    DateNow = str(DateNow).replace('-', '.')
     
-    with open(filename,"r") as f:
+    with open(filename, "r") as f:
         content = f.read()
-        if not content:
-            data = {}
-        else:
-            data = json.loads(content)
+        data = json.loads(content) if content else {}
 
-    # clean README.md if daily already exist else create it
-    with open(md_filename,"w+") as f:
+    # 파일 초기화
+    with open(md_filename, "w") as f:
         pass
 
-    # write data into README.md
-    with open(md_filename,"a+") as f:
-
+    # 마크다운 작성
+    with open(md_filename, "a", encoding='utf-8') as f:
+        # 웹 페이지용 헤더
         if (use_title == True) and (to_web == True):
-            f.write("---\n" + "layout: default\n" + "---\n\n")
+            f.write("---\nlayout: default\n---\n\n")
         
+        # 상단 배지 (config.yaml의 정보 반영 권장)
         if show_badge == True:
+            # 리포지토리 이름을 robotics-arxiv-daily로 수정
             f.write(f"[![Contributors][contributors-shield]][contributors-url]\n")
             f.write(f"[![Forks][forks-shield]][forks-url]\n")
             f.write(f"[![Stargazers][stars-shield]][stars-url]\n")
             f.write(f"[![Issues][issues-shield]][issues-url]\n\n")    
                 
         if use_title == True:
-            #f.write(("<p align="center"><h1 align="center"><br><ins>CV-ARXIV-DAILY"
-            #         "</ins><br>Automatically Update CV Papers Daily</h1></p>\n"))
-            f.write("## Updated on " + DateNow + "\n")
+            f.write(f"## Updated on {DateNow}\n")
         else:
-            f.write("> Updated on " + DateNow + "\n")
+            f.write(f"> Updated on {DateNow}\n")
 
-        # TODO: add usage
         f.write("> Usage instructions: [here](./docs/README.md#usage)\n\n")
 
-        #Add: table of contents
+        # 1. Table of Contents (keyword_list 순서 적용)
         if use_tc == True:
-            f.write("<details>\n")
-            f.write("  <summary>Table of Contents</summary>\n")
-            f.write("  <ol>\n")
-            for keyword in data.keys():
-                day_content = data[keyword]
-                if not day_content:
+            f.write("<details>\n  <summary>Table of Contents</summary>\n  <ol>\n")
+            for keyword in keyword_list:
+                if keyword not in data or not data[keyword]:
                     continue
-                kw = keyword.replace(' ','-')      
-                f.write(f"    <li><a href=#{kw.lower()}>{keyword}</a></li>\n")
-            f.write("  </ol>\n")
-            f.write("</details>\n\n")
+                kw_anchor = keyword.replace(' ', '-').lower()
+                f.write(f"    <li><a href=#{kw_anchor}>{keyword}</a></li>\n")
+            f.write("  </ol>\n</details>\n\n")
         
-        for keyword in data.keys():
-            day_content = data[keyword]
-            if not day_content:
+        # 2. 본문 내용 (keyword_list 순서 적용)
+        for keyword in keyword_list:
+            if keyword not in data or not data[keyword]:
                 continue
-            # the head of each part
+                
+            day_content = data[keyword]
             f.write(f"## {keyword}\n\n")
 
-            if use_title == True :
+            if use_title == True:
                 if to_web == False:
-                    f.write("|Publish Date|Title|Authors|PDF|Code|\n" + "|---|---|---|---|---|\n")
+                    f.write("|Publish Date|Title & Abstract|Authors|Code|\n|---|---|---|---|\n")
                 else:
-                    f.write("| Publish Date | Title | Authors | PDF | Code |\n")
-                    f.write("|:---------|:-----------------------|:---------|:------|:------|\n")
+                    f.write("| Publish Date | Title & Abstract | Authors | Code |\n")
+                    f.write("|:---------|:-----------------------|:---------|:------|\n")
 
-            # sort papers by date
+            # 날짜별 정렬
             day_content = sort_papers(day_content)
         
-            for _,v in day_content.items():
+            for _, v in day_content.items():
                 if v is not None:
-                    f.write(pretty_math(v)) # make latex pretty
+                    # 수식 가독성 처리 및 내용 작성
+                    f.write(pretty_math(v)) 
 
             f.write(f"\n")
             
-            #Add: back to top
+            # Back to top
             if use_b2t:
-                top_info = f"#Updated on {DateNow}"
-                top_info = top_info.replace(' ','-').replace('.','')
-                f.write(f"<p align=right>(<a href={top_info.lower()}>back to top</a>)</p>\n\n")
+                top_anchor = f"updated-on-{DateNow.replace('.', '')}"
+                f.write(f"<p align=right>(<a href=#{top_anchor}>back to top</a>)</p>\n\n")
             
+        # 하단 링크 정보 (사용자 계정 및 리포지토리 이름 반영)
         if show_badge == True:
-            f.write((f"[contributors-shield]: https://img.shields.io/github/"
-                     f"contributors/cold-young/cv-arxiv-daily.svg?style=for-the-badge\n"))
-            f.write((f"[contributors-url]: https://github.com/cold-young/"
-                     f"cv-arxiv-daily/graphs/contributors\n"))
-            f.write((f"[forks-shield]: https://img.shields.io/github/forks/cold-young/"
-                     f"cv-arxiv-daily.svg?style=for-the-badge\n"))
-            f.write((f"[forks-url]: https://github.com/cold-young/"
-                     f"cv-arxiv-daily/network/members\n"))
-            f.write((f"[stars-shield]: https://img.shields.io/github/stars/cold-young/"
-                     f"cv-arxiv-daily.svg?style=for-the-badge\n"))
-            f.write((f"[stars-url]: https://github.com/cold-young/"
-                     f"cv-arxiv-daily/stargazers\n"))
-            f.write((f"[issues-shield]: https://img.shields.io/github/issues/cold-young/"
-                     f"cv-arxiv-daily.svg?style=for-the-badge\n"))
-            f.write((f"[issues-url]: https://github.com/cold-young/"
-                     f"cv-arxiv-daily/issues\n\n"))
+            user = "cold-young"
+            repo = "robotics-arxiv-daily"
+            f.write(f"[contributors-shield]: https://img.shields.io/github/contributors/{user}/{repo}.svg?style=for-the-badge\n")
+            f.write(f"[contributors-url]: https://github.com/{user}/{repo}/graphs/contributors\n")
+            f.write(f"[forks-shield]: https://img.shields.io/github/forks/{user}/{repo}.svg?style=for-the-badge\n")
+            f.write(f"[forks-url]: https://github.com/{user}/{repo}/network/members\n")
+            f.write(f"[stars-shield]: https://img.shields.io/github/stars/{user}/{repo}.svg?style=for-the-badge\n")
+            f.write(f"[stars-url]: https://github.com/{user}/{repo}/stargazers\n")
+            f.write(f"[issues-shield]: https://img.shields.io/github/issues/{user}/{repo}.svg?style=for-the-badge\n")
+            f.write(f"[issues-url]: https://github.com/{user}/{repo}/issues\n\n")
                 
-    logging.info(f"{task} finished")        
+    logging.info(f"{task} finished")
 
 def prune_old_papers(json_data, days_limit=60):
     import datetime
@@ -364,6 +352,7 @@ def demo(**config):
     data_collector_web= []
     
     keywords = config['kv']
+    keyword_list = list(keywords.keys())
     max_results = config['max_results']
     publish_readme = config['publish_readme']
     publish_gitpage = config['publish_gitpage']
@@ -394,8 +383,8 @@ def demo(**config):
             # update json data
             update_json_file(json_file,data_collector)
         # json data to markdown
-        json_to_md(json_file,md_file, task ='Update Readme', \
-            show_badge = show_badge)
+        json_to_md(json_file, md_file, keyword_list, # keyword_list 전달
+                   task ='Update Readme', show_badge = show_badge)
 
     # 2. update docs/index.md file (to gitpage)
     if publish_gitpage:
@@ -406,21 +395,10 @@ def demo(**config):
             update_paper_links(json_file)
         else:    
             update_json_file(json_file,data_collector)
-        json_to_md(json_file, md_file, task ='Update GitPage', \
-            to_web = True, show_badge = show_badge, \
-            use_tc=False, use_b2t=False)
+        json_to_md(json_file, md_file, keyword_list, # keyword_list 전달
+                        task ='Update GitPage', to_web = True, 
+                        show_badge = show_badge, use_tc=False, use_b2t=False)
 
-    # 3. Update docs/wechat.md file
-    if publish_wechat:
-        json_file = config['json_wechat_path']
-        md_file   = config['md_wechat_path']
-        # TODO: duplicated update paper links!!!
-        if config['update_paper_links']:
-            update_paper_links(json_file)
-        else:    
-            update_json_file(json_file, data_collector_web)
-        json_to_md(json_file, md_file, task ='Update Wechat', \
-            to_web=False, use_title= False, show_badge = show_badge) 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
