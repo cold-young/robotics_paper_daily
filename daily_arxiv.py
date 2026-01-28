@@ -126,7 +126,7 @@ def get_daily_papers(topic, query="slam", max_results=2):
                 else:
                     project_url = url  # GitHub가 아닌 링크는 프로젝트 페이지로 간주
 
-        abstract_html = f"<details>Abstract{paper_abstract}</details>"
+        abstract_html = f"<details>Abstract: {paper_abstract}</details>"
 
         links = f"[ArXiv]({paper_url})"
         if repo_url != None:
