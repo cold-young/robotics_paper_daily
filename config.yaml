@@ -1,29 +1,96 @@
-# TODO: add papers by configuration file
-base_url: "https://arxiv.paperswithcode.com/api/v0/papers/"
-user_name: "chanyoung ahn"
-repo_name: "robotics-paper-daily"
-show_authors: True
-show_links: True
-show_badge: False
-max_results: 20
+# ─────────────────────────────────────────────────
+# paper_radar config.yaml
+# ─────────────────────────────────────────────────
+# 기존 config.yaml 포맷 완전 호환
+# categories 하위에 카테고리명: keywords 리스트
 
-publish_readme: True
-publish_gitpage: True
+categories:
 
-# file paths
-json_readme_path: './docs/cv-arxiv-daily.json'
-json_gitpage_path: './docs/cv-arxiv-daily-web.json'
+  Dexterous:
+    keywords:
+      - dexterous manipulation
+      - dexterous hand
+      - dexterous grasping
+      - multi-finger
+      - in-hand manipulation
+      - finger gaiting
+      - grasp planning
 
-md_readme_path: 'README.md'
-md_gitpage_path: './docs/index.md'
+  Manipulation:
+    keywords:
+      - robotic manipulation
+      - pick and place
+      - imitation learning robot
+      - diffusion policy
+      - behavior cloning
+      - contact-rich manipulation
+      - peg-in-hole
+      - assembly robot
+      - bimanual
 
-# keywords to search
-keywords:
-    "Dexterous":
-        filters: ["Dexterous Manipulation", "Dexterous hand", "Multifingered", "Multi-fingered", 
-                    "Anthropomorphic", "In-hand Manipulation", "Tactile sensing", "Bimanual", "Manipulation"]
-    "Manipulation":
-        filters: ["Robot Manipulation", "Robotic Manipulation", "Robot Learning", 
-                    "Imitation Learning", "Deformable", "Teleoperation", "Learning from Demonstration"]
-    "VLA":
-        filters: ["Vision Language Action","Vision-Language-Action"]
+  VLA:
+    keywords:
+      - vision-language-action
+      - VLA
+      - robot foundation model
+      - generalist robot policy
+      - language conditioned robot
+      - RT-2
+      - OpenVLA
+      - pi0
+
+  Tactile:
+    keywords:
+      - tactile sensing
+      - tactile sensor
+      - GelSight
+      - visuotactile
+      - slip detection
+      - contact sensing
+
+  Sim2Real:
+    keywords:
+      - sim-to-real
+      - sim2real
+      - domain randomization
+      - domain adaptation robot
+      - Isaac Lab
+      - MuJoCo manipulation
+
+  LearnedControl:
+    keywords:
+      - reinforcement learning robot
+      - model predictive control robot
+      - whole-body control
+      - loco-manipulation
+      - locomotion manipulation
+      - humanoid manipulation
+
+
+# ─────────────────────────────────────────────────
+# HuggingFace Daily Papers 필터 (선택)
+# 아래 키워드 중 하나라도 제목/초록에 포함되면 HF 핫 논문으로 포함
+# 비워두면 → 전체 HF daily papers 표시
+# ─────────────────────────────────────────────────
+hf_filter_keywords:
+  - robot
+  - manipulation
+  - dexterous
+  - embodied
+  - humanoid
+  - locomotion
+  - tactile
+  - grasping
+  - imitation learning
+  - diffusion policy
+  - reinforcement learning
+  - sim-to-real
+
+
+# ─────────────────────────────────────────────────
+# 수집 설정
+# ─────────────────────────────────────────────────
+settings:
+  max_results_per_category: 100   # 카테고리당 arXiv 최대 수집 논문
+  hf_daily_limit: 50              # HF daily papers 최대 수집 수
+  days_back: 1                    # 며칠 치 논문 수집 (GitHub Actions: 1)
