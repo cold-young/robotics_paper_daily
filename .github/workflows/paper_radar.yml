@@ -24,20 +24,32 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
-      - name: Run PaperRadar
-        run: python paper_radar.py --config config.yaml --output README.md --days 1
+      - name: Create docs directory
+        run: mkdir -p docs
+
+      - name: Run PaperRadar (README + GitPage 동시 생성)
+        run: |
+          python paper_radar.py \
+            --config config.yaml \
+            --output README.md \
+            --gitpage docs/index.md \
+            --days 1
 
       - name: Show stats
         run: |
-          echo "=== README.md 크기 ==="
+          echo "=== README.md ==="
           wc -l README.md
+          echo "=== docs/index.md ==="
+          wc -l docs/index.md
           echo "=== HF Hot 논문 수 ==="
           grep -c "🔥" README.md || true
+          echo "=== 코드 링크 수 ==="
+          grep -c "\[Code\]" README.md || true
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
+          git add README.md docs/index.md
           git diff --cached --quiet || git commit -m "📄 Daily paper update $(date +'%Y.%m.%d')"
           git push

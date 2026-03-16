@@ -88,12 +88,15 @@ class Paper:
 # Papers With Code fetcher (기존 config base_url 복원)
 # ─────────────────────────────────────────────
 
+# config.yaml의 base_url 그대로 사용
 PWC_BASE_URL = "https://arxiv.paperswithcode.com/api/v0/papers/"
 ARXIV_API    = "https://export.arxiv.org/api/query"  # fallback
 
 
 def fetch_pwc_by_id(arxiv_id: str) -> dict:
     """
+    Papers With Code API로 단일 논문 코드 정보 조회.
+    응답 예시:
       {
         "paper": {"id": "2603.09761", "title": "...", ...},
         "repository": {"url": "https://github.com/...", "framework": "PyTorch"},
@@ -305,10 +308,12 @@ def collect_papers(config: dict, days_back: int = 1) -> tuple[
                 if kw not in p.matched_keywords:
                     p.matched_keywords.append(kw)
 
+    # 3. HF rank 부여
     for aid, paper in all_papers.items():
         if aid in hf_map:
             paper.hf_rank = hf_map[aid]
 
+    # 4. HF 핫 논문 중 아직 없는 것도 추가 (arXiv에서 개별 fetch)
     for hf_id, rank in hf_map.items():
         if hf_id not in all_papers:
             try:
@@ -472,10 +477,13 @@ def generate_markdown(
             )
         lines.append("\n</details>\n")
     else:
-        lines.append("*None.*\n")
+        lines.append("*void.*\n")
 
     # ── Section 2: All (deduplicated, score-sorted)
     lines.append("## 📊 All Papers (Deduplicated)\n")
+    lines.append(
+        f"> total **{len(all_papers)}** Papers \n"
+    )
 
     all_sorted = sorted(all_papers.values(),
                         key=lambda p: (-p.score, p.publish_date),
@@ -512,33 +520,167 @@ def generate_markdown(
     return "\n".join(lines)
 
 
+
+# ─────────────────────────────────────────────
+# GitPage Markdown generator (docs/index.md)
+# 기존 daily_arxiv.py의 to_web=True 로직 복원
+# ─────────────────────────────────────────────
+
+def _paper_row_web(p: Paper) -> str:
+    """GitHub Pages용 행 — <details> 미사용, back-to-top 링크 포함"""
+    links = f"[ArXiv]({p.arxiv_url})"
+    if p.code_url:
+        links += f" / [Code]({p.code_url})"
+    elif p.project_url:
+        links += f" / [Web]({p.project_url})"
+    if p.pwc_url:
+        links += f" / [PWC]({p.pwc_url})"
+
+    badges = p.keyword_badges()
+    badge_str = f" {badges}" if badges else ""
+    abstract_short = _abstract_short(p.abstract)
+
+    return (
+        f"| **{p.publish_date}** | "
+        f"**{p.title}**{badge_str}<br>{abstract_short} | "
+        f"{p.author_team()} | "
+        f"{links} |"
+    )
+
+
+def generate_gitpage_markdown(
+    all_papers: dict[str, Paper],
+    hf_map: dict[str, int],
+    config: dict,
+) -> str:
+    """
+    GitHub Pages 호환 마크다운 생성 (docs/index.md).
+    기존 daily_arxiv.py의 to_web=True 포맷 복원:
+      - Jekyll front matter (layout: default)
+      - <details> 미사용 → 모든 내용 펼쳐진 상태
+      - 각 섹션 하단에 back-to-top 링크
+      - 배지 (contributors / forks / stars / issues)
+    """
+    today_dot  = datetime.date.today().strftime("%Y.%m.%d")
+    today_anchor = f"#updated-on-{today_dot.replace('.', '')}"
+    cat_names  = list(config.get("categories", {}).keys())
+    cfg        = config.get("settings", {})
+    user       = config.get("user_name", "cold-young").replace(" ", "-")   # config 호환
+    repo       = config.get("repo_name", "robotics-paper-daily")
+
+    lines = []
+
+    # ── Jekyll front matter
+    lines.append("---")
+    lines.append("layout: default")
+    lines.append("---")
+    lines.append("")
+
+    # ── 배지 (기존 daily_arxiv.py show_badge 복원)
+    lines.append(f"[![Contributors][contributors-shield]][contributors-url]")
+    lines.append(f"[![Forks][forks-shield]][forks-url]")
+    lines.append(f"[![Stargazers][stars-shield]][stars-url]")
+    lines.append(f"[![Issues][issues-shield]][issues-url]")
+    lines.append("")
+
+    lines.append(f"## Updated on {today_dot}")
+    lines.append(f"> Usage instructions: [here](./docs/README.md#usage)")
+    lines.append("")
+
+    # ── 섹션별 본문 (펼쳐진 형태)
+    def _section(title: str, papers: list[Paper]) -> list[str]:
+        anchor_id = title.lower().replace(" ", "-")
+        sec = []
+        sec.append(f"## {title}")
+        sec.append("")
+        sec.append("| Publish Date | Title & Abstract | Authors | Links |")
+        sec.append("|:---------|:-----------------------|:---------|:------|")
+        for p in papers:
+            sec.append(_paper_row_web(p))
+        sec.append("")
+        sec.append(f"<p align=right>(<a href={today_anchor}>back to top</a>)</p>")
+        sec.append("")
+        return sec
+
+    # HF Hot Papers 섹션
+    hf_papers = sorted(
+        [p for p in all_papers.values() if p.hf_rank is not None],
+        key=lambda p: p.hf_rank,
+    )
+    if hf_papers:
+        lines += _section("🔥 HuggingFace Hot Papers", hf_papers)
+
+    # All Papers 섹션
+    all_sorted = sorted(
+        all_papers.values(),
+        key=lambda p: (p.publish_date, -p.score),
+        reverse=True,
+    )
+    lines += _section("📊 All Papers (Deduplicated)", all_sorted)
+
+    # 카테고리별 섹션
+    for cat_name in cat_names:
+        cat_papers = sorted(
+            [p for p in all_papers.values() if cat_name in p.matched_categories],
+            key=lambda p: p.publish_date,
+            reverse=True,
+        )
+        if cat_papers:
+            lines += _section(cat_name, cat_papers)
+
+    # ── 배지 링크 정의 (하단)
+    lines.append(f"[contributors-shield]: https://img.shields.io/github/contributors/{user}/{repo}.svg?style=for-the-badge")
+    lines.append(f"[contributors-url]: https://github.com/{user}/{repo}/graphs/contributors")
+    lines.append(f"[forks-shield]: https://img.shields.io/github/forks/{user}/{repo}.svg?style=for-the-badge")
+    lines.append(f"[forks-url]: https://github.com/{user}/{repo}/network/members")
+    lines.append(f"[stars-shield]: https://img.shields.io/github/stars/{user}/{repo}.svg?style=for-the-badge")
+    lines.append(f"[stars-url]: https://github.com/{user}/{repo}/stargazers")
+    lines.append(f"[issues-shield]: https://img.shields.io/github/issues/{user}/{repo}.svg?style=for-the-badge")
+    lines.append(f"[issues-url]: https://github.com/{user}/{repo}/issues")
+
+    return "\n".join(lines)
+
+
 # ─────────────────────────────────────────────
 # Entry point
 # ─────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(description="PaperRadar: robotics paper tracker")
-    parser.add_argument("--config", default="config.yaml", help="config YAML path")
-    parser.add_argument("--output", default="README.md", help="output markdown path")
-    parser.add_argument("--days", type=int, default=1,
-                        help="look back N days (default: 1)")
+    parser.add_argument("--config",  default="config.yaml",  help="config YAML path")
+    parser.add_argument("--output",  default="README.md",    help="README output path")
+    parser.add_argument("--gitpage", default="docs/index.md",help="GitPage output path")
+    parser.add_argument("--days",    type=int, default=1,    help="look back N days")
+    parser.add_argument("--no-gitpage", action="store_true", help="GitPage 생성 건너뜀")
     args = parser.parse_args()
 
     config = load_config(args.config)
     all_papers, hf_map = collect_papers(config, days_back=args.days)
 
-    print(f"\n[Result] Total unique papers: {len(all_papers)}")
-    print(f"[Result] HF hot papers found: {len(hf_map)}")
-    hf_in_result = sum(1 for p in all_papers.values() if p.hf_rank is not None)
-    multi_cat = sum(1 for p in all_papers.values() if len(p.matched_categories) > 1)
-    print(f"[Result] Papers with HF rank: {hf_in_result}")
-    print(f"[Result] Papers in multiple categories (would have been duplicated): {multi_cat}")
+    total      = len(all_papers)
+    hf_count   = sum(1 for p in all_papers.values() if p.hf_rank is not None)
+    multi_cat  = sum(1 for p in all_papers.values() if len(p.matched_categories) > 1)
+    code_count = sum(1 for p in all_papers.values() if p.code_url)
 
-    md = generate_markdown(all_papers, hf_map, config)
+    print(f"\n[Result] Total unique papers : {total}")
+    print(f"[Result] HF hot papers        : {hf_count}")
+    print(f"[Result] Multi-category papers: {multi_cat}  (중복 제거 효과)")
+    print(f"[Result] Papers with code link: {code_count}")
 
-    out_path = Path(args.output)
-    out_path.write_text(md, encoding="utf-8")
-    print(f"\nWritten to {out_path}")
+    # ── README.md 생성
+    readme_md = generate_markdown(all_papers, hf_map, config)
+    out_path  = Path(args.output)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(readme_md, encoding="utf-8")
+    print(f"\n✅ README  → {out_path}")
+
+    # ── docs/index.md 생성 (GitPage)
+    if not args.no_gitpage:
+        gitpage_md   = generate_gitpage_markdown(all_papers, hf_map, config)
+        gitpage_path = Path(args.gitpage)
+        gitpage_path.parent.mkdir(parents=True, exist_ok=True)
+        gitpage_path.write_text(gitpage_md, encoding="utf-8")
+        print(f"✅ GitPage → {gitpage_path}")
 
 
 if __name__ == "__main__":
