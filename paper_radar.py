@@ -8,7 +8,13 @@ Improvements over cold-young/robotics_paper_daily:
   2. HuggingFace Daily Papers 통합
      → 로봇/ML 핫 논문을 별도 섹션으로 상단에 표시
   3. 관련도 점수 (키워드 히트 수 + HF 순위) 기반 정렬
-  4. config.yaml 완전 호환
+  4. Papers With Code API 통합 (기존 config.yaml base_url 복원)
+     → 코드 링크, GitHub repo, framework 자동 수집
+  5. config.yaml 완전 호환 (기존 필드 모두 지원)
+
+API 우선순위:
+  1차: arxiv.paperswithcode.com (코드 링크 포함)
+  2차: export.arxiv.org (fallback)
 
 Usage:
     python paper_radar.py                  # 오늘 날짜 기준
@@ -18,6 +24,7 @@ Usage:
 
 import re
 import time
+import json
 import argparse
 import datetime
 import urllib.request
@@ -42,6 +49,10 @@ class Paper:
     publish_date: str     # "YYYY-MM-DD"
     arxiv_url: str
     project_url: str = ""
+    # Papers With Code 필드 (기존 config의 base_url 복원)
+    code_url: str = ""        # GitHub repo URL
+    pwc_url: str = ""         # paperswithcode.com 페이지
+    framework: str = ""       # "PyTorch" / "TensorFlow" / ""
     # 수집 메타
     matched_keywords: list[str] = field(default_factory=list)
     matched_categories: list[str] = field(default_factory=list)
@@ -49,10 +60,12 @@ class Paper:
     score: int = 0                   # 관련도 점수 (정렬용)
 
     def compute_score(self):
-        """키워드 히트 수 + HF 순위 가중치"""
+        """키워드 히트 수 + HF 순위 가중치 + 코드 공개 보너스"""
         self.score = len(self.matched_keywords) * 10
         if self.hf_rank is not None:
             self.score += max(0, 30 - self.hf_rank)  # top-1=+29, top-30=+1
+        if self.code_url:
+            self.score += 5   # 코드 공개 논문 소폭 우선
 
     def keyword_badges(self) -> str:
         badges = []
@@ -60,6 +73,8 @@ class Paper:
             badges.append(f"`{cat}`")
         if self.hf_rank is not None:
             badges.append(f"🔥 HF#{self.hf_rank}")
+        if self.code_url:
+            badges.append("💻 Code")
         return " ".join(badges)
 
     def author_team(self) -> str:
@@ -70,10 +85,53 @@ class Paper:
         return parts[0]
 
 # ─────────────────────────────────────────────
-# arXiv fetcher
+# Papers With Code fetcher (기존 config base_url 복원)
 # ─────────────────────────────────────────────
 
-ARXIV_API = "https://export.arxiv.org/api/query"
+PWC_BASE_URL = "https://arxiv.paperswithcode.com/api/v0/papers/"
+ARXIV_API    = "https://export.arxiv.org/api/query"  # fallback
+
+
+def fetch_pwc_by_id(arxiv_id: str) -> dict:
+    """
+      {
+        "paper": {"id": "2603.09761", "title": "...", ...},
+        "repository": {"url": "https://github.com/...", "framework": "PyTorch"},
+        "paper_with_code": {"url": "https://paperswithcode.com/paper/..."}
+      }
+    실패 시 빈 dict 반환.
+    """
+    url = f"{PWC_BASE_URL}{arxiv_id}"
+    req = urllib.request.Request(url, headers={"User-Agent": "PaperRadar/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            return json.loads(resp.read())
+    except Exception:
+        return {}
+
+
+def enrich_with_pwc(paper: "Paper") -> None:
+    """
+    Paper 객체에 PWC 코드 정보를 인플레이스로 추가.
+    score에 코드 존재 보너스도 반영.
+    """
+    data = fetch_pwc_by_id(paper.arxiv_id)
+    if not data:
+        return
+
+    repo = data.get("repository") or {}
+    if repo.get("url"):
+        paper.code_url  = repo["url"]
+        paper.framework = repo.get("framework", "")
+
+    pwc = data.get("paper_with_code") or {}
+    if pwc.get("url"):
+        paper.pwc_url = pwc["url"]
+
+
+# ─────────────────────────────────────────────
+# arXiv fetcher (fallback / bulk search)
+# ─────────────────────────────────────────────
 
 def fetch_arxiv(keywords: list[str], max_results: int = 50,
                 days_back: int = 1) -> list[dict]:
@@ -247,15 +305,12 @@ def collect_papers(config: dict, days_back: int = 1) -> tuple[
                 if kw not in p.matched_keywords:
                     p.matched_keywords.append(kw)
 
-    # 3. HF rank 부여 + score 계산
     for aid, paper in all_papers.items():
         if aid in hf_map:
             paper.hf_rank = hf_map[aid]
 
-    # 4. HF 핫 논문 중 아직 없는 것도 추가 (arXiv에서 개별 fetch)
     for hf_id, rank in hf_map.items():
         if hf_id not in all_papers:
-            # HF 핫 논문은 arXiv에서 직접 가져옴
             try:
                 time.sleep(1)
                 raw = fetch_arxiv_by_id(hf_id)
@@ -275,6 +330,20 @@ def collect_papers(config: dict, days_back: int = 1) -> tuple[
             except Exception as e:
                 print(f"[WARN] HF paper {hf_id} fetch failed: {e}")
 
+    # 5. Papers With Code 코드 링크 보강 (config base_url 복원)
+    #    rate limit 방지: 0.5초 간격
+    print(f"\n[PWC] Enriching {len(all_papers)} papers with code links...")
+    pwc_count = 0
+    for i, (aid, paper) in enumerate(all_papers.items()):
+        time.sleep(0.5)
+        enrich_with_pwc(paper)
+        if paper.code_url:
+            pwc_count += 1
+        if (i + 1) % 20 == 0:
+            print(f"  → {i+1}/{len(all_papers)} processed, {pwc_count} with code")
+    print(f"[PWC] Done. {pwc_count}/{len(all_papers)} papers have code links.")
+
+    # 6. 최종 score 계산 (코드 보너스 포함)
     for p in all_papers.values():
         p.compute_score()
 
@@ -330,10 +399,14 @@ def _abstract_short(abstract: str, max_len: int = 400) -> str:
 
 
 def _paper_row(p: Paper) -> str:
-    """기존 README 테이블 포맷 + 개선"""
+    """기존 README 테이블 포맷 + 개선 (PWC 코드 링크 포함)"""
     links = f"[ArXiv]({p.arxiv_url})"
-    if p.project_url:
-        links += f" / [Web]({p.project_url})"
+    if p.code_url:
+        links += f" / [Code]({p.code_url})"      # GitHub 링크 우선
+    elif p.project_url:
+        links += f" / [Web]({p.project_url})"    # 없으면 project page
+    if p.pwc_url:
+        links += f" / [PWC]({p.pwc_url})"        # Papers With Code 페이지
 
     badges = p.keyword_badges()
     badge_str = f" {badges}" if badges else ""
@@ -382,8 +455,12 @@ def generate_markdown(
         lines.append("| --- | --- | --- | --- | --- |")
         for p in hf_papers:
             links = f"[ArXiv]({p.arxiv_url})"
-            if p.project_url:
+            if p.code_url:
+                links += f" / [Code]({p.code_url})"
+            elif p.project_url:
                 links += f" / [Web]({p.project_url})"
+            if p.pwc_url:
+                links += f" / [PWC]({p.pwc_url})"
             cat_tags = " ".join(f"`{c}`" for c in p.matched_categories if c != "HF-Hot")
             title_str = p.title + (f" {cat_tags}" if cat_tags else "")
             abstract_short = _abstract_short(p.abstract)
@@ -395,14 +472,10 @@ def generate_markdown(
             )
         lines.append("\n</details>\n")
     else:
-        lines.append("*오늘의 HuggingFace 핫 논문이 없거나 로봇 관련 항목이 없습니다.*\n")
+        lines.append("*None.*\n")
 
     # ── Section 2: All (deduplicated, score-sorted)
     lines.append("## 📊 All Papers (Deduplicated)\n")
-    lines.append(
-        f"> 총 **{len(all_papers)}개** 논문 (키워드 중복 제거됨). "
-        "동일 논문이 여러 카테고리에 해당하는 경우 배지로 표시됩니다.\n"
-    )
 
     all_sorted = sorted(all_papers.values(),
                         key=lambda p: (-p.score, p.publish_date),
@@ -465,7 +538,7 @@ def main():
 
     out_path = Path(args.output)
     out_path.write_text(md, encoding="utf-8")
-    print(f"\n✅ Written to {out_path}")
+    print(f"\nWritten to {out_path}")
 
 
 if __name__ == "__main__":
