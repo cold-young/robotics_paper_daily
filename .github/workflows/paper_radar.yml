@@ -2,9 +2,8 @@ name: PaperRadar Daily Update
 
 on:
   schedule:
-    # 매일 오전 9시 (KST) = UTC 00:00
-    - cron: "0 0 * * *"
-  workflow_dispatch:  # 수동 실행 허용
+    - cron: "0 0 * * *"   # 매일 오전 9시 KST (UTC 00:00)
+  workflow_dispatch:
 
 jobs:
   update-papers:
@@ -22,34 +21,47 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install pyyaml
+        # daily_arxiv.py는 더 이상 사용하지 않음 → arxiv 패키지 불필요
+        run: pip install pyyaml requests
 
       - name: Create docs directory
         run: mkdir -p docs
 
-      - name: Run PaperRadar (README + GitPage 동시 생성)
+      - name: Run PaperRadar
         run: |
           python paper_radar.py \
-            --config config.yaml \
-            --output README.md \
-            --gitpage docs/index.md \
-            --days 1
+            --config      config.yaml \
+            --output      README.md \
+            --gitpage     docs/index.md \
+            --db          docs/papers_db.json \
+            --days        1 \
+            --max-per-cat 50
 
-      - name: Show stats
+      - name: Show DB stats
         run: |
-          echo "=== README.md ==="
-          wc -l README.md
-          echo "=== docs/index.md ==="
-          wc -l docs/index.md
-          echo "=== HF Hot 논문 수 ==="
-          grep -c "🔥" README.md || true
-          echo "=== 코드 링크 수 ==="
-          grep -c "\[Code\]" README.md || true
+          echo "=== 누적 DB 현황 ==="
+          python3 -c "
+          import json, pathlib
+          db_path = pathlib.Path('docs/papers_db.json')
+          if not db_path.exists():
+              print('DB 없음')
+          else:
+              db = json.loads(db_path.read_text())
+              cats = {}
+              for p in db.values():
+                  for c in p.get('matched_categories', []):
+                      if c != 'HF-Hot':
+                          cats[c] = cats.get(c, 0) + 1
+              print(f'Total: {len(db)} papers')
+              for k, v in sorted(cats.items()):
+                  print(f'  {k}: {v}')
+          "
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md docs/index.md
-          git diff --cached --quiet || git commit -m "📄 Daily paper update $(date +'%Y.%m.%d')"
+          git add README.md docs/index.md docs/papers_db.json
+          TOTAL=$(python3 -c "import json; print(len(json.load(open('docs/papers_db.json'))))" 2>/dev/null || echo "?")
+          git diff --cached --quiet || git commit -m "📄 Daily update $(date +'%Y.%m.%d') — ${TOTAL} papers"
           git push

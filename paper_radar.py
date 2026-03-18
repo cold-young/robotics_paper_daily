@@ -3,22 +3,18 @@ paper_radar.py  ─  Improved robotics paper tracker
 ────────────────────────────────────────────────────
 Improvements over cold-young/robotics_paper_daily:
   1. arXiv ID 기준 cross-category deduplication
-     → 같은 논문이 여러 키워드에 걸릴 때 한 번만 표시,
-       매칭된 키워드 태그를 모두 병기
   2. HuggingFace Daily Papers 통합
-     → 로봇/ML 핫 논문을 별도 섹션으로 상단에 표시
-  3. 관련도 점수 (키워드 히트 수 + HF 순위) 기반 정렬
-  4. Papers With Code API 통합 (기존 config.yaml base_url 복원)
-     → 코드 링크, GitHub repo, framework 자동 수집
-  5. config.yaml 완전 호환 (기존 필드 모두 지원)
-
-API 우선순위:
-  1차: arxiv.paperswithcode.com (코드 링크 포함)
-  2차: export.arxiv.org (fallback)
+  3. 관련도 점수 기반 정렬
+  4. Papers With Code API 통합 (코드 링크 자동 수집)
+  5. config.yaml 완전 호환
+  6. 📦 누적 DB (docs/papers_db.json)
+     → 매일 새 논문이 기존에 쌓이고, 카테고리별 최대 N개 초과 시
+       가장 오래된 논문부터 제거 (기본값: 50개/카테고리)
 
 Usage:
-    python paper_radar.py                  # 오늘 날짜 기준
-    python paper_radar.py --days 3         # 최근 3일치
+    python paper_radar.py                  # 오늘 날짜 기준, DB에 누적
+    python paper_radar.py --days 3         # 최근 3일치 수집 후 누적
+    python paper_radar.py --reset-db       # DB 초기화 후 새로 수집
     python paper_radar.py --output my.md   # 출력 파일 지정
 """
 
@@ -34,6 +30,7 @@ from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Optional
 
+import dataclasses
 import yaml  # pip install pyyaml
 
 # ─────────────────────────────────────────────
@@ -136,14 +133,9 @@ def enrich_with_pwc(paper: "Paper") -> None:
 # arXiv fetcher (fallback / bulk search)
 # ─────────────────────────────────────────────
 
-def fetch_arxiv(keywords: list[str], max_results: int = 50,
-                days_back: int = 1) -> list[dict]:
-    """
-    키워드 리스트로 arXiv 검색 → raw result list 반환
-    """
-    query_parts = [f'ti:"{kw}" OR abs:"{kw}"' for kw in keywords]
-    query = " OR ".join(query_parts)
-
+def _fetch_arxiv_single(query: str, max_results: int,
+                        days_back: int) -> list[dict]:
+    """단일 쿼리로 arXiv 검색. timeout/에러 시 빈 리스트 반환."""
     params = urllib.parse.urlencode({
         "search_query": query,
         "max_results": max_results,
@@ -151,32 +143,34 @@ def fetch_arxiv(keywords: list[str], max_results: int = 50,
         "sortOrder": "descending",
     })
     url = f"{ARXIV_API}?{params}"
-
     req = urllib.request.Request(url, headers={"User-Agent": "PaperRadar/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        xml_data = resp.read()
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            xml_data = resp.read()
+    except Exception as e:
+        print(f"  [WARN] arXiv 요청 실패: {e}")
+        return []
 
     ns = {"atom": "http://www.w3.org/2005/Atom"}
     root = ET.fromstring(xml_data)
-
     cutoff = datetime.date.today() - datetime.timedelta(days=days_back)
     results = []
     for entry in root.findall("atom:entry", ns):
-        published = entry.find("atom:published", ns).text[:10]
+        pub_node = entry.find("atom:published", ns)
+        if pub_node is None:
+            continue
+        published = pub_node.text[:10]
         if datetime.date.fromisoformat(published) < cutoff:
             continue
 
-        raw_id = entry.find("atom:id", ns).text
+        raw_id   = entry.find("atom:id", ns).text
         arxiv_id = raw_id.split("/abs/")[-1].split("v")[0]
-
-        title = entry.find("atom:title", ns).text.replace("\n", " ").strip()
+        title    = entry.find("atom:title", ns).text.replace("\n", " ").strip()
         abstract = entry.find("atom:summary", ns).text.replace("\n", " ").strip()
 
-        authors_raw = entry.findall("atom:author", ns)
-        author_names = [a.find("atom:name", ns).text for a in authors_raw]
-        authors_str = ", ".join(author_names)
+        authors_raw  = entry.findall("atom:author", ns)
+        authors_str  = ", ".join(a.find("atom:name", ns).text for a in authors_raw)
 
-        # project page 링크 (comment 필드)
         project_url = ""
         for link in entry.findall("atom:link", ns):
             if link.get("title") == "pdf":
@@ -187,15 +181,42 @@ def fetch_arxiv(keywords: list[str], max_results: int = 50,
                 break
 
         results.append({
-            "arxiv_id": arxiv_id,
-            "title": title,
-            "abstract": abstract,
-            "authors": authors_str,
+            "arxiv_id":    arxiv_id,
+            "title":       title,
+            "abstract":    abstract,
+            "authors":     authors_str,
             "publish_date": published,
-            "arxiv_url": f"http://arxiv.org/abs/{arxiv_id}",
+            "arxiv_url":   f"http://arxiv.org/abs/{arxiv_id}",
             "project_url": project_url,
         })
     return results
+
+
+def fetch_arxiv(keywords: list[str], max_results: int = 50,
+                days_back: int = 1, chunk_size: int = 3) -> list[dict]:
+    """
+    키워드를 chunk_size개씩 나눠 arXiv 검색.
+    → URL 길이 폭발 방지, timeout 방지.
+    결과는 arxiv_id 기준 중복 제거 후 반환.
+    """
+    seen: set[str] = set()
+    all_results: list[dict] = []
+
+    for i in range(0, len(keywords), chunk_size):
+        chunk = keywords[i: i + chunk_size]
+        query_parts = [f'ti:"{kw}" OR abs:"{kw}"' for kw in chunk]
+        query = " OR ".join(query_parts)
+
+        batch = _fetch_arxiv_single(query, max_results, days_back)
+        for r in batch:
+            if r["arxiv_id"] not in seen:
+                seen.add(r["arxiv_id"])
+                all_results.append(r)
+
+        if i + chunk_size < len(keywords):
+            time.sleep(3)   # arXiv rate limit
+
+    return all_results
 
 
 # ─────────────────────────────────────────────
@@ -204,25 +225,19 @@ def fetch_arxiv(keywords: list[str], max_results: int = 50,
 
 HF_DAILY_API = "https://huggingface.co/api/daily_papers"
 
-def fetch_hf_daily(date_str: Optional[str] = None,
-                   limit: int = 30) -> dict[str, int]:
+def fetch_hf_daily(limit: int = 50) -> dict[str, int]:
     """
-    HuggingFace Daily Papers API → {arxiv_id: rank} dict 반환
-    date_str 예: "2024-03-12"  (None이면 오늘)
+    HuggingFace Daily Papers API → {arxiv_id: rank} dict 반환.
+    date 파라미터 없이 호출 (date 지정 시 400 오류 발생).
     """
     params = {"limit": limit}
-    if date_str:
-        params["date"] = date_str
-
     url = HF_DAILY_API + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={
         "User-Agent": "PaperRadar/1.0",
         "Accept": "application/json",
     })
-
     try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            import json
+        with urllib.request.urlopen(req, timeout=20) as resp:
             data = json.loads(resp.read())
     except Exception as e:
         print(f"[WARN] HuggingFace API 접근 실패: {e}")
@@ -231,11 +246,145 @@ def fetch_hf_daily(date_str: Optional[str] = None,
     hf_map = {}
     for rank, item in enumerate(data, start=1):
         paper = item.get("paper", {})
-        pid = paper.get("id", "")          # e.g. "2403.12345"
+        pid   = paper.get("id", "")   # e.g. "2403.12345"
         if pid:
             hf_map[pid] = rank
     return hf_map
 
+
+
+# ─────────────────────────────────────────────
+# 누적 DB (docs/papers_db.json)
+# ─────────────────────────────────────────────
+
+DB_DEFAULT_PATH = "docs/papers_db.json"
+
+
+def _paper_to_dict(p: Paper) -> dict:
+    return dataclasses.asdict(p)
+
+
+def _paper_from_dict(d: dict) -> Paper:
+    return Paper(**d)
+
+
+def load_db(db_path: str = DB_DEFAULT_PATH) -> dict[str, Paper]:
+    """
+    JSON DB 로드 → {arxiv_id: Paper}
+    파일이 없으면 빈 dict 반환.
+    """
+    path = Path(db_path)
+    if not path.exists():
+        return {}
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        return {aid: _paper_from_dict(d) for aid, d in raw.items()}
+    except Exception as e:
+        print(f"[WARN] DB 로드 실패 ({db_path}): {e} — 빈 DB로 시작")
+        return {}
+
+
+def save_db(papers: dict[str, Paper], db_path: str = DB_DEFAULT_PATH) -> None:
+    """
+    {arxiv_id: Paper} → JSON DB 저장
+    """
+    path = Path(db_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    raw = {aid: _paper_to_dict(p) for aid, p in papers.items()}
+    path.write_text(json.dumps(raw, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def merge_into_db(
+    db: dict[str, Paper],
+    new_papers: dict[str, Paper],
+    max_per_category: int = 50,
+) -> dict[str, Paper]:
+    """
+    새 논문을 기존 DB에 병합한 뒤, 카테고리별 최대 개수를 초과하면
+    가장 오래된 논문(publish_date 기준)을 제거한다.
+
+    규칙:
+      - 동일 arxiv_id가 이미 있으면 category/keyword 태그만 업데이트
+        (코드 링크, HF rank 등 새 정보도 갱신)
+      - 없으면 새로 추가
+      - 전체 DB에서 각 카테고리별로 최신 N개만 유지
+        (여러 카테고리에 걸친 논문은 각 카테고리 계산에 모두 포함)
+    """
+    merged = dict(db)  # 기존 DB 복사
+
+    # 1. 새 논문 병합
+    for aid, new_p in new_papers.items():
+        if aid in merged:
+            old_p = merged[aid]
+            # 카테고리/키워드 태그 누적
+            for cat in new_p.matched_categories:
+                if cat not in old_p.matched_categories:
+                    old_p.matched_categories.append(cat)
+            for kw in new_p.matched_keywords:
+                if kw not in old_p.matched_keywords:
+                    old_p.matched_keywords.append(kw)
+            # 새 정보로 갱신 (코드링크, HF rank 등)
+            if new_p.code_url:
+                old_p.code_url  = new_p.code_url
+                old_p.framework = new_p.framework
+            if new_p.pwc_url:
+                old_p.pwc_url = new_p.pwc_url
+            if new_p.hf_rank is not None:
+                old_p.hf_rank = new_p.hf_rank
+        else:
+            merged[aid] = new_p
+
+    # 2. 카테고리별 최대 개수 적용 (오래된 것 제거)
+    #    카테고리 목록 수집 (HF-Hot 제외: 매일 바뀌므로 별도 관리)
+    all_cats: set[str] = set()
+    for p in merged.values():
+        for cat in p.matched_categories:
+            if cat != "HF-Hot":
+                all_cats.add(cat)
+
+    papers_to_remove: set[str] = set()
+    for cat in all_cats:
+        cat_papers = [
+            p for p in merged.values()
+            if cat in p.matched_categories
+        ]
+        if len(cat_papers) <= max_per_category:
+            continue
+        # 날짜 오름차순 정렬 → 초과분(오래된 것)을 제거 후보로
+        cat_papers_sorted = sorted(cat_papers, key=lambda p: p.publish_date)
+        overflow = len(cat_papers) - max_per_category
+        for old_p in cat_papers_sorted[:overflow]:
+            # 다른 카테고리에도 속한 논문은 해당 카테고리 태그만 제거
+            old_p.matched_categories = [
+                c for c in old_p.matched_categories if c != cat
+            ]
+            # 아무 카테고리도 없어진 논문은 DB에서 완전 삭제 대상
+            if not old_p.matched_categories:
+                papers_to_remove.add(old_p.arxiv_id)
+
+    for aid in papers_to_remove:
+        del merged[aid]
+
+    return merged
+
+
+def get_display_papers(
+    db: dict[str, Paper],
+    hf_map: dict[str, int],
+) -> dict[str, Paper]:
+    """
+    DB에서 표시용 논문 dict를 반환.
+    HF rank는 오늘 기준으로 갱신 (누적 HF rank는 의미없음).
+    """
+    display = {}
+    for aid, p in db.items():
+        # 새 Paper 복사 (원본 DB 불변 보장)
+        dp = Paper(**dataclasses.asdict(p))
+        # HF rank는 오늘 것으로 덮어쓰기 (또는 초기화)
+        dp.hf_rank = hf_map.get(aid, None)
+        dp.compute_score()
+        display[aid] = dp
+    return display
 
 # ─────────────────────────────────────────────
 # Config loader
@@ -268,8 +417,7 @@ def collect_papers(config: dict, days_back: int = 1) -> tuple[
         categories[cat_name] = cat_cfg.get("keywords", [])
 
     # 1. HuggingFace hot papers
-    today = datetime.date.today().isoformat()
-    hf_map = fetch_hf_daily(date_str=today)
+    hf_map = fetch_hf_daily()
     print(f"[HF] {len(hf_map)} daily papers fetched")
 
     # 2. arXiv per category
@@ -477,12 +625,13 @@ def generate_markdown(
             )
         lines.append("\n</details>\n")
     else:
-        lines.append("*void.*\n")
+        lines.append("*오늘의 HuggingFace 핫 논문이 없거나 로봇 관련 항목이 없습니다.*\n")
 
     # ── Section 2: All (deduplicated, score-sorted)
     lines.append("## 📊 All Papers (Deduplicated)\n")
     lines.append(
-        f"> total **{len(all_papers)}** Papers \n"
+        f"> 총 **{len(all_papers)}개** 논문 (키워드 중복 제거됨). "
+        "동일 논문이 여러 카테고리에 해당하는 경우 배지로 표시됩니다.\n"
     )
 
     all_sorted = sorted(all_papers.values(),
@@ -647,28 +796,64 @@ def generate_gitpage_markdown(
 
 def main():
     parser = argparse.ArgumentParser(description="PaperRadar: robotics paper tracker")
-    parser.add_argument("--config",  default="config.yaml",  help="config YAML path")
-    parser.add_argument("--output",  default="README.md",    help="README output path")
-    parser.add_argument("--gitpage", default="docs/index.md",help="GitPage output path")
-    parser.add_argument("--days",    type=int, default=1,    help="look back N days")
-    parser.add_argument("--no-gitpage", action="store_true", help="GitPage 생성 건너뜀")
+    parser.add_argument("--config",     default="config.yaml",       help="config YAML path")
+    parser.add_argument("--output",     default="README.md",         help="README output path")
+    parser.add_argument("--gitpage",    default="docs/index.md",     help="GitPage output path")
+    parser.add_argument("--db",         default="docs/papers_db.json", help="누적 DB JSON 경로")
+    parser.add_argument("--days",       type=int, default=1,         help="오늘부터 며칠 치 수집")
+    parser.add_argument("--max-per-cat",type=int, default=50,        help="카테고리당 최대 논문 수")
+    parser.add_argument("--no-gitpage", action="store_true",         help="GitPage 생성 건너뜀")
+    parser.add_argument("--reset-db",   action="store_true",         help="DB 초기화 후 새로 수집")
     args = parser.parse_args()
 
     config = load_config(args.config)
-    all_papers, hf_map = collect_papers(config, days_back=args.days)
 
-    total      = len(all_papers)
-    hf_count   = sum(1 for p in all_papers.values() if p.hf_rank is not None)
-    multi_cat  = sum(1 for p in all_papers.values() if len(p.matched_categories) > 1)
-    code_count = sum(1 for p in all_papers.values() if p.code_url)
+    # ── Step 1: 오늘 새 논문 수집
+    print("\n[Step 1] 새 논문 수집 중...")
+    today_papers, hf_map = collect_papers(config, days_back=args.days)
 
-    print(f"\n[Result] Total unique papers : {total}")
-    print(f"[Result] HF hot papers        : {hf_count}")
-    print(f"[Result] Multi-category papers: {multi_cat}  (중복 제거 효과)")
-    print(f"[Result] Papers with code link: {code_count}")
+    # ── Step 2: DB 로드 (또는 초기화)
+    if args.reset_db:
+        print("[Step 2] DB 초기화 (--reset-db 플래그)")
+        db = {}
+    else:
+        print(f"[Step 2] DB 로드: {args.db}")
+        db = load_db(args.db)
+        print(f"         기존 DB: {len(db)}개 논문")
+
+    # ── Step 3: 새 논문을 DB에 병합 + 초과분 정리
+    print(f"[Step 3] 병합 중... (카테고리당 최대 {args.max_per_cat}개)")
+    db = merge_into_db(db, today_papers, max_per_category=args.max_per_cat)
+    print(f"         병합 후 DB: {len(db)}개 논문")
+
+    # ── Step 4: DB 저장
+    save_db(db, args.db)
+    print(f"[Step 4] DB 저장 완료: {args.db}")
+
+    # ── Step 5: 표시용 논문 준비 (HF rank 오늘 기준으로 갱신)
+    display_papers = get_display_papers(db, hf_map)
+
+    # ── 통계 출력
+    total      = len(display_papers)
+    hf_count   = sum(1 for p in display_papers.values() if p.hf_rank is not None)
+    multi_cat  = sum(1 for p in display_papers.values() if len(p.matched_categories) > 1)
+    code_count = sum(1 for p in display_papers.values() if p.code_url)
+    cat_stats  = {}
+    for p in display_papers.values():
+        for cat in p.matched_categories:
+            if cat != "HF-Hot":
+                cat_stats[cat] = cat_stats.get(cat, 0) + 1
+
+    print(f"\n[Stats] 누적 논문 총 {total}개")
+    print(f"[Stats] HF hot papers     : {hf_count}")
+    print(f"[Stats] 멀티카테고리 논문 : {multi_cat}")
+    print(f"[Stats] 코드 링크 있음    : {code_count}")
+    for cat, cnt in sorted(cat_stats.items()):
+        bar = "█" * int(cnt / args.max_per_cat * 20)
+        print(f"[Stats]   {cat:<18} {cnt:>3}/{args.max_per_cat}  {bar}")
 
     # ── README.md 생성
-    readme_md = generate_markdown(all_papers, hf_map, config)
+    readme_md = generate_markdown(display_papers, hf_map, config)
     out_path  = Path(args.output)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(readme_md, encoding="utf-8")
@@ -676,7 +861,7 @@ def main():
 
     # ── docs/index.md 생성 (GitPage)
     if not args.no_gitpage:
-        gitpage_md   = generate_gitpage_markdown(all_papers, hf_map, config)
+        gitpage_md   = generate_gitpage_markdown(display_papers, hf_map, config)
         gitpage_path = Path(args.gitpage)
         gitpage_path.parent.mkdir(parents=True, exist_ok=True)
         gitpage_path.write_text(gitpage_md, encoding="utf-8")
