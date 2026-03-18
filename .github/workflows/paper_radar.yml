@@ -2,9 +2,6 @@ name: PaperRadar Daily Update
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # 매일 오전 9시 KST (UTC 00:00)
-  workflow_dispatch:
-    # 매일 오전 9시 (KST) = UTC 00:00
     - cron: "0 0 * * *"
   workflow_dispatch:
 
@@ -24,14 +21,12 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        # daily_arxiv.py는 더 이상 사용하지 않음 → arxiv 패키지 불필요
         run: pip install pyyaml requests
 
       - name: Create docs directory
         run: mkdir -p docs
 
       - name: Run PaperRadar
-      - name: Run PaperRadar (수집 → DB 누적 → 마크다운 생성)
         run: |
           python paper_radar.py \
             --config      config.yaml \
@@ -40,16 +35,9 @@ jobs:
             --db          docs/papers_db.json \
             --days        1 \
             --max-per-cat 50
-            --config   config.yaml \
-            --output   README.md \
-            --gitpage  docs/index.md \
-            --db       docs/papers_db.json \
-            --days     1 \
-            --max-per-cat 50
 
       - name: Show DB stats
         run: |
-          echo "=== 누적 DB 현황 ==="
           python3 -c "
           import json, pathlib
           db_path = pathlib.Path('docs/papers_db.json')
@@ -66,23 +54,6 @@ jobs:
               for k, v in sorted(cats.items()):
                   print(f'  {k}: {v}')
           "
-          echo "=== README.md 크기 ==="
-          wc -l README.md
-          echo "=== GitPage 크기 ==="
-          wc -l docs/index.md
-          echo "=== DB 논문 수 ==="
-          python3 -c "
-          import json
-          db = json.load(open('docs/papers_db.json'))
-          cats = {}
-          for p in db.values():
-              for c in p.get('matched_categories', []):
-                  if c != 'HF-Hot':
-                      cats[c] = cats.get(c, 0) + 1
-          print(f'Total: {len(db)} papers')
-          for k, v in sorted(cats.items()):
-              print(f'  {k}: {v}')
-          "
 
       - name: Commit and push
         run: |
@@ -91,7 +62,4 @@ jobs:
           git add README.md docs/index.md docs/papers_db.json
           TOTAL=$(python3 -c "import json; print(len(json.load(open('docs/papers_db.json'))))" 2>/dev/null || echo "?")
           git diff --cached --quiet || git commit -m "📄 Daily update $(date +'%Y.%m.%d') — ${TOTAL} papers"
-          # DB + 마크다운 둘 다 커밋
-          git add README.md docs/index.md docs/papers_db.json
-          git diff --cached --quiet || git commit -m "📄 Daily update $(date +'%Y.%m.%d') — $(python3 -c \"import json; db=json.load(open('docs/papers_db.json')); print(len(db))\" 2>/dev/null || echo '?') papers"
           git push
