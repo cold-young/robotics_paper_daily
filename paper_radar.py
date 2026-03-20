@@ -589,8 +589,7 @@ def generate_markdown(
     # ── 목차
     lines.append("## Table of Contents\n")
     lines.append("1. [🔥 HuggingFace Hot Papers](#-huggingface-hot-papers)")
-    lines.append("2. [📊 All Papers (Deduplicated)](#-all-papers-deduplicated)")
-    for i, cat in enumerate(cat_names, start=3):
+    for i, cat in enumerate(cat_names, start=2):
         anchor = cat.lower().replace(" ", "-")
         lines.append(f"{i}. [{cat}](#{anchor})")
     lines.append("")
@@ -627,28 +626,7 @@ def generate_markdown(
     else:
         lines.append("*오늘의 HuggingFace 핫 논문이 없거나 로봇 관련 항목이 없습니다.*\n")
 
-    # ── Section 2: All (deduplicated, score-sorted)
-    lines.append("## 📊 All Papers (Deduplicated)\n")
-    lines.append(
-        f"> 총 **{len(all_papers)}개** 논문 (키워드 중복 제거됨). "
-        "동일 논문이 여러 카테고리에 해당하는 경우 배지로 표시됩니다.\n"
-    )
-
-    all_sorted = sorted(all_papers.values(),
-                        key=lambda p: (-p.score, p.publish_date),
-                        reverse=False)
-    all_sorted = sorted(all_papers.values(),
-                        key=lambda p: (p.publish_date, -p.score),
-                        reverse=True)
-
-    lines.append("<details><summary><b>All Papers (Click to expand)</b></summary>\n")
-    lines.append("| Publish Date | Title & Abstract | Authors | Links |")
-    lines.append("| --- | --- | --- | --- |")
-    for p in all_sorted:
-        lines.append(_paper_row(p).strip())
-    lines.append("\n</details>\n")
-
-    # ── Section 3+: Per-category (arXiv-only, for reference)
+    # ── Section 2+: Per-category
     for cat_name in cat_names:
         anchor = cat_name.lower().replace(" ", "-")
         lines.append(f"## {cat_name}\n")
@@ -758,14 +736,6 @@ def generate_gitpage_markdown(
     )
     if hf_papers:
         lines += _section("🔥 HuggingFace Hot Papers", hf_papers)
-
-    # All Papers 섹션
-    all_sorted = sorted(
-        all_papers.values(),
-        key=lambda p: (p.publish_date, -p.score),
-        reverse=True,
-    )
-    lines += _section("📊 All Papers (Deduplicated)", all_sorted)
 
     # 카테고리별 섹션
     for cat_name in cat_names:
