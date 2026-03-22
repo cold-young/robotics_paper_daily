@@ -7,7 +7,7 @@ layout: default
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
-## Updated on 2026.03.21
+## Updated on 2026.03.22
 > Usage instructions: [here](./docs/README.md#usage)
 
 ## 🔥 HuggingFace Hot Papers
@@ -65,7 +65,7 @@ layout: default
 | **2026-03-18** | **Temporal Gains, Spatial Costs: Revisiting Video Fine-Tuning in Multimodal Large Language Models** `HF-Hot` 🔥 HF#49<br>Multimodal large language models (MLLMs) are typically trained in multiple stages, with video-based supervised fine-tuning (Video-SFT) serving as a key step for improving visual understanding. Yet its effect on the fine-grained evolution of visual capabilities, particularly the balance between spatial and temporal understanding, remains poorly understood. In this paper, we systematically study... | Xuming Hu Team | [ArXiv](http://arxiv.org/abs/2603.17541) |
 | **2026-03-13** | **ESPIRE: A Diagnostic Benchmark for Embodied Spatial Reasoning of Vision-Language Models** `HF-Hot` 🔥 HF#50<br>A recent trend in vision-language models (VLMs) has been to enhance their spatial cognition for embodied domains. Despite progress, existing evaluations have been limited both in paradigm and in coverage, hindering rapid, iterative model development. To address these limitations, we propose ESPIRE, a diagnostic benchmark for embodied spatial reasoning. ESPIRE offers a simulated world that... | Zilong Zheng Team | [ArXiv](http://arxiv.org/abs/2603.13033) |
 
-<p align=right>(<a href=#updated-on-20260321>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260322>back to top</a>)</p>
 
 ## Dexterous
 
@@ -95,7 +95,7 @@ layout: default
 | **2026-03-10** | **Cross-Hand Latent Representation for Vision-Language-Action Models** `Dexterous`<br>Dexterous manipulation is essential for real-world robot autonomy, mirroring the central role of human hand coordination in daily activity. Humans rely on rich multimodal perception--vision, sound, and language-guided intent--to perform dexterous actions, motivating vision-based, language-conditioned manipulation systems for robots. However, training reliable vision-language-action (VLA) models... | Xueyan Zou Team | [ArXiv](http://arxiv.org/abs/2603.10158) |
 | **2026-03-10** | **DexHiL: A Human-in-the-Loop Framework for Vision-Language-Action Model Post-Training in Dexterous Manipulation** `Dexterous`<br>While Vision-Language-Action (VLA) models have demonstrated promising generalization capabilities in robotic manipulation, deploying them on specific and complex downstream tasks still demands effective post-training. In parallel, Human-in-the-Loop (HiL) learning has proven to be a powerful mechanism for refining robot policies. However, extending this paradigm to dexterous manipulation remains... | Wenzhao Lian Team | [ArXiv](http://arxiv.org/abs/2603.09121) |
 
-<p align=right>(<a href=#updated-on-20260321>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260322>back to top</a>)</p>
 
 ## Manipulation
 
@@ -152,7 +152,7 @@ layout: default
 | **2026-03-15** | **eNavi: Event-based Imitation Policies for Low-Light Indoor Mobile Robot Navigation** `Manipulation`<br>Event cameras provide high dynamic range and microsecond-level temporal resolution, making them well-suited for indoor robot navigation, where conventional RGB cameras degrade under fast motion or low-light conditions. Despite advances in event-based perception spanning detection, SLAM, and pose estimation, there remains limited research on end-to-end control policies that exploit the... | Bharatesh Chakravarthi Team | [ArXiv](http://arxiv.org/abs/2603.14397) |
 | **2026-03-15** | **A Real-Time Neuro-Symbolic Ethical Governor for Safe Decision Control in Autonomous Robotic Manipulation** `Manipulation`<br>Ethical decision governance has become a critical requirement for autonomous robotic systems operating in human-centered and safety-sensitive environments. This paper presents a real-time neuro-symbolic ethical governor designed to enable risk-aware supervisory control in autonomous robotic manipulation tasks. The proposed framework integrates transformer-based ethical reasoning with a... | Kuepon Aueawatthanaphisut Team | [ArXiv](http://arxiv.org/abs/2603.14221) |
 
-<p align=right>(<a href=#updated-on-20260321>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260322>back to top</a>)</p>
 
 ## VLA
 
@@ -209,7 +209,7 @@ layout: default
 | **2026-03-13** | **Geometry-Guided Camera Motion Understanding in VideoLLMs** `VLA`<br>Camera motion is a fundamental geometric signal that shapes visual perception and cinematic style, yet current video-capable vision-language models (VideoLLMs) rarely represent it explicitly and often fail on fine-grained motion primitives. We address this gap with a framework of $\textbf{benchmarking}$, $\textbf{diagnosis}$, and $\textbf{injection}$. We curate $\textbf{CameraMotionDataset}$, a... | Guan-Ming Su Team | [ArXiv](http://arxiv.org/abs/2603.13119) |
 | **2026-03-13** | **ReMem-VLA: Empowering Vision-Language-Action Model with Memory via Dual-Level Recurrent Queries** `VLA`<br>Vision-language-action (VLA) models for closed-loop robot control are typically cast under the Markov assumption, making them prone to errors on tasks requiring historical context. To incorporate memory, existing VLAs either retrieve from a memory bank, which can be misled by distractors, or extend the frame window, whose fixed horizon still limits long-term retention. In this paper, we introduce... | Alois Knoll Team | [ArXiv](http://arxiv.org/abs/2603.12942) |
 
-<p align=right>(<a href=#updated-on-20260321>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260322>back to top</a>)</p>
 
 ## Tactile
 
@@ -226,7 +226,7 @@ layout: default
 | **2026-03-10** | **MuxGel: Simultaneous Dual-Modal Visuo-Tactile Sensing via Spatially Multiplexing and Deep Reconstruction** `Tactile` `Sim2Real`<br>High-fidelity visuo-tactile sensing is important for precise robotic manipulation. However, most vision-based tactile sensors face a fundamental trade-off: opaque coatings enable tactile sensing but block pre-contact vision. To address this, we propose MuxGel, a spatially multiplexed sensor that captures both external visual information and contact-induced tactile signals through a single camera.... | Yu She Team | [ArXiv](http://arxiv.org/abs/2603.09761) |
 | **2026-03-10** | **NLiPsCalib: An Efficient Calibration Framework for High-Fidelity 3D Reconstruction of Curved Visuotactile Sensors** `Tactile`<br>Recent advances in visuotactile sensors increasingly employ biomimetic curved surfaces to enhance sensorimotor capabilities. Although such curved visuotactile sensors enable more conformal object contact, their perceptual quality is often degraded by non-uniform illumination, which reduces reconstruction accuracy and typically necessitates calibration. Existing calibration methods commonly rely... | Chenxi Xiao Team | [ArXiv](http://arxiv.org/abs/2603.09319) |
 
-<p align=right>(<a href=#updated-on-20260321>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260322>back to top</a>)</p>
 
 ## Sim2Real
 
@@ -276,7 +276,7 @@ layout: default
 | **2026-03-10** | **Impact of Markov Decision Process Design on Sim-to-Real Reinforcement Learning** `Sim2Real`<br>Reinforcement Learning (RL) has demonstrated strong potential for industrial process control, yet policies trained in simulation often suffer from a significant sim-to-real gap when deployed on physical hardware. This work systematically analyzes how core Markov Decision Process (MDP) design choices -- state composition, target inclusion, reward formulation, termination criteria, and environment... | Frieder Heieck Team | [ArXiv](http://arxiv.org/abs/2603.09427) |
 | **2026-03-10** | **ImpedanceDiffusion: Diffusion-Based Global Path Planning for UAV Swarm Navigation with Generative Impedance Control** `Sim2Real`<br>Safe swarm navigation in cluttered indoor environment requires long-horizon planning, reactive obstacle avoidance, and adaptive compliance. We propose ImpedanceDiffusion, a hierarchical framework that leverages image-conditioned diffusion-based global path planning with Artificial Potential Field (APF) tracking and semantic-aware variable impedance control for aerial drone swarms.   The diffusion... | Dzmitry Tsetserukou Team | [ArXiv](http://arxiv.org/abs/2603.09031) |
 
-<p align=right>(<a href=#updated-on-20260321>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260322>back to top</a>)</p>
 
 ## LearnedControl
 
@@ -293,7 +293,7 @@ layout: default
 | **2026-03-11** | **Cybo-Waiter: A Physical Agentic Framework for Humanoid Whole-Body Locomotion-Manipulation** `LearnedControl`<br>Robots are increasingly expected to execute open ended natural language requests in human environments, which demands reliable long horizon execution under partial observability. This is especially challenging for humanoids because locomotion and manipulation are tightly coupled through stance, reachability, and balance. We present a humanoid agent framework that turns VLM plans into verifiable... | Kai Chen Team | [ArXiv](http://arxiv.org/abs/2603.10675) |
 | **2026-03-10** | **ZeroWBC: Learning Natural Visuomotor Humanoid Control Directly from Human Egocentric Video** `LearnedControl`<br>Achieving versatile and naturalistic whole-body control for humanoid robot scene-interaction remains a significant challenge. While some recent works have demonstrated autonomous humanoid interactive control, they are constrained to rigid locomotion patterns and expensive teleoperation data collection, lacking the versatility to execute more human-like natural behaviors such as sitting or... | Xuelong Li Team | [ArXiv](http://arxiv.org/abs/2603.09170) |
 
-<p align=right>(<a href=#updated-on-20260321>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260322>back to top</a>)</p>
 
 [contributors-shield]: https://img.shields.io/github/contributors/cold-young/robotics_paper_daily.svg?style=for-the-badge
 [contributors-url]: https://github.com/cold-young/robotics_paper_daily/graphs/contributors
