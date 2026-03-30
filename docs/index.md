@@ -7,7 +7,7 @@ layout: default
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
-## Updated on 2026.03.29
+## Updated on 2026.03.30
 > Usage instructions: [here](./docs/README.md#usage)
 
 ## 🔥 HuggingFace Hot Papers
@@ -65,7 +65,7 @@ layout: default
 | **2026-03-22** | **When Models Judge Themselves: Unsupervised Self-Evolution for Multimodal Reasoning** `HF-Hot` 🔥 HF#49<br>Recent progress in multimodal large language models has led to strong performance on reasoning tasks, but these improvements largely rely on high-quality annotated data or teacher-model distillation, both of which are costly and difficult to scale. To address this, we propose an unsupervised self-evolution training framework for multimodal reasoning that achieves stable performance improvements... | Haoqian Wang Team | [ArXiv](http://arxiv.org/abs/2603.21289) |
 | **2026-03-24** | **Can LLM Agents Be CFOs? A Benchmark for Resource Allocation in Dynamic Enterprise Environments** `HF-Hot` 🔥 HF#50<br>Large language models (LLMs) have enabled agentic systems that can reason, plan, and act across complex tasks, but it remains unclear whether they can allocate resources effectively under uncertainty. Unlike short-horizon reactive decisions, allocation requires committing scarce resources over time while balancing competing objectives and preserving flexibility for future needs. We introduce... | Sophia Ananiadou Team | [ArXiv](http://arxiv.org/abs/2603.23638) |
 
-<p align=right>(<a href=#updated-on-20260329>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260330>back to top</a>)</p>
 
 ## Dexterous
 
@@ -102,7 +102,7 @@ layout: default
 | **2026-03-10** | **Cross-Hand Latent Representation for Vision-Language-Action Models** `Dexterous`<br>Dexterous manipulation is essential for real-world robot autonomy, mirroring the central role of human hand coordination in daily activity. Humans rely on rich multimodal perception--vision, sound, and language-guided intent--to perform dexterous actions, motivating vision-based, language-conditioned manipulation systems for robots. However, training reliable vision-language-action (VLA) models... | Xueyan Zou Team | [ArXiv](http://arxiv.org/abs/2603.10158) |
 | **2026-03-10** | **DexHiL: A Human-in-the-Loop Framework for Vision-Language-Action Model Post-Training in Dexterous Manipulation** `Dexterous`<br>While Vision-Language-Action (VLA) models have demonstrated promising generalization capabilities in robotic manipulation, deploying them on specific and complex downstream tasks still demands effective post-training. In parallel, Human-in-the-Loop (HiL) learning has proven to be a powerful mechanism for refining robot policies. However, extending this paradigm to dexterous manipulation remains... | Wenzhao Lian Team | [ArXiv](http://arxiv.org/abs/2603.09121) |
 
-<p align=right>(<a href=#updated-on-20260329>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260330>back to top</a>)</p>
 
 ## Manipulation
 
@@ -159,7 +159,7 @@ layout: default
 | **2026-03-16** | **You've Got a Golden Ticket: Improving Generative Robot Policies With A Single Noise Vector** `Manipulation` `VLA`<br>What happens when a pretrained generative robot policy is provided a constant initial noise as input, rather than repeatedly sampling it from a Gaussian? We demonstrate that the performance of a pretrained, frozen diffusion or flow matching policy can be improved with respect to a downstream reward by swapping the sampling of initial noise from the prior distribution (typically isotropic... | Eric Rosen Team | [ArXiv](http://arxiv.org/abs/2603.15757) |
 | **2026-03-16** | **ExpertGen: Scalable Sim-to-Real Expert Policy Learning from Imperfect Behavior Priors** `Manipulation` `Sim2Real`<br>Learning generalizable and robust behavior cloning policies requires large volumes of high-quality robotics data. While human demonstrations (e.g., through teleoperation) serve as the standard source for expert behaviors, acquiring such data at scale in the real world is prohibitively expensive. This paper introduces ExpertGen, a framework that automates expert policy learning in simulation to... | Karl Schmeckpeper Team | [ArXiv](http://arxiv.org/abs/2603.15956) |
 
-<p align=right>(<a href=#updated-on-20260329>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260330>back to top</a>)</p>
 
 ## VLA
 
@@ -216,7 +216,7 @@ layout: default
 | **2026-03-16** | **Safety Case Patterns for VLA-based driving systems: Insights from SimLingo** `VLA`<br>Vision-Language-Action (VLA)-based driving systems represent a significant paradigm shift in autonomous driving since, by combining traffic scene understanding, linguistic interpretation, and action generation, these systems enable more flexible, adaptive, and instruction-responsive driving behaviors. However, despite their growing adoption and potential to support socially responsible autonomous... | Alvine Boaye Belle Team | [ArXiv](http://arxiv.org/abs/2603.16013) |
 | **2026-03-16** | **Embodied Foundation Models at the Edge: A Survey of Deployment Constraints and Mitigation Strategies** `VLA`<br>Deploying foundation models in embodied edge systems is fundamentally a systems problem, not just a problem of model compression. Real-time control must operate within strict size, weight, and power constraints, where memory traffic, compute latency, timing variability, and safety margins interact directly. The Deployment Gauntlet organizes these constraints into eight coupled barriers that... | Xiaomin Lin Team | [ArXiv](http://arxiv.org/abs/2603.16952) |
 
-<p align=right>(<a href=#updated-on-20260329>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260330>back to top</a>)</p>
 
 ## Tactile
 
@@ -236,7 +236,7 @@ layout: default
 | **2026-03-10** | **MuxGel: Simultaneous Dual-Modal Visuo-Tactile Sensing via Spatially Multiplexing and Deep Reconstruction** `Tactile`<br>High-fidelity visuo-tactile sensing is important for precise robotic manipulation. However, most vision-based tactile sensors face a fundamental trade-off: opaque coatings enable tactile sensing but block pre-contact vision. To address this, we propose MuxGel, a spatially multiplexed sensor that captures both external visual information and contact-induced tactile signals through a single camera.... | Yu She Team | [ArXiv](http://arxiv.org/abs/2603.09761) |
 | **2026-03-10** | **NLiPsCalib: An Efficient Calibration Framework for High-Fidelity 3D Reconstruction of Curved Visuotactile Sensors** `Tactile`<br>Recent advances in visuotactile sensors increasingly employ biomimetic curved surfaces to enhance sensorimotor capabilities. Although such curved visuotactile sensors enable more conformal object contact, their perceptual quality is often degraded by non-uniform illumination, which reduces reconstruction accuracy and typically necessitates calibration. Existing calibration methods commonly rely... | Chenxi Xiao Team | [ArXiv](http://arxiv.org/abs/2603.09319) |
 
-<p align=right>(<a href=#updated-on-20260329>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260330>back to top</a>)</p>
 
 ## Sim2Real
 
@@ -293,7 +293,7 @@ layout: default
 | **2026-03-10** | **Impact of Markov Decision Process Design on Sim-to-Real Reinforcement Learning** `Sim2Real`<br>Reinforcement Learning (RL) has demonstrated strong potential for industrial process control, yet policies trained in simulation often suffer from a significant sim-to-real gap when deployed on physical hardware. This work systematically analyzes how core Markov Decision Process (MDP) design choices -- state composition, target inclusion, reward formulation, termination criteria, and environment... | Frieder Heieck Team | [ArXiv](http://arxiv.org/abs/2603.09427) |
 | **2026-03-10** | **ImpedanceDiffusion: Diffusion-Based Global Path Planning for UAV Swarm Navigation with Generative Impedance Control** `Sim2Real`<br>Safe swarm navigation in cluttered indoor environment requires long-horizon planning, reactive obstacle avoidance, and adaptive compliance. We propose ImpedanceDiffusion, a hierarchical framework that leverages image-conditioned diffusion-based global path planning with Artificial Potential Field (APF) tracking and semantic-aware variable impedance control for aerial drone swarms.   The diffusion... | Dzmitry Tsetserukou Team | [ArXiv](http://arxiv.org/abs/2603.09031) |
 
-<p align=right>(<a href=#updated-on-20260329>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260330>back to top</a>)</p>
 
 ## LearnedControl
 
@@ -312,7 +312,7 @@ layout: default
 | **2026-03-11** | **Cybo-Waiter: A Physical Agentic Framework for Humanoid Whole-Body Locomotion-Manipulation** `LearnedControl`<br>Robots are increasingly expected to execute open ended natural language requests in human environments, which demands reliable long horizon execution under partial observability. This is especially challenging for humanoids because locomotion and manipulation are tightly coupled through stance, reachability, and balance. We present a humanoid agent framework that turns VLM plans into verifiable... | Kai Chen Team | [ArXiv](http://arxiv.org/abs/2603.10675) |
 | **2026-03-10** | **ZeroWBC: Learning Natural Visuomotor Humanoid Control Directly from Human Egocentric Video** `LearnedControl`<br>Achieving versatile and naturalistic whole-body control for humanoid robot scene-interaction remains a significant challenge. While some recent works have demonstrated autonomous humanoid interactive control, they are constrained to rigid locomotion patterns and expensive teleoperation data collection, lacking the versatility to execute more human-like natural behaviors such as sitting or... | Xuelong Li Team | [ArXiv](http://arxiv.org/abs/2603.09170) |
 
-<p align=right>(<a href=#updated-on-20260329>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260330>back to top</a>)</p>
 
 [contributors-shield]: https://img.shields.io/github/contributors/cold-young/robotics_paper_daily.svg?style=for-the-badge
 [contributors-url]: https://github.com/cold-young/robotics_paper_daily/graphs/contributors
