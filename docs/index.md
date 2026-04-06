@@ -7,7 +7,7 @@ layout: default
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
-## Updated on 2026.04.05
+## Updated on 2026.04.06
 > Usage instructions: [here](./docs/README.md#usage)
 
 ## 🔥 HuggingFace Hot Papers
@@ -65,7 +65,7 @@ layout: default
 | **2026-04-01** | **When Users Change Their Mind: Evaluating Interruptible Agents in Long-Horizon Web Navigation** `HF-Hot` 🔥 HF#49<br>As LLM agents transition from short, static problem solving to executing complex, long-horizon tasks in dynamic environments, the ability to handle user interruptions, such as adding requirement or revising goals, during mid-task execution is becoming a core requirement for realistic deployment. However, existing benchmarks largely assume uninterrupted agent behavior or study interruptions only... | Philip S. Yu Team | [ArXiv](http://arxiv.org/abs/2604.00892) |
 | **2026-04-01** | **S0 Tuning: Zero-Overhead Adaptation of Hybrid Recurrent-Attention Models** `HF-Hot` 🔥 HF#50<br>Using roughly 48 execution-verified HumanEval training solutions, tuning a single initial state matrix per recurrent layer, with zero inference overhead, outperforms LoRA by +10.8 pp (p < 0.001) on HumanEval. The method, which we call S0 tuning, optimizes one state matrix per recurrent layer while freezing all model weights. On Qwen3.5-4B (GatedDeltaNet hybrid), S0 tuning improves greedy pass@1... | Jack Young | [ArXiv](http://arxiv.org/abs/2604.01168) |
 
-<p align=right>(<a href=#updated-on-20260405>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260406>back to top</a>)</p>
 
 ## Dexterous
 
@@ -107,7 +107,7 @@ layout: default
 | **2026-03-10** | **Cross-Hand Latent Representation for Vision-Language-Action Models** `Dexterous`<br>Dexterous manipulation is essential for real-world robot autonomy, mirroring the central role of human hand coordination in daily activity. Humans rely on rich multimodal perception--vision, sound, and language-guided intent--to perform dexterous actions, motivating vision-based, language-conditioned manipulation systems for robots. However, training reliable vision-language-action (VLA) models... | Xueyan Zou Team | [ArXiv](http://arxiv.org/abs/2603.10158) |
 | **2026-03-10** | **DexHiL: A Human-in-the-Loop Framework for Vision-Language-Action Model Post-Training in Dexterous Manipulation** `Dexterous`<br>While Vision-Language-Action (VLA) models have demonstrated promising generalization capabilities in robotic manipulation, deploying them on specific and complex downstream tasks still demands effective post-training. In parallel, Human-in-the-Loop (HiL) learning has proven to be a powerful mechanism for refining robot policies. However, extending this paradigm to dexterous manipulation remains... | Wenzhao Lian Team | [ArXiv](http://arxiv.org/abs/2603.09121) |
 
-<p align=right>(<a href=#updated-on-20260405>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260406>back to top</a>)</p>
 
 ## Manipulation
 
@@ -164,7 +164,7 @@ layout: default
 | **2026-03-23** | **Trajectory Generation for Underactuated Soft Robot Manipulators using Discrete Elastic Rod Dynamics** `Manipulation`<br>Soft robots are well suited for contact-rich tasks due to their compliance, yet this property makes accurate and tractable modeling challenging. Planning motions with dynamically-feasible trajectories requires models that capture arbitrary deformations, remain computationally efficient, and are compatible with underactuation. However, existing approaches balance these properties unevenly:... | Andrew P. Sabelhaus Team | [ArXiv](http://arxiv.org/abs/2603.22604) |
 | **2026-03-23** | **CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation** `Manipulation` `VLA` `Sim2Real`<br>"Code-as-Policy" considers how executable code can complement data-intensive Vision-Language-Action (VLA) methods, yet their effectiveness as autonomous controllers for embodied manipulation remains underexplored. We present CaP-X, an open-access framework for systematically studying Code-as-Policy agents in robot manipulation. At its core is CaP-Gym, an interactive environment in which agents... | Linxi "Jim" Fan Team | [ArXiv](http://arxiv.org/abs/2603.22435) |
 
-<p align=right>(<a href=#updated-on-20260405>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260406>back to top</a>)</p>
 
 ## VLA
 
@@ -221,7 +221,7 @@ layout: default
 | **2026-03-19** | **Scaling Sim-to-Real Reinforcement Learning for Robot VLAs with Generative 3D Worlds** `VLA` `Sim2Real`<br>The strong performance of large vision-language models (VLMs) trained with reinforcement learning (RL) has motivated similar approaches for fine-tuning vision-language-action (VLA) models in robotics. Many recent works fine-tune VLAs directly in the real world to avoid addressing the sim-to-real gap. While real-world RL circumvents sim-to-real issues, it inherently limits the generality of the... | Wei Xu Team | [ArXiv](http://arxiv.org/abs/2603.18532) |
 | **2026-03-19** | **AcceRL: A Distributed Asynchronous Reinforcement Learning and World Model Framework for Vision-Language-Action Models** `VLA`<br>Reinforcement learning (RL) for large-scale Vision-Language-Action (VLA) models faces significant challenges in computational efficiency and data acquisition. We propose AcceRL, a fully asynchronous and decoupled RL framework designed to eliminate synchronization barriers by physically isolating training, inference, and rollouts. Crucially, AcceRL is the first to integrate a plug-and-play,... | Yang Liu Team | [ArXiv](http://arxiv.org/abs/2603.18464) |
 
-<p align=right>(<a href=#updated-on-20260405>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260406>back to top</a>)</p>
 
 ## Tactile
 
@@ -244,7 +244,7 @@ layout: default
 | **2026-03-10** | **MuxGel: Simultaneous Dual-Modal Visuo-Tactile Sensing via Spatially Multiplexing and Deep Reconstruction** `Tactile`<br>High-fidelity visuo-tactile sensing is important for precise robotic manipulation. However, most vision-based tactile sensors face a fundamental trade-off: opaque coatings enable tactile sensing but block pre-contact vision. To address this, we propose MuxGel, a spatially multiplexed sensor that captures both external visual information and contact-induced tactile signals through a single camera.... | Yu She Team | [ArXiv](http://arxiv.org/abs/2603.09761) |
 | **2026-03-10** | **NLiPsCalib: An Efficient Calibration Framework for High-Fidelity 3D Reconstruction of Curved Visuotactile Sensors** `Tactile`<br>Recent advances in visuotactile sensors increasingly employ biomimetic curved surfaces to enhance sensorimotor capabilities. Although such curved visuotactile sensors enable more conformal object contact, their perceptual quality is often degraded by non-uniform illumination, which reduces reconstruction accuracy and typically necessitates calibration. Existing calibration methods commonly rely... | Chenxi Xiao Team | [ArXiv](http://arxiv.org/abs/2603.09319) |
 
-<p align=right>(<a href=#updated-on-20260405>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260406>back to top</a>)</p>
 
 ## Sim2Real
 
@@ -301,7 +301,7 @@ layout: default
 | **2026-03-11** | **MAVEN: A Meta-Reinforcement Learning Framework for Varying-Dynamics Expertise in Agile Quadrotor Maneuvers** `Sim2Real`<br>Reinforcement learning (RL) has emerged as a powerful paradigm for achieving online agile navigation with quadrotors. Despite this success, policies trained via standard RL typically fail to generalize across significant dynamic variations, exhibiting a critical lack of adaptability. This work introduces MAVEN, a meta-RL framework that enables a single policy to achieve robust end-to-end... | Shuo Li Team | [ArXiv](http://arxiv.org/abs/2603.10714) |
 | **2026-03-11** | **SteadyTray: Learning Object Balancing Tasks in Humanoid Tray Transport via Residual Reinforcement Learning** `Sim2Real`<br>Stabilizing unsecured payloads against the inherent oscillations of dynamic bipedal locomotion remains a critical engineering bottleneck for humanoids in unstructured environments. To solve this, we introduce ReST-RL, a hierarchical reinforcement learning architecture that explicitly decouples locomotion from payload stabilization, evaluated via the SteadyTray benchmark. Rather than relying on... | Michael Yip Team | [ArXiv](http://arxiv.org/abs/2603.10306) |
 
-<p align=right>(<a href=#updated-on-20260405>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260406>back to top</a>)</p>
 
 ## LearnedControl
 
@@ -325,7 +325,7 @@ layout: default
 | **2026-03-11** | **Cybo-Waiter: A Physical Agentic Framework for Humanoid Whole-Body Locomotion-Manipulation** `LearnedControl`<br>Robots are increasingly expected to execute open ended natural language requests in human environments, which demands reliable long horizon execution under partial observability. This is especially challenging for humanoids because locomotion and manipulation are tightly coupled through stance, reachability, and balance. We present a humanoid agent framework that turns VLM plans into verifiable... | Kai Chen Team | [ArXiv](http://arxiv.org/abs/2603.10675) |
 | **2026-03-10** | **ZeroWBC: Learning Natural Visuomotor Humanoid Control Directly from Human Egocentric Video** `LearnedControl`<br>Achieving versatile and naturalistic whole-body control for humanoid robot scene-interaction remains a significant challenge. While some recent works have demonstrated autonomous humanoid interactive control, they are constrained to rigid locomotion patterns and expensive teleoperation data collection, lacking the versatility to execute more human-like natural behaviors such as sitting or... | Xuelong Li Team | [ArXiv](http://arxiv.org/abs/2603.09170) |
 
-<p align=right>(<a href=#updated-on-20260405>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20260406>back to top</a>)</p>
 
 [contributors-shield]: https://img.shields.io/github/contributors/cold-young/robotics_paper_daily.svg?style=for-the-badge
 [contributors-url]: https://github.com/cold-young/robotics_paper_daily/graphs/contributors
