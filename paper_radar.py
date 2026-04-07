@@ -31,7 +31,8 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 import dataclasses
-import yaml  # pip install pyyaml
+import yaml   # pip install pyyaml
+import arxiv  # pip install arxiv
 
 # ─────────────────────────────────────────────
 # Data model
@@ -133,90 +134,80 @@ def enrich_with_pwc(paper: "Paper") -> None:
 # arXiv fetcher (fallback / bulk search)
 # ─────────────────────────────────────────────
 
-def _fetch_arxiv_single(query: str, max_results: int,
-                        days_back: int) -> list[dict]:
-    """단일 쿼리로 arXiv 검색. timeout/에러 시 빈 리스트 반환."""
-    params = urllib.parse.urlencode({
-        "search_query": query,
-        "max_results": max_results,
-        "sortBy": "submittedDate",
-        "sortOrder": "descending",
-    })
-    url = f"{ARXIV_API}?{params}"
-    req = urllib.request.Request(url, headers={"User-Agent": "PaperRadar/1.0"})
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            xml_data = resp.read()
-    except Exception as e:
-        print(f"  [WARN] arXiv 요청 실패: {e}")
-        return []
-
-    ns = {"atom": "http://www.w3.org/2005/Atom"}
-    root = ET.fromstring(xml_data)
-    cutoff = datetime.date.today() - datetime.timedelta(days=days_back)
-    results = []
-    for entry in root.findall("atom:entry", ns):
-        pub_node = entry.find("atom:published", ns)
-        if pub_node is None:
-            continue
-        published = pub_node.text[:10]
-        if datetime.date.fromisoformat(published) < cutoff:
-            continue
-
-        raw_id   = entry.find("atom:id", ns).text
-        arxiv_id = raw_id.split("/abs/")[-1].split("v")[0]
-        title    = entry.find("atom:title", ns).text.replace("\n", " ").strip()
-        abstract = entry.find("atom:summary", ns).text.replace("\n", " ").strip()
-
-        authors_raw  = entry.findall("atom:author", ns)
-        authors_str  = ", ".join(a.find("atom:name", ns).text for a in authors_raw)
-
-        project_url = ""
-        for link in entry.findall("atom:link", ns):
-            if link.get("title") == "pdf":
-                continue
-            href = link.get("href", "")
-            if href.startswith("http") and "arxiv" not in href:
-                project_url = href
-                break
-
-        results.append({
-            "arxiv_id":    arxiv_id,
-            "title":       title,
-            "abstract":    abstract,
-            "authors":     authors_str,
-            "publish_date": published,
-            "arxiv_url":   f"http://arxiv.org/abs/{arxiv_id}",
-            "project_url": project_url,
-        })
-    return results
+def _build_query_string(keywords: list[str]) -> str:
+    """
+    키워드 리스트를 arXiv 검색 쿼리로 변환.
+    과거 버전(prev_paper_update)과 동일한 방식:
+      - 여러 단어 키워드는 따옴표로 감쌈
+      - 단일 단어 키워드는 그대로
+      - OR로 연결
+    """
+    ESCAPE = '"'
+    parts = []
+    for kw in keywords:
+        if len(kw.split()) > 1:
+            parts.append(ESCAPE + kw + ESCAPE)
+        else:
+            parts.append(kw)
+    return "OR".join(parts)
 
 
-def fetch_arxiv(keywords: list[str], max_results: int = 50,
+def fetch_arxiv(keywords: list[str], max_results: int = 20,
                 days_back: int = 1, chunk_size: int = 3) -> list[dict]:
     """
-    키워드를 chunk_size개씩 나눠 arXiv 검색.
-    → URL 길이 폭발 방지, timeout 방지.
-    결과는 arxiv_id 기준 중복 제거 후 반환.
+    arxiv Python 라이브러리를 사용하여 검색 (과거 버전 방식 복원).
+    날짜 필터 없이, 최신 제출 순으로 max_results개를 가져온다.
+    → 날짜 cutoff로 인한 논문 누락 문제 해결.
     """
+    query = _build_query_string(keywords)
+    search_engine = arxiv.Search(
+        query=query,
+        max_results=max_results,
+        sort_by=arxiv.SortCriterion.SubmittedDate,
+    )
+
     seen: set[str] = set()
-    all_results: list[dict] = []
+    results: list[dict] = []
 
-    for i in range(0, len(keywords), chunk_size):
-        chunk = keywords[i: i + chunk_size]
-        query_parts = [f'ti:"{kw}" OR abs:"{kw}"' for kw in chunk]
-        query = " OR ".join(query_parts)
+    try:
+        for result in search_engine.results():
+            paper_id = result.get_short_id()
+            ver_pos = paper_id.find("v")
+            arxiv_id = paper_id[:ver_pos] if ver_pos != -1 else paper_id
 
-        batch = _fetch_arxiv_single(query, max_results, days_back)
-        for r in batch:
-            if r["arxiv_id"] not in seen:
-                seen.add(r["arxiv_id"])
-                all_results.append(r)
+            if arxiv_id in seen:
+                continue
+            seen.add(arxiv_id)
 
-        if i + chunk_size < len(keywords):
-            time.sleep(3)   # arXiv rate limit
+            paper_url = f"http://arxiv.org/abs/{arxiv_id}"
+            published = result.published.date().isoformat()
 
-    return all_results
+            # comments에서 GitHub/project URL 추출 (과거 버전 로직)
+            repo_url = ""
+            project_url = ""
+            if result.comment:
+                urls = re.findall(r"(https?://[^\s,;]+)", result.comment)
+                for url in urls:
+                    if "github.com" in url or "gitlab.com" in url:
+                        repo_url = url
+                    else:
+                        project_url = url
+
+            authors_str = ", ".join(str(a) for a in result.authors)
+
+            results.append({
+                "arxiv_id":     arxiv_id,
+                "title":        result.title,
+                "abstract":     result.summary.replace("\n", " "),
+                "authors":      authors_str,
+                "publish_date": published,
+                "arxiv_url":    paper_url,
+                "project_url":  repo_url or project_url,
+            })
+    except Exception as e:
+        print(f"  [WARN] arXiv 검색 실패: {e}")
+
+    return results
 
 
 # ─────────────────────────────────────────────
@@ -408,7 +399,7 @@ def load_config(config_path: str = "config.yaml") -> dict:
 # Core: collect & merge
 # ─────────────────────────────────────────────
 
-def collect_papers(config: dict, days_back: int = 1) -> tuple[
+def collect_papers(config: dict, **kwargs) -> tuple[
     dict[str, Paper],   # all papers (deduped), keyed by arxiv_id
     dict[str, int],     # hf_map
 ]:
@@ -427,7 +418,7 @@ def collect_papers(config: dict, days_back: int = 1) -> tuple[
         print(f"[arXiv] Fetching category '{cat_name}' with {len(keywords)} keywords...")
         time.sleep(3)  # arXiv API rate limit 준수
 
-        raw = fetch_arxiv(keywords, max_results=100, days_back=days_back)
+        raw = fetch_arxiv(keywords, max_results=20)
         print(f"  → {len(raw)} papers before dedup")
 
         for r in raw:

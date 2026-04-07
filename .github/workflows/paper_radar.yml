@@ -2,7 +2,7 @@ name: PaperRadar Daily Update
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0/12 * * *"
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install pyyaml requests
+        run: pip install pyyaml requests arxiv
 
       - name: Create docs directory
         run: mkdir -p docs
@@ -33,8 +33,7 @@ jobs:
             --output      README.md \
             --gitpage     docs/index.md \
             --db          docs/papers_db.json \
-            --days        3 \
-            --max-per-cat 50
+            --max-per-cat 200
 
       - name: Show DB stats
         run: |
