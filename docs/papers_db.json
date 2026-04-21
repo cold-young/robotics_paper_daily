@@ -21890,7 +21890,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 42,
     "score": 25
   },
   "2604.05716": {
@@ -21980,7 +21980,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 47,
     "score": 20
   },
   "2604.14816": {
@@ -22016,7 +22016,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 49,
     "score": 18
   },
   "2604.04936": {
@@ -22670,7 +22670,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 33,
     "score": 26
   },
   "2604.16503": {
@@ -22724,7 +22724,151 @@
     "matched_categories": [
       "HF-Hot"
     ],
+    "hf_rank": 36,
+    "score": 23
+  },
+  "2604.18168": {
+    "arxiv_id": "2604.18168",
+    "title": "Extending One-Step Image Generation from Class Labels to Text via Discriminative Text Representation",
+    "abstract": "Few-step generation has been a long-standing goal, with recent one-step generation methods exemplified by MeanFlow achieving remarkable results. Existing research on MeanFlow primarily focuses on class-to-image generation. However, an intuitive yet unexplored direction is to extend the condition from fixed class labels to flexible text inputs, enabling richer content creation. Compared to the limited class labels, text conditions pose greater challenges to the model's understanding capability, necessitating the effective integration of powerful text encoders into the MeanFlow framework. Surprisingly, although incorporating text conditions appears straightforward, we find that integrating powerful LLM-based text encoders using conventional training strategies results in unsatisfactory performance. To uncover the underlying cause, we conduct detailed analyses and reveal that, due to the extremely limited number of refinement steps in the MeanFlow generation, such as only one step, the text feature representations are required to possess sufficiently high discriminability. This also explains why discrete and easily distinguishable class features perform well within the MeanFlow framework. Guided by these insights, we leverage a powerful LLM-based text encoder validated to possess the required semantic properties and adapt the MeanFlow generation process to this framework, resulting in efficient text-conditioned synthesis for the first time. Furthermore, we validate our approach on the widely used diffusion model, demonstrating significant generation performance improvements. We hope this work provides a general and practical reference for future research on text-conditioned MeanFlow generation. The code is available at https://github.com/AMAP-ML/EMF.",
+    "authors": "Chenxi Zhao, Chen Zhu, Xiaokun Feng, Aiming Hao, Jiashu Zhu, Jiachen Lei, Jiahong Wu, Xiangxiang Chu, Jufeng Yang",
+    "publish_date": "2026-04-20",
+    "arxiv_url": "http://arxiv.org/abs/2604.18168",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 27
+  },
+  "2604.17308": {
+    "arxiv_id": "2604.17308",
+    "title": "SkillFlow:Benchmarking Lifelong Skill Discovery and Evolution for Autonomous Agents",
+    "abstract": "As the capability frontier of autonomous agents continues to expand, they are increasingly able to complete specialized tasks through plug-and-play external skills. Yet current benchmarks mostly test whether models can use provided skills, leaving open whether they can discover skills from experience, repair them after failure, and maintain a coherent library over time. We introduce SkillFlow, a benchmark of 166 tasks across 20 families in which task construction within each family follows a Domain-Agnostic Execution Flow (DAEF) that defines an agent workflow framework, allowing these tasks to share a consistent workflow. Agents are evaluated under an Agentic Lifelong Learning protocol in which they begin without skills, solve tasks sequentially within each family, externalize lessons through trajectory- and rubric-driven skill patches, and carry the updated library forward. Experiments reveal a substantial capability gap. For Claude Opus 4.6, lifelong skill evolution improves task success from 62.65% to 71.08% (+8.43 points). However, high skill usage does not necessarily imply high utility: Kimi K2.5 gains only +0.60 points despite 66.87% skill usage, while Qwen-Coder-Next reaches only a 44.58% task completion rate and still regresses relative to the vanilla setting. SkillFlow contributes a structured testbed for this direction and an in-depth empirical analysis of skill discovery, patching, transfer, and their failure modes under lifelong evaluation.",
+    "authors": "Ziao Zhang, Kou Shi, Shiting Huang, Avery Nie, Yu Zeng, Yiming Zhao, Zhen Fang, Qishen Su, Haibo Qiu, Wei Yang, Qingnan Ren, Shun Zou, Wenxuan Huang, Lin Chen, Zehui Chen, Feng Zhao",
+    "publish_date": "2026-04-19",
+    "arxiv_url": "http://arxiv.org/abs/2604.17308",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
     "hf_rank": 7,
     "score": 23
+  },
+  "2604.16893": {
+    "arxiv_id": "2604.16893",
+    "title": "EasyVideoR1: Easier RL for Video Understanding",
+    "abstract": "Reinforcement learning from verifiable rewards (RLVR) has demonstrated remarkable effectiveness in improving the reasoning capabilities of large language models. As models evolve into natively multimodal architectures, extending RLVR to video understanding becomes increasingly important yet remains largely unexplored, due to the diversity of video task types, the computational overhead of repeatedly decoding and preprocessing high-dimensional visual inputs, and the difficulty of reproducible evaluation across numerous sensitive hyperparameters. Existing open-source RL training frameworks provide solid infrastructure for text and image scenarios but lack systematic optimizations tailored for video modality. In this work, we present \\textbf{EasyVideoR1}, a complete and efficient reinforcement learning framework specifically designed for training large vision-language models on video understanding tasks. EasyVideoR1 makes the following contributions: (1) a full video RL training pipeline with offline preprocessing and tensor caching that eliminates redundant video decoding and yields a 1.47 $\\times$ throughput improvement; (2) a comprehensive, task-aware reward system covering 11 distinct video and image problem types with unified routing and modular extension; (3) a mixed offline-online data training paradigm that combines curated high-quality trajectories with on-policy exploration, benefiting the learning of more challenging tasks; (4) joint image-video training with independently configurable pixel budgets, allowing the two modalities to mutually reinforce each other; and (5) an asynchronous multi-benchmark evaluation framework covering 22 mainstream video understanding benchmarks, with reproduced accuracy closely aligned with officially reported scores.",
+    "authors": "Chuanyu Qin, Chenxu Yang, Qingyi Si, Naibin Gu, Dingyu Yao, Zheng Lin, Peng Fu, Nan Duan, Jiaqi Wang",
+    "publish_date": "2026-04-18",
+    "arxiv_url": "http://arxiv.org/abs/2604.16893",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 11,
+    "score": 19
+  },
+  "2604.18574": {
+    "arxiv_id": "2604.18574",
+    "title": "When Can LLMs Learn to Reason with Weak Supervision?",
+    "abstract": "Large language models have achieved significant reasoning improvements through reinforcement learning with verifiable rewards (RLVR). Yet as model capabilities grow, constructing high-quality reward signals becomes increasingly difficult, making it essential to understand when RLVR can succeed under weaker forms of supervision. We conduct a systematic empirical study across diverse model families and reasoning domains under three weak supervision settings: scarce data, noisy rewards, and self-supervised proxy rewards. We find that generalization is governed by training reward saturation dynamics: models that generalize exhibit a prolonged pre-saturation phase during which training reward and downstream performance climb together, while models that saturate rapidly memorize rather than learn. We identify reasoning faithfulness, defined as the extent to which intermediate steps logically support the final answer, as the pre-RL property that predicts which regime a model falls into, while output diversity alone is uninformative. Motivated by these findings, we disentangle the contributions of continual pre-training and supervised fine-tuning, finding that SFT on explicit reasoning traces is necessary for generalization under weak supervision, while continual pre-training on domain data amplifies the effect. Applied together to Llama3.2-3B-Base, these interventions enable generalization across all three settings where the base model previously failed.",
+    "authors": "Salman Rahman, Jingyan Shen, Anna Mordvina, Hamid Palangi, Saadia Gabriel, Pavel Izmailov",
+    "publish_date": "2026-04-20",
+    "arxiv_url": "http://arxiv.org/abs/2604.18574",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 13,
+    "score": 17
+  },
+  "2604.18543": {
+    "arxiv_id": "2604.18543",
+    "title": "ClawEnvKit: Automatic Environment Generation for Claw-Like Agents",
+    "abstract": "Constructing environments for training and evaluating claw-like agents remains a manual, human-intensive process that does not scale. We argue that what is needed is not just a dataset, but an automated pipeline capable of generating diverse, verified environments on demand. To this end, we introduce ClawEnvKit, an autonomous generation pipeline that instantiates this formalism from natural language descriptions. The pipeline comprises three modules: (1) a parser that extracts structured generation parameters from natural language input; (2) a generator that produces the task specification, tool interface, and scoring configuration; and (3) a validator that enforces feasibility, diversity, structural validity, and internal consistency across the generated environments. Using ClawEnvKit, we construct Auto-ClawEval, the first large-scale benchmark for claw-like agents, comprising 1,040 environments across 24 categories. Empirically, Auto-ClawEval matches or exceeds human-curated environments on coherence and clarity at 13,800x lower cost. Evaluated across 4 model families and 8 agent harness frameworks, we find that harness engineering boosts performance by up to 15.7 percentage points over a bare ReAct baseline, completion remains the primary axis of variation with no model saturating the benchmark, and automated generation enables evaluation at a scale previously infeasible. Beyond static benchmarking, ClawEnvKit enables live evaluation: users describe a desired capability in natural language and obtain a verified environment on demand, turning evaluation into a continuous, user-driven process. The same mechanism serves as an on-demand training environment generator, producing task distributions that adapt to an agent's current weaknesses rather than being bounded by existing user logs.",
+    "authors": "Xirui Li, Ming Li, Derry Xu, Wei-Lin Chiang, Ion Stoica, Cho-Jui Hsieh, Tianyi Zhou",
+    "publish_date": "2026-04-20",
+    "arxiv_url": "http://arxiv.org/abs/2604.18543",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 17,
+    "score": 13
+  },
+  "2604.18564": {
+    "arxiv_id": "2604.18564",
+    "title": "MultiWorld: Scalable Multi-Agent Multi-View Video World Models",
+    "abstract": "Video world models have achieved remarkable success in simulating environmental dynamics in response to actions by users or agents. They are modeled as action-conditioned video generation models that take historical frames and current actions as input to predict future frames. Yet, most existing approaches are limited to single-agent scenarios and fail to capture the complex interactions inherent in real-world multi-agent systems. We present \\textbf{MultiWorld}, a unified framework for multi-agent multi-view world modeling that enables accurate control of multiple agents while maintaining multi-view consistency. We introduce the Multi-Agent Condition Module to achieve precise multi-agent controllability, and the Global State Encoder to ensure coherent observations across different views. MultiWorld supports flexible scaling of agent and view counts, and synthesizes different views in parallel for high efficiency. Experiments on multi-player game environments and multi-robot manipulation tasks demonstrate that MultiWorld outperforms baselines in video fidelity, action-following ability, and multi-view consistency. Project page: https://multi-world.github.io/",
+    "authors": "Haoyu Wu, Jiwen Yu, Yingtian Zou, Xihui Liu",
+    "publish_date": "2026-04-20",
+    "arxiv_url": "http://arxiv.org/abs/2604.18564",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 23,
+    "score": 7
+  },
+  "2604.18486": {
+    "arxiv_id": "2604.18486",
+    "title": "OneVL: One-Step Latent Reasoning and Planning with Vision-Language Explanation",
+    "abstract": "Chain-of-Thought (CoT) reasoning has become a powerful driver of trajectory prediction in VLA-based autonomous driving, yet its autoregressive nature imposes a latency cost that is prohibitive for real-time deployment. Latent CoT methods attempt to close this gap by compressing reasoning into continuous hidden states, but consistently fall short of their explicit counterparts. We suggest that this is due to purely linguistic latent representations compressing a symbolic abstraction of the world, rather than the causal dynamics that actually govern driving. Thus, we present OneVL (One-step latent reasoning and planning with Vision-Language explanations), a unified VLA and World Model framework that routes reasoning through compact latent tokens supervised by dual auxiliary decoders. Alongside a language decoder that reconstructs text CoT, we introduce a visual world model decoder that predicts future-frame tokens, forcing the latent space to internalize the causal dynamics of road geometry, agent motion, and environmental change. A three-stage training pipeline progressively aligns these latents with trajectory, language, and visual objectives, ensuring stable joint optimization. At inference, the auxiliary decoders are discarded and all latent tokens are prefilled in a single parallel pass, matching the speed of answer-only prediction. Across four benchmarks, OneVL becomes the first latent CoT method to surpass explicit CoT, delivering state-of-the-art accuracy at answer-only latency, and providing direct evidence that tighter compression, when guided in both language and world-model supervision, produces more generalizable representations than verbose token-by-token reasoning. Project Page: https://xiaomi-embodied-intelligence.github.io/OneVL",
+    "authors": "Jinghui Lu, Jiayi Guan, Zhijian Huang, Jinlong Li, Guang Li, Lingdong Kong, Yingyan Li, Han Wang, Shaoqing Xu, Yuechen Luo, Fang Li, Chenxu Dang, Junli Wang, Tao Xu, Jing Wu, Jianhua Wu, Xiaoshuai Hao, Wen Zhang, Tianyi Jiang, Lingfeng Zhang, Lei Zhou, Yingbo Tang, Jie Wang, Yinfeng Gao, Xizhou Bu, Haochen Tian, Yihang Qiu, Feiyang Jia, Lin Liu, Yigu Ge, Hanbing Li, Yuannan Shen, Jianwei Cui, Hongwei Xie, Bing Wang, Haiyang Sun, Jingwei Zhao, Jiahui Huang, Pei Liu, Zeyu Zhu, Yuncheng Jiang, Zibin Guo, Chuhong Gong, Hanchao Leng, Kun Ma, Naiyang Wang, Guang Chen, Kuiyuan Yang, Hangjun Ye, Long Chen",
+    "publish_date": "2026-04-20",
+    "arxiv_url": "http://arxiv.org/abs/2604.18486",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 25,
+    "score": 5
+  },
+  "2604.16593": {
+    "arxiv_id": "2604.16593",
+    "title": "Revisiting a Pain in the Neck: A Semantic Reasoning Benchmark for Language Models",
+    "abstract": "We present SemanticQA, an evaluation suite designed to assess language models (LMs) in semantic phrase processing tasks. The benchmark consolidates existing multiword expression (MwE) resources and reorganizes them into a unified testbed. It covers both general lexical phenomena, such as lexical collocations, and three fine-grained categories: idiomatic expressions, noun compounds, and verbal constructions. Through SemanticQA, we assess LMs of diverse architectures and scales in extraction, classification, and interpretation tasks, as well as sequential task compositions. We reveal substantial performance variation, particularly on tasks requiring semantic reasoning, highlighting differences in reasoning efficacy and semantic understanding of LMs, providing insights for pushing LMs with stronger comprehension on non-trivial semantic phrases. The evaluation harness and data of SemanticQA are available at https://github.com/jacklanda/SemanticQA.",
+    "authors": "Yang Liu, Hongming Li, Melissa Xiaohui Qin, Qiankun Liu, Chao Huang",
+    "publish_date": "2026-04-17",
+    "arxiv_url": "http://arxiv.org/abs/2604.16593",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 27,
+    "score": 3
   }
 }
