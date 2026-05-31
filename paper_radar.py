@@ -166,11 +166,19 @@ def fetch_arxiv(keywords: list[str], max_results: int = 20,
         sort_by=arxiv.SortCriterion.SubmittedDate,
     )
 
+    # arxiv>=2.0: Search.results() was removed; use Client().results(search).
+    # Keep backward compatibility with older versions that still expose .results().
+    if hasattr(arxiv, "Client"):
+        client = arxiv.Client(num_retries=3, delay_seconds=3.0)
+        result_iter = client.results(search_engine)
+    else:
+        result_iter = search_engine.results()
+
     seen: set[str] = set()
     results: list[dict] = []
 
     try:
-        for result in search_engine.results():
+        for result in result_iter:
             paper_id = result.get_short_id()
             ver_pos = paper_id.find("v")
             arxiv_id = paper_id[:ver_pos] if ver_pos != -1 else paper_id
@@ -205,7 +213,13 @@ def fetch_arxiv(keywords: list[str], max_results: int = 20,
                 "project_url":  repo_url or project_url,
             })
     except Exception as e:
-        print(f"  [WARN] arXiv 검색 실패: {e}")
+        import traceback
+        print(f"  [ERROR] arXiv 검색 실패 ({type(e).__name__}): {e}")
+        traceback.print_exc()
+
+    if not results:
+        print(f"  [WARN] arXiv 검색 결과 0개 (query: {query[:50]}...) "
+              f"— 라이브러리 호환성 또는 네트워크 문제일 수 있음")
 
     return results
 
