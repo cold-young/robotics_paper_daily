@@ -1,5 +1,6 @@
 ---
 layout: default
+title: "NeurIPS 2025"
 ---
 
 ## Updated on 2026.06.01

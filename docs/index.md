@@ -1,5 +1,6 @@
 ---
 layout: default
+title: "HF Hot"
 ---
 
 [![Contributors][contributors-shield]][contributors-url]

@@ -873,8 +873,8 @@ def _gitpage_nav(all_papers: dict[str, Paper], config: dict, active: str) -> str
     return styles + "\n\n" + '<nav class="paper-nav">' + "\n".join(links) + "</nav>"
 
 
-def _gitpage_front_matter() -> list[str]:
-    return ["---", "layout: default", "---", ""]
+def _gitpage_front_matter(title: str) -> list[str]:
+    return ["---", "layout: default", f'title: "{title}"', "---", ""]
 
 
 def _keyword_cell(p: Paper, max_keywords: int = 2) -> str:
@@ -1117,7 +1117,7 @@ def _generate_gitpage_section_page(
     include_badges: bool = False,
 ) -> str:
     today_dot = datetime.date.today().strftime("%Y.%m.%d")
-    lines = _gitpage_front_matter()
+    lines = _gitpage_front_matter(active)
     if include_badges:
         badge_lines = _badge_lines(config)
         lines.extend(badge_lines[:4])

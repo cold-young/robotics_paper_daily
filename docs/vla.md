@@ -1,5 +1,6 @@
 ---
 layout: default
+title: "VLA"
 ---
 
 ## Updated on 2026.06.01

@@ -1,5 +1,6 @@
 ---
 layout: default
+title: "Sim2Real"
 ---
 
 ## Updated on 2026.06.01
