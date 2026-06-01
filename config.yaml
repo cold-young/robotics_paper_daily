@@ -1,8 +1,8 @@
 # ─────────────────────────────────────────────────
 # paper_radar config.yaml
 # ─────────────────────────────────────────────────
-# 기존 config.yaml 포맷 완전 호환
-# categories 하위에 카테고리명: keywords 리스트
+# Fully compatible with legacy config.yaml format
+# categories -> category_name -> keywords list
 
 categories:
 
@@ -70,9 +70,9 @@ categories:
 
 
 # ─────────────────────────────────────────────────
-# HuggingFace Daily Papers 필터 (선택)
-# 아래 키워드 중 하나라도 제목/초록에 포함되면 HF 핫 논문으로 포함
-# 비워두면 → 전체 HF daily papers 표시
+# HuggingFace Daily Papers filter (optional)
+# Papers with any of these keywords in title/abstract are included as HF hot
+# Leave empty to show all HF daily papers
 # ─────────────────────────────────────────────────
 hf_filter_keywords:
   - robot
@@ -90,14 +90,33 @@ hf_filter_keywords:
 
 
 # ─────────────────────────────────────────────────
-# 수집 설정
+# Conference paper collection (OpenReview)
 # ─────────────────────────────────────────────────
-settings:
-  max_results_per_category: 20    # 카테고리당 arXiv 최대 수집 논문 (arxiv lib 사용, 날짜 필터 없이 최신 N개)
-  hf_daily_limit: 50              # HF daily papers 최대 수집 수
+conferences:
+  enabled: true
+  # Uses combined keywords from all categories for filtering
+  venues:
+    - source: corl
+      label: "CoRL 2025"
+      venue_id: "robot-learning.org/CoRL/2025/Conference"
+    # RSS main papers are not hosted on OpenReview (only archived, <3 papers)
+    # - source: rss
+    #   label: "RSS 2024"
+    #   venue_id: "roboticsfoundation.org/RSS/2024/Conference"
+    - source: neurips
+      label: "NeurIPS 2025"
+      venue_id: "NeurIPS.cc/2025/Conference"
+  max_results_per_venue: 0   # 0 = unlimited (keyword filter reduces count sufficiently)
 
 # ─────────────────────────────────────────────────
-# GitHub 정보 (GitPage 배지용)
+# Collection settings
+# ─────────────────────────────────────────────────
+settings:
+  max_results_per_category: 20    # max arXiv papers per category (latest N, no date filter)
+  hf_daily_limit: 50              # max HF daily papers to fetch
+
+# ─────────────────────────────────────────────────
+# GitHub info (for GitPage badges)
 # ─────────────────────────────────────────────────
 user_name: "cold-young"
 repo_name: "robotics_paper_daily"

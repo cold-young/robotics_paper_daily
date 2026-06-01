@@ -1,12 +1,16 @@
-name: PaperRadar Daily Update
+name: Conference Radar (Monthly)
 
 on:
   schedule:
-    - cron: "0 0/12 * * *"
+    - cron: "0 0 1 * *"      # 1st of every month, UTC 00:00
   workflow_dispatch:
+    inputs:
+      year:
+        description: "years"
+        required: false
 
 jobs:
-  update-papers:
+  collect:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,22 +22,23 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install pyyaml requests "arxiv>=2.1.0"
+        run: pip install -r requirements.txt
 
       - name: Create docs directory
         run: mkdir -p docs
 
-      - name: Run PaperRadar
+      - name: Run PaperRadar with conferences
         run: |
           python paper_radar.py \
             --config      config.yaml \
             --output      README.md \
             --gitpage     docs/index.md \
             --db          docs/papers_db.json \
-            --max-per-cat 200
+            --max-per-cat 200 \
+            --conferences
 
       - name: Show DB stats
         run: |
@@ -60,5 +65,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md docs/index.md docs/papers_db.json
           TOTAL=$(python3 -c "import json; print(len(json.load(open('docs/papers_db.json'))))" 2>/dev/null || echo "?")
-          git diff --cached --quiet || git commit -m "📄 Daily update $(date +'%Y.%m.%d') — ${TOTAL} papers"
-          git push
+          git diff --cached --quiet || git commit -m "📚 Conference update $(date +'%Y.%m.%d') — ${TOTAL} papers"
+          git push || echo "Nothing to push"
