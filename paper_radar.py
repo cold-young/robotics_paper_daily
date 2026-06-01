@@ -109,6 +109,14 @@ ARXIV_DEFAULT_RETRIES = 4
 ARXIV_DEFAULT_PAGE_SIZE = 20
 ARXIV_DEFAULT_BACKOFF_SECONDS = (30.0, 60.0, 120.0, 240.0)
 ARXIV_HF_BATCH_SIZE = 10
+CONFERENCE_KEYWORD_CATEGORIES = {
+    "dexterous",
+    "manipulation",
+    "learnedcontrol",
+    "sim2real",
+    "tactile",
+    "vla",
+}
 
 
 def _sleep_with_jitter(seconds: float) -> None:
@@ -869,14 +877,19 @@ def _gitpage_front_matter() -> list[str]:
     return ["---", "layout: default", "---", ""]
 
 
-def _keyword_cell(p: Paper) -> str:
-    keywords = p.matched_keywords or [
-        cat for cat in p.matched_categories
+def _keyword_cell(p: Paper, max_keywords: int = 2) -> str:
+    categories = [
+        _slugify(cat)
+        for cat in p.matched_categories
         if cat not in {"HF-Hot", p.venue}
     ]
+    keywords = []
+    for cat in categories:
+        if cat in CONFERENCE_KEYWORD_CATEGORIES and cat not in keywords:
+            keywords.append(cat)
     if not keywords:
         return ""
-    return " ".join(f"`{kw}`" for kw in keywords)
+    return " ".join(f"`{kw}`" for kw in keywords[:max_keywords])
 
 
 def _paper_row(p: Paper) -> str:
