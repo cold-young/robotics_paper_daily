@@ -114,6 +114,25 @@ conferences:
 settings:
   max_results_per_category: 20    # max arXiv papers per category (latest N, no date filter)
   hf_daily_limit: 50              # max HF daily papers to fetch
+  arxiv_delay_seconds: 5          # pause before each arXiv request; CI shared IPs often need >3s
+  arxiv_retry_attempts: 4         # retries after HTTP 429 rate limiting
+  arxiv_page_size: 20             # keep API max_results aligned with max_results_per_category
+  arxiv_hf_batch_size: 10         # fetch missing HF arXiv metadata in batches, not one-by-one
+  arxiv_backoff_seconds: [30, 60, 120, 240]
+
+# ─────────────────────────────────────────────────
+# Retention / display limits
+# ─────────────────────────────────────────────────
+retention:
+  hf_hot_only_max: 200             # keep DB from growing with old HF-only papers
+
+display:
+  readme_max_hf_hot: 30
+  readme_max_per_category: 40
+  readme_max_conference_per_venue: 50
+  gitpage_max_hf_hot: 30
+  gitpage_max_per_category: 100
+  gitpage_max_conference_per_venue: 100
 
 # ─────────────────────────────────────────────────
 # GitHub info (for GitPage badges)

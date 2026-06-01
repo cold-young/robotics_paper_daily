@@ -23,10 +23,12 @@ Usage:
 import re
 import time
 import json
+import random
 import argparse
 import datetime
 import urllib.request
 import urllib.parse
+import urllib.error
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from dataclasses import dataclass, field
@@ -102,6 +104,33 @@ class Paper:
 # Uses config.yaml base_url as-is
 PWC_BASE_URL = "https://arxiv.paperswithcode.com/api/v0/papers/"
 ARXIV_API    = "https://export.arxiv.org/api/query"  # fallback
+ARXIV_DEFAULT_DELAY_SECONDS = 5.0
+ARXIV_DEFAULT_RETRIES = 4
+ARXIV_DEFAULT_PAGE_SIZE = 20
+ARXIV_DEFAULT_BACKOFF_SECONDS = (30.0, 60.0, 120.0, 240.0)
+ARXIV_HF_BATCH_SIZE = 10
+
+
+def _sleep_with_jitter(seconds: float) -> None:
+    """Avoid synchronized retries from CI runners that share outbound IPs."""
+    time.sleep(seconds + random.uniform(0.0, min(3.0, seconds * 0.1)))
+
+
+def _is_arxiv_429(exc: Exception) -> bool:
+    if isinstance(exc, urllib.error.HTTPError):
+        return exc.code == 429
+    status = getattr(exc, "status", None) or getattr(exc, "status_code", None)
+    if status == 429:
+        return True
+    return "HTTP 429" in str(exc)
+
+
+def _arxiv_backoff_seconds(attempt: int, backoff_seconds: tuple[float, ...]) -> float:
+    if not backoff_seconds:
+        return ARXIV_DEFAULT_BACKOFF_SECONDS[-1]
+    if attempt < len(backoff_seconds):
+        return backoff_seconds[attempt]
+    return backoff_seconds[-1]
 
 
 def fetch_pwc_by_id(arxiv_id: str) -> dict:
@@ -160,76 +189,100 @@ def _build_query_string(keywords: list[str]) -> str:
             parts.append(ESCAPE + kw + ESCAPE)
         else:
             parts.append(kw)
-    return "OR".join(parts)
+    return " OR ".join(parts)
 
 
-def fetch_arxiv(keywords: list[str], max_results: int = 20,
-                days_back: int = 1, chunk_size: int = 3) -> list[dict]:
+def fetch_arxiv(
+    keywords: list[str],
+    max_results: int = 20,
+    days_back: int = 1,
+    chunk_size: int = 3,
+    delay_seconds: float = ARXIV_DEFAULT_DELAY_SECONDS,
+    retry_attempts: int = ARXIV_DEFAULT_RETRIES,
+    page_size: int = ARXIV_DEFAULT_PAGE_SIZE,
+    backoff_seconds: tuple[float, ...] = ARXIV_DEFAULT_BACKOFF_SECONDS,
+) -> list[dict]:
     """
     Search using the arxiv Python library.
     Fetches max_results papers sorted by submission date (no date filter).
     """
     query = _build_query_string(keywords)
-    search_engine = arxiv.Search(
-        query=query,
-        max_results=max_results,
-        sort_by=arxiv.SortCriterion.SubmittedDate,
-    )
 
-    # arxiv>=2.0: Search.results() was removed; use Client().results(search).
-    # Keep backward compatibility with older versions that still expose .results().
-    if hasattr(arxiv, "Client"):
-        client = arxiv.Client(num_retries=3, delay_seconds=3.0)
-        result_iter = client.results(search_engine)
-    else:
-        result_iter = search_engine.results()
+    for attempt in range(retry_attempts + 1):
+        search_engine = arxiv.Search(
+            query=query,
+            max_results=max_results,
+            sort_by=arxiv.SortCriterion.SubmittedDate,
+        )
 
-    seen: set[str] = set()
-    results: list[dict] = []
+        seen: set[str] = set()
+        results: list[dict] = []
 
-    try:
-        for result in result_iter:
-            paper_id = result.get_short_id()
-            ver_pos = paper_id.find("v")
-            arxiv_id = paper_id[:ver_pos] if ver_pos != -1 else paper_id
+        try:
+            # arxiv>=2.0: Search.results() was removed; use Client().results(search).
+            # Keep backward compatibility with older versions that still expose .results().
+            if hasattr(arxiv, "Client"):
+                # Keep library retries at zero so 429 handling uses our longer backoff.
+                client = arxiv.Client(
+                    page_size=max(1, min(page_size, max_results)),
+                    delay_seconds=delay_seconds,
+                    num_retries=0,
+                )
+                result_iter = client.results(search_engine)
+            else:
+                result_iter = search_engine.results()
 
-            if arxiv_id in seen:
+            for result in result_iter:
+                paper_id = result.get_short_id()
+                ver_pos = paper_id.find("v")
+                arxiv_id = paper_id[:ver_pos] if ver_pos != -1 else paper_id
+
+                if arxiv_id in seen:
+                    continue
+                seen.add(arxiv_id)
+
+                paper_url = f"http://arxiv.org/abs/{arxiv_id}"
+                published = result.published.date().isoformat()
+
+                # Extract GitHub/project URL from comments
+                repo_url = ""
+                project_url = ""
+                if result.comment:
+                    urls = re.findall(r"(https?://[^\s,;]+)", result.comment)
+                    for url in urls:
+                        if "github.com" in url or "gitlab.com" in url:
+                            repo_url = url
+                        else:
+                            project_url = url
+
+                authors_str = ", ".join(str(a) for a in result.authors)
+
+                results.append({
+                    "arxiv_id":     arxiv_id,
+                    "title":        result.title,
+                    "abstract":     result.summary.replace("\n", " "),
+                    "authors":      authors_str,
+                    "publish_date": published,
+                    "arxiv_url":    paper_url,
+                    "project_url":  repo_url or project_url,
+                })
+            return results
+        except Exception as e:
+            if _is_arxiv_429(e) and attempt < retry_attempts:
+                wait = _arxiv_backoff_seconds(attempt, backoff_seconds)
+                print(
+                    f"  [WARN] arXiv rate limited (HTTP 429). "
+                    f"Retrying in {wait:.0f}s ({attempt + 1}/{retry_attempts})..."
+                )
+                _sleep_with_jitter(wait)
                 continue
-            seen.add(arxiv_id)
 
-            paper_url = f"http://arxiv.org/abs/{arxiv_id}"
-            published = result.published.date().isoformat()
-
-            # Extract GitHub/project URL from comments
-            repo_url = ""
-            project_url = ""
-            if result.comment:
-                urls = re.findall(r"(https?://[^\s,;]+)", result.comment)
-                for url in urls:
-                    if "github.com" in url or "gitlab.com" in url:
-                        repo_url = url
-                    else:
-                        project_url = url
-
-            authors_str = ", ".join(str(a) for a in result.authors)
-
-            results.append({
-                "arxiv_id":     arxiv_id,
-                "title":        result.title,
-                "abstract":     result.summary.replace("\n", " "),
-                "authors":      authors_str,
-                "publish_date": published,
-                "arxiv_url":    paper_url,
-                "project_url":  repo_url or project_url,
-            })
-    except Exception as e:
-        import traceback
-        print(f"  [ERROR] arXiv search failed ({type(e).__name__}): {e}")
-        traceback.print_exc()
+            print(f"  [WARN] arXiv search skipped ({type(e).__name__}): {e}")
+            break
 
     if not results:
         print(f"  [WARN] arXiv returned 0 results (query: {query[:50]}...) "
-              f"— possible library compatibility or network issue")
+              f"— possible rate limit, library compatibility, or network issue")
 
     return results
 
@@ -324,6 +377,7 @@ def merge_into_db(
     db: dict[str, Paper],
     new_papers: dict[str, Paper],
     max_per_category: int = 50,
+    max_hf_hot_only: int = 200,
 ) -> dict[str, Paper]:
     """
     Merge new papers into existing DB, then prune oldest papers
@@ -391,6 +445,22 @@ def merge_into_db(
     for pid in papers_to_remove:
         del merged[pid]
 
+    # 3. Prune stale HF-only papers. These arrive daily and otherwise dominate
+    #    the DB while not belonging to a long-lived robotics category.
+    if max_hf_hot_only > 0:
+        hf_only_papers = [
+            p for p in merged.values()
+            if set(p.matched_categories) == {"HF-Hot"}
+        ]
+        if len(hf_only_papers) > max_hf_hot_only:
+            hf_only_sorted = sorted(
+                hf_only_papers,
+                key=lambda p: (p.publish_date, p.paper_id),
+                reverse=True,
+            )
+            for old_p in hf_only_sorted[max_hf_hot_only:]:
+                merged.pop(old_p.paper_id, None)
+
     return merged
 
 
@@ -442,8 +512,33 @@ def collect_papers(config: dict, include_conferences: bool = False, **kwargs) ->
     for cat_name, cat_cfg in config.get("categories", {}).items():
         categories[cat_name] = cat_cfg.get("keywords", [])
 
+    settings = config.get("settings", {})
+    max_results_per_category = int(settings.get("max_results_per_category", 20))
+    hf_daily_limit = int(settings.get("hf_daily_limit", 50))
+    arxiv_delay_seconds = float(
+        settings.get("arxiv_delay_seconds", ARXIV_DEFAULT_DELAY_SECONDS)
+    )
+    arxiv_retry_attempts = int(
+        settings.get("arxiv_retry_attempts", ARXIV_DEFAULT_RETRIES)
+    )
+    arxiv_page_size = int(
+        settings.get(
+            "arxiv_page_size",
+            min(ARXIV_DEFAULT_PAGE_SIZE, max_results_per_category),
+        )
+    )
+    arxiv_hf_batch_size = int(settings.get("arxiv_hf_batch_size", ARXIV_HF_BATCH_SIZE))
+    arxiv_page_size = max(1, arxiv_page_size)
+    arxiv_hf_batch_size = max(1, arxiv_hf_batch_size)
+    arxiv_backoff_seconds = tuple(
+        float(v) for v in settings.get(
+            "arxiv_backoff_seconds",
+            ARXIV_DEFAULT_BACKOFF_SECONDS,
+        )
+    )
+
     # 1. HuggingFace hot papers
-    hf_map = fetch_hf_daily()
+    hf_map = fetch_hf_daily(limit=hf_daily_limit)
     print(f"[HF] {len(hf_map)} daily papers fetched")
 
     # 2. arXiv per category
@@ -451,9 +546,16 @@ def collect_papers(config: dict, include_conferences: bool = False, **kwargs) ->
 
     for cat_name, keywords in categories.items():
         print(f"[arXiv] Fetching category '{cat_name}' with {len(keywords)} keywords...")
-        time.sleep(3)  # respect arXiv API rate limit
+        _sleep_with_jitter(arxiv_delay_seconds)
 
-        raw = fetch_arxiv(keywords, max_results=20)
+        raw = fetch_arxiv(
+            keywords,
+            max_results=max_results_per_category,
+            delay_seconds=arxiv_delay_seconds,
+            retry_attempts=arxiv_retry_attempts,
+            page_size=arxiv_page_size,
+            backoff_seconds=arxiv_backoff_seconds,
+        )
         print(f"  → {len(raw)} papers before dedup")
 
         for r in raw:
@@ -490,32 +592,40 @@ def collect_papers(config: dict, include_conferences: bool = False, **kwargs) ->
         if paper.arxiv_id in hf_map:
             paper.hf_rank = hf_map[paper.arxiv_id]
 
-    # 4. Add HF hot papers not yet in collection (fetch individually from arXiv)
+    # 4. Add HF hot papers not yet in collection (batched arXiv id lookup)
     # Convert hf_map keys (arxiv_id) to paper_id for dedup check
     existing_arxiv_ids = {p.arxiv_id for p in all_papers.values()}
-    for hf_id, rank in hf_map.items():
-        if hf_id not in existing_arxiv_ids:
-            try:
-                time.sleep(1)
-                raw = fetch_arxiv_by_id(hf_id)
-                if raw:
-                    pid = make_paper_id("arxiv", hf_id)
-                    p = Paper(
-                        arxiv_id=hf_id,
-                        title=raw["title"],
-                        abstract=raw["abstract"],
-                        authors=raw["authors"],
-                        publish_date=raw["publish_date"],
-                        arxiv_url=raw["arxiv_url"],
-                        project_url=raw["project_url"],
-                        hf_rank=rank,
-                        matched_categories=["HF-Hot"],
-                        paper_id=pid,
-                        source="arxiv",
-                    )
-                    all_papers[pid] = p
-            except Exception as e:
-                print(f"[WARN] HF paper {hf_id} fetch failed: {e}")
+    missing_hf_ids = [hf_id for hf_id in hf_map if hf_id not in existing_arxiv_ids]
+    if missing_hf_ids:
+        print(f"[arXiv] Fetching {len(missing_hf_ids)} missing HF papers by id...")
+    for start in range(0, len(missing_hf_ids), arxiv_hf_batch_size):
+        batch_ids = missing_hf_ids[start:start + arxiv_hf_batch_size]
+        raws = fetch_arxiv_by_ids(
+            batch_ids,
+            delay_seconds=arxiv_delay_seconds,
+            retry_attempts=arxiv_retry_attempts,
+            backoff_seconds=arxiv_backoff_seconds,
+        )
+        for hf_id in batch_ids:
+            raw = raws.get(_normalize_arxiv_id(hf_id))
+            if not raw:
+                continue
+            rank = hf_map[hf_id]
+            pid = make_paper_id("arxiv", raw["arxiv_id"])
+            p = Paper(
+                arxiv_id=raw["arxiv_id"],
+                title=raw["title"],
+                abstract=raw["abstract"],
+                authors=raw["authors"],
+                publish_date=raw["publish_date"],
+                arxiv_url=raw["arxiv_url"],
+                project_url=raw["project_url"],
+                hf_rank=rank,
+                matched_categories=["HF-Hot"],
+                paper_id=pid,
+                source="arxiv",
+            )
+            all_papers[pid] = p
 
     # 5. Conference paper collection (--conferences mode)
     if include_conferences:
@@ -594,20 +704,11 @@ def collect_papers(config: dict, include_conferences: bool = False, **kwargs) ->
     return all_papers, hf_map
 
 
-def fetch_arxiv_by_id(arxiv_id: str) -> Optional[dict]:
-    """Fetch a single paper by arXiv ID"""
-    url = f"{ARXIV_API}?id_list={arxiv_id}"
-    req = urllib.request.Request(url, headers={"User-Agent": "PaperRadar/1.0"})
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        xml_data = resp.read()
+def _normalize_arxiv_id(arxiv_id: str) -> str:
+    return re.sub(r"v\d+$", "", arxiv_id.rsplit("/", 1)[-1])
 
-    ns = {"atom": "http://www.w3.org/2005/Atom"}
-    root = ET.fromstring(xml_data)
-    entries = root.findall("atom:entry", ns)
-    if not entries:
-        return None
 
-    entry = entries[0]
+def _entry_to_arxiv_dict(entry: ET.Element, ns: dict[str, str], arxiv_id: str) -> dict:
     title = entry.find("atom:title", ns).text.replace("\n", " ").strip()
     abstract = entry.find("atom:summary", ns).text.replace("\n", " ").strip()
     published = entry.find("atom:published", ns).text[:10]
@@ -632,6 +733,57 @@ def fetch_arxiv_by_id(arxiv_id: str) -> Optional[dict]:
     }
 
 
+def fetch_arxiv_by_ids(
+    arxiv_ids: list[str],
+    delay_seconds: float = ARXIV_DEFAULT_DELAY_SECONDS,
+    retry_attempts: int = ARXIV_DEFAULT_RETRIES,
+    backoff_seconds: tuple[float, ...] = ARXIV_DEFAULT_BACKOFF_SECONDS,
+) -> dict[str, dict]:
+    """Fetch multiple papers by arXiv ID using a single id_list request."""
+    ids = [_normalize_arxiv_id(aid) for aid in arxiv_ids if aid]
+    if not ids:
+        return {}
+
+    params = {"id_list": ",".join(ids)}
+    url = ARXIV_API + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers={"User-Agent": "PaperRadar/1.0"})
+    _sleep_with_jitter(delay_seconds)
+
+    for attempt in range(retry_attempts + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                xml_data = resp.read()
+            break
+        except Exception as e:
+            if _is_arxiv_429(e) and attempt < retry_attempts:
+                wait = _arxiv_backoff_seconds(attempt, backoff_seconds)
+                print(
+                    f"  [WARN] arXiv id lookup rate limited (HTTP 429). "
+                    f"Retrying in {wait:.0f}s ({attempt + 1}/{retry_attempts})..."
+                )
+                _sleep_with_jitter(wait)
+                continue
+            print(f"  [WARN] arXiv id lookup skipped ({type(e).__name__}): {e}")
+            return {}
+
+    ns = {"atom": "http://www.w3.org/2005/Atom"}
+    root = ET.fromstring(xml_data)
+    results: dict[str, dict] = {}
+    for entry in root.findall("atom:entry", ns):
+        entry_id = entry.find("atom:id", ns)
+        if entry_id is None or not entry_id.text:
+            continue
+        arxiv_id = _normalize_arxiv_id(entry_id.text)
+        results[arxiv_id] = _entry_to_arxiv_dict(entry, ns, arxiv_id)
+
+    return results
+
+
+def fetch_arxiv_by_id(arxiv_id: str) -> Optional[dict]:
+    """Fetch a single paper by arXiv ID."""
+    return fetch_arxiv_by_ids([arxiv_id]).get(_normalize_arxiv_id(arxiv_id))
+
+
 # ─────────────────────────────────────────────
 # Markdown generator
 # ─────────────────────────────────────────────
@@ -642,9 +794,8 @@ def _abstract_short(abstract: str, max_len: int = 400) -> str:
     return abstract[:max_len].rsplit(" ", 1)[0] + "..."
 
 
-def _paper_row(p: Paper) -> str:
-    """README table row format with PWC code links."""
-    # Links: arXiv URL if available, otherwise OpenReview/project URL
+def _paper_links(p: Paper) -> str:
+    """Build markdown links for arXiv/OpenReview/code/PWC."""
     if p.arxiv_url:
         links = f"[ArXiv]({p.arxiv_url})"
     elif p.project_url:
@@ -652,15 +803,87 @@ def _paper_row(p: Paper) -> str:
     else:
         links = ""
     if p.code_url:
-        links += f" / [Code]({p.code_url})"      # GitHub link preferred
+        links += f" / [Code]({p.code_url})"
     elif p.project_url and p.arxiv_url:
-        links += f" / [Web]({p.project_url})"    # fallback to project page
+        links += f" / [Web]({p.project_url})"
     if p.pwc_url:
-        links += f" / [PWC]({p.pwc_url})"        # Papers With Code page
+        links += f" / [PWC]({p.pwc_url})"
+    return links
 
+
+def _conference_labels(all_papers: dict[str, Paper], config: dict) -> list[str]:
+    labels: list[str] = []
+    for venue_cfg in config.get("conferences", {}).get("venues", []):
+        label = venue_cfg.get("label", "")
+        if label and label not in labels:
+            labels.append(label)
+    for p in all_papers.values():
+        if p.venue and p.venue not in labels:
+            labels.append(p.venue)
+    return labels
+
+
+def _display_limit(config: dict, key: str, default: int) -> int:
+    return int(config.get("display", {}).get(key, default))
+
+
+def _limit_papers(papers: list[Paper], limit: int) -> list[Paper]:
+    return papers if limit <= 0 else papers[:limit]
+
+
+def _slugify(text: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+    return slug or "section"
+
+
+def _gitpage_nav_items(all_papers: dict[str, Paper], config: dict) -> list[tuple[str, str]]:
+    items = [("HF Hot", "{{ site.baseurl }}/")]
+    for label in _conference_labels(all_papers, config):
+        if any(p.venue == label for p in all_papers.values()):
+            items.append((
+                label,
+                f"{{{{ site.baseurl }}}}/conferences/{_slugify(label)}.html",
+            ))
+    for cat_name in config.get("categories", {}).keys():
+        items.append((cat_name, f"{{{{ site.baseurl }}}}/{_slugify(cat_name)}.html"))
+    return items
+
+
+def _gitpage_nav(all_papers: dict[str, Paper], config: dict, active: str) -> str:
+    styles = (
+        "<style>"
+        ".paper-nav{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 1.25rem 0}"
+        ".paper-nav a{border:1px solid #d0d7de;border-radius:999px;padding:.32rem .7rem;"
+        "text-decoration:none;color:#24292f;background:#fff;font-size:.92rem}"
+        ".paper-nav a.active{background:#0969da;color:#fff;border-color:#0969da}"
+        "</style>"
+    )
+    links = []
+    for label, href in _gitpage_nav_items(all_papers, config):
+        cls = ' class="active"' if label == active else ""
+        links.append(f'<a href="{href}"{cls}>{label}</a>')
+    return styles + "\n\n" + '<nav class="paper-nav">' + "\n".join(links) + "</nav>"
+
+
+def _gitpage_front_matter() -> list[str]:
+    return ["---", "layout: default", "---", ""]
+
+
+def _keyword_cell(p: Paper) -> str:
+    keywords = p.matched_keywords or [
+        cat for cat in p.matched_categories
+        if cat not in {"HF-Hot", p.venue}
+    ]
+    if not keywords:
+        return ""
+    return " ".join(f"`{kw}`" for kw in keywords)
+
+
+def _paper_row(p: Paper) -> str:
+    """README table row format with PWC code links."""
+    links = _paper_links(p)
     badges = p.keyword_badges()
     badge_str = f" {badges}" if badges else ""
-
     abstract_short = _abstract_short(p.abstract)
 
     return (
@@ -672,6 +895,25 @@ def _paper_row(p: Paper) -> str:
     )
 
 
+def _conference_paper_row(p: Paper, details: bool = True) -> str:
+    """Conference table row with matched keywords in the first column."""
+    links = _paper_links(p)
+    abstract_short = _abstract_short(p.abstract)
+    if details:
+        title_abstract = (
+            f"**{p.title}** "
+            f"<details><summary>Abstract</summary>{abstract_short}</details>"
+        )
+    else:
+        title_abstract = f"**{p.title}**<br>{abstract_short}"
+    return (
+        f"| {_keyword_cell(p)} | "
+        f"{title_abstract} | "
+        f"{p.author_team()} | "
+        f"{links} |"
+    )
+
+
 def generate_markdown(
     all_papers: dict[str, Paper],
     hf_map: dict[str, int],
@@ -679,6 +921,10 @@ def generate_markdown(
 ) -> str:
     today = datetime.date.today().strftime("%Y.%m.%d")
     cat_names = list(config.get("categories", {}).keys())
+    conference_labels = _conference_labels(all_papers, config)
+    max_hf = _display_limit(config, "readme_max_hf_hot", 30)
+    max_cat = _display_limit(config, "readme_max_per_category", 40)
+    max_conf = _display_limit(config, "readme_max_conference_per_venue", 50)
 
     lines = []
     lines.append(f"## Updated on {today}\n")
@@ -686,16 +932,23 @@ def generate_markdown(
     # ── Table of Contents
     lines.append("## Table of Contents\n")
     lines.append("1. [🔥 HuggingFace Hot Papers](#-huggingface-hot-papers)")
-    for i, cat in enumerate(cat_names, start=2):
-        anchor = cat.lower().replace(" ", "-")
-        lines.append(f"{i}. [{cat}](#{anchor})")
+    toc_items = cat_names + [
+        label for label in conference_labels
+        if any(p.venue == label for p in all_papers.values())
+    ]
+    for i, title in enumerate(toc_items, start=2):
+        anchor = title.lower().replace(" ", "-")
+        lines.append(f"{i}. [{title}](#{anchor})")
     lines.append("")
 
     # ── Section 1: HF Hot Papers
     lines.append("## 🔥 HuggingFace Hot Papers\n")
-    hf_papers = sorted(
-        [p for p in all_papers.values() if p.hf_rank is not None],
-        key=lambda p: p.hf_rank,
+    hf_papers = _limit_papers(
+        sorted(
+            [p for p in all_papers.values() if p.hf_rank is not None],
+            key=lambda p: p.hf_rank,
+        ),
+        max_hf,
     )
 
     if hf_papers:
@@ -703,18 +956,7 @@ def generate_markdown(
         lines.append("| Rank | Date | Title | Authors | Links |")
         lines.append("| --- | --- | --- | --- | --- |")
         for p in hf_papers:
-            if p.arxiv_url:
-                links = f"[ArXiv]({p.arxiv_url})"
-            elif p.project_url:
-                links = f"[OpenReview]({p.project_url})"
-            else:
-                links = ""
-            if p.code_url:
-                links += f" / [Code]({p.code_url})"
-            elif p.project_url and p.arxiv_url:
-                links += f" / [Web]({p.project_url})"
-            if p.pwc_url:
-                links += f" / [PWC]({p.pwc_url})"
+            links = _paper_links(p)
             cat_tags = " ".join(f"`{c}`" for c in p.matched_categories if c != "HF-Hot")
             title_str = p.title + (f" {cat_tags}" if cat_tags else "")
             abstract_short = _abstract_short(p.abstract)
@@ -733,10 +975,16 @@ def generate_markdown(
         anchor = cat_name.lower().replace(" ", "-")
         lines.append(f"## {cat_name}\n")
 
-        cat_papers = sorted(
-            [p for p in all_papers.values() if cat_name in p.matched_categories],
-            key=lambda p: p.publish_date,
-            reverse=True,
+        cat_papers = _limit_papers(
+            sorted(
+                [
+                    p for p in all_papers.values()
+                    if cat_name in p.matched_categories and not p.venue
+                ],
+                key=lambda p: p.publish_date,
+                reverse=True,
+            ),
+            max_cat,
         )
 
         lines.append(f"<details><summary><b>{cat_name} Papers (Click to expand)</b></summary>\n")
@@ -744,6 +992,26 @@ def generate_markdown(
         lines.append("| --- | --- | --- | --- |")
         for p in cat_papers:
             lines.append(_paper_row(p).strip())
+        lines.append("\n</details>\n")
+
+    # ── Conference sections: separate from keyword categories
+    for label in conference_labels:
+        venue_papers = _limit_papers(
+            sorted(
+                [p for p in all_papers.values() if p.venue == label],
+                key=lambda p: p.publish_date,
+                reverse=True,
+            ),
+            max_conf,
+        )
+        if not venue_papers:
+            continue
+        lines.append(f"## {label}\n")
+        lines.append(f"<details><summary><b>{label} Papers (Click to expand)</b></summary>\n")
+        lines.append("| Keyword | Title & Abstract | Authors | Links |")
+        lines.append("| --- | --- | --- | --- |")
+        for p in venue_papers:
+            lines.append(_conference_paper_row(p, details=True))
         lines.append("\n</details>\n")
 
     return "\n".join(lines)
@@ -757,19 +1025,7 @@ def generate_markdown(
 
 def _paper_row_web(p: Paper) -> str:
     """GitHub Pages row — no <details>, includes back-to-top link"""
-    if p.arxiv_url:
-        links = f"[ArXiv]({p.arxiv_url})"
-    elif p.project_url:
-        links = f"[OpenReview]({p.project_url})"
-    else:
-        links = ""
-    if p.code_url:
-        links += f" / [Code]({p.code_url})"
-    elif p.project_url and p.arxiv_url:
-        links += f" / [Web]({p.project_url})"
-    if p.pwc_url:
-        links += f" / [PWC]({p.pwc_url})"
-
+    links = _paper_links(p)
     badges = p.keyword_badges()
     badge_str = f" {badges}" if badges else ""
     abstract_short = _abstract_short(p.abstract)
@@ -795,76 +1051,173 @@ def generate_gitpage_markdown(
       - Back-to-top link at bottom of each section
       - Badges (contributors / forks / stars / issues)
     """
-    today_dot  = datetime.date.today().strftime("%Y.%m.%d")
-    today_anchor = f"#updated-on-{today_dot.replace('.', '')}"
-    cat_names  = list(config.get("categories", {}).keys())
-    cfg        = config.get("settings", {})
-    user       = config.get("user_name", "cold-young").replace(" ", "-")   # config compat
-    repo       = config.get("repo_name", "robotics-paper-daily")
-
-    lines = []
-
-    # ── Jekyll front matter
-    lines.append("---")
-    lines.append("layout: default")
-    lines.append("---")
-    lines.append("")
-
-    # ── Badges (restored from daily_arxiv.py show_badge)
-    lines.append(f"[![Contributors][contributors-shield]][contributors-url]")
-    lines.append(f"[![Forks][forks-shield]][forks-url]")
-    lines.append(f"[![Stargazers][stars-shield]][stars-url]")
-    lines.append(f"[![Issues][issues-shield]][issues-url]")
-    lines.append("")
-
-    lines.append(f"## Updated on {today_dot}")
-    lines.append(f"> Usage instructions: [here](./docs/README.md#usage)")
-    lines.append("")
-
-    # ── Per-section body (expanded, no <details>)
-    def _section(title: str, papers: list[Paper]) -> list[str]:
-        anchor_id = title.lower().replace(" ", "-")
-        sec = []
-        sec.append(f"## {title}")
-        sec.append("")
-        sec.append("| Publish Date | Title & Abstract | Authors | Links |")
-        sec.append("|:---------|:-----------------------|:---------|:------|")
-        for p in papers:
-            sec.append(_paper_row_web(p))
-        sec.append("")
-        sec.append(f"<p align=right>(<a href={today_anchor}>back to top</a>)</p>")
-        sec.append("")
-        return sec
-
-    # HF Hot Papers section
-    hf_papers = sorted(
-        [p for p in all_papers.values() if p.hf_rank is not None],
-        key=lambda p: p.hf_rank,
+    max_hf = _display_limit(config, "gitpage_max_hf_hot", 30)
+    hf_papers = _limit_papers(
+        sorted(
+            [p for p in all_papers.values() if p.hf_rank is not None],
+            key=lambda p: p.hf_rank,
+        ),
+        max_hf,
     )
-    if hf_papers:
-        lines += _section("🔥 HuggingFace Hot Papers", hf_papers)
+    return _generate_gitpage_section_page(
+        all_papers,
+        config,
+        active="HF Hot",
+        title="🔥 HuggingFace Hot Papers",
+        papers=hf_papers,
+        row_fn=_paper_row_web,
+        table_header="| Publish Date | Title & Abstract | Authors | Links |",
+        table_align="|:---------|:-----------------------|:---------|:------|",
+        include_badges=True,
+    )
 
-    # Per-category sections
-    for cat_name in cat_names:
-        cat_papers = sorted(
-            [p for p in all_papers.values() if cat_name in p.matched_categories],
+
+def _badge_lines(config: dict) -> list[str]:
+    user = config.get("user_name", "cold-young").replace(" ", "-")
+    repo = config.get("repo_name", "robotics-paper-daily")
+    return [
+        "[![Contributors][contributors-shield]][contributors-url]",
+        "[![Forks][forks-shield]][forks-url]",
+        "[![Stargazers][stars-shield]][stars-url]",
+        "[![Issues][issues-shield]][issues-url]",
+        "",
+        f"[contributors-shield]: https://img.shields.io/github/contributors/{user}/{repo}.svg?style=for-the-badge",
+        f"[contributors-url]: https://github.com/{user}/{repo}/graphs/contributors",
+        f"[forks-shield]: https://img.shields.io/github/forks/{user}/{repo}.svg?style=for-the-badge",
+        f"[forks-url]: https://github.com/{user}/{repo}/network/members",
+        f"[stars-shield]: https://img.shields.io/github/stars/{user}/{repo}.svg?style=for-the-badge",
+        f"[stars-url]: https://github.com/{user}/{repo}/stargazers",
+        f"[issues-shield]: https://img.shields.io/github/issues/{user}/{repo}.svg?style=for-the-badge",
+        f"[issues-url]: https://github.com/{user}/{repo}/issues",
+    ]
+
+
+def _generate_gitpage_section_page(
+    all_papers: dict[str, Paper],
+    config: dict,
+    active: str,
+    title: str,
+    papers: list[Paper],
+    row_fn,
+    table_header: str,
+    table_align: str,
+    include_badges: bool = False,
+) -> str:
+    today_dot = datetime.date.today().strftime("%Y.%m.%d")
+    lines = _gitpage_front_matter()
+    if include_badges:
+        badge_lines = _badge_lines(config)
+        lines.extend(badge_lines[:4])
+        lines.append("")
+    lines.append(f"## Updated on {today_dot}")
+    lines.append(f"> Usage instructions: [here]({{{{ site.baseurl }}}}/README.html#usage)")
+    lines.append("")
+    lines.append(_gitpage_nav(all_papers, config, active))
+    lines.append("")
+    lines.append(f"## {title}")
+    lines.append("")
+    lines.append(table_header)
+    lines.append(table_align)
+    for p in papers:
+        lines.append(row_fn(p))
+    if not papers:
+        lines.append("|  | No papers available yet. |  |  |")
+    if include_badges:
+        lines.append("")
+        lines.extend(_badge_lines(config)[5:])
+    return "\n".join(lines)
+
+
+def generate_gitpage_category_markdown(
+    all_papers: dict[str, Paper],
+    config: dict,
+    cat_name: str,
+) -> str:
+    max_cat = _display_limit(config, "gitpage_max_per_category", 100)
+    cat_papers = _limit_papers(
+        sorted(
+            [
+                p for p in all_papers.values()
+                if cat_name in p.matched_categories and not p.venue
+            ],
             key=lambda p: p.publish_date,
             reverse=True,
+        ),
+        max_cat,
+    )
+    return _generate_gitpage_section_page(
+        all_papers,
+        config,
+        active=cat_name,
+        title=cat_name,
+        papers=cat_papers,
+        row_fn=_paper_row_web,
+        table_header="| Publish Date | Title & Abstract | Authors | Links |",
+        table_align="|:---------|:-----------------------|:---------|:------|",
+    )
+
+
+def generate_gitpage_conference_markdown(
+    all_papers: dict[str, Paper],
+    config: dict,
+    venue_label: str,
+) -> str:
+    max_conf = _display_limit(config, "gitpage_max_conference_per_venue", 100)
+    venue_papers = _limit_papers(
+        sorted(
+            [p for p in all_papers.values() if p.venue == venue_label],
+            key=lambda p: p.publish_date,
+            reverse=True,
+        ),
+        max_conf,
+    )
+    return _generate_gitpage_section_page(
+        all_papers,
+        config,
+        active=venue_label,
+        title=venue_label,
+        papers=venue_papers,
+        row_fn=lambda p: _conference_paper_row(p, details=False),
+        table_header="| Keyword | Title & Abstract | Authors | Links |",
+        table_align="|:---------|:-----------------------|:---------|:------|",
+    )
+
+
+def write_gitpage_markdowns(
+    all_papers: dict[str, Paper],
+    hf_map: dict[str, int],
+    config: dict,
+    gitpage_path: Path,
+) -> list[Path]:
+    written: list[Path] = []
+    gitpage_path.parent.mkdir(parents=True, exist_ok=True)
+    gitpage_path.write_text(
+        generate_gitpage_markdown(all_papers, hf_map, config),
+        encoding="utf-8",
+    )
+    written.append(gitpage_path)
+
+    for cat_name in config.get("categories", {}).keys():
+        path = gitpage_path.parent / f"{_slugify(cat_name)}.md"
+        path.write_text(
+            generate_gitpage_category_markdown(all_papers, config, cat_name),
+            encoding="utf-8",
         )
-        if cat_papers:
-            lines += _section(cat_name, cat_papers)
+        written.append(path)
 
-    # ── Badge link definitions (footer)
-    lines.append(f"[contributors-shield]: https://img.shields.io/github/contributors/{user}/{repo}.svg?style=for-the-badge")
-    lines.append(f"[contributors-url]: https://github.com/{user}/{repo}/graphs/contributors")
-    lines.append(f"[forks-shield]: https://img.shields.io/github/forks/{user}/{repo}.svg?style=for-the-badge")
-    lines.append(f"[forks-url]: https://github.com/{user}/{repo}/network/members")
-    lines.append(f"[stars-shield]: https://img.shields.io/github/stars/{user}/{repo}.svg?style=for-the-badge")
-    lines.append(f"[stars-url]: https://github.com/{user}/{repo}/stargazers")
-    lines.append(f"[issues-shield]: https://img.shields.io/github/issues/{user}/{repo}.svg?style=for-the-badge")
-    lines.append(f"[issues-url]: https://github.com/{user}/{repo}/issues")
+    conf_dir = gitpage_path.parent / "conferences"
+    conf_dir.mkdir(parents=True, exist_ok=True)
+    for label in _conference_labels(all_papers, config):
+        if not any(p.venue == label for p in all_papers.values()):
+            continue
+        path = conf_dir / f"{_slugify(label)}.md"
+        path.write_text(
+            generate_gitpage_conference_markdown(all_papers, config, label),
+            encoding="utf-8",
+        )
+        written.append(path)
 
-    return "\n".join(lines)
+    return written
 
 
 # ─────────────────────────────────────────────
@@ -902,8 +1255,14 @@ def main():
         print(f"         Existing DB: {len(db)} papers")
 
     # ── Step 3: Merge new papers into DB + prune overflow
+    max_hf_hot_only = int(config.get("retention", {}).get("hf_hot_only_max", 200))
     print(f"[Step 3] Merging... (max {args.max_per_cat} per category)")
-    db = merge_into_db(db, today_papers, max_per_category=args.max_per_cat)
+    db = merge_into_db(
+        db,
+        today_papers,
+        max_per_category=args.max_per_cat,
+        max_hf_hot_only=max_hf_hot_only,
+    )
     print(f"         After merge: {len(db)} papers")
 
     # ── Step 4: Save DB
@@ -941,11 +1300,9 @@ def main():
 
     # ── Generate docs/index.md (GitPage)
     if not args.no_gitpage:
-        gitpage_md   = generate_gitpage_markdown(display_papers, hf_map, config)
         gitpage_path = Path(args.gitpage)
-        gitpage_path.parent.mkdir(parents=True, exist_ok=True)
-        gitpage_path.write_text(gitpage_md, encoding="utf-8")
-        print(f"✅ GitPage → {gitpage_path}")
+        written_pages = write_gitpage_markdowns(display_papers, hf_map, config, gitpage_path)
+        print(f"✅ GitPage → {gitpage_path} (+{len(written_pages) - 1} section pages)")
 
 
 if __name__ == "__main__":
