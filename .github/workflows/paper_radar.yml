@@ -58,7 +58,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md docs/index.md docs/papers_db.json
+          git add README.md docs
           TOTAL=$(python3 -c "import json; print(len(json.load(open('docs/papers_db.json'))))" 2>/dev/null || echo "?")
           git diff --cached --quiet || git commit -m "📄 Daily update $(date +'%Y.%m.%d') — ${TOTAL} papers"
           git push
