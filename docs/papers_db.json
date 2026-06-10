@@ -12256,90 +12256,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2605.30888": {
-    "arxiv_id": "2605.30888",
-    "title": "The Flip Side of RLHF: On-Policy Feedback for Reward Model Self-Supervised Improvement",
-    "abstract": "Building strong reward models (RMs) for language model alignment is bottlenecked by the cost and difficulty of acquiring diverse and reliable preference data from human annotation or judge models. It is dramatically worse as the policy evolves beyond the static RM training. Therefore, we propose SAVE (Self-supervised reward model improvement via Value-Anchored On-policy feedback), a framework that grades on-policy responses as feedback by using the value function for on-policy RM training. SAVE naturally converts the reward-graded on-policy responses into supervision with a prompt-specific value head as an adaptive anchor. It computes RM advantages and filters ambiguous samples to update the RM via a contrastive objective. The effectiveness of SAVE for enhancing RM training is strongly validated through rigorous empirical evaluation across six diverse benchmarks. It achieves outperforming results across all datasets while maintaining consistent improvements across three RL algorithms (GRPO, RLOO, GSPO) and different policy backbones.",
-    "authors": "Xiaobo Wang, Tong Wu, Min Tang, Jiaqi Li, Qi Liu, Zilong Zheng",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30888",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 24,
-    "score": 6,
-    "paper_id": "arxiv:2605.30888",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2605.30846": {
-    "arxiv_id": "2605.30846",
-    "title": "Count Anything",
-    "abstract": "Object counting remains fragmented across domain-specific datasets and task formulations, despite rapid progress in generalist vision models. Existing counting models are often tailored to scenarios such as crowds, vehicles, cells, crops, or remote-sensing objects, and thus struggle to generalize across categories, visual domains, object scales, and density distributions. In this paper, we study text-guided object counting across domains, where a model takes an image and a natural-language query as input and returns an instance-grounded set of target points whose cardinality gives the count. This formulation unifies category-conditioned counting with interpretable spatial localization. To support this setting, we construct CLOC, a Cross-domain Large-scale Object Counting dataset that reorganizes diverse public data sources into a unified benchmark. CLOC covers six visual domains: General Scene, Remote Sensing, Histopathology, Cellular Microscopy, Agriculture, and Microbiology, with about 220K images, 619 categories, and 15M object instances. Based on CLOC, we propose Count Anything, a generalist model for text-guided object counting. Unlike density-map-based methods, which dominate counting models, Count Anything adopts discrete instance points and performs dual-granularity instance enumeration. A Region-level Sparse Counter provides object-level anchors for large and sparse targets, while a Pixel-level Dense Counter handles small, crowded, and weakly bounded targets via dense point prediction. A point-centric supervision strategy enables learning from heterogeneous annotations, and Complementary Count Fusion combines both counters in a parameter-free manner. Extensive experiments show that Count Anything achieves strong accuracy and multi-domain generalization, outperforming existing open-world counting methods. Code is available at: https://github.com/Mengqi-Lei/count-anything.",
-    "authors": "Mengqi Lei, Shuokun Cheng, Wei Bao, Shaoyi Du, Jun-Hai Yong, Siqi Li, Yue Gao",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30846",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 25,
-    "score": 5,
-    "paper_id": "arxiv:2605.30846",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2605.30940": {
-    "arxiv_id": "2605.30940",
-    "title": "Towards Streaming Synchronized Spatial Audio Generation via Autoregressive Diffusion Transformer",
-    "abstract": "Real-time and accurate spatial audio generation is pivotal for delivering an immersive experience. However, existing spatial audio synthesis technologies are often encumbered by a tradeoff between generation quality and high inference latency, as well as difficulty in capturing precise spatial information from multimodal inputs. To address these challenges, we propose SwanSphere, a unified streaming framework for high-fidelity spatial audio generation from panoramic videos and text prompts. SwanSphere mainly makes the following contributions: 1) We introduce a causal autoregressive diffusion transformer architecture that enables streaming high-quality spatial audio generation. 2) We design a Spatial Video-Audio Contrastive (SVAC) learning strategy to align the video encoder with the acoustic domain, and further employ a multi-objective online direct preference optimization (ODPO) scheme, resulting in strong spatial perception and robust multimodal spatial audio synthesis. 3) To alleviate the current scarcity of spatial audio datasets, we also develop an automated annotation pipeline for generating detailed spatial captions. Experimental results demonstrate that SwanSphere achieves superior performance in both video-to-spatial and text-to-spatial audio generation tasks. Demos can be found at: https://swanaigc.github.io.",
-    "authors": "Ke Lei, Yu Zhang, Changhao Pan, Xueyi Pu, Wenxiang Guo, Ruiqi Li, Zhou Zhao",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30940",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 41,
-    "score": 0,
-    "paper_id": "arxiv:2605.30940",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2605.30993": {
-    "arxiv_id": "2605.30993",
-    "title": "SwanVoice: Expressive Long-Form Zero-Shot Speech Synthesis for Both Monologue and Dialogue",
-    "abstract": "Zero-shot text-to-speech (TTS) has improved substantially for single-speaker synthesis, yet expressive long-form multi-speaker dialogue remains difficult. A common workaround is to synthesize each turn with a monologue TTS model and stitch the outputs together. This adds inference cost and often breaks acoustic consistency, conversational coherence, and affective continuity across turns. Recent dialogue TTS systems have begun to address this setting, but they still struggle to keep expressive coherence, controllable speaker switching, and monologue quality at the same time. We present SwanData-Speech and SwanVoice. SwanData-Speech builds monologue and dialogue corpora from in-the-wild audio, using Swan Forced Aligner for pause-aware word-level alignment and RobustMegaTTS3 for pronunciation-hard cases. Built on these data, SwanVoice is a zero-shot TTS model for 1--4 speakers, combining a 25 Hz VAE, raw-text conditioning with pause-aware symbols and pinyin substitution, and a flow-matching DiT with speaker-turn conditioning. Training starts from monologue speech, moves through mixed and real dialogue data, and then uses DiffusionNFT post-training with phone-level and speaker-similarity rewards. On SwanBench-Speech, SwanVoice obtains higher richness and hierarchy scores than all evaluated open-source baselines in both monologue and dialogue settings, while content accuracy remains the main limitation. Audio demos are available at https://swanaigc.github.io//#swanvoice.",
-    "authors": "Ruiqi Li, Yu Zhang, Changhao Pan, Ke Lei, Xiang Yin, Cheng Yang",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30993",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 42,
-    "score": 0,
-    "paper_id": "arxiv:2605.30993",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2605.31264": {
     "arxiv_id": "2605.31264",
     "title": "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation",
@@ -12379,27 +12295,6 @@
     "hf_rank": 46,
     "score": 0,
     "paper_id": "arxiv:2605.31075",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2605.30876": {
-    "arxiv_id": "2605.30876",
-    "title": "dMoE: dLLMs with Learnable Block Experts",
-    "abstract": "Diffusion Large Language Models (dLLMs) have recently emerged as a promising alternative to autoregressive models, offering competitive performance while naturally supporting parallel decoding. However, as dLLMs are increasingly integrated with Mixture-of-Experts (MoE) architectures to scale model capacity, a fundamental mismatch arises between block parallel decoding and token-level expert selection. Specifically, each dLLM forward pass processes multiple tokens with bidirectional dependencies, whereas conventional MoE layers route each token independently. This mismatch substantially increases the number of uniquely activated experts, making inference increasingly memory-bound. To address this, we propose dMoE, a simple yet effective block-level MoE framework. The central idea of dMoE is to aggregate token-level expert distributions within each block into a unified block-level expert distribution, which is then used to guide expert routing in a more coherent manner. In this way, dMoE substantially reduces the number of uniquely activated experts during inference without sacrificing performance, thereby mitigating the memory-bound bottleneck. Extensive experiments across a variety of benchmarks demonstrate the effectiveness of dMoE. On average, dMoE reduces the number of uniquely activated experts from 69.5 to 14.6 while retaining 99.11% of the original performance. Meanwhile, it reduces memory usage by 76.64% to 79.84% and achieves 1.14$\\times$ to 1.66$\\times$ end-to-end latency speedup. Code is available at: https://github.com/fscdc/dMoE",
-    "authors": "Sicheng Feng, Zigeng Chen, Gongfan Fang, Xinyin Ma, Xinchao Wang",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30876",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 48,
-    "score": 0,
-    "paper_id": "arxiv:2605.30876",
     "source": "arxiv",
     "venue": ""
   },
@@ -12463,27 +12358,6 @@
     "hf_rank": 43,
     "score": 0,
     "paper_id": "arxiv:2605.31603",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2605.30819": {
-    "arxiv_id": "2605.30819",
-    "title": "Function2Scene: 3D Indoor Scene Layout from Functional Specifications",
-    "abstract": "Most text-driven 3D indoor scene synthesis methods generate rooms from object-centric prompts, asking what furniture should be placed rather than how the space is used. Yet in real interior design, a layout is judged by how well it supports its occupants, e.g., their activities and physical needs. We introduce Function2Scene, a framework for generating 3D indoor layouts from functional specifications, i.e., natural-language design briefs describing who will use a room and what they need to do there. Given such a specification, our system parses occupant personas and activities, derives a customized set of functional design constraints from a taxonomy of 17 criteria spanning spatial, ergonomic, activity, and environmental considerations, and uses these constraints to guide layout generation. Rather than relying on an LLM to directly produce a final scene, Function2Scene performs iterative evaluation and refinement through a tool-augmented check-and-repair loop, combining geometric measurements, LLM-based contextual reasoning, and VLM-based visual assessment. Experiments on 30 professionally written interior-design cases show that Function2Scene produces layouts that better satisfy functional requirements than recent LLM-based scene synthesis baselines, with our results preferred in 94.3% of pairwise comparisons. Our work reframes text-driven indoor scene synthesis from placing plausible objects to designing spaces that support human use.",
-    "authors": "Ruiqi Wang, Qimin Chen, Daniel Ritchie, Angel X. Chang, Manolis Savva, Kai Wang, Hao Zhang",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30819",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 49,
-    "score": 0,
-    "paper_id": "arxiv:2605.30819",
     "source": "arxiv",
     "venue": ""
   },
@@ -14266,27 +14140,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2605.30931": {
-    "arxiv_id": "2605.30931",
-    "title": "MineExplorer: Evaluating Open-World Exploration of MLLM Agents in Minecraft",
-    "abstract": "Multimodal large language models (MLLMs) have shown strong capabilities in perception, reasoning, and action generation. However, their ability to sustain exploration in dynamic open worlds remains unclear. Existing embodied and game-based benchmarks often compress interaction into short-horizon tasks or entangle success with domain-specific game mechanics. In this paper, we introduce MineExplorer benchmark for evaluating open-world exploration capabilities of MLLM agents in Minecraft. We first filter atomic tasks whose solutions rely heavily on Minecraft-specific knowledge to better reflect general open-world reasoning. Then we organize the benchmark around a ReAct-style capability formulation and compose atomic tasks into implicit multi-hop tasks. To further construct reliable instances, MineExplorer uses a multi-agent synthesis workflow that jointly designs task graphs, sandbox scenes, and rule-based milestone evaluators. Human evaluation shows that the multi-agent synthesis workflow produces significantly more reliable instances than a single-agent baseline. Experiments with advanced MLLM agents show that open-world exploration remains challenging, as strong models can handle many single-hop tasks but degrade sharply when hidden prerequisites must be coordinated over longer trajectories. Further analysis finds that task difficulty tracks agent completion, and larger models or thinking modes do not consistently translate into better performance. Code and dataset are available at https://github.com/Jometeorie/MineExplorer.",
-    "authors": "Tianjie Ju, Yueqing Sun, Zheng Wu, Wei Zhang, Yaqi Huo, Xi Su, Qi Gu, Xunliang Cai, Gongshen Liu, Zhuosheng Zhang",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30931",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 5,
-    "score": 25,
-    "paper_id": "arxiv:2605.30931",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.02255": {
     "arxiv_id": "2606.02255",
     "title": "Who Annotates in NLP? A Large-scale Assessment of Human Annotation Reporting between 2018 and 2025",
@@ -14746,27 +14599,6 @@
     "hf_rank": 40,
     "score": 0,
     "paper_id": "arxiv:2606.00408",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2605.30723": {
-    "arxiv_id": "2605.30723",
-    "title": "Skill is Not One-Size-Fits-All: Model-Aware Skill Alignment for LLM Agents",
-    "abstract": "LLM agents increasingly retrieve externally curated skills-procedural instructions retrieved at decision time-to improve performance on long-horizon interactive tasks. Existing skill libraries are typically treated as model-agnostic, reusing the same skill formulations across backbones with substantially different capacities and behaviors. However, our controlled experiments across multiple model scales show that skill effectiveness is strongly model-dependent: a skill that benefits one backbone can harm another. Motivated by this observation, we propose MASA Model-Aware Skill Alignment, a framework that adapts skills to each target backbone without modifying agent weights. MASA operates in two stages: (1) a hierarchical skill evolution pipeline that iteratively rewrites general and task-specific skills using hill climbing and UCB-driven tree search, guided by environment feedback and model capability profiles; and (2) a lightweight model-conditioned skill rewriter trained on evolution trajectories to reproduce the adaptation in a single forward pass. Experiments across three interactive environments and four backbones show that MASA consistently achieves the best overall performance, with gains of up to 25.8 points over the strongest baseline. The learned rewriter further generalizes to unseen tasks and environments without additional search, consistently outperforming a much larger teacher LLM at a fraction of the inference cost.",
-    "authors": "Jianxiang Yu, Jiapeng Zhu, Bochen Lin, Qier Cui, Zichen Ding, Xiang Li",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30723",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 41,
-    "score": 0,
-    "paper_id": "arxiv:2605.30723",
     "source": "arxiv",
     "venue": ""
   },
@@ -18780,27 +18612,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2605.30848": {
-    "arxiv_id": "2605.30848",
-    "title": "LLM Anonymization Against Agentic Re-Identification",
-    "abstract": "Agentic LLMs with web search change the threat model for text anonymization: weak contextual cues can become cross-referenceable evidence for re-identification, yet those same details also carry downstream analytic value of the text. Existing defenses either remove explicit identifiers, perturb text for formal privacy, or test rewritten text against non-web inference models, leaving underexplored the operating region between resistance to agentic web-search re-identification and utility retention. We introduce AURA (\\textbf{A}nonymization with \\textbf{U}tility-\\textbf{R}etention \\textbf{A}daptation), an LLM-powered \\textit{mask-reconstruct} framework that decouples privacy localization from utility-preserving reconstruction and selects candidates with adversarial privacy and utility-retention checks. We evaluate AURA on real-user interview transcripts using re-identification attacks carried out by web-search agents, along with a utility evaluation based on interviewee-profile facts, codebook facts, and the joint contextual utility grid. Our results show that AURA improves the privacy-utility frontier by using adaptive privacy scope to strengthen resistance to agentic re-identification and using a mask-reconstruct anonymization method to better preserve contextual utility under fixed privacy scope.",
-    "authors": "Ziwen Li, Jianing Wen, Tianshi Li",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30848",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 40,
-    "score": 24,
-    "paper_id": "arxiv:2605.30848",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.01317": {
     "arxiv_id": "2606.01317",
     "title": "SABER: Benchmarking Operational Safety of LLM Coding Agents in Stateful Project Workspaces",
@@ -19029,27 +18840,6 @@
     "hf_rank": 19,
     "score": 11,
     "paper_id": "arxiv:2606.06294",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2605.30794": {
-    "arxiv_id": "2605.30794",
-    "title": "MechVQA: Benchmarking and Enhancing Multimodal LLMs on Comprehensive Mechanical Drawing Understanding",
-    "abstract": "Multimodal Large Language Models (MLLMs) have demonstrated significant achievements in general visual question answering (VQA) tasks. However, they remain brittle on mechanical engineering drawings, where high annotation density and weak domain knowledge, compounded by unreliable spatial relation reasoning under strict projection rules and geometric constraints, make decisive cues easy to miss and frequently lead to wrong answers. To bridge this gap, we introduce the first comprehensive mechanical drawing understanding dataset, MechVQA, created through a semi-automated construction and quality-control pipeline. MechVQA contains 3.3k high-density pictures with 21K question-answer pairs, spanning 10 different fine-grained tasks across three capability levels: Recognition, Reasoning, and Judging, providing a testbed to evaluate and improve MLLM understanding on real-world mechanical drawings. On top of MechVQA, we then develop the MechVL model through a multi-stage training paradigm, building a strong domain-specialized baseline. Extensive experimental results demonstrate that MechVL outperforms the strongest closed-source baseline by 7.57 percentage points on the MechVQA total score, significantly enhancing mechanical drawing understanding ability and providing a reusable foundation for deploying MLLMs in mechanical design and inspection scenarios.",
-    "authors": "Qian Kou, Xiaofeng Shi, Yulin Li, Xiaosong Qiu, Xinyang Wang, Hua Zhou, Cao Dongxing",
-    "publish_date": "2026-05-29",
-    "arxiv_url": "http://arxiv.org/abs/2605.30794",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 20,
-    "score": 10,
-    "paper_id": "arxiv:2605.30794",
     "source": "arxiv",
     "venue": ""
   },
@@ -19862,9 +19652,10 @@
     "matched_categories": [
       "Dexterous",
       "Manipulation",
-      "VLA"
+      "VLA",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 8,
     "score": 40,
     "paper_id": "arxiv:2606.07217",
     "source": "arxiv",
@@ -21345,7 +21136,7 @@
       "Dexterous",
       "Manipulation"
     ],
-    "hf_rank": 28,
+    "hf_rank": 42,
     "score": 22,
     "paper_id": "arxiv:2606.09811",
     "source": "arxiv",
@@ -22029,7 +21820,7 @@
     "matched_categories": [
       "VLA"
     ],
-    "hf_rank": 30,
+    "hf_rank": 44,
     "score": 0,
     "paper_id": "arxiv:2606.09826",
     "source": "arxiv",
@@ -22788,7 +22579,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 15,
     "score": 29,
     "paper_id": "arxiv:2606.08132",
     "source": "arxiv",
@@ -22809,7 +22600,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 16,
     "score": 28,
     "paper_id": "arxiv:2606.07436",
     "source": "arxiv",
@@ -22830,7 +22621,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 19,
     "score": 25,
     "paper_id": "arxiv:2606.06735",
     "source": "arxiv",
@@ -22851,7 +22642,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 20,
     "score": 24,
     "paper_id": "arxiv:2606.03782",
     "source": "arxiv",
@@ -22872,7 +22663,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 21,
     "score": 23,
     "paper_id": "arxiv:2606.07473",
     "source": "arxiv",
@@ -22893,7 +22684,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 22,
     "score": 22,
     "paper_id": "arxiv:2606.05011",
     "source": "arxiv",
@@ -22914,7 +22705,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 9,
+    "hf_rank": 23,
     "score": 21,
     "paper_id": "arxiv:2606.08572",
     "source": "arxiv",
@@ -22935,7 +22726,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 24,
     "score": 20,
     "paper_id": "arxiv:2606.07074",
     "source": "arxiv",
@@ -22956,7 +22747,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 25,
     "score": 19,
     "paper_id": "arxiv:2606.08960",
     "source": "arxiv",
@@ -22977,7 +22768,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 26,
     "score": 18,
     "paper_id": "arxiv:2606.06087",
     "source": "arxiv",
@@ -22998,7 +22789,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 27,
     "score": 17,
     "paper_id": "arxiv:2606.08327",
     "source": "arxiv",
@@ -23019,7 +22810,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 28,
     "score": 16,
     "paper_id": "arxiv:2606.03715",
     "source": "arxiv",
@@ -23040,7 +22831,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 29,
     "score": 15,
     "paper_id": "arxiv:2606.09585",
     "source": "arxiv",
@@ -23061,7 +22852,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 30,
     "score": 14,
     "paper_id": "arxiv:2606.05633",
     "source": "arxiv",
@@ -23082,7 +22873,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 31,
     "score": 13,
     "paper_id": "arxiv:2606.09516",
     "source": "arxiv",
@@ -23103,7 +22894,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 32,
     "score": 12,
     "paper_id": "arxiv:2606.09380",
     "source": "arxiv",
@@ -23124,7 +22915,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 33,
     "score": 11,
     "paper_id": "arxiv:2606.09348",
     "source": "arxiv",
@@ -23145,7 +22936,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 34,
     "score": 10,
     "paper_id": "arxiv:2606.09365",
     "source": "arxiv",
@@ -23166,7 +22957,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 36,
     "score": 8,
     "paper_id": "arxiv:2606.05753",
     "source": "arxiv",
@@ -23187,7 +22978,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 37,
     "score": 7,
     "paper_id": "arxiv:2606.05122",
     "source": "arxiv",
@@ -23208,7 +22999,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 38,
     "score": 6,
     "paper_id": "arxiv:2606.07299",
     "source": "arxiv",
@@ -23229,7 +23020,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 25,
+    "hf_rank": 39,
     "score": 5,
     "paper_id": "arxiv:2606.03980",
     "source": "arxiv",
@@ -23250,7 +23041,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 40,
     "score": 4,
     "paper_id": "arxiv:2606.08481",
     "source": "arxiv",
@@ -23271,7 +23062,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 43,
     "score": 1,
     "paper_id": "arxiv:2606.04662",
     "source": "arxiv",
@@ -23292,7 +23083,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 45,
     "score": 0,
     "paper_id": "arxiv:2606.06523",
     "source": "arxiv",
@@ -23313,7 +23104,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 46,
     "score": 0,
     "paper_id": "arxiv:2606.08432",
     "source": "arxiv",
@@ -23334,7 +23125,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 47,
     "score": 0,
     "paper_id": "arxiv:2606.08348",
     "source": "arxiv",
@@ -23355,7 +23146,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 48,
     "score": 0,
     "paper_id": "arxiv:2606.09079",
     "source": "arxiv",
@@ -23376,7 +23167,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 49,
     "score": 0,
     "paper_id": "arxiv:2606.09809",
     "source": "arxiv",
@@ -23397,7 +23188,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 50,
     "score": 0,
     "paper_id": "arxiv:2606.09659",
     "source": "arxiv",
@@ -23547,6 +23338,216 @@
     "hf_rank": 46,
     "score": 0,
     "paper_id": "arxiv:2606.07895",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.07723": {
+    "arxiv_id": "2606.07723",
+    "title": "VoLo: A Physical Orchestrator for Open-Vocabulary Long-Horizon Manipulation",
+    "abstract": "Open-vocabulary long-horizon manipulation requires robots to reason over flexible instructions and complex multi-object scenes while adaptively planning, executing, monitoring, and recovering from failures. We address these demands with a closed agent loop in which a VLM orchestrates heterogeneous robot capabilities as interruptible tools. Unlike in virtual AI agents, the timing of decisions, actions and tool calls is important in a physical world that does not pause for reasoning. We refer to this setting as Physical Orchestration, and propose VoLoAgent, a VLM that plans, monitors, and recovers by treating a VLA/WAM as an interruptible tool it steers mid-rollout alongside vision models and action primitives. To evaluate these long-horizon capabilities, we introduce RoboVoLo, a high-fidelity benchmark for open-vocabulary long-horizon manipulation across common sense, memory/state tracking, complex references, and world knowledge, with both task-level success and failure-mode diagnostics. Experiments show VoLoAgent substantially outperforms single VLA/VLM or tool-based systems, with validation on real-robot experiments. Project page: https://chicychen.github.io/VoLo/",
+    "authors": "Siyi Chen, Hugo Hadfield, Alex Zook, Mikaela Angelina Uy, Chan Hee Song, Erwin Coumans, Xuning Yang, Faisal Ladhak, Qing Qu, Stan Birchfield, Jonathan Tremblay, Valts Blukis",
+    "publish_date": "2026-06-05",
+    "arxiv_url": "http://arxiv.org/abs/2606.07723",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2606.07723",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.01000": {
+    "arxiv_id": "2606.01000",
+    "title": "Trust Functions: Near-Lossless Weak-to-Strong Generalization by Learning When to Trust the Weak Teacher",
+    "abstract": "Weak-to-strong generalization studies how to improve a strong student using supervision from a weaker teacher when reliable labels are scarce. We view this primarily as a data selection problem, where the key challenge is to identify which weak labels are reliable enough to serve as a training signal. To address this, we introduce trust functions that assign each weak label a scalar trust score and use these scores to filter weak supervision. Across several domains, including world knowledge, quantitative reasoning, and strategy games, trust filtering yields students that match and sometimes surpass ground-truth supervision, achieving near-lossless weak-to-strong generalization. Moreover, trust functions enable an iterative weak-to-strong chain that compounds gains by training a student and reusing it as the next teacher, amplifying the gains. There are several mechanisms to which advantage of trust functions can be attributed.",
+    "authors": "Arda Uzunoglu, Alvin Zhang, Daniel Khashabi",
+    "publish_date": "2026-05-31",
+    "arxiv_url": "http://arxiv.org/abs/2606.01000",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 28,
+    "paper_id": "arxiv:2606.01000",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.09376": {
+    "arxiv_id": "2606.09376",
+    "title": "Precision Is Not Faithfulness: Coverage-Aware Evaluation of Grounded Generation with a Complete Oracle",
+    "abstract": "Reference-free faithfulness metrics verify each atomic claim a model makes against ground truth, and are increasingly used to evaluate grounded generation. We show they share a blind spot: they measure only precision -- are the stated claims supported? -- and therefore reward abstention, since a model can score near-perfect faithfulness by saying almost nothing. We make this measurable using Formula 1 telemetry, a domain where strategic ground truth is derived deterministically and, crucially, completely: for each decision we know the full set of facts that mattered. This completeness -- absent in open-domain faithfulness benchmarks -- lets us measure recall (coverage of the relevant facts) exactly, alongside precision. On a multilingual (EN/ES/PT) benchmark of 7,253 decision instances spanning 150 races, the most precise frontier model covers under half of the relevant facts and ranks last by F1, so requiring coverage reorders the systems; the same effect reappears in a second complete-oracle domain (NOAA weather forecasts). A prompt ablation shows the low coverage is not an under-prompting artifact: explicitly asking models to be thorough does not close the gap. We pair faithfulness with coverage into a single score, validate the metric (controlled perturbation; agreement across a model-free regex extractor and a cross-family LLM extractor, system-level Spearman 1.0), and give a verifier-guided generation method that improves precision and recall without references. We release the benchmark, structured annotations, metric, baselines, and an interactive demo.",
+    "authors": "Juan S. Santillana",
+    "publish_date": "2026-06-08",
+    "arxiv_url": "http://arxiv.org/abs/2606.09376",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 4,
+    "score": 26,
+    "paper_id": "arxiv:2606.09376",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.05597": {
+    "arxiv_id": "2606.05597",
+    "title": "AsyncWebRL: Efficient Multi-Step RL for Visual Web Agents",
+    "abstract": "Training vision-language web agents with multi-step RL is compute-intensive, with two dominant forms of inefficiency: idle GPUs in synchronous RL, and trajectories that use more steps and tokens than necessary. We present AsyncWebRL, which addresses both. On the system side, an asynchronous design overlaps rollout, gradient update, and policy refresh across iterations, paired with two web-agent-specific adaptations, namely an everlasting rollout pool and lightweight screenshot handling, that together deliver up to a $2.9\\times$ end-to-end training-throughput speedup over the previously fastest open synchronous pipeline (WebGym). On the algorithmic side, we identify the per-trajectory normalizer $1/|τ_i|$ in multi-step GRPO as the root cause of trajectory-level and token-level inefficiency: because failures are systematically longer than successes, it down-weights the negative gradient on failed tokens, so the policy keeps producing verbose memory schemas. Replacing $1/|τ_i|$ with a constant $1/k$ breaks this coupling, contracting trajectories while preserving aggregate success. Together, these contributions set a new open-source state of the art on the WebGym out-of-distribution test split (+5.8% relative over the 42.9% prior best), with the largest gains on the harder slices (+42% relative on Medium, +48% relative on Hard).",
+    "authors": "Hao Bai, Rui Yang, Chenlu Ye, Spencer Whitehead, Aviral Kumar, Tong Zhang",
+    "publish_date": "2026-06-04",
+    "arxiv_url": "http://arxiv.org/abs/2606.05597",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 5,
+    "score": 25,
+    "paper_id": "arxiv:2606.05597",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.00440": {
+    "arxiv_id": "2606.00440",
+    "title": "SDR: Set-Distance Rewards for Radiology Report Generation",
+    "abstract": "Reinforcement learning with verifiable rewards has rapidly advanced reasoning in vision--language models. However, for chest X-ray report generation, the standard rewards (i.e. exact-match accuracy and step-level processes) are incompatible because the reports consist of unordered and orthogonal findings, rather than a causal reasoning chain. We address this gap with a set-based view: each report is split into sentences and embedded by a frozen sentence transformer, yielding unordered embedding sets. We propose the use of set-to-set distances between generated and reference embeddings as continuous, permutation-invariant rewards. Across two datasets and three vision--language models (Qwen3-VL-2B/4B, Gemma3-4B), post-training with set-to-set distance based rewards via GRPO consistently outperforms supervised fine-tuning and exact-match GRPO on all headline metrics (BERTScore, RadGraph F1 and CheXbert F1 by average \\%6.80, \\%7.82 and \\%4.45 relative improvements respectively). The same set distances also enable test-time best-of-$N$ selection: scoring candidates by their distance to training-report embeddings outperforms random selection on our trained models as well as three closed-source LLMs (Mistral-Small, Gemini-2.5 Flash-Lite, GPT-4o-mini) with on average \\%16.4 relative improvement on BERTScore. Used as a streaming signal, they support a more efficient form of test-time scaling: pruning low-scoring candidates mid-generation reduces generated tokens by over 50\\% while preserving the Findings quality of full best-of-$N$ selection. Together these results establish set-distance rewards as a unified signal for both post-training and test-time scaling in chest X-ray report generation. Our code is publicly \\href{https://anonymous.4open.science/r/Set-Distance-Rewards-CXR-BFDA}{available}.",
+    "authors": "Halil Ibrahim Gulluk, Max Van Puyvelde, Wim Van Criekinge, Olivier Gevaert",
+    "publish_date": "2026-05-30",
+    "arxiv_url": "http://arxiv.org/abs/2606.00440",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 6,
+    "score": 24,
+    "paper_id": "arxiv:2606.00440",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.05405": {
+    "arxiv_id": "2606.05405",
+    "title": "Agents' Last Exam",
+    "abstract": "Recent AI systems have achieved strong results on a wide range of benchmarks, yet these gains have not translated into economically meaningful deployment across many professional domains. We argue that this gap is largely an evaluation problem: widely used benchmarks lack sustained performance measurement on real and economically valuable workflows. This paper introduces Agents' Last Exam (ALE), a benchmark designed to evaluate AI agents on long-horizon, economically valuable, real-world tasks with verifiable outcomes. Developed in collaboration with 250+ industry experts, ALE covers non-physical industries defined with reference to O*NET / SOC 2018 (the U.S. federal occupational taxonomy). It is organized around a task taxonomy with 55 subfields grouped into 13 industry clusters covering 1K+ tasks. Current results show that the hardest tier remains far from saturated: across mainstream harness and backbone configurations, the average full pass rate is 2.6%. ALE is designed as a living benchmark: its task pool grows continuously as new workflows and industries are onboarded. More broadly, ALE is intended not merely as another leaderboard, but as an instrument for closing the gap between benchmark success and GDP-relevant impact.",
+    "authors": "Yiyou Sun, Xinyang Han, Weichen Zhang, Yuanbo Pang, Tianyu Wang, Yuhan Cao, Yixiao Huang, Chris Duroiu, Haoyun Zhang, Jeffrey Lin, Weishu Zhang, Tyler Zeng, Ying Yan, Bo Liu, Hanson Wen, Mingyang Xu, Xiaoyuan Liu, Zimeng Chen, Weiyan Shi, Amanda Dsouza, Vincent Sunn Chen, Patrick Bryant, Carl Boettiger, Yamini Rangan, Bradley Rothenberg, Kyle Steinfeld, Arvind Rao, Tapio Schneider, Georgios Yannakakis, Laure Zanna, Kaan Ozbay, Ida Sim, Tarek Zohdi, George Em Karniadakis, Jack Gallant, Teresa Head-gordon, Yushan Li, Wenxi Deng, Tao Sun, Huiqi Wang, Zhun Wang, Justin Xu, Chris Yuhao Liu, Yafei Cheng, Rongwang Hu, Aras Bacho, Shengcao Cao, Zengyi Qin, Yixiong Chen, Hengduan Fan, Hao Liu, Lin Zeng, Shashank Muralidhar Bharadwaj, Litian Gong, Yingxuan Yang, Maojia Song, Ruheng Wang, Zongzheng Zhang, Honglin Bao, Shuo Lu, Jianhong Tu, Zhonghua Wang, Zheng Zhang, Zijiao Chen, yanqiong Jiang, Zhendong Li, Bohan Lyu, Chang Ma, Peiran Xu, Benran Zhang, Shangding Gu, Haoyue Hua, Haoyang Li, Wanzhe Liao, Chengzhi Liu, Junbo Peng, Haoran Sun, Zechen Xu, Bo Chen, Jiayi Cheng, Yi Jiang, Keying Kuang, Yuan Li, Youbang Pan, Ziyan Rao, Alexander Schubert, Yifan Shen, Vincent Siu, Xiatao Sun, Kangqi Zhang, Xiaopan Zhang, Yuchen Zhu, Ishaan Singh Chandok, Lei Ding, Jingxuan Fan, Andrew Glover, Jiaming Hu, Yiran Hu, Wenbo Huang, Zixin Jiang, Haoran Jin, Lukas Kim, Ming Liu, Yang Liu, Alireza Rafiei, Xuhuan Shen, Kunyang Sun, Sophia Sun, Ting Sun, Eric Wang, Yixin Wang, Hanwen Xing, Sihan Xu, Yuzheng Xu, Zhongxing Xu, Zhiling Yan, Boqin Yuan, Ruiqi Zhang, Yifan Zhang, Zibo Zhao,  Liana, Santanu Bosu Antu, Haoyue Bai, Carlo Bosio, Joseph Cavanagh, Patricia Cavazos-Rehg, Tianxing Chen, Xuewen Chen, Yipu Chen, Zhu Chenyu, Chen Dai, Stefano De Castro, Yunfu Deng, Kaustubh Dhole, Jiayuan Ding, Chenchen Du, Zhehang Du, Hao Fan, Run-ze Fan, Hengyu Fu, Shi Gu, Yifan Gu, Charlie Guo, Baihe Huang, Baixiang Huang, Rimika Jaiswal, Zhihan Jiang, Ran Jin, Erin Kasson, Xin Lan, Joseph Lee, Deren Lei, Chenyu Li, Daofeng Li, Haitao Li, Hongwei Li, Jingyan Li, Xiao Li, Yi Li, Yinsheng Li, Yuangang Li, Zhixu Li, Wenyu Liang, Longtai Liao, Kevin Qinghong Lin, AndyZeyi Liu, Che Liu, Jiaming Liu, Kaiyuan Liu, Xuan Liu, Pan Lu, Wenbo Lv, Yicheng Lv, Qiuyang Mang, Kyle Montgomery, Yuzhou Nie, Ruoxi Ning, Jorin Overwiening, Xu Pan, Layna Paraboschi, Core Francisco Park, Justin Purnomo, Swati Rajwal, Scott Rankin, Bixuan Ren, Yiren Rong, HaoYang Shang, Ventus Shaw, Fiona Shen, Jiawei Shen, Minqi Shi, Qiu Shi, Huaxiu Yao, Tianneng Shi, Jonah So, Vladislav Susoy, Hannah Szlyk, Haocheng Wang, Jialu Wang, Wei Wang, Xinyu Wang, Zehao Wang, Dowling Wong, Angela Wu, Dehao Wu, Fangyu Wu, Mengyuan \"Millie\" Wu, Yu Wu, Yuchen Wu, Yuhao Wu, Qingpo Wuwu, Weihang Xiao, Yongyi Xiong, Fan Xu, Ruiling Xu, Mingxuan Yan, Benjamin Yang, Jirong Yang, Sen Yang, Xiaoli Yang, Yushi Yang, Haoran Ye, Xiaohu Yu, Zhengming Yu, Chenlong Zhang, Chi Zhang, Hanning Zhang, Hanwen Zhang, Junge Zhang, Kunpeng Zhang, Song Zhang, Wenjin Zhang, Wenshuo Zhang, Ying Zhang, Yizhi Zhang, Brian Zhao, Qijian Zhao, Yimin Zhao, Yuhaohua Zheng, Liwei Zhou, Tianyue Zhou, Sichen Zhu, Siqi Zhu, Yan Zhu, Yishu Zhu, Jierui Zuo, Chonghao Cai, Helena Casademunt, Wenjia Chen, Benjamin Cheng, Nawen Deng, Rao Fu, Tianfu Fu, Yifan Han, Ren He, Zhenyu He, Qiao Jin, Lang Lang, Yuetai Li, Sylvia Liu, Lu Lu, Qing Lu, Subhabrata Mukherjee, Yunqi Ouyang, Yin Ren, Dawei Shi, Haoran Wu, Zhiyue Wu, Hannah Yao, Zhuoran Yi, Jenny Yu, Rhea Zhan, Hang Zhou, Blake Zhu, Junfan Zhu, Alan Yuille, Yang Liu, Russell Alan Poldrack, Jiachen Li, Zhenglu Li, Molei Tao, Jing Huang, Wenqi Shi, Costas Spanos, Lichao Sun, Chenguang Wang, Orson Xu, Zhen Dong, Hector Gomez, Aylin Caliskan, Ali Emami, Haimin Hu, Zhi Li, Lihui Liu, Murphy Niu, Yi Shao, Jianxin Sun, Mikko Tolonen, Ting Wang, Sanjiv Das, Yanjun Gao, Wenbo Guo, Erika J Schneider, Zhiyong Lu, Mark Mueller, Radha Poovendran, Somayeh Sojoudi, Dawn Song",
+    "publish_date": "2026-06-03",
+    "arxiv_url": "http://arxiv.org/abs/2606.05405",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 7,
+    "score": 23,
+    "paper_id": "arxiv:2606.05405",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.08242": {
+    "arxiv_id": "2606.08242",
+    "title": "Light-WAM: Efficient World Action Models with State-Fusion Action Decoding",
+    "abstract": "World Action Models (WAMs) extend robot policy learning by incorporating future prediction as an additional training objective, encouraging the policy to encode task-relevant temporal structure in its representations. Current WAMs often rely on large-scale generative architectures that incur high training costs and inference latency, making them difficult to deploy as efficient closed-loop policies. We propose Light-WAM, a lightweight World Action Model for efficient robot manipulation. Specifically, it is built with a compact video backbone and performs future-video supervision in a downsampled latent space, reducing the cost of video co-training while retaining its benefits for representation learning. For action prediction, Light-WAM introduces the StateFusionActionExpert, which reads adapted states from multiple backbone layers, fuses them through learned-query pooling, and directly predicts action chunks in a single forward pass. This design provides an efficient interface between video backbone representations and robot actions, avoiding the need for heavy generative action experts. Experiments demonstrate that Light-WAM maintains strong performance on LIBERO and achieves usable multi-task performance on RoboTwin 2.0, while using only 0.44B trainable parameters. It also achieves 72.03ms inference latency with 4.1GiB peak GPU memory and improved training throughput.",
+    "authors": "Ziang Li, Dongzhou Cheng, Yibin Wang, Shiyue Wang, Xiaoyang Xu, Lingxuan Weng, Juan Wang, Jiaqi Wang",
+    "publish_date": "2026-06-06",
+    "arxiv_url": "http://arxiv.org/abs/2606.08242",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 9,
+    "score": 21,
+    "paper_id": "arxiv:2606.08242",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.07098": {
+    "arxiv_id": "2606.07098",
+    "title": "SigmaScale: LLM Compression with SVD-based Low-Rank Decomposition and Learned Scaling Matrices",
+    "abstract": "We present SigmaScale, a method for learning auxiliary scaling matrices $S$ to aid truncated Singular Value Decomposition (SVD) based Large Language Model (LLM) compression. Instead of deriving scaling matrices analytically, SigmaScale optimizes two sets of vectors that define diagonal row and column scaling transformations under an activation-aware compression loss. We show that learned scaling lowers the effective intrinsic rank of weight matrices, as reflected by reductions in effective-rank entropy, and that this reduction is strongly correlated with compression loss. Experiments on Llama 3.1 8B Instruct and Qwen3-8B show that SigmaScale is competitive with closely related state-of-the-art SVD-based compression methods across perplexity and zero-shot benchmarks. By using learned activation-aware transformations, SigmaScale explores a more flexible route to low-rank LLM compression by adapting to the structure of individual model weights. The advantage observed in specific tasks makes our approach a valid option for applications requiring a reduced LLM-inference computing cost.",
+    "authors": "Ernests Lavrinovics, Marco Letizia, Roy Janco, Shai Segal, Johannes Bjerva, Maurizio Pierini",
+    "publish_date": "2026-06-05",
+    "arxiv_url": "http://arxiv.org/abs/2606.07098",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 11,
+    "score": 19,
+    "paper_id": "arxiv:2606.07098",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.07271": {
+    "arxiv_id": "2606.07271",
+    "title": "Where Rectified Flows Leak: Characterising Membership Signals Along the Interpolation Path",
+    "abstract": "Understanding what generative models retain from training data remains challenging, with implications for copyright and privacy. Beyond verbatim reproduction, models can encode subtler traces of their training data that never surface in their outputs yet remain exploitable. We study this regime for Rectified Flows, which are increasingly used in deployed generative systems. We analyse the interpolation path $X_λ= (1-λ)X_0 + λX_1$ that defines the Rectified Flow training. We show that a gap exists between the reconstruction of train and test data that follows a bell-shaped curve over $λ$, wich accumulates during training, while the validation metrics remain stable. The signal has a maximum whose location we derive in closed form under Gaussian assumptions. We validate these predictions on both audio and images and show that the bell-shaped structure is universal, while the peak prediction holds when our assumptions are satisfied. As a proof of concept, we exploit this specific $λ$-resolved structure to perform a Membership Inference Attack, distinguishing members of the training set from non-members.",
+    "authors": "Thomas Sesmat, Gabriel Meseguer-Brocal, Geoffroy Peeters",
+    "publish_date": "2026-06-05",
+    "arxiv_url": "http://arxiv.org/abs/2606.07271",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 13,
+    "score": 17,
+    "paper_id": "arxiv:2606.07271",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.08362": {
+    "arxiv_id": "2606.08362",
+    "title": "EmpiriGraph-Psy: A Dataset and LLM Pipeline for Extracting Empirical Relation Graphs from Psychology Abstracts",
+    "abstract": "Existing scientific relation extraction benchmarks mainly target domains such as computer science, where entities are tasks, methods, datasets, materials, or metrics. This leaves a gap in variable-oriented empirical fields such as psychology, where findings are expressed as relations among constructs, measurements, interventions, and outcomes. We introduce variable-centered empirical graph extraction, the task of mapping scientific abstracts to typed graphs whose nodes are normalized variables and whose edges represent empirical and hierarchical relations. To support this task, we construct EmpiriGraph-Psy, a benchmark of 210 psychology abstracts annotated by domain-trained annotators with normalized variables, concept hierarchies, empirical relation types, and validation states. We evaluate frontier and open-weight LLMs using both direct extraction and a staged graph-construction pipeline that separates variable extraction, normalization, hierarchy construction, evidence selection, relation extraction, and edge validation. The staged pipeline substantially outperforms direct extraction, with the best configuration achieving a macro-F1 of 0.74. Error analysis shows that moderation relations and concept hierarchies remain the most challenging cases, highlighting the difficulty of extracting higher-order empirical claims and implicit abstraction structure from scientific abstracts.",
+    "authors": "Danqin Zhao, Yicun Liu, Xingwei Tan, Thomas T. Hills",
+    "publish_date": "2026-06-06",
+    "arxiv_url": "http://arxiv.org/abs/2606.08362",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 14,
+    "score": 16,
+    "paper_id": "arxiv:2606.08362",
     "source": "arxiv",
     "venue": ""
   }
