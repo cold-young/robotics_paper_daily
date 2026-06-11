@@ -12752,27 +12752,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.01057": {
-    "arxiv_id": "2606.01057",
-    "title": "3DCodeBench: Benchmarking Agentic Procedural 3D Modeling Via Code",
-    "abstract": "Procedural 3D modeling through code is emerging as a versatile paradigm, offering deterministic, engine-ready, and precisely editable assets that neural 3D generators inherently lack. Authoring such procedural content, however, demands deep expertise in 3D software APIs, parametric design, and code-level geometric reasoning. In this paper, we propose 3DCodeBench, a systematic benchmark for evaluating vision-language model (VLM) agents for procedural 3D generation in 3D modeling software. Specifically, 3DCodeBench evaluates how effectively 12 advanced VLMs can serve as procedural 3D modelers by translating text and image references into procedural code for 3D modeling software. Recognizing that automated metrics may not fully capture the perceptual quality of 3D shapes, we build 3DCodeArena, a ranking platform based on pairwise human preferences over generated 3D outputs. From extensive evaluations and results, we observe that: (1) Failures mostly arise from API mismatches, while successful renders still suffer from disconnected or floating 3D geometric components. (2) Test-time scaling, such as higher thinking budgets and multi-turn refinement, improves performance overall. Our findings highlight a critical need for high-quality procedural coding data to advance commercial VLMs. Furthermore, effective procedural 3D modeling requires a robust execution environment that provides high-fidelity feedback for iterative refinement. We release 3DCodeBench, including the curated large-scale dataset of multimodal (text/image) prompts, procedural code, 3D object triplets, evaluation protocol, and the public 3DCodeArena platform as a foundational toolkit for exploring VLM-based procedural 3D modelers.",
-    "authors": "Yipeng Gao, Lei Shu, Genzhi Ye, Xi Xiong, Ameesh Makadia, Meiqi Guo, Laurent Itti, Jindong Chen",
-    "publish_date": "2026-05-31",
-    "arxiv_url": "http://arxiv.org/abs/2606.01057",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 27,
-    "score": 3,
-    "paper_id": "arxiv:2606.01057",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.01336": {
     "arxiv_id": "2606.01336",
     "title": "LongAttnComp: Cross-Family Context Compression for Long-Context Reasoning",
@@ -12815,27 +12794,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.01247": {
-    "arxiv_id": "2606.01247",
-    "title": "Where to Look: Can Foundation Models Reach a Target Viewpoint Through Active Exploration?",
-    "abstract": "Humans can reproduce the viewpoint specified by a target image through active head and body motion, yet spatial intelligence in foundation models has largely been studied as passive understanding of pre-collected observations. We introduce Target Viewpoint Reproduction (TVR) -- an active task where an agent adjusts its viewpoint in a 3D environment until its observation matches a given target image -- and TVRBench, an indoor-simulation benchmark spanning scene scale and target-view visual richness. TVR is far from solved: on the evaluation split, the strongest open-source and closed-source models reach only 7.8% and 12.0% success. Fine-grained analysis identifies two consistent bottlenecks: off-the-shelf models struggle with multi-turn visual history, and performance drops sharply when viewpoint reproduction requires body translation rather than in-place rotation, exposing a gap in mapping spatial discrepancies to embodied movement. To study reducing this gap, we build a unified TVR post-training framework covering expert-trajectory SFT, rationale-supervised CoT-SFT, offline Single-turn GRPO, and on-policy Multi-turn GRPO from live simulator rollouts. Visual-action SFT supplies the main gain, raising a 9B open-source model to 50.8% success; Multi-turn GRPO provides targeted multi-room refinement and reaches 51.4% overall, while CoT supervision and Single-turn GRPO degrade closed-loop performance. These results establish TVRBench as a testbed for measuring and training foundation models that actively perceive and act in 3D environments. Our code, data, and models are available at https://github.com/aim-uofa/TVRBench.",
-    "authors": "Liyang Li, Muzhi Zhu, Zhiyue Zhao, Hengyu Zhao, Ke Liu, Linhao Zhong, Hao Chen, Chunhua Shen",
-    "publish_date": "2026-05-31",
-    "arxiv_url": "http://arxiv.org/abs/2606.01247",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 34,
-    "score": 0,
-    "paper_id": "arxiv:2606.01247",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.02404": {
     "arxiv_id": "2606.02404",
     "title": "K-BrowseComp: A Web Browsing Agent Benchmark Grounded in Korean Contexts",
@@ -12875,69 +12833,6 @@
     "hf_rank": 36,
     "score": 0,
     "paper_id": "arxiv:2606.02437",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.01311": {
-    "arxiv_id": "2606.01311",
-    "title": "SkillAdaptor: Self-Adapting Skills for LLM Agents from Trajectories",
-    "abstract": "Large language model (LLM) agents increasingly rely on reusable external skills to solve long-horizon interactive tasks. Existing training-free skill adaptation pipelines usually update skills from full trajectories or session-level feedback, which makes failure attribution coarse and often produces unstable or overly broad revisions. We propose SkillAdaptor, a training-free step-level skill adaptation framework with explicit failure attribution, and it can plug into OpenClaw-class agent harnesses. Given a failed trajectory, SkillAdaptor identifies a first actionable fault step, links responsibility to candidate skills, and applies targeted updates under explicit acceptance checks while keeping the backbone frozen. We evaluate on WebShop, PinchBench, and Claw-Eval with Kimi-K2.5, GLM-5, and GPT-5.2. SkillAdaptor improves over no-skill and skill-adaptation baselines on all three suites, with the largest single-metric improvements of +1.5 points on PinchBench Avg Score%, +1.8 on Claw-Eval Avg Score, and +1.7 on WebShop success rate. These results indicate that step-level attribution supports more stable and auditable training-free skill maintenance\\footnote{The code will be released at https://github.com/zjunlp/SkillAdaptor.}.",
-    "authors": "Zhuoyun Yu, Xin Xie, Wuguannan Yao, Chenxi Wang, Lei Liang, Xiang Qi, Shumin Deng",
-    "publish_date": "2026-05-31",
-    "arxiv_url": "http://arxiv.org/abs/2606.01311",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 38,
-    "score": 0,
-    "paper_id": "arxiv:2606.01311",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.01132": {
-    "arxiv_id": "2606.01132",
-    "title": "HakushoBench: A Japanese Chart and Table VQA Benchmark from Governmental White Papers",
-    "abstract": "Understanding chart and table images is essential for applying vision-language models (VLMs) to real-world document understanding. While English benchmarks have advanced rapidly, non-English counterparts remain scarce, leaving it unclear whether this progress generalizes across languages. A key obstacle is the difficulty of collecting realistic and diverse non-English chart and table images at scale. To address this, we leverage governmental white papers as a scalable source for benchmark construction beyond English, as they contain naturally occurring charts and tables across diverse formats and domains and are freely accessible in many countries. As a first instantiation, we introduce HakushoBench, a challenging Japanese chart and table VQA benchmark built from 33 governmental white papers. HakushoBench contains 2,053 images spanning over 10 image types, with manually annotated QA pairs, designed to assess deep and holistic understanding of charts and tables, rather than local visual cues alone. Experiments across a broad range of VLMs demonstrate that HakushoBench remains challenging for open-weight models: the best open-weight model achieves only 58.6% accuracy, and a 34.9-point gap between open-weight and proprietary models highlights substantial room for improvement in complex chart and table understanding. We release our dataset and code.",
-    "authors": "Issa Sugiura, Shuhei Kurita, Yusuke Oda, Naoaki Okazaki",
-    "publish_date": "2026-05-31",
-    "arxiv_url": "http://arxiv.org/abs/2606.01132",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 39,
-    "score": 0,
-    "paper_id": "arxiv:2606.01132",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.00828": {
-    "arxiv_id": "2606.00828",
-    "title": "RoboStressBench: Benchmarking VLM Robustness to Physical Visual Stress in Embodied Scenes",
-    "abstract": "Vision-Language Models (VLMs) have shown strong visual understanding and are increasingly deployed in embodied AI systems, where reliable perception under real conditions is essential. However, existing benchmarks assess VLMs using clean images or isolated perturbations rather than stresses caused by physical scene formation. This design has two limitations: it covers only a narrow subset of everyday visual stresses, and some perturbations rarely appear in realistic embodied scenes. This gap raises a fundamental question: how can we define visual stress in a principled way that captures the diverse factors encountered in physical environments? To address this question, we formulate visual perception from an inverse graphics perspective and introduce RoboStressBench, a benchmark for evaluating VLM robustness to physical visual stress in embodied scenes. Inspired by the physical rendering equation, RoboStressBench decomposes visual stress into four physically grounded dimensions: Material (M), Viewpoint (V), Lighting (L), and Geometry (G). This design enables RoboStressBench to cover a broad range of visual stresses in real-world environments, while allowing controlled analysis of their effects on VLM capabilities such as visual recognition, reasoning, and planning. Through comprehensive evaluations of state-of-the-art VLMs, we identify stress-specific failure modes and reveal that different physical factors degrade different embodied capabilities, which are often obscured by aggregate accuracy. We further introduce a stress-aware agentic solver that detects visual stressors and invokes visual-editing skills before reasoning, improving robustness in high-stress scenarios. Overall, RoboStressBench provides a principled evaluation framework for diagnosing and improving VLM perception under real-world physical stress, supporting the development of more reliable embodied AI systems.",
-    "authors": "Leyi Wu, Yifan Zhao, Jinjie Zhang, Suzeyu Chen, Wosong Chen, Zhifei Chen, Tianshuo Xu, Qingchun He, Hongxin Hu, Haojian Huang, Yangkai Wei, Wenqian Li, Yinchuan Li, Ying-Cong Chen",
-    "publish_date": "2026-05-30",
-    "arxiv_url": "http://arxiv.org/abs/2606.00828",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 43,
-    "score": 0,
-    "paper_id": "arxiv:2606.00828",
     "source": "arxiv",
     "venue": ""
   },
@@ -15181,27 +15076,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.01166": {
-    "arxiv_id": "2606.01166",
-    "title": "BraveGuard: From Open-World Threats to Safer Computer-Use Agents",
-    "abstract": "Computer-use agents extend language models from text generation to sustained interaction with files, terminals, browsers, and external tools. This shift creates safety risks that are difficult to detect from isolated prompts or final responses, because harm often emerges only through multi-step execution traces whose individual actions appear locally benign. We introduce BraveGuard, a self-evolving defense framework for training guard models from open-world threat signals and realistic agent trajectories. BraveGuard mines recent research sources to identify emerging risks and attack patterns, instantiates them as executable computer-use tasks, collects agent rollouts, and derives trajectory-level supervision for guard model training. As new threats and validation failures appear, the pipeline can be repeated, yielding an adaptive defense loop rather than a static, benchmark-driven training process. We instantiate BraveGuard by training multiple guard backbones, including Qwen3-Guard and Llama-Guard variants, and evaluate the resulting guards on trajectory-level agent-safety benchmarks. BraveGuard consistently improves safety detection across computer-use trajectories. On AgentHazard, it substantially improves detection accuracy over off-the-shelf guard models, with accuracy increasing from 38.79% to 82.38% under the averaged guard-model setting. These results show that guard supervision grounded in open-world threat discovery and realistic agent execution can improve safety monitoring beyond fixed taxonomies and synthetic prompt-level data. BraveGuard offers a scalable path toward adaptive defenses for computer-use agents facing evolving real-world risks.",
-    "authors": "Yunhao Feng, Xiaohu Du, Xinhao Deng, Yifan Ding, Ming Wen, Yixu Wang, Yuxiang Xie, Baihui Zheng, Yingshui Tan, Yige Li, Yutao Wu, Kerui Cao, Wenke Huang, Yanming Guo, Xingjun Ma, Yu-Gang Jiang",
-    "publish_date": "2026-05-31",
-    "arxiv_url": "http://arxiv.org/abs/2606.01166",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 29,
-    "score": 1,
-    "paper_id": "arxiv:2606.01166",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.04527": {
     "arxiv_id": "2606.04527",
     "title": "Echo-Infinity: Learning Evolving Memory for Real-Time Infinite Video Generation",
@@ -15304,27 +15178,6 @@
     "hf_rank": 37,
     "score": 0,
     "paper_id": "arxiv:2606.04036",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.01286": {
-    "arxiv_id": "2606.01286",
-    "title": "BenchEvolver: Frontier Task Synthesis via Solution-Centric Evolution",
-    "abstract": "The rapid progress of frontier large language models has led to widespread benchmark saturation, limiting the ability of existing datasets to differentiate model capabilities or provide useful training signal. For instance, on LiveCodeBench, frontier models achieve over 99% Pass@1 on easy splits and exceed 90% Pass@1 on average across difficulty levels. Constructing new, challenging datasets typically requires substantial human effort, creating a bottleneck for progress. We introduce BenchEvolver, a solution-centric evolutionary framework that automatically transforms existing coding problems into harder variants. Rather than generating problems from scratch, BenchEvolver evolves reference solutions through structured transformations and derives corresponding statements and tests from the evolved solutions. This design grounds generation in executable semantics, enabling scalable construction of high-quality, diverse, and difficult tasks with verifiable correctness. Applying BenchEvolver to LiveCodeBench and SciCode, we obtain evolved tasks that are substantially harder while maintaining validity, reference correctness, and diversity. We further curate LiveCodeBench-Plus, a 91-problem benchmark combining evolved and difficult original LCB-v6 tasks, where frontier-model Pass@1 ranges from 27.5% to 62.6%, restoring clear discrimination among strong coding models. Importantly, evolved tasks remain challenging even for the model that generates them, enabling self-improvement. We further show that RL on evolved LCB tasks improves held-out coding performance: for gpt-oss-20b, seed+evolved training achieves +8.7 and +8.3 Pass@1 gains on LCB v6 Hard and LCB-Pro Easy, exceeding seed-only gains by 70.7% and 34.8%, respectively. Our results show that BenchEvolver can convert saturated benchmarks into frontier-level evaluation suites and reusable training signal.",
-    "authors": "Yangzhen Wu, Aaron J. Li, Wenjie Ma, Li Cao, Ziheng Zhou, Mert Cemri, Shu Liu, Yuran Xiu, Chenxiao Yan, Haikun Zhao, Bin Yu, Ion Stoica, Dawn Song",
-    "publish_date": "2026-05-31",
-    "arxiv_url": "http://arxiv.org/abs/2606.01286",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 38,
-    "score": 0,
-    "paper_id": "arxiv:2606.01286",
     "source": "arxiv",
     "venue": ""
   },
@@ -18332,7 +18185,7 @@
       "VLA",
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 20,
     "score": 0,
     "paper_id": "arxiv:2606.07512",
     "source": "arxiv",
@@ -19493,7 +19346,7 @@
       "Dexterous",
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 15,
     "score": 10,
     "paper_id": "arxiv:2606.09707",
     "source": "arxiv",
@@ -21508,30 +21361,9 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 45,
     "score": 29,
     "paper_id": "arxiv:2606.07723",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.01000": {
-    "arxiv_id": "2606.01000",
-    "title": "Trust Functions: Near-Lossless Weak-to-Strong Generalization by Learning When to Trust the Weak Teacher",
-    "abstract": "Weak-to-strong generalization studies how to improve a strong student using supervision from a weaker teacher when reliable labels are scarce. We view this primarily as a data selection problem, where the key challenge is to identify which weak labels are reliable enough to serve as a training signal. To address this, we introduce trust functions that assign each weak label a scalar trust score and use these scores to filter weak supervision. Across several domains, including world knowledge, quantitative reasoning, and strategy games, trust filtering yields students that match and sometimes surpass ground-truth supervision, achieving near-lossless weak-to-strong generalization. Moreover, trust functions enable an iterative weak-to-strong chain that compounds gains by training a student and reusing it as the next teacher, amplifying the gains. There are several mechanisms to which advantage of trust functions can be attributed.",
-    "authors": "Arda Uzunoglu, Alvin Zhang, Daniel Khashabi",
-    "publish_date": "2026-05-31",
-    "arxiv_url": "http://arxiv.org/abs/2606.01000",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 39,
-    "score": 28,
-    "paper_id": "arxiv:2606.01000",
     "source": "arxiv",
     "venue": ""
   },
@@ -21550,7 +21382,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 41,
+    "hf_rank": 48,
     "score": 26,
     "paper_id": "arxiv:2606.09376",
     "source": "arxiv",
@@ -21571,7 +21403,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 42,
+    "hf_rank": 49,
     "score": 25,
     "paper_id": "arxiv:2606.05597",
     "source": "arxiv",
@@ -21773,7 +21605,7 @@
     "matched_categories": [
       "Dexterous"
     ],
-    "hf_rank": 17,
+    "hf_rank": 24,
     "score": 23,
     "paper_id": "arxiv:2606.11129",
     "source": "arxiv",
@@ -22206,7 +22038,7 @@
     "matched_categories": [
       "Manipulation"
     ],
-    "hf_rank": 32,
+    "hf_rank": 39,
     "score": 10,
     "paper_id": "arxiv:2606.11087",
     "source": "arxiv",
@@ -22763,7 +22595,7 @@
     "matched_categories": [
       "Sim2Real"
     ],
-    "hf_rank": 34,
+    "hf_rank": 41,
     "score": 10,
     "paper_id": "arxiv:2606.09967",
     "source": "arxiv",
@@ -22807,7 +22639,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 9,
     "score": 29,
     "paper_id": "arxiv:2606.11187",
     "source": "arxiv",
@@ -22828,7 +22660,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 10,
     "score": 28,
     "paper_id": "arxiv:2606.10671",
     "source": "arxiv",
@@ -22849,7 +22681,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 11,
     "score": 27,
     "paper_id": "arxiv:2606.10029",
     "source": "arxiv",
@@ -22870,7 +22702,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 12,
     "score": 26,
     "paper_id": "arxiv:2606.10651",
     "source": "arxiv",
@@ -22891,7 +22723,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 13,
     "score": 25,
     "paper_id": "arxiv:2606.06098",
     "source": "arxiv",
@@ -22912,7 +22744,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 14,
     "score": 24,
     "paper_id": "arxiv:2606.09697",
     "source": "arxiv",
@@ -22933,7 +22765,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 16,
     "score": 22,
     "paper_id": "arxiv:2606.11131",
     "source": "arxiv",
@@ -22954,7 +22786,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 9,
+    "hf_rank": 17,
     "score": 21,
     "paper_id": "arxiv:2606.11032",
     "source": "arxiv",
@@ -22975,7 +22807,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 18,
     "score": 20,
     "paper_id": "arxiv:2606.10917",
     "source": "arxiv",
@@ -22996,7 +22828,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 19,
     "score": 19,
     "paper_id": "arxiv:2606.09131",
     "source": "arxiv",
@@ -23017,7 +22849,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 21,
     "score": 17,
     "paper_id": "arxiv:2606.05922",
     "source": "arxiv",
@@ -23038,7 +22870,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 22,
     "score": 16,
     "paper_id": "arxiv:2606.11180",
     "source": "arxiv",
@@ -23059,7 +22891,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 23,
     "score": 15,
     "paper_id": "arxiv:2606.11025",
     "source": "arxiv",
@@ -23101,7 +22933,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 25,
     "score": 12,
     "paper_id": "arxiv:2606.11052",
     "source": "arxiv",
@@ -23122,7 +22954,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 26,
     "score": 11,
     "paper_id": "arxiv:2606.09821",
     "source": "arxiv",
@@ -23143,7 +22975,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 27,
     "score": 10,
     "paper_id": "arxiv:2606.11182",
     "source": "arxiv",
@@ -23164,7 +22996,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 28,
     "score": 9,
     "paper_id": "arxiv:2606.09730",
     "source": "arxiv",
@@ -23185,7 +23017,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 29,
     "score": 8,
     "paper_id": "arxiv:2606.10572",
     "source": "arxiv",
@@ -23206,7 +23038,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 30,
     "score": 7,
     "paper_id": "arxiv:2606.07689",
     "source": "arxiv",
@@ -23227,7 +23059,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 31,
     "score": 6,
     "paper_id": "arxiv:2606.10646",
     "source": "arxiv",
@@ -23248,7 +23080,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 25,
+    "hf_rank": 32,
     "score": 5,
     "paper_id": "arxiv:2606.10740",
     "source": "arxiv",
@@ -23269,7 +23101,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 33,
     "score": 4,
     "paper_id": "arxiv:2606.09068",
     "source": "arxiv",
@@ -23290,7 +23122,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 34,
     "score": 3,
     "paper_id": "arxiv:2606.11188",
     "source": "arxiv",
@@ -23311,7 +23143,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 35,
     "score": 2,
     "paper_id": "arxiv:2606.09032",
     "source": "arxiv",
@@ -23332,7 +23164,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 36,
     "score": 1,
     "paper_id": "arxiv:2606.10650",
     "source": "arxiv",
@@ -23353,7 +23185,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 37,
     "score": 0,
     "paper_id": "arxiv:2606.10804",
     "source": "arxiv",
@@ -23374,7 +23206,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 38,
     "score": 0,
     "paper_id": "arxiv:2606.11042",
     "source": "arxiv",
@@ -23395,7 +23227,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 40,
     "score": 0,
     "paper_id": "arxiv:2606.09056",
     "source": "arxiv",
@@ -23416,7 +23248,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 42,
     "score": 0,
     "paper_id": "arxiv:2606.04391",
     "source": "arxiv",
@@ -23437,7 +23269,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 43,
     "score": 0,
     "paper_id": "arxiv:2606.10061",
     "source": "arxiv",
@@ -23458,9 +23290,177 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 44,
     "score": 0,
     "paper_id": "arxiv:2606.05304",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.10968": {
+    "arxiv_id": "2606.10968",
+    "title": "Beyond Uniform Token-Level Trust Region in LLM Reinforcement Learning",
+    "abstract": "Reinforcement learning with verifiable rewards (RLVR) has become standard for improving LLM reasoning. However, existing PPO-style trust-region mechanisms remain position-agnostic by enforcing uniform thresholds across all tokens independently. This pointwise treatment conflicts with autoregressive generation in two critical ways. First, uniform thresholds ignore autoregressive asymmetry. Early-stage deviations produce compounding sequence-level drift, causing static thresholds to under-regulate early divergence and excessively constrain late-stage exploration. Second, evaluating token-level divergence in isolation overlooks cumulative prefix drift, granting the same divergence allowance regardless of how far the conditioning history has already deviated from the rollout policy. To address this limitation, we propose CPPO (Cumulative Prefix-divergence Policy Optimization), a token-level masking rule that aligns updates with a finite-horizon policy-improvement bound via two coupled mechanisms. First, a position-weighted threshold imposes stricter limits at early positions whose effects persist longer, relaxing constraints for late-stage tokens. Second, a cumulative prefix budget tracks historical deviations, dynamically restricting further token-level deviation to prevent compounding errors along the prefix. Empirically, CPPO enhances training stability and significantly improves reasoning accuracy across various model scales.",
+    "authors": "Renjie Mao, Xiangxin Zhou, Lvfang Tao, Yixin Ding, Yu Shi, Yongguang Lin, Yuheng Wu, Honglin Zhu, Qian Qiu, Wenxi Zhu",
+    "publish_date": "2026-06-09",
+    "arxiv_url": "http://arxiv.org/abs/2606.10968",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2606.10968",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.08857": {
+    "arxiv_id": "2606.08857",
+    "title": "PaperMentor: A Human-Centered Multi-Agent Writing Tutor for AI Research Papers on Overleaf",
+    "abstract": "Expert writing feedback from experienced researchers is critical for early-career scholars to improve their manuscripts, yet high-quality feedback often remains scarce because reviewing research papers is labor-intensive. Emerging AI-powered writing assistants largely focus on grammar fixes or simulating peer review with final scores, yet they fall short of providing concrete, actionable suggestions that help students improve their papers during drafting. We present PaperMentor, a human-centered writing assistant system that delivers actionable suggestions as Overleaf-native inline comments while leaving the actual writing entirely to human authors. PaperMentor integrates an expert skill library carefully curated from established researchers' writing advice with 12 specialized agents covering different aspects of paper writing, such as formatting compliance, phrasing accuracy, and terminology consistency. In a user study (n=14), 90.6% of the generated comments were rated actionable and 67.5% were rated valid, significantly outperforming a GPT-5.2 baseline uswithout the skill library. We release PaperMentor as open source for public use. Our code is publicly available under the AGPL-3.0 license at https://github.com/jiarui-liu/overleaf",
+    "authors": "Jiarui Liu, Terry Jingchen Zhang, Ryan Faulkner, X. Angelo Huang, Vilém Zouhar, Dominik Glandorf, Isabel Dahlgren, Van Q. Truong, Rishit Dagli, Yuen Chen, Felix Leeb, Punya Syon Pandey, Yves Bicker, Suvajit Majumder, Wenyuan Jiang, Zeju Qiu, Sankalan Pal Chowdhury, Bernhard Schölkopf, Mona Diab, Zhijing Jin",
+    "publish_date": "2026-06-07",
+    "arxiv_url": "http://arxiv.org/abs/2606.08857",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 28,
+    "paper_id": "arxiv:2606.08857",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.08044": {
+    "arxiv_id": "2606.08044",
+    "title": "When Behavioral Safety Evaluation Fails: A Representation-Level Perspective",
+    "abstract": "Large Language Model (LLM) safety has often been evaluated at the behavior level, which provides limited evidence of internal robustness, as these evaluations target outputs rather than representation-level vulnerability under intervention. We formalize this discrepancy as the audit gap: the difference between behavioral safety and robustness under intervention. To study this gap, we construct dissociated models that preserve safe outward behavior while remaining vulnerable in the latent space. We introduce an intervention-based evaluation framework to test model robustness through soft interventions in parameter and latent spaces, including harmful fine-tuning and layer-wise latent perturbations. To formalize the evaluation, we propose the Latent Vulnerability Score (LVS) to measure how easily harmful behavior can be elicited by bounded latent perturbations. Using this evaluation framework, we show that behavioral safety metrics are insufficient measures of representation-level robustness across multiple safely and unsafely aligned state-of-the-art models. Notably, dissociated models show substantially elevated LVSs despite comparable refusal behavior under harmful intervention, with intermediate representations being the most sensitive to intervention. Our results suggest that behavioral safety evaluation alone provides an incomplete picture of model robustness, motivating representation-aware audits of latent vulnerability and observable behavior.",
+    "authors": "Enyi Jiang, Anders Gjølbye, Yibo Jacky Zhang, Sanmi Koyejo",
+    "publish_date": "2026-06-06",
+    "arxiv_url": "http://arxiv.org/abs/2606.08044",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 27,
+    "paper_id": "arxiv:2606.08044",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.06458": {
+    "arxiv_id": "2606.06458",
+    "title": "In-Context Multiple Instance Learning",
+    "abstract": "Multiple Instance Learning (MIL) addresses problems where supervision is available at the level of bags of instances and has been successfully applied in fields ranging from computational pathology to satellite imagery. Nevertheless, existing algorithms struggle in the low-label regime that characterizes many real-world applications. Flexible models overfit and rigid ones fail to adapt to the task at hand. We show that pretraining an in-context learner with a Perceiver-style architecture on synthetic data yields a model that can solve new tasks from a handful of labeled bags. At inference time, classification happens in a single forward pass and requires no gradient updates. We propose and investigate different synthetic data generators for bag-structured data and find that they capture complementary inductive biases. A model pretrained on a mixture of these generators inherits their per-task strengths and achieves the best average performance across twelve MIL benchmarks, outperforming supervised baselines that require task-specific training.",
+    "authors": "Alexander Möllers, Marvin Sextro, Julius Hense, Gabriel Dernbach, Klaus-Robert Müller",
+    "publish_date": "2026-06-04",
+    "arxiv_url": "http://arxiv.org/abs/2606.06458",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 4,
+    "score": 26,
+    "paper_id": "arxiv:2606.06458",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.10662": {
+    "arxiv_id": "2606.10662",
+    "title": "Decentralized Multi-Agent Systems with Shared Context",
+    "abstract": "Multi-agent systems (MAS) can scale large language model reasoning at test time by decomposing complex problems into parallel subtasks. However, most existing MAS rely on centralized orchestration, where a main agent assigns work, collects outputs, and merges results. As the number of subtasks grows, this controller becomes a communication and integration bottleneck. We propose Decentralized Language Models (DeLM), a MAS framework that decentralizes coordination through parallel agents, a shared verified context, and a task queue. Agents asynchronously claim subtasks, read accumulated progress, perform local reasoning, and write back compact verified updates. The shared context acts as a common communication substrate, enabling agents to build on one another's verified progress without routing every update through a central controller. Empirically, DeLM improves both software-engineering test-time scaling and long-context reasoning. On SWE-bench Verified, DeLM achieves the best performance across Avg.@1, Pass@2, and Pass@4, with gains of up to 10.5 percentage points over the strongest baseline, while reducing cost per task by roughly 50%. On LongBench-v2 Multi-Doc QA, DeLM achieves the highest average accuracy across four frontier model families, improving over the strongest baseline by up to 5.7 percentage points. The code is available on our project website at https://yuzhenmao.github.io/DeLM/.",
+    "authors": "Yuzhen Mao, Azalia Mirhoseini",
+    "publish_date": "2026-06-09",
+    "arxiv_url": "http://arxiv.org/abs/2606.10662",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 5,
+    "score": 25,
+    "paper_id": "arxiv:2606.10662",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.02540": {
+    "arxiv_id": "2606.02540",
+    "title": "SkillHarm: Lifecycle-Aware Skill-Based Attacks via Automated Construction",
+    "abstract": "Agent skills occupy a privileged position in the agent workflow, as agents are expected to implicitly follow and execute them, rendering third-party skills a vulnerable attack surface. Existing studies have revealed unsafe agent behaviors induced by skill-based attacks, but they primarily evaluate poisoned skills within a single task execution and enumerate harms through ad-hoc risk lists. To bridge these gaps, we introduce SkillHarm, a benchmark of skill-based attacks across the skill-use lifecycle, paired with a systematic taxonomy of skill-relevant risks. SkillHarm evaluates two attack scenarios: Fixed-Payload Poisoning (FPP), where a fixed poisoned skill package directly compromises any task session that invokes it, and Self-Mutating Poisoning (SMP), where an initially benign execution silently mutates persistent skill content, deferring harm until a subsequent reuse. It further defines 12 risk types based on the agent workflow component targeted by the harm: data pipelines, system environments, and agent autonomy. To instantiate these attacks at scale, we build AutoSkillHarm, an automated construction pipeline with coding agents driven by natural-language harnesses. The resulting benchmark contains 879 attack samples across 71 skills. Experiments show that current agents remain vulnerable with attack success rates up to 86.3% in FPP and 69.3% in SMP. Our analysis further reveals a latent risk: many apparent attack failures stem from the agent failing to engage with the poisoned file rather than genuine resistance, and current defenses still fail to reliably mitigate the threat.",
+    "authors": "Yuting Ning, Zhehao Zhang, Yash Kumar Lal, Boyu Gou, Junyi Li, Weitong Ruan, Chentao Ye, Rahul Gupta, Diyi Yang, Yu Su, Huan Sun",
+    "publish_date": "2026-06-01",
+    "arxiv_url": "http://arxiv.org/abs/2606.02540",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 6,
+    "score": 24,
+    "paper_id": "arxiv:2606.02540",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.07379": {
+    "arxiv_id": "2606.07379",
+    "title": "Do Coding Agents Deceive Us? Detecting and Preventing Cheating via Capped Evaluation with Randomized Tests",
+    "abstract": "A growing failure mode in agent evaluation and training is that models can achieve high evaluation scores by exploiting shortcuts instead of solving the intended task, producing deceptive performance. This makes evaluation scores unreliable as measures of true task-solving ability. We propose CapCode, a framework for constructing coding datasets with randomized tests whose best achievable non-cheating performance is deliberately capped below one. This capped-performance design gives evaluation scores a clearer interpretation: scores substantially above the cap are implausible and therefore provide evidence of cheating. To prevent cheating, we propose CapReward, a reward design based on the CapCode principle to discourage optimization beyond the cap. Experiments across multiple datasets show that CapCode detects cheating while preserving performance ranking of models, and CapReward reduces cheating behavior, yielding models that better follow the intended task specification.",
+    "authors": "Thanawat Lodkaew, Johannes Ackermann, Soichiro Nishimori, Nontawat Charoenphakdee, Masashi Sugiyama, Takashi Ishida",
+    "publish_date": "2026-06-05",
+    "arxiv_url": "http://arxiv.org/abs/2606.07379",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 7,
+    "score": 23,
+    "paper_id": "arxiv:2606.07379",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.11173": {
+    "arxiv_id": "2606.11173",
+    "title": "The Role of Feedback Alignment in Self-Distillation",
+    "abstract": "Conditioning a language model on additional context, such as feedback on a previous attempt, typically improves its response. Self-distillation trains the model to retain this improvement when the context is not present. The method works by matching the model's output distribution under two settings: a student that sees only the question, and a self-teacher that also sees the context. What the model learns therefore depends on what context the self-teacher receives, yet the design of this context remains largely unexplored.   We study context design for self-distillation by training a solver on feedback from a frozen critic. We compare three conditions: (i) a binary reward (GRPO), (ii) the reference solution, and (iii) a step-by-step critique aligned to the solver's reasoning trace.   Step-aligned critique yields the largest gains, outperforming GRPO by 16.11 points and reference-solution-conditioned self-distillation by 5.27 points (Avg@12). Per-token advantage analysis reveals why: step-aligned feedback targets only the tokens where reasoning fails, leaving correct behavior intact. Conditioning on the reference solution, by contrast, pressures the model to change its behavior at every token (even correct steps) because an alternative derivation inevitably differs in phrasing and approach. This suggests that structural alignment between feedback and the solver's reasoning is a key driver of self-distillation effectiveness.",
+    "authors": "Semih Kara, Oğuzhan Ersoy",
+    "publish_date": "2026-06-09",
+    "arxiv_url": "http://arxiv.org/abs/2606.11173",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 8,
+    "score": 22,
+    "paper_id": "arxiv:2606.11173",
     "source": "arxiv",
     "venue": ""
   }
