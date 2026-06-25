@@ -6960,86 +6960,11 @@
       "VLA"
     ],
     "matched_categories": [
-      "Dexterous",
-      "Manipulation",
       "VLA"
     ],
     "hf_rank": null,
     "score": 40,
     "paper_id": "arxiv:2606.09827",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09813": {
-    "arxiv_id": "2606.09813",
-    "title": "iMaC: Translating Actions into Motion and Contact Images for Embodied World Models",
-    "abstract": "Embodied world models have emerged as a pivotal paradigm for visual robotic decision-making and interactive environment simulation. However, conventional embodied frameworks rely on low-dimensional structured action vectors (e.g., joint angles and end-effector poses), which suffer from limited expressive capacity, poor generalization across diverse embodiments, and unnatural dynamic modeling for complex physical interactions. To address these limitations, this paper proposesiMac (Image as Action Control), a novel unified control paradigm that treats raw visual images as native action representations for embodied world models. Departing from traditional explicit kinematic action encoding, iMac formulates continuous visual manipulation as image-based action tokens, which inherently encapsulate spatial motion intentions, interactive geometric constraints and subtle physical dynamics. We construct a dual-branch embodied architecture consisting of an image-action encoder and a dynamic world predictor: the encoder compresses target-driven visual images into compact action embeddings, while the predictor learns environment transition rules conditioned on image actions to achieve high-fidelity future state prediction and closed-loop embodied control. Extensive experiments are conducted on public embodied manipulation benchmarks and real-world robotic scenarios. The results demonstrate that iMac outperforms vector-based action control baselines in prediction accuracy, task success rate and cross-scene generalization ability. Moreover, our image-action design eliminates the reliance on manually defined action spaces, realizing flexible and universal control for heterogeneous embodied agents. This work provides an innovative visual-action perspective for embodied world models, offering a simple yet effective paradigm for scalable robotic perception and manipulation.",
-    "authors": "Zhenyu Wu, Xiuwei Xu, Yukun Zhou, Yifan Li, Qiuping Deng, Xiaofeng Wang, Zheng Zhu, Bingyao Yu, Ziwei Wang, Jiwen Lu, Haibin Yan",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09813",
-    "project_url": "https://imac-wm.github.io/",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous",
-      "HF-Hot"
-    ],
-    "hf_rank": 50,
-    "score": 10,
-    "paper_id": "arxiv:2606.09813",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09811": {
-    "arxiv_id": "2606.09811",
-    "title": "AHA-WAM:Asynchronous Horizon-Adaptive World-Action Modeling with Observation-Guided Context Routing",
-    "abstract": "World-action models have emerged as a promising paradigm for robot manipulation, jointly modeling visual scene dynamics and actions to inject physical priors into policy learning. However, existing world-action models couple world prediction and action execution at the same temporal resolution, forcing the world branch to model near-term frame variations that are redundant and weakly informative. We posit that strictly binding world prediction and action execution to the same temporal rhythm may underutilize the potential of the video branch for embodied control. Therefore, we propose AHA-WAM, an Asynchronous Horizon-Adaptive World-Action Model built on a dual Diffusion Transformer (DiT) architecture that reorganizes world-action modeling around this temporal asymmetry. AHA-WAM instantiates the video DiT as a low-frequency world planner that maintains rolling key-value memory over past observations and exposes reusable layerwise latent context encoding long-horizon scene evolution, while a high-frequency action DiT executes short action chunks in closed loop by querying this context through layerwise joint attention. To support asynchronous execution, we introduce horizon-adaptive offset training and Observation-Guided Video-Context Routing (OVCR), which together let the action expert exploit long-horizon world context while remaining responsive to real-time execution state without rerunning the video DiT. Experiments on RoboTwin and real-world manipulation tasks show that AHA-WAM achieves state-of-the-art performance without any robot-data pretraining, attaining 92.80% average success on RoboTwin and 78.3% success across 4 real-world tasks, while reaching 24.17 Hz closed-loop control with a 4.59x speedup over Fast-WAM.",
-    "authors": "Jisong Cai, Long Ling, Shiwei Chu, Zhongshan Liu, Jiayue Kang, Zhixuan Liang, Wenjie Xu, Yinan Mao, Weinan Zhang, Xiaokang Yang, Ru Ying, Ran Zheng, Yao Mu",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09811",
-    "project_url": "https://serene-sivy.github.io/aha-wam/",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation",
-      "Robot Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous",
-      "Manipulation"
-    ],
-    "hf_rank": 42,
-    "score": 22,
-    "paper_id": "arxiv:2606.09811",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09798": {
-    "arxiv_id": "2606.09798",
-    "title": "SynManDex: Synthesizing Human-like Dexterous Grasps from Synthetic Human Pre-Grasps",
-    "abstract": "Human hand-object interactions encode functional intent, but direct transfer to robotic hands often fails under morphology, contact, and reachability constraints. We present SynManDex, a synthetic pipeline that uses generated human pre-grasps as affordance-aware proposals and resolves the final contacts with robot-native optimization. SynManDex samples object-conditioned digital human pre-grasps, retargets them to dexterous robotic hand poses, optimizes force-closure contacts on the target embodiment, and admits trajectories that pass checks from each step. The resulting keyframes support both grasp-and-lift demonstrations and various prehensile manipulation tasks such as tea pouring, photo taking, and flute playing, designed via VLM agents. As a result, SynManDex combines high grasp quality (86.4\\% grasp stability) with 4.67/5 human-likeness (93.4\\%). It achieves 80.7\\% successes in simulation and 25/30 (83.3\\%) real-robot successes when applied to a 36-DOF bimanual dexterous robotic platform.",
-    "authors": "Yanming Shao, Zanxin Chen, Wenwei Lin, Mingjie Zhou, Tianxing Chen, Xiaokang Yang, Yichen Chi, Yao Mu",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09798",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Bimanual",
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 20,
-    "paper_id": "arxiv:2606.09798",
     "source": "arxiv",
     "venue": ""
   },
@@ -7063,63 +6988,11 @@
       "tactile sensor"
     ],
     "matched_categories": [
-      "Dexterous",
-      "Manipulation",
       "Tactile"
     ],
     "hf_rank": null,
     "score": 60,
     "paper_id": "arxiv:2606.09777",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09758": {
-    "arxiv_id": "2606.09758",
-    "title": "Difference-Aware Retrieval Policies for Imitation Learning",
-    "abstract": "Parametric imitation learning via behavior cloning can suffer from poor generalization to out-of-distribution states due to compounding errors during deployment. We show that reusing the training data during inference via a semi-parametric retrieval-based imitation learning approach can alleviate this challenge. We present Difference-Aware Retrieval Policies for Imitation Learning (DARP), a semi-parametric retrieval-based imitation learning approach that addresses this limitation by reparameterizing the imitation learning problem in terms of local neighborhood structure rather than direct state-to-action mappings. Instead of learning a global policy, DARP trains a model to predict actions based on $k$-nearest neighbors from expert demonstrations, their corresponding actions, and the relative distance vectors between neighbor states and query states. DARP requires no additional assumptions beyond those made for standard behavior cloning -- it does not require additional data collection, online expert feedback, or task-specific knowledge. We demonstrate consistent performance improvements of 15-46% over standard behavior cloning across diverse domains, including continuous control and robotic manipulation, and across different representations, including high-dimensional visual features. Code and demos are available at https://weirdlabuw.github.io/darp-site/.",
-    "authors": "Quinn Pfeifer, Ethan Pronovost, Paarth Shah, Khimya Khetarpal, Siddhartha Srinivasa, Abhishek Gupta",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09758",
-    "project_url": "https://weirdlabuw.github.io/darp-site/",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation",
-      "Robotic Manipulation",
-      "Imitation Learning",
-      "behavior cloning"
-    ],
-    "matched_categories": [
-      "Dexterous",
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 40,
-    "paper_id": "arxiv:2606.09758",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09754": {
-    "arxiv_id": "2606.09754",
-    "title": "Human-Centred Risk Mitigation for AI-Mediated Information Manipulation: A SOCMINT Framework Based on Information Manipulation Sets",
-    "abstract": "AI-mediated information manipulation increasingly takes the form of social cyber attacks that target trust, attention, credibility, reputation, and decision-making rather than only technical infrastructures or isolated false contents. Existing defensive approaches often oscillate between incident-level analysis, which fragments campaigns into weak signals, and attribution-first analysis, which may delay mitigation until responsibility is established. This paper proposes a SOCMINT framework based on Information Manipulation Sets (IMS) as an intermediate operational unit between individual incidents and strategic attribution. Building on the VIGINUM/EEAS use of IMS in counter-FIMI analysis, the framework treats manipulation as a coherent process involving narratives, accounts, infrastructures, temporal patterns, cross-platform migration, synthetic amplification, and cognitive targeting. The proposed pipeline moves from signal detection and diagnostic triage to IMS hypothesis construction, confidence/severity assessment, mitigation selection, and iterative update. A compact scenario illustrates how IMS-based analysis captures what content-level and attribution-first approaches miss. The paper also proposes a tabletop evaluation protocol to assess decision quality, confidence calibration, and mitigation proportionality. The main implication is that human-centred risk mitigation requires not only better detection, but also structured reasoning under uncertainty, auditable decision-making, and safeguards against over-securitising legitimate dissent.",
-    "authors": "Antonio Scala",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09754",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.09754",
     "source": "arxiv",
     "venue": ""
   },
@@ -7141,8 +7014,6 @@
       "VLA"
     ],
     "matched_categories": [
-      "Dexterous",
-      "Manipulation",
       "VLA"
     ],
     "hf_rank": null,
@@ -7170,102 +7041,11 @@
       "OpenVLA"
     ],
     "matched_categories": [
-      "Dexterous",
-      "Manipulation",
       "VLA"
     ],
     "hf_rank": null,
     "score": 50,
     "paper_id": "arxiv:2606.09740",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09717": {
-    "arxiv_id": "2606.09717",
-    "title": "What Makes Synthetic Speech Sound Sarcastic? A Prosody-Controlled Perception Study",
-    "abstract": "Prosody plays a central role in sarcasm perception, yet previous studies have relied on naturally produced speech that lacks fine-grained control over individual acoustic dimensions. As prosodic cues co-vary in natural data, isolating their independent contributions remains challenging. We introduce a controlled framework using neural text-to-speech (TTS) with prompt-based prosodic conditioning to manipulate speech rate, pitch variation, and loudness. An orthogonal stimulus set was constructed to enable causal testing of prosodic cue effects. Human listeners rated sarcasm and naturalness, and their judgments were compared with predictions from a foundation model capable of processing audio input. Results show that loudness primarily drives human sarcasm perception, whereas the model assigns greater weight to speech rate, leading to distinct cue-weighting patterns. This study shows how controllable neural TTS enables investigation of prosodic cue weighting in speech perception.",
-    "authors": "Zhu Li, Shekhar Nayak, Matt Coler",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09717",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09717",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09707": {
-    "arxiv_id": "2606.09707",
-    "title": "BrainSurgery: Reproducible and Reliable Declarative Weight Manipulations for Model Editing and Upcycling",
-    "abstract": "As deep learning models scale, managing, inspecting, and modifying large checkpoints has become increasingly challenging. Researchers often need to alter model weights for layer restructuring, precision casting, low-rank factorization, and architectural debugging, yet these workflows often rely on fragile ad-hoc Python scripts. Here, we introduce BrainSurgery, a tool for robust and reproducible \"tensor surgery\" on neural network checkpoints, and provide a system demonstration covering four examples and three case studies from model upcycling to LoRA extraction. By abstracting storage formats and memory management, BrainSurgery executes complex transformations through declarative YAML plans. It supports structural modifications, mathematical transformations, and tensor reshaping through expressive regex and structural targeting, while built-in assertions validate tensor shapes, data types, and values to prevent silent errors. We envision that BrainSurgery will provide a strong foundation for future research through its reproducible and validated operations.",
-    "authors": "Gianluca Barmina, Annemette Broch Pirchert, Andrea Blasi Núñez, Lukas Galke Poech, Peter Schneider-Kamp",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09707",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous",
-      "HF-Hot"
-    ],
-    "hf_rank": 15,
-    "score": 10,
-    "paper_id": "arxiv:2606.09707",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09700": {
-    "arxiv_id": "2606.09700",
-    "title": "What the Eyes See, the LLMs Miss: Exploiting Human Perception for Adversarial Text Attacks",
-    "abstract": "Large language model (LLM)-powered content moderation systems have become a critical defense against harmful online content. However, these systems primarily operate on tokenized text and largely ignore the visual cues that humans naturally rely on when interpreting content. We show that this discrepancy creates a fundamental perceptual mismatch: content that is readily recognized as harmful by humans can become effectively invisible to automated moderation systems. To study this vulnerability, we introduce a class of Human-Perceptible Adversarial Attacks (HPAA), in which harmful expressions are embedded into otherwise benign text through visually salient typographic manipulations. Our key insight is that typographic features, including spacing, visual emphasis, and spatial arrangement, can be strategically combined to preserve human recognition of harmful content while substantially reducing machine detectability. Operating in black-box settings with only a small query budget, our attack automatically generates evasive content without requiring model access or gradient information. We evaluate the attack across multiple datasets and ten deployed moderation systems, including commercial APIs and state-of-the-art open-source guardrails. Results reveal a striking gap between human and machine perception: with only three detector queries, generated attacks achieve over 86\\% human recognition while maintaining detection rates below 1\\% across the evaluated systems. We further conduct ablation studies to identify the typographic factors driving successful evasion, analyze why current moderation architectures fail to capture these signals, and discuss practical defenses. Our findings expose a fundamental blind spot in today's LLM-based moderation ecosystem and highlight need for moderation systems that reason about content in a manner more consistent with human perceptual understanding.",
-    "authors": "Qin Yang, Lu Malloy, Joshua Lee, Xiaohan Chang, Meisam Mohammady, Doowon Kim, Yuan Hong",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09700",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.09700",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09640": {
-    "arxiv_id": "2606.09640",
-    "title": "Physics-Aware Sparse Learning and Selective Online Adaptation for Euler-Lagrange Robot Dynamics",
-    "abstract": "Accurate dynamics models are essential for model-based robotic control, yet nominal Euler--Lagrange models often become inaccurate in the presence of payload variation, unmodeled coupling, friction, aerodynamic effects, and changing operating conditions. Most learning-based correction methods improve prediction accuracy by introducing a single additive residual, but do not preserve the internal mechanical structure of Euler--Lagrange systems. This leads to models that do not preserve symmetry, positive-definiteness, or the coupling between inertia and velocity-dependent terms, which can result in physically inconsistent predictions and reduced reliability when embedded in model-based controllers. We propose a structure-preserving residual learning framework that decomposes model mismatch into an inertia correction, the corresponding induced Coriolis term, and a generalized-force residual. The mechanical component is learned under physical constraints, while the disturbance-sensitive component is represented through a sparse history-dependent latent interaction model and adapted online using Bayesian linear regression. This separation preserves key mechanical structure while restricting adaptation to the part of the dynamics most affected by changing conditions. Experiments across multiple robotic platforms, including mobile, aerial, and manipulator systems, show that the proposed method improves dynamics prediction and trajectory tracking under coupled and time-varying dynamics. These results highlight the value of combining structured residual modeling, compact latent interaction selection, and selective online adaptation for real-world model-based control.",
-    "authors": "Rishabh Dev Yadav, Samaksh Ujjawal, Sihao Sun, Spandan Roy, Wei Pan",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09640",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09640",
     "source": "arxiv",
     "venue": ""
   },
@@ -7288,61 +7068,12 @@
       "sim-to-real"
     ],
     "matched_categories": [
-      "Dexterous",
-      "Manipulation",
       "VLA",
       "Sim2Real"
     ],
     "hf_rank": null,
     "score": 50,
     "paper_id": "arxiv:2606.09630",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09615": {
-    "arxiv_id": "2606.09615",
-    "title": "DexPIE: Stable Dexterous Policy Improvement from Real-World Experience",
-    "abstract": "Dexterous manipulation presents substantial challenges for imitation learning due to its high-dimensional action space and complex contact-rich dynamics. Policies trained purely from demonstrations often suffer from compounding errors during deployment and require large amounts of expert data to achieve reliable performance. To move beyond the limitations of demonstration data, in this work, we propose DexPIE, a post-training framework for dexterous policy improvement from experience collected through real-world deployment. First, DexPIE enables effective exploration coverage through a dexterous-hand-adapted intervention system and multi-stage DAgger-style data collection across initial and intermediate task stages, providing reliable supervision for accurate policy evaluation. To reduce temporal noise between post-training rollouts and demonstration data, we introduce asynchronous inference in the relative action space, which better aligns rollout data with demonstrated behavior and allows the critic to learn a value function induced by a more consistent underlying policy. Finally, DexPIE improves the policy through conditioning on a continuous optimality indicator, allowing the policy to leverage the quality of data in a more fine-grained manner. Across three challenging real-world dexterous manipulation tasks, DexPIE achieves a 37% improvement in success rate over the demonstration-based reference policy, outperforming all baseline methods and demonstrating stronger robustness. The source code and dataset will be made publicly available.",
-    "authors": "Ruizhe Liao, Wenrui Chen, Liangji Zeng, Haoran Lin, Fan Yang, Kailun Yang, Yaonan Wang",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09615",
-    "project_url": "https://siiuuuuuu.github.io/DexPIE",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Dexterous Manipulation",
-      "Manipulation",
-      "Imitation Learning"
-    ],
-    "matched_categories": [
-      "Dexterous",
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 30,
-    "paper_id": "arxiv:2606.09615",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09589": {
-    "arxiv_id": "2606.09589",
-    "title": "I Was Scrolling and Then I Saw a Pregnant Strawberry",
-    "abstract": "AI minidramas (also known as fruit dramas) are short, algorithmically distributed generative AI video series featuring anthropomorphized characters that have recently emerged as a widespread phenomenon on social media platforms. This paper argues that despite their seemingly innocuous aesthetic, these videos reproduce deeply gendered narrative structures in which female characters are systematically associated with moral transgression, sexual betrayal, and reproductive capacity, and that several plots also encode the logic of racialization, i.e., the process by which visible bodily difference is morally loaded. Drawing on feminist film theory, critical race theory, and platform studies, it further argues that the generative AI aesthetic of these videos, characterized by softness, roundness, and visual cuteness, functions as a mechanism of aesthetic laundering, neutralizing the ideological weight of these narratives and enabling their circulation despite content moderation systems. This paper approaches these questions through personal observation and close reading, reflecting on the specific affordances of generative AI that make this phenomenon both possible and culturally consequential for the field of computational creativity.",
-    "authors": "Piera Riccio",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09589",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09589",
     "source": "arxiv",
     "venue": ""
   },
@@ -7364,57 +7095,11 @@
       "VLA"
     ],
     "matched_categories": [
-      "Dexterous",
-      "Manipulation",
       "VLA"
     ],
     "hf_rank": null,
     "score": 40,
     "paper_id": "arxiv:2606.09572",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09495": {
-    "arxiv_id": "2606.09495",
-    "title": "ContextShift: A Controlled Benchmark for Context Dependence in Object Detection",
-    "abstract": "Modern object detectors achieve strong performance on standard benchmarks, yet their robustness to contextual variation remains insufficiently understood. Prior evaluations largely rely on aggregate metrics such as AP on uncontrolled distribution shifts, which can obscure how performance degrades under context change. We introduce ContextShift, a controlled benchmark that systematically manipulates object--context relationships while preserving object appearance. Built on COCO 2017, it isolates context as an independent variable through geometric transformations and synthetic and natural background substitutions, including a continuous compatibility axis based on normalized pointwise mutual information (NPMI). Across diverse detector architectures, we observe a consistent degradation pattern: false negatives increase by up to 227% and prediction volume decreases by up to 44%, while false positives remain stable or decline. This suppression behavior is not captured by aggregate metrics such as AP, which can mask substantial recall loss and changes in prediction dynamics. Further analysis suggests that degradation is driven less by reduced confidence than by a reduced formation of valid detection candidates. Moreover, performance along the statistical compatibility axis is non-monotonic, peaking at intermediate NPMI and degrading toward both extremes, indicating that statistical co-occurrence does not correlate linearly with effective visual context. Finally, we show that context-aware augmentation improves robustness: every augmented variant outperforms the dataset-only baseline on both original and manipulated test images, partially recovering performance lost to prediction-suppression failures by exposing models to object--context decoupling during training.",
-    "authors": "Dan Zlotnikov, Alex Lazarovich, Ohad Ben-Shahar",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09495",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09495",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09457": {
-    "arxiv_id": "2606.09457",
-    "title": "$ω$-EVA: Envision, Verify, and Act with Latent Interactive World Models",
-    "abstract": "Embodied policies typically map current observations directly to actions, leaving candidate-action consequences implicit. World models provide predictive supervision, representations, or external simulation, but rarely let a policy inspect the imagined consequence of its own proposal before acting. We introduce $ω$-EVA, a latent interactive world model that realizes an Envision--Verify--Act loop for embodied action generation. Its three-stage framework learns action-conditioned latent dynamics, trains a language-conditioned flow policy on dynamics-aware visual representations, and feeds the policy's proposal back through the world model. A tri-branch refiner jointly reasons over the current state, proposal-conditioned future, and proposed action to produce the final action chunk. Because consequence reasoning remains in latent feature space, $ω$-EVA avoids generating future videos at inference. Evaluations across diverse single-arm, bimanual, long-horizon, and perturbed simulation settings show that the complete interaction pipeline consistently improves the proposal policy, while latent diagnostics indicate meaningful action-conditioned future structure. With approximately 1.2B parameters and no additional robot-data pretraining, $ω$-EVA demonstrates a compact and competitive performance--scale--data trade-off, making the world model an active action-feedback module rather than a passive predictor.",
-    "authors": "Zhenguo Sun, Yu Sun, Hande Huang, Alois Knoll",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09457",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Bimanual"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.09457",
     "source": "arxiv",
     "venue": ""
   },
@@ -7435,161 +7120,11 @@
       "tactile sensor"
     ],
     "matched_categories": [
-      "Dexterous",
       "Tactile"
     ],
     "hf_rank": null,
     "score": 30,
     "paper_id": "arxiv:2606.09451",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09823": {
-    "arxiv_id": "2606.09823",
-    "title": "Topological Triplons in the Pinwheel Valence Bond Solid on the Kagome Lattice",
-    "abstract": "We investigate the triplon excitations of the pinwheel valence-bond-solid phase on the deformed kagome lattice compound Rb2Cu3SnF12. Using bond-operator mean-field theory, we compute the triplon band structure, dynamical structure factor, Berry curvatures and the associated thermal Hall response. We show that the presence of Dzyaloshinskii-Moriya interactions and an external magnetic field are key for endowing triplon bands with nontrivial Chern numbers. We find good qualitative agreement of the low-energy dynamical structure factor with neutron-scattering experiments. An applied magnetic field can isolate the lowest triplon Chern band leading to a tunable thermal Hall conductivity for accessible temperature and field regimes. Our results establish the deformed kagome pinwheel valence-bond solid as a promising platform for topological triplon physics and for observing the associated thermal Hall effect.",
-    "authors": "Laura Calonge-Martínez, Peng Rao, Frédéric Mila, Johannes Knolle",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09823",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09823",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09819": {
-    "arxiv_id": "2606.09819",
-    "title": "Linear Ricci-Trace Deformations and Operational Equivalence in Rastall-Type Gravity",
-    "abstract": "We analyze a class of linear Ricci--trace deformations of Einstein's field equations in which the relative weight between the Ricci tensor and the scalar-curvature trace sector is modified while the metric remains the only gravitational field. The purpose of the analysis is structural rather than phenomenological: we classify the corresponding field-equation class, fix the parameter dictionaries commonly used in the Rastall-gravity literature, and identify which equivalence statements survive after Newtonian calibration. We show that two frequently used parametrizations, \\[ (1-ε)R_{μν}-\\frac12 g_{μν}R=κ_εT_{μν}, \\qquad R_{μν}-\\frac{1-λ}{2}g_{μν}R=κ_λT_{μν}, \\] are algebraically isomorphic only if both the deformation parameter and the bare gravitational coupling are transformed simultaneously. This algebraic equivalence, however, is not automatically an operational equivalence. Once the same laboratory stress tensor and the same measured Newton constant are fixed, the parameter map is a passive reparametrization only at the Einstein point. We further identify the \\(λ\\)-representative with the standard Rastall equation, clarify the role of the conserved effective source, derive the corresponding FLRW perfect-fluid sector, and discuss degenerate cases including vacuum, trace-free matter, radiation, dust, and the singular traceless point. Finally, we distinguish the Ricci--trace class from Unimodular Gravity (UG): although both involve the trace sector, UG follows from a restricted variational principle and produces the cosmological constant as an integration constant, rather than from an algebraic Ricci--trace deformation. The result is a compact operational classification of Rastall-type Ricci--trace models.",
-    "authors": "José A. C. Nogales, Karen-Luz Burgoa Rosso, Marcelo H. Alavarenga",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09819",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09819",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09799": {
-    "arxiv_id": "2606.09799",
-    "title": "A fast and consistent sharp-interface immersed boundary method for moving bodies of arbitrary thicknes",
-    "abstract": "Immersed boundary methods (IBMs) are widely used to simulate flows around complex geometries and moving bodies, but they often involve a trade-off between precision and computational efficiency. Eulerian formulations require special treatments for moving walls and may generate spurious force oscillations, whereas Lagrangian formulations can suffer from slip errors at the immersed surfaces. We propose a novel sharp-interface IBM for incompressible flows involving moving, deformable, and arbitrary-thickness bodies. The method combines a fast tagging algorithm, a two-sided Eulerian forcing strategy, and a consistent mass correction that reduces the splitting error of fractional-step schemes, while preserving the structure of the discrete Laplacian operator. This formulation retains the efficiency of direct Poisson solvers, thus avoiding the overhead of cut-cell, multigrid, and projection-based approaches. The method naturally handles moving boundaries, and yields small transpiration errors with second-order accuracy in the enforcement of the no-slip condition. Numerical tests using rigid, deformable, turbulent, and biologically inspired flows demonstrate the accuracy, robustness, and efficiency of the method, without compromising computational cost.",
-    "authors": "Giovanni Vagnoli, Martino Andrea Scarpolini, Roberto Verzicco, Francesco Viola",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09799",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Deformable"
-    ],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.09799",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09752": {
-    "arxiv_id": "2606.09752",
-    "title": "Double-Current Deformations of Two-Dimensional QFTs with Anomalies",
-    "abstract": "We construct the double-current deformations of two-dimensional quantum field theories whose partition functions have background gauge-field anomalies. Extending the path integral construction of [1], we couple the seed theory to dynamical gauge fields and compact Stueckelberg fields and insert parallel transport in the anomaly line bundle. The deformed partition function then has the same anomaly as the undeformed one.   For flat background gauge fields the Stueckelberg non-zero modes localize the dynamical gauge fields to flat connections, reducing the deformation to a finite-dimensional holonomy integral. We derive the integral kernel on the torus and its higher-genus generalization. For the compact boson, or equivalently the Abelian $U(1)$ WZW model, the kernel gives a Gaussian transform of the torus partition function: at zero background the spectrum is obtained by $k\\to K_λ$, while contact terms and spectral-flow data remain controlled by the original anomaly. We also formulate the anomaly-compatible non-Abelian and homogeneous Yang-Baxter generalization.",
-    "authors": "Zhengyuan Du",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09752",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09752",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09596": {
-    "arxiv_id": "2606.09596",
-    "title": "Lifting Effective-Field-Theory Degeneracies in Semileptonic Heavy-Baryon Decays",
-    "abstract": "Semileptonic heavy-baryon decays provide a sensitive probe of the helicity structure underlying possible lepton-flavor universality violation in $b\\to c\\,τ\\barν_τ$ transitions. We perform an effective-field-theory analysis of $Λ_b\\toΛ_cτ\\barν_τ$ and related baryonic modes using lattice-QCD helicity form factors with full covariance propagation. Propagating meson-compatible EFT solutions into the baryonic observable space$(R_{Λ_c},\\,P_τ,\\,A_{\\rm FB})$, we show that tau polarization provides the leading source of sensitivity for lifting EFT degeneracies that remain unresolved in current measurements of $R(D)$ and $R(D^\\ast)$. Vector-like and tensor-like solutions remain clustered near theStandard-Model prediction, whereas scalar-containing directions produce large polarization displacements and characteristic low-$q^2$ deformations of the normalized differential spectrum. A covariance-aware analysis demonstrates that baryonic polarization and differential observables provide complementary and independent information on the Lorentz structure of semileptonic new physics. $P_τ(Λ_b\\toΛ_cτ\\barν_τ)$ and the low-$q^2$ spectrum as particularly powerful probes for future tests of semitauonic flavor anomalies at LHCb and future flavor facilities.",
-    "authors": "Hindi Zouhair",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09596",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09596",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09530": {
-    "arxiv_id": "2606.09530",
-    "title": "Reduced integration with scaled boundary parametrization for virtual elements at finite strains",
-    "abstract": "This contribution presents an alternative stabilization technique for the virtual element method (VEM) based on reduced integration combined with a scaled boundary parametrization. To this end, a Taylor series expansion of the constitutive quantities with respect to the sectional center is carried out, enabling analytical integration of the weak form and reducing the need for integration points to only one per section. The accuracy of the proposed formulation is shown by several numerical examples, including a non-linear patch test. Different loading, e.g. compression under large deformations, and material conditions, such as hyperelastic anisotropy and elasto-plasticity, are considered. The biquadratic serendipity finite element formulation (Q2) and the low-order finite element formulation with hourglass stabilization (Q1STc+) are used for comparison. While the patch test was not fulfilled using higher order shape functions, the formulation led to good results and was able to capture the structure's response accurately. Furthermore, the formulation performed better when the physical element resembled the pre-assigned parent elements. The example of the asymmetrically notched specimen under elasto-plastic material behavior showed that the proposed formulation is able to capture inelasticities.",
-    "authors": "Njomza Pacolli, Bjorn Sauren, Jannick Kehls, Sven Klinkel, Stefanie Reese, Hagen Holthusen",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09530",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09530",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09515": {
-    "arxiv_id": "2606.09515",
-    "title": "Control problem in millimeter-wave adaptive optics",
-    "abstract": "Millimeter-wave Adaptive Optics (MAO) is essential for high-precision large-aperture submillimeter telescopes, requiring real-time compensation of wavefront errors by capturing them as spatially-discrete excess path length (EPL) fluctuations. This paper presents a unified control-theoretic framework for the EPL compensation problem. We first model the optical drive system as a plant where input commands relate to measured EPL through a first-order system representing mechanical response delay and a measurement matrix characterizing the actuator-to-sensor coupling. We mathematically formulate the control task as an asymptotic disturbance suppression problem, specifically targeting low-frequency disturbances such as thermal and wind-induced deformations. Second, we propose an Anti-Windup Proportional-Integral (AWPI) control law. By employing a decoupling strategy, the design is reduced to a loop-shaping problem for decoupled scalar sensitivity functions, ensuring both stability margins and asymptotic disturbance suppression of constant-valued disturbances. The anti-windup mechanism is integrated to maintain control continuity during the recovery from saturation, preventing undesirable discontinuities in the drive command. Third, we introduce practical operational tools: a manual focus adjustment scheme that allows observer intervention without interfering with the feedback loop, and the cosine similarity index to quantify the suppressibility of specific Zernike modes. Numerical simulations, incorporating a three-axis secondary reflector drive and five-point EPL measurements, demonstrate direction-dependent disturbance rejection and the suppression of von Karman-modeled wind turbulence, validating the effectiveness of the proposed framework for real-world telescope applications.",
-    "authors": "Ichiro Jikuya, Yoichi Tamura",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09515",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09515",
     "source": "arxiv",
     "venue": ""
   },
@@ -7609,78 +7144,11 @@
       "VLA"
     ],
     "matched_categories": [
-      "Manipulation",
       "VLA"
     ],
     "hf_rank": null,
     "score": 20,
     "paper_id": "arxiv:2606.09499",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09476": {
-    "arxiv_id": "2606.09476",
-    "title": "Goal Sets, Not Goal States: Queryable Robot Goals through Goal-Set Hindsight Relabeling",
-    "abstract": "Hindsight relabeling usually turns achieved future states into exact goals, which can overconstrain offline robot learning when task success depends only on a subset of the state. We propose Goal-Set Hindsight Relabeling (GS-HER), a predicate-level generalization of HER in which achieved states certify query-defined goal sets rather than singleton goal states. A binary query specifies which variables define success, making the goal predicate an inference-time input while leaving the underlying offline GCRL algorithm unchanged. Across OGBench tasks and five offline goal-conditioned learners, GS-HER improves performance when full-state goals are bottlenecked by nuisance dimensions and turns hindsight relabeling into a reusable goal interface: one checkpoint can answer multiple robot goal predicates without retraining.",
-    "authors": "Carlos Vélez García, Miguel Cazorla, Jorge Pomares",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09476",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Robot Learning"
-    ],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.09476",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09446": {
-    "arxiv_id": "2606.09446",
-    "title": "Leveraging Morphology for Historical Script Metrological Analysis",
-    "abstract": "Advances in handwritten text recognition have enabled large-scale transcription of historical documents, but still provide limited access to interpretable visual measurements for paleography, the study of historical scripts. In this paper, our main insight is that morphological script analysis, in particular the capacity to learn character prototypes from line-level transcriptions, enables the definition of scalable, meaningful, and stable paleographic measurements. More precisely, we leverage a transformer-based detection architecture together with a prototype-based line reconstruction module to learn prototypical characters and their occurrence, deformation, and positioning.   Our contributions are twofold. First, we introduce a deep architecture and learning methodology that enables efficient character modeling with only line-level transcription supervision, significantly improving over the Learnable Typewriter baseline and enabling accurate character bounding box prediction, unlocking its potential for paleographic measurements. Second, we introduce and demonstrate the paleographical relevance of automatic measurements enabled by our architecture for characters, bi-grams, and spaces between graphical units. For this demonstration, we extend the annotations of the codex Paris, BnF, fr. 2813, commissioned in the late fourteenth century by Charles V and copied by four hands, to 160 pages. We visualize our measurements over these pages, showing how they enable us not only to differentiate graphical profiles, but also to discover and analyze subtle variations. This case study outlines the scalability of our approach and its frugality in terms of required training data, since a single column of text is sufficient to compute our measurements on each of the 160 pages.   Data and code are publicly available at: https://malamatenia.github.io/morphology4metrology-analysis.",
-    "authors": "Malamatenia Vlachou Efstathiou, Raphaël Baena, Dominique Stutzmann, Mathieu Aubry",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09446",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Manipulation",
-      "HF-Hot"
-    ],
-    "hf_rank": 18,
-    "score": 0,
-    "paper_id": "arxiv:2606.09446",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.09445": {
-    "arxiv_id": "2606.09445",
-    "title": "A self-consistent EOB--Teukolsky framework for generic extreme mass-ratio inspirals",
-    "abstract": "We present a full-relativistic waveform model for extreme mass-ratio inspirals (EMRIs) by self-consistently combining the effective one-body (EOB) formalism with the Teukolsky equation. The model incorporates analytical, mass-ratio-informed geodesic solutions within a deformed Kerr metric into the source term of the Teukolsky equation, establishing a direct connection between finite-mass-ratio orbital dynamics and gravitational-wave emission. The resulting frequency-domain formulation is coupled to a high-performance solver for the homogeneous Teukolsky equation, enabling rapid evaluation of the tens of thousands of modes required for accurate EMRI waveforms. We generate waveforms and radiation fluxes for generic Kerr orbits and investigate the influence of finite-mass-ratio corrections beyond the test-particle limit. The results show that mass-ratio-dependent deformations produce measurable modifications to radiation fluxes, and accumulated waveform phases over observationally relevant timescales. Our framework provides a generic-orbit EOB--Teukolsky waveform model for future space-based GW data analysis.",
-    "authors": "Xingyu Zhong, Wen-Biao Han, Ye Jiang, Chen Zhang, Xaobo Zou",
-    "publish_date": "2026-06-08",
-    "arxiv_url": "http://arxiv.org/abs/2606.09445",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.09445",
     "source": "arxiv",
     "venue": ""
   },
@@ -16597,27 +16065,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.17081": {
-    "arxiv_id": "2606.17081",
-    "title": "The Price of Anarchy in Disaggregated Inference",
-    "abstract": "Disaggregated inference architectures physically separate prefill and decode phases onto distinct GPU pools, creating competing \"agents\" that share a fixed hardware budget. We provide, to our knowledge, the first formal game-theoretic analysis of this architecture, using NVIDIA Dynamo as a concrete case study. We model disaggregated serving as three coupled games: a two-player resource game between prefill and decode pools, a selfish caching game over the hierarchical KV cache, and a congestion game with positive externalities for request routing. We empirically validate the latter two; the P/D resource game is treated analytically (Section 9.2). We characterize how GPU saturation induces regime transitions that shift the game's payoff structure: below saturation, selfish behavior has bounded Price of Anarchy (PoA); at saturation, superlinear latency and cache externalities drive our empirical estimator PoA-hat (defined in Section 6.4) upward. Based on this analysis, we design an adaptive controller that detects saturation transitions in real time and adjusts routing parameters accordingly, shifting from cache-affinity exploitation to load-balanced congestion avoidance. We instantiate our framework on a 3-node NVIDIA B200 cluster running Dynamo with two models, Nemotron-4-340B (TP=8, full-node workers with cross-InfiniBand KV transfers) and Llama-3.1-70B (TP=4), and find the same three-regime PoA-hat structure with the same first post-knee grid point (C=128) on both models. Adaptive routing shifts each model to a better operating point. Our strongest result is on the 70B 1P/5D topology, where PoA-hat drops 3.1x (66.4 to 21.5) in the saturated phase at a 13% throughput cost. On the 70B 1P/2D, PoA-hat drops 2.2x and TTFT P99 drops 7.6x (see Section 8.5).",
-    "authors": "Athos Georgiou",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.17081",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 31,
-    "score": 29,
-    "paper_id": "arxiv:2606.17081",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.14885": {
     "arxiv_id": "2606.14885",
     "title": "Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion",
@@ -17098,27 +16545,6 @@
     "hf_rank": 28,
     "score": 28,
     "paper_id": "arxiv:2606.15134",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13929": {
-    "arxiv_id": "2606.13929",
-    "title": "Self-Evolving Visual Questioner",
-    "abstract": "Vision-language models (VLMs) are typically trained as passive answerers, while their ability to actively ask diverse, non-trivial, visual-centric and grounded questions remains underexplored. Existing visual questioners' performance is bottlenecked by the availability of high-quality training data or the cost of curating them. We show that a VLM can continuously improve itself as a visual questioner without any external supervision. We propose a self-evolving framework that uses a VLM itself as both a proposer and a filter to produce harder, more informative, and visual-centric questions, while maintaining their exploration diversity to avoid training collapse. These questions are then used to train the VLM in both questioner and answerer modes. To evaluate the questioner, we introduce an agentic protocol that assesses questions along perception, reasoning, and diversity dimensions. Experiments across various backbone VLMs show that our method substantially enhances the quality and substantially expands the difficulty boundary of autonomous question generation. Under the same budget, our self-supervision is more effective than training on the static source data. Moreover, the self-evolving questioner remains a competitive or even better answerer.",
-    "authors": "Yijun Liang, Hengguang Zhou, Ming Li, Lichen Li, Cho-Jui Hsieh, Tianyi Zhou",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13929",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 29,
-    "score": 27,
-    "paper_id": "arxiv:2606.13929",
     "source": "arxiv",
     "venue": ""
   },
@@ -18914,7 +18340,7 @@
       "Manipulation",
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 10,
     "score": 20,
     "paper_id": "arxiv:2606.20092",
     "source": "arxiv",
@@ -20096,27 +19522,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.13898": {
-    "arxiv_id": "2606.13898",
-    "title": "HiLo-Token: Input-Adaptive High-Low Frequency Token Compression for Efficient Image Editing",
-    "abstract": "Creative image editing tools, such as Photoshop's Remove or Generative Fill buttons, are central to everyday customer use and account for a major share of traffic in Photoshop and Lightroom. However, current generative AI models face significant latency challenges, which become even more pronounced when transitioning from convolution-based U-Nets to Diffusion Transformers (DiTs). In our evaluation on hundreds of representative image editing samples spanning a wide range of mask ratios, the DiT module alone accounts for an average of 73% of the total model latency, even after being distilled from 50 timesteps down to 8 timesteps. To tackle this challenge, we propose $\\textbf{HiLo-Token}$, an input-adaptive token compression framework that allocates more token budget to high-frequency, rich-context regions while assigning fewer tokens to low-frequency areas. Specifically, for the editing region specified by the user mask, we retain all tokens within a dilated mask to preserve strong locality and contextual relevance. Outside the editing region, we introduce a simple yet effective high-frequency token selection strategy based on spatial frequency to capture important local details, while using tokens from a 16x downsampled image to represent low-frequency components and preserve the blurry but global structure. Extensive experiments on production-level evaluation data validate the effectiveness of the proposed method, achieving 3.13x, 2.59x, and 1.67x DiT speedups on A100-80GB for image editing tasks across small, medium, and large mask ratio categories with average ratios of 6.38%, 15.92%, and 35.36%, respectively, without any regression in generation quality.",
-    "authors": "Haoran You, Yotam Nitzan, Lingzhi Zhang, Yifan Gong, Mang-Tik Chiu, Connelly Barnes, Yan Kang, Yuqian Zhou, Eli Shechtman, Sohrab Amirghodsi",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13898",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 49,
-    "score": 0,
-    "paper_id": "arxiv:2606.13898",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.19162": {
     "arxiv_id": "2606.19162",
     "title": "The Reward Was in Your Data All Along: Correcting Flow Matching with Discriminator-Guided RL",
@@ -20198,27 +19603,6 @@
     "hf_rank": 44,
     "score": 0,
     "paper_id": "arxiv:2606.18558",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.14024": {
-    "arxiv_id": "2606.14024",
-    "title": "ViT-Up: Faithful Feature Upsampling for Vision Transformers",
-    "abstract": "Vision Transformers (ViTs) have become a dominant architecture for visual representation learning, providing exceptionally strong and broadly reusable backbone features. However, ViTs are commonly operated on relatively small patch-token grids due to the quadratic cost of global self-attention, which creates a persistent bottleneck for dense prediction tasks such as semantic segmentation and depth estimation. This has motivated the development of task-agnostic feature upsamplers. While recent state-of-the-art methods produce visually sharp dense representations, their reliance on shallow image encoders for guided upsampling can introduce feature leakage, fragmentation, and blur. We introduce ViT-Up, an implicit feature upsampling framework that replaces external image guidance with layer-wise query construction from intermediate ViT hidden states. This enables feature prediction at arbitrary continuous image coordinates while preserving alignment with the backbone feature space. Experiments demonstrate that ViT-Up consistently outperforms state-of-the-art image-guided upsamplers across dense prediction and semantic correspondence. On DINOv3-S+, ViT-Up improves over prior methods by up to +2.07 mIoU on Cityscapes and +4.17 PCK@0.10 on SPair-71k. With the larger DINOv3-B backbone, these gains increase to +3.36 mIoU and +8.09 PCK@0.10, demonstrating that ViT-Up scales favorably with backbone capacity.",
-    "authors": "Krispin Wandel, Jingchuan Wang, Hesheng Wang",
-    "publish_date": "2026-06-12",
-    "arxiv_url": "http://arxiv.org/abs/2606.14024",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 45,
-    "score": 0,
-    "paper_id": "arxiv:2606.14024",
     "source": "arxiv",
     "venue": ""
   },
@@ -21186,7 +20570,7 @@
       "Manipulation",
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 32,
     "score": 10,
     "paper_id": "arxiv:2606.23688",
     "source": "arxiv",
@@ -22147,7 +21531,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 41,
+    "hf_rank": 47,
     "score": 29,
     "paper_id": "arxiv:2606.23514",
     "source": "arxiv",
@@ -22168,7 +21552,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 42,
+    "hf_rank": 48,
     "score": 28,
     "paper_id": "arxiv:2606.20945",
     "source": "arxiv",
@@ -22189,7 +21573,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 43,
+    "hf_rank": 49,
     "score": 27,
     "paper_id": "arxiv:2606.21627",
     "source": "arxiv",
@@ -22840,7 +22224,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 25,
+    "hf_rank": 31,
     "score": 29,
     "paper_id": "arxiv:2606.23496",
     "source": "arxiv",
@@ -22861,7 +22245,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 33,
     "score": 27,
     "paper_id": "arxiv:2606.19603",
     "source": "arxiv",
@@ -22882,7 +22266,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 34,
     "score": 26,
     "paper_id": "arxiv:2606.23152",
     "source": "arxiv",
@@ -22903,7 +22287,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 35,
     "score": 25,
     "paper_id": "arxiv:2606.22936",
     "source": "arxiv",
@@ -22924,7 +22308,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 36,
     "score": 24,
     "paper_id": "arxiv:2606.20891",
     "source": "arxiv",
@@ -22945,7 +22329,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 37,
     "score": 23,
     "paper_id": "arxiv:2606.22708",
     "source": "arxiv",
@@ -22966,7 +22350,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 38,
     "score": 22,
     "paper_id": "arxiv:2606.21884",
     "source": "arxiv",
@@ -22987,7 +22371,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 39,
     "score": 21,
     "paper_id": "arxiv:2606.23610",
     "source": "arxiv",
@@ -23008,7 +22392,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 40,
     "score": 20,
     "paper_id": "arxiv:2606.20980",
     "source": "arxiv",
@@ -23029,7 +22413,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 41,
     "score": 19,
     "paper_id": "arxiv:2606.21171",
     "source": "arxiv",
@@ -23050,7 +22434,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 43,
     "score": 17,
     "paper_id": "arxiv:2606.20886",
     "source": "arxiv",
@@ -23071,7 +22455,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 44,
     "score": 16,
     "paper_id": "arxiv:2606.23189",
     "source": "arxiv",
@@ -23092,7 +22476,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 39,
+    "hf_rank": 45,
     "score": 15,
     "paper_id": "arxiv:2606.16246",
     "source": "arxiv",
@@ -23113,7 +22497,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 40,
+    "hf_rank": 46,
     "score": 14,
     "paper_id": "arxiv:2606.21638",
     "source": "arxiv",
@@ -23132,12 +22516,14 @@
     "framework": "",
     "matched_keywords": [
       "Vision-Language-Action",
-      "VLA"
+      "VLA",
+      "Manipulation"
     ],
     "matched_categories": [
-      "VLA"
+      "VLA",
+      "Dexterous"
     ],
-    "hf_rank": null,
+    "hf_rank": 4,
     "score": 20,
     "paper_id": "arxiv:2606.24884",
     "source": "arxiv",
@@ -23201,10 +22587,14 @@
     "framework": "",
     "matched_keywords": [
       "Vision-Language-Action",
-      "VLA"
+      "VLA",
+      "Manipulation",
+      "Robot Manipulation"
     ],
     "matched_categories": [
-      "VLA"
+      "VLA",
+      "Dexterous",
+      "Manipulation"
     ],
     "hf_rank": null,
     "score": 20,
@@ -23225,10 +22615,12 @@
     "framework": "",
     "matched_keywords": [
       "Vision-Language-Action",
-      "VLA"
+      "VLA",
+      "Teleoperation"
     ],
     "matched_categories": [
-      "VLA"
+      "VLA",
+      "Manipulation"
     ],
     "hf_rank": null,
     "score": 20,
@@ -23381,10 +22773,13 @@
     "pwc_url": "",
     "framework": "",
     "matched_keywords": [
-      "tactile sensing"
+      "tactile sensing",
+      "Multi-fingered",
+      "Tactile sensing"
     ],
     "matched_categories": [
-      "Tactile"
+      "Tactile",
+      "Dexterous"
     ],
     "hf_rank": null,
     "score": 10,
@@ -23404,10 +22799,13 @@
     "pwc_url": "",
     "framework": "",
     "matched_keywords": [
-      "tactile sensor"
+      "tactile sensor",
+      "Dexterous Manipulation",
+      "Manipulation"
     ],
     "matched_categories": [
-      "Tactile"
+      "Tactile",
+      "Dexterous"
     ],
     "hf_rank": null,
     "score": 10,
@@ -23470,9 +22868,15 @@
     "code_url": "",
     "pwc_url": "",
     "framework": "",
-    "matched_keywords": [],
+    "matched_keywords": [
+      "Manipulation",
+      "Robot Manipulation",
+      "Deformable"
+    ],
     "matched_categories": [
-      "Sim2Real"
+      "Sim2Real",
+      "Dexterous",
+      "Manipulation"
     ],
     "hf_rank": null,
     "score": 0,
@@ -23605,10 +23009,12 @@
     "framework": "",
     "matched_keywords": [
       "whole-body control",
-      "loco-manipulation"
+      "loco-manipulation",
+      "Manipulation"
     ],
     "matched_categories": [
-      "LearnedControl"
+      "LearnedControl",
+      "Dexterous"
     ],
     "hf_rank": null,
     "score": 20,
@@ -23631,7 +23037,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 7,
     "score": 29,
     "paper_id": "arxiv:2606.24526",
     "source": "arxiv",
@@ -23652,7 +23058,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 8,
     "score": 28,
     "paper_id": "arxiv:2606.23997",
     "source": "arxiv",
@@ -23673,7 +23079,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 9,
     "score": 27,
     "paper_id": "arxiv:2606.20027",
     "source": "arxiv",
@@ -23694,7 +23100,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 12,
     "score": 24,
     "paper_id": "arxiv:2606.24876",
     "source": "arxiv",
@@ -23715,7 +23121,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 13,
     "score": 23,
     "paper_id": "arxiv:2606.23449",
     "source": "arxiv",
@@ -23736,7 +23142,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 14,
     "score": 22,
     "paper_id": "arxiv:2606.24428",
     "source": "arxiv",
@@ -23757,7 +23163,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 9,
+    "hf_rank": 15,
     "score": 21,
     "paper_id": "arxiv:2606.24231",
     "source": "arxiv",
@@ -23778,7 +23184,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 17,
     "score": 19,
     "paper_id": "arxiv:2606.24530",
     "source": "arxiv",
@@ -23799,7 +23205,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 18,
     "score": 18,
     "paper_id": "arxiv:2606.24667",
     "source": "arxiv",
@@ -23820,7 +23226,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 19,
     "score": 17,
     "paper_id": "arxiv:2606.22875",
     "source": "arxiv",
@@ -23841,7 +23247,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 20,
     "score": 16,
     "paper_id": "arxiv:2606.24112",
     "source": "arxiv",
@@ -23862,7 +23268,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 21,
     "score": 15,
     "paper_id": "arxiv:2606.24133",
     "source": "arxiv",
@@ -23883,7 +23289,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 22,
     "score": 14,
     "paper_id": "arxiv:2606.24548",
     "source": "arxiv",
@@ -23900,11 +23306,16 @@
     "code_url": "",
     "pwc_url": "",
     "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
+    "matched_keywords": [
+      "Manipulation",
+      "Robotic Manipulation"
     ],
-    "hf_rank": 17,
+    "matched_categories": [
+      "HF-Hot",
+      "Dexterous",
+      "Manipulation"
+    ],
+    "hf_rank": 23,
     "score": 13,
     "paper_id": "arxiv:2606.24742",
     "source": "arxiv",
@@ -23925,7 +23336,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 24,
     "score": 12,
     "paper_id": "arxiv:2606.24597",
     "source": "arxiv",
@@ -23946,7 +23357,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 25,
     "score": 11,
     "paper_id": "arxiv:2606.19926",
     "source": "arxiv",
@@ -23967,7 +23378,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 26,
     "score": 10,
     "paper_id": "arxiv:2606.24855",
     "source": "arxiv",
@@ -23988,7 +23399,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 27,
     "score": 9,
     "paper_id": "arxiv:2606.24874",
     "source": "arxiv",
@@ -24009,7 +23420,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 28,
     "score": 8,
     "paper_id": "arxiv:2606.19930",
     "source": "arxiv",
@@ -24030,7 +23441,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 29,
     "score": 7,
     "paper_id": "arxiv:2606.24888",
     "source": "arxiv",
@@ -24051,9 +23462,684 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 30,
     "score": 6,
     "paper_id": "arxiv:2606.18831",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24804": {
+    "arxiv_id": "2606.24804",
+    "title": "THz-induced phonon mode mixing and collective dynamics in a polar nanolattice",
+    "abstract": "Manipulating phonons through symmetry is a fundamental approach to alter the dynamic responses of materials. Most often new phases are sought through control of the unit-cell (e.g. via strain, doping, light, etc.). By comparison, there is vast potential to look beyond the unit-cell into higher-order architectures to control wave scattering and interference effects that remains less explored. We describe the THz-induced dynamics of an SrTiO$_{3}$ thin film with a nanoscale ordered interfacial dislocation network probed with 2- and 3-dimensional time-resolved x-ray diffraction and classical molecular dynamics simulations. We find that symmetry breaking at all scales is an effective approach to create a dynamical electric polarization and to control phonon mixing that generates previously unreported collective modes in the THz regime with circular vortex-like displacements. This work opens a new pathway to explore dynamical functional properties that can be extended to magnetic, electric, and ferroelectric systems by controlling the real-space topology via epitaxy.",
+    "authors": "Elizabeth Skoropata, Peter M. Derlet, Hiroki Ueda, Roman Mankowsky, Mathias Sander, Henrik T. Lemke, Rafael T. Winkler, Yunpei Deng, Milan Radovic, Matteo Savoini, Biaolong Liu, Martina Basini, Vladimir Ovuka, Steven L. Johnson, Marta D. Rossell, Urs Staub",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24804",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24804",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24694": {
+    "arxiv_id": "2606.24694",
+    "title": "SupplyNet: Supporting Visual Exploratory Learning in Supply Chain via Contextual Multi-Agent Simulation",
+    "abstract": "Simulation has long supported supply chain management instruction by letting learners observe network behavior and test decision strategies. Recent progress in LLM-driven agents opens new possibilities for richer, more adaptive simulations, but many existing systems still present abstract, opaque data that overwhelms learners and discourages active exploration. We introduce \\textit{SupplyNet}, a gamified visual simulation system built on a contextual graph-based LLM multi-agent framework that models interdependent supply chain dynamics and provides responsive feedback through tiered challenges. \\textit{SupplyNet} turns the simulation into a manipulable decision space by integrating an interactive network view of system state, a branching timeline for \"what-if\" exploration and comparison, and a task-oriented analysis console for structured performance breakdowns. Together, these visual components support counterfactual exploration, causal tracing, and comparative reasoning about outcomes. A user study suggests that \\textit{SupplyNet} increases engagement and supports users' perceived understanding of supply chain dynamics, highlighting the potential of pairing contextual multi-agent simulation with visualization to advance operational comprehension.",
+    "authors": "Yanjia Li, Kelcy Kexin Han, Tianrui Hu, Yi-Fan Cao, Huamin Qu, Sicheng Song",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24694",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24694",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24676": {
+    "arxiv_id": "2606.24676",
+    "title": "Nonlinear refractive index of warm rubidium vapor",
+    "abstract": "The potential to precisely control both the linear and nonlinear index of refraction through optical manipulation of the atomic states has recently pushed warm alkali vapors to the forefront of research in the field of quantum sensors, quantum memories, and quantum fluids of light. Rubidium (Rb) vapor in centimeter-scale glass cells or millimeter-scale MEMS cells has proven to be a very promising platform for these applications, yet only a handful of research works have been dedicated to the investigation of the (non)linear refractive index of Rb vapor. We present results of theoretical calculations of the (non)linear refractive index of warm Rb vapor, based on the optical Bloch equations for 6-level Rb atoms interacting with a probe laser. They are compared to the experimental results obtained using an interferometric technique, showing excellent quantitative agreement. A Kerr nonlinear refractive index $n_2$ of up to $10^{-4}$ cm$^2$/W is obtained. Python scripts for all theoretical calculations presented in this work are provided, including the refractive index calculation, that can readily be used in practical implementations for simulating the (non)linear refractive index of Rb vapor including the effects of Doppler broadening, transit time broadening, pressure broadening, saturation, optical pumping, and spin-exchange collisions.",
+    "authors": "L. Kardum, G. Premec, N. Šantić, D. Aumiler",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24676",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.24676",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24639": {
+    "arxiv_id": "2606.24639",
+    "title": "Inverse designed photonic crystal waveguides for pulsed operation: dispersion, losses, and controlled light-matter interactions",
+    "abstract": "Photonic crystal waveguides (PCWs) are a powerful platform for optical technologies because they can spatially confine light on sub-wavelength scales and manipulate the group velocity of propagation modes, both of which enhance light-matter interactions. Many applications in photonics require a large bandwidth of low-loss and constant-velocity slow light, a significant challenge for previous dispersion and Bloch mode engineering techniques. By combining inverse design with an efficient mode solver and physics based formulas, we reduce the computational time of PCW designs by more than 100 times, allowing for the realization of PCWs with up to an order of magnitude increase in bandwidth and up to 4 times decrease in loss. We then explore the trade-offs between bandwidth, disorder-induce loss, group index, and dispersion. As examples, we apply this approach to two active and practical areas of research for PCWs design: broadband, position-tolerant Purcell enhancement, and compact phase shifters for optical communications. Our results significantly improve state-of-the-art PCW designs and provide a general method to optimize PCWs integrated technologies.",
+    "authors": "Dominic Thompson, Stephen Hughes, Nir Rotenberg",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24639",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24639",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24633": {
+    "arxiv_id": "2606.24633",
+    "title": "Beyond Monotonic Progress: Retry-Supervised Value Learning for Robot Imitation",
+    "abstract": "Human demonstrations for robot imitation learning often contain mistakes and corrective behaviors, such as imprecise grasps, object misalignment, unstable contact, and repeated attempts. While these segments are commonly treated as noisy or suboptimal data, they provide valuable evidence about when execution deviates from a desirable path and how task feasibility can be restored. However, existing reward and value models often rely on monotonic progress assumptions, which capture coarse task advancement but may overlook local execution errors and corrective behaviors in imperfect demonstrations. In this work, we propose ReTVL (ReTry-Supervised Value Learning), a framework for learning mistake-sensitive value functions from mixed-quality robot demonstrations by leveraging retry events as sparse supervision. ReTVL captures the local degradation-and-recovery structure around mistakes by combining global progress calibration with local pairwise preference learning induced by sparsely annotated retry keypoints. The learned value model is then used to reweight demonstration chunks for downstream behavior cloning, reducing the influence of harmful execution errors while preserving useful corrective behaviors. Experiments on real-robot manipulation tasks show that ReTVL produces more fine-grained value estimates than progress-based baselines and improves imitation learning from imperfect demonstrations.",
+    "authors": "Xinyao Qin, Junjie Lu, Kaixin Wang, Chuheng Zhang, Sinjae Kang, Kimin Lee, Min Xu, Bin Liang, Jun Yang, Li Zhao",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24633",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation",
+      "Robot Manipulation",
+      "Imitation Learning",
+      "behavior cloning"
+    ],
+    "matched_categories": [
+      "Dexterous",
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 40,
+    "paper_id": "arxiv:2606.24633",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24629": {
+    "arxiv_id": "2606.24629",
+    "title": "Human-Robot Shared Control for Humanized End-Effector Teleoperation",
+    "abstract": "Recent advances in robotics have enabled robots to operate in shared human environments, emphasizing the importance of effective human robot interaction HRI. Prior studies indicate that anthropomorphism, defined as the incorporation of human like features into robotic systems, facilitates more natural interaction and enhances both task performance and user experience. In robotic arm teleoperation, however, user controlled motions often deviate from human like kinematic characteristics due to intrinsic limitations of teleoperation systems. In this work, we propose a real time framework that generates human like end effector trajectories based on the two thirds power law of voluntary human hand movements, while preserving the operators intended control inputs. The proposed approach is validated through real world experiments conducted on a 6 degree of freedom Dobot CR10 robotic arm. Quantitative analysis demonstrates that the generated trajectories exhibit significantly stronger adherence to human like kinematic profiles compared to conventional teleoperation, with the estimated beta coefficient moving 39.7% closer on average to the theoretical value of 1/3. Furthermore, the method achieves an approximate 34% improvement in motion smoothness, measured by RMS torque rate reduction, with 80% of evaluated motion patterns showing statistically significant improvements while maintaining comparable task completion times.",
+    "authors": "Batool Ibrahim, Imad H. Elhajj, Daniel Asmar, Rawan El Hakim",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24629",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Teleoperation"
+    ],
+    "matched_categories": [
+      "Dexterous",
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.24629",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24628": {
+    "arxiv_id": "2606.24628",
+    "title": "ArtiTwinSplat: Interactable Digital Twin Reconstruction via Gaussian Splatting from RGB-D videos",
+    "abstract": "Deploying robots in unstructured real-world environments needs accurate, interactive models of the objects. Constructing these models at scale remains a critical bottleneck for robotic system integration. We present ArtiTwinSplat, a framework that automatically constructs articulated, photo-realistic digital twins of objects directly from RGB-D videos, requiring no CAD models, simulation assets, or manual annotations. Our method is built on 3D Gaussian Splatting that preserve geometric fidelity and photometric realism, coupled with an unsupervised articulation discovery pipeline that recovers part structure and joint kinematics from observed motion alone. With tracking and optimization stages our method provides stable, queryable digital twins that support real-time rendering, viewpoint control, and interactive manipulation. Unlike prior methods confined to simulation, ArtiTwinSplat operates directly on real-world observations and produces twins that are immediately usable by downstream robot planning and learning systems. This method offers a practical, scalable pathway toward digital twin construction, lowering the integration barrier for articulated object manipulation in embodied AI and human-robot collaboration contexts.",
+    "authors": "Pranjal Mishra, René Zurbrügg, Max Wilder-Smith, Marco Hutter, Marc Pollefeys, Zuria Bauer, Hermann Blum",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24628",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.24628",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24538": {
+    "arxiv_id": "2606.24538",
+    "title": "ForensicsTok: Forensics-Guided Tokenized Modeling for Image Tampering Localization",
+    "abstract": "Multi-modal Large Language Models (MLLMs) offer powerful reasoning for forensic tasks, yet existing approaches utilizing exogenous segmentation decoders often suffer from suboptimal localization. The reliance on stitched pipelines introduces information bottlenecks during backpropagation, which dilutes spatial signals and is limited by semantic priors of the segmentor. To address these limitations, we propose ForensicsTok, which reformulates image manipulation localization as an autoregressive sequence generation task. ForensicsTok directly generates spatially grounded token sequences, enabling precise mask prediction without intermediary supervision. Specifically, we introduce a Token Splatting Decoder (TSD) to map tokens to binary masks via codebook-aware code smoothing, which mitigates sharp gradients from deterministic detokenizers. Furthermore, to capture diverse tampering clues, we propose a Hierarchical Expert Fusion (HEF) module that injects multi-scale features from a forensic expert model. This unified architecture effectively compensates for the lack of forensic priors in standard MLLMs. Extensive experiments on six benchmarks show that ForensicsTok substantially improves over existing MLLM-based baselines and slightly improves over strong forensic expert baselines, while exhibiting stronger robustness to perturbations.",
+    "authors": "Lei Xu, Haowei Wang, Shen Chen, Taiping Yao, Bin Li, Changsheng Chen",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24538",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.24538",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24514": {
+    "arxiv_id": "2606.24514",
+    "title": "Exact Evaluation of Probabilistic Programs with Cylindrical Algebraic Decomposition",
+    "abstract": "We present a method for computing the exact output distribution of small programs with random inputs. Specifically, we are interested in inline programs manipulating sensor data such as \\eg GPS or inertial measurement sensors whose inputs have a known or well-modelled distribution. These programs typically only include relatively few variables, arithmetic operations, square roots and if-else statements. This small syntax allows us to recast the problem of computing the exact output distribution as a cylindrical algebraic decomposition problem followed by symbolic and/or numerical integration. We present this method in detail and show with two prototypes that it can successfully be applied to benchmarks from the literature on floating-point arithmetic and small programs from open-source sensor libraries.",
+    "authors": "Fredrik Dahlqvist, Mohamed Hamza Bandukara, Niki Omidvari",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24514",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24514",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24498": {
+    "arxiv_id": "2606.24498",
+    "title": "VistaRef: Boosting Visual Spatial Orientation Awareness for Pointing-to-Object Detection",
+    "abstract": "Grounding deictic gestures in natural images is fundamental to AR and human-robot collaboration, providing a basis for seamless spatial interaction. While Transformer-based visual models have achieved significant progress in general object detection, their global attention mechanisms often neglect micro-geometric relationships, degrading orientation accuracy. In pointing tasks, this deficiency manifests as an inability to accurately capture the pointing ray implied by finger poses, which results in pointing drift and localization ambiguity when dealing with distant or densely packed objects. To address this, we propose VistaRef, a framework designed to explicitly enhance spatial orientation awareness. First, we develop the Local Hand Entity Modeling (LHEM) module, which incorporates hand-pose embeddings to strengthen the model's capability to capture subtle finger deviations. Second, drawing inspiration from multi-view geometry, we construct the Geometric Ray Modeling (GRM) module to transform implicit orientation information into explicit spatial geometric features, guiding feature aggregation and deep fusion via attention mechanisms. Furthermore, we introduce a novel Orientation-Consistent Alignment Loss (OCAL) to synergistically supervise hand presence and pointing consistency, ensuring that all architectural improvements collectively serve the core objective of spatial localization. Experimental results demonstrate that VistaRef significantly outperforms the baseline, achieving a 14-point absolute gain in grounding accuracy. Qualitative analysis further confirms that VistaRef effectively models the geometric correlation from hand to target, bridging the spatial perception gap inherent in traditional Transformers for complex scenarios. Code: https://github.com/lingli1724/VistaRef.",
+    "authors": "Ling Li, Zhizhen Cai, Xinkun Wu, Ziyu Zhu, Jiaqing Lyu, Bowen Liu, Zhidong Deng",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24498",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24498",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24496": {
+    "arxiv_id": "2606.24496",
+    "title": "Red-Teaming the Agentic Red-Team",
+    "abstract": "The use of agentic systems to perform offensive security operations has moved from a theoretical possibility to a commoditized capability. However, while the community has focused on creating more and more capable agents, less attention has been allocated to assessing the security of those systems.   In this work, we present the first in-depth security analysis of the most widely used agentic systems for offensive security operations. We show that most of these tools share common design flaws that enable an active adversary to exfiltrate API keys, establish persistent footholds, and fully compromise the operator's machine, even when the agent operates inside a sandboxed container. To support our analysis, we introduce a full cyber kill chain for such agentic systems, capturing the progression from initial LLM manipulation to lateral movement, persistence, guardrail bypass, and sandbox escape.   Building on our security analysis, we derive a robust architecture for agentic offensive-security tools and propose actionable, broadly applicable design principles that mitigate the disclosed attack paths at the architectural level.",
+    "authors": "Dario Pasquini, Michal Bazyli, Taras Fedynyshyn, Artem Sorokin",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24496",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.24496",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24494": {
+    "arxiv_id": "2606.24494",
+    "title": "Magnetoelectric flat band induced by a $\\sqrt{3}\\times\\sqrt{3}$ charge density wave in monolayer CrSe$_2$",
+    "abstract": "We investigate the electronic and magnetic properties of the polar $\\sqrt{3}\\times\\sqrt{3}$ charge-density-wave (CDW) phase of CrSe$_2$ using ab initio calculations. The CDW introduces a polar distortion out of the van der Waals plane that couples to the spin-polarized Cr d states resulting in a remarkably flat electronic band exactly at the Fermi level. We provide a microscopic understanding of the origin of the flat band by analyzing in detail the structural reconstruction, the effects of orbital hybridization, crystal-field splittings, spin-orbit coupling and electronic correlations. Our calculations show that due to the polar nature of the CDW distortion, an electric field can act as an external switch to induce the CDW phase, providing a way to manipulate strong correlations in the system.",
+    "authors": "Pablo Savino, M. del Carmen Fuente Santiago, Jan Phillips, Javier Corral Sertal, Adolfo O. Fumega, Santiago Blanco-Canosa, Victor Pardo",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24494",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24494",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24403": {
+    "arxiv_id": "2606.24403",
+    "title": "RE4: Transformation-aware Imitation of Object Interactions Using Manipulation Modes",
+    "abstract": "Object interaction tasks have been a focus of advances in imitation learning. End-to-end methods, dominated by diffusion and flow-based variants have shown leaps in performance while sacrificing interpretability. Object-centric and pose-informed variants have had a role in learning from demonstration in manipulation tasks. In this paper, we revisit a few modern imitation learning benchmarks for object interactions, with the aim of composing a framework that repurposes principled theories of manipulation, preserving both performance and interpretability. For image observations, lightweight training is proposed for model-free pose estimation of the target object, using self-supervision over the demonstration data available for imitation learning. This information is then used to inform a manipulation mode-aware retrieval of a demonstration, a mode-aware transformation, a replan step that connects to the retrieval point while preserving mode constraints, and finally rolling out the transformed demonstration. These compose four key steps of the proposed RE4 framework, evaluated over state-based and image-based benchmarks in Push-T and Robomimic. An adversarial benchmark that evaluates sparse data regions of image-based Push-T showcases the robustness, further bolstered by indications from low-data regime experiments. The current work shows promise in using simple interpretable building blocks to learn manipulation skills.",
+    "authors": "Arsh Chawla, Rahul Shome",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24403",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation",
+      "Imitation Learning",
+      "Learning from Demonstration"
+    ],
+    "matched_categories": [
+      "Dexterous",
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 30,
+    "paper_id": "arxiv:2606.24403",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24860": {
+    "arxiv_id": "2606.24860",
+    "title": "Mechanism of Band Gap Formation in Beam Networks",
+    "abstract": "Band gaps are commonly attributed to Bragg scattering or local resonance, yet it remains unclear whether these mechanisms govern band gap formation in beam networks. In this work, we explain band gap formation in beam networks in terms of a new mechanism, geometry-induced coupling between deformation modes. Specifically, band gap onset arises from axial-bending coupling at lattice nodes and scales with the axial cutoff frequency of a one-dimensional periodic beam, whereas band gap termination is primarily governed by high-frequency rotational branches associated with beam geometry. This mechanism holds for both periodic and disordered beam networks. In periodic lattices, it manifests through beam orientations at lattice nodes, whereas in disordered networks it manifests through short-beam statistics arising from variations in beam length. Together, these results establish a unified mechanism for band gap formation across both periodic and disordered beam networks, providing new insight into the physical origin of band gaps in beam-network materials.",
+    "authors": "Kwangmin Lee, Charles Emmett Maher, Katherine A. Newhall, Ryan C. Hurley",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24860",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24860",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24799": {
+    "arxiv_id": "2606.24799",
+    "title": "OrbitForge: Text-to-3D Scene Generation via Reconstruction-Anchored Video Synthesis",
+    "abstract": "Generic text-to-video models can be used as rich open-world scene priors. Despite the high quality of today's generated videos, they do not directly yield reliable 3D assets: camera motion is difficult to control, view coverage is partial, and frames often contain inconsistencies across time. We introduce OrbitForge, an adapter built from frozen video priors and per-prompt Gaussian Splatting reconstruction optimization that converts a single text-generated video into a canonical closed-orbit 3D Gaussian Splatting scene. We use 3D reconstruction as an anchor to improve the 3D consistency of the generated video. We obtain a preliminary 3D reconstruction from a first generated video via Deformable Gaussian Splatting with a robust MedianGS proxy. We render views from a prescribed orbit to detect missing viewpoints. OrbitForge uses the text-to-video model to complete only the missing views, and reconstructs the completed orbit into a final Gaussian Splatting scene. This design requires no task-specific video or multiview fine-tuning, avoids per-prompt score-distillation optimization, and does not progressively generate views one step at a time. We further argue that this setting demands coverage-aware evaluation: local smoothness alone rewards methods that never attempt a full orbit. On a frozen 300-prompt T3Bench-derived audit, OrbitForge reconstruction attains a 359.0-degree measured median span, raises originally unsupported-bin Q10 ImageReward from 8.07 to 16.36 relative to MedianGS-only reconstruction, while remaining competitive with VideoMV on the coverage-quality.",
+    "authors": "Chenrui Fan, Paolo Favaro",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24799",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Deformable"
+    ],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.24799",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24708": {
+    "arxiv_id": "2606.24708",
+    "title": "Vertex Superalgebras for Hypertoric Varieties and 3d Abelian Gauge Theories",
+    "abstract": "Hypertoric (or toric hyperkähler) varieties are a class of symplectic singularities and their resolutions, obtained as Hamiltonian reductions of a symplectic vector space acted on by a torus. In physics, they appear as Higgs (and Coulomb) branches of 3d $\\mathcal{N}=4$ supersymmetric quantum field theories with abelian gauge group.   In this work, we construct an $\\hbar$-adic (in the sense of microlocalisation) sheaf of vertex operator superalgebras over a given smooth hypertoric variety. Its global sections give the $A$-twisted boundary of the corresponding 3d gauge theory. We use this to prove that the associated affine variety of this hypertoric vertex operator superalgebra recovers the singular hypertoric variety. This proves the 3d Higgs branch conjecture for a large class of boundary vertex operator superalgebras. In particular, these vertex operator superalgebras are quasi-lisse.   This is in contrast to the (purely even) hypertoric vertex operator superalgebras (and their $\\hbar$-adic localisations) constructed previously by Kuwabara as global sections of sheaves on families of universal Poisson deformations of the hypertoric varieties. These are generally not quasi-lisse. We show that the vertex operator superalgebras defined in this paper are (fermionic) simple-current extensions of those defined by Kuwabara, and investigate the consequences for symplectic duality and characters. We observe that the latter are upgraded from partial (or false) theta functions to quasimodular forms.",
+    "authors": "Tomoyuki Arakawa, Andrea E. V. Ferrari, Sven Möller",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24708",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24708",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24662": {
+    "arxiv_id": "2606.24662",
+    "title": "A symmetry reduction of the Painlevé IV hierarchy to the Flaschka-Newell Painlevé II hierarchy",
+    "abstract": "We study the isomonodromic deformation problem associated with rank-two meromorphic connections on the Riemann sphere having one regular singularity and one irregular singularity of even order at infinity, corresponding to the even Painlevé IV hierarchy. We show that the symmetry $Ψ(-λ)= σ_1 Ψ(λ) σ_1$ defines an invariant submanifold whose induced isomonodromic dynamics coincides with the Flaschka-Newell Painlevé II hierarchy. Under this identification, the corresponding Lax matrices, Darboux coordinates and Hamiltonian structures can be matched explicitly. In particular, the Hamiltonians of the first members of the Flaschka-Newell hierarchy are recovered from the even Painlevé IV hierarchy. This provides a geometric interpretation of the Flaschka-Newell hierarchy as a symmetry reduction of an isomonodromic deformation problem, complementing its classical description as a similarity reduction of the modified Korteweg-de Vries hierarchy.",
+    "authors": "Mohamad Alameddine, Olivier Marchal",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24662",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24662",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24659": {
+    "arxiv_id": "2606.24659",
+    "title": "Preparing multi-qudit states in a definite-weight subspace",
+    "abstract": "We formulate a deterministic algorithm for preparing arbitrary multi-qudit states in a definite-weight subspace. By ordering the corresponding computational basis states according to a Gray code for multiset permutations, the state-preparation task is reduced to performing a sequence of controlled 2-qudit Gray rotations. We use this algorithm to prepare exact eigenstates of the SU(3)-invariant Heisenberg Hamiltonian, whose Bethe ansatz is nested. In particular, we describe the preparation of the Bethe states, which are SU(3) highest-weight states, as well as their lower-weight descendants. We also consider the preparation of $SU(d)$ Dicke states and their q-deformations.",
+    "authors": "Nabi Zare Harofteh, Rafael I. Nepomechie",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24659",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24659",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24621": {
+    "arxiv_id": "2606.24621",
+    "title": "Infinitesimal Causality",
+    "abstract": "This paper introduces a categorical account of infinitesimal causality in Frobenius Markov categories equipped with tangent-bundle semantics. IDC captures the infinitesimal layer in which interventions act as tangent deformations of copy/discard structure. Two distinct Frobenius structures interact: (1) the categorical Frobenius algebra on classical variables encoding copying, comparing, and discarding; and (2) the geometric Frobenius integrability condition, namely involutive closure of the intervention distribution, distinct from the algebraic Frobenius structure. Categorical causal sufficiency is defined as the compatibility of these two notions. A key observation is that, for structural causal models, infinitesimal causality is most naturally formulated in the slice of deterministic mechanisms over exogenous variables, with visible stochastic kernels obtained only after pushforward. Interventions are tangent vectors that deform the Frobenius copy/discard operations; their Lie brackets measure whether this deformation preserves classical information-flow structure. Pearl's do-calculus is used as a guiding example of intervention identities: ignoring irrelevant interventions corresponds to counit invariance, action/observation exchange to coproduct compatibility with pushforward, and independence to involutive bracket closure of the visible intervention distribution.",
+    "authors": "Sridhar Mahadevan",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24621",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24621",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24497": {
+    "arxiv_id": "2606.24497",
+    "title": "More on Kashaev limits of the quantum $A$-polynomials",
+    "abstract": "\"Colored\" knot polynomials satisfy difference equation w.r.t. the highest weights of the underlying representation -- which in the case of symmetrically colored Jones are named \"quantum $A$-polynomials\". In the double scaling quasiclassical (Kashaev) limit, when representation size $r\\sim \\hbar^{-1}$, there are different phases -- in one of them the classical action vanishes and in another one it is a deformation of hyperbolic volume (of a knot complement in $S^3$). This corresponds to a splitting of the non-homogeneous version of the quantum $A$-polynomial into two pieces, which we illustrate by more examples than just a figure-eight knot $4_1$ in the original paper. From the point of view of quasiclassics, hyperbolic volume is just an integration constant, which is not fully determined by the $A$-polynomial equation -- and actually remains ambiguous in this formalism. As a byproduct, we expect that classical $A$-polynomial at $L=1$ becomes proportional to Alexander: $A^{\\cal K}(1,M)\\sim Δ^{\\cal K}(M)$ -- this seems true, but $A$ should be consistent with the polynomiality of {\\it non-homogeneous quantum} ${\\cal A}$-polynomial, what sometime implies that it is not minimal.",
+    "authors": "A. Morozov",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24497",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24497",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24478": {
+    "arxiv_id": "2606.24478",
+    "title": "Dimensional Confinement Driven Scattering Inversion in NaCrTe$_2$",
+    "abstract": "Dimensionality reduction provides a powerful route to tune the electronic and magnetic properties of van der Waals materials, yet its influence on electronic transport remains complex due to competing effects from quantum confinement and modified scattering mechanisms. Here, we investigate this interplay in an antiferromagnetic semiconductor $\\text{NaCrTe}_2$ using first-principles calculations combined with the Boltzmann transport equation beyond the constant relaxation time approximation. Our results show that the monolayer limit induces a coupled magnetostructural reconstruction, reducing the band gap from $0.44$ eV (bulk) to $0.15$ eV (monolayer) and significantly enhancing the static dielectric constant. This evolution triggers a fundamental scattering inversion: whereas bulk transport is limited by polar optical phonon (POP) scattering, the monolayer becomes dominated by acoustic deformation potential (ADP) scattering. We show that this crossover originates from the simultaneous suppression of the Fröhlich interaction through enhanced dielectric screening and the amplification of acoustic scattering due to pronounced lattice softening. These results clarify how the interplay between dielectric screening, lattice stiffness, and band topology governs transport in low-dimensional magnetic semiconductors, providing a framework to optimize their electronic performance.",
+    "authors": "Himanshu Sharma, Bhawna Sahni, Tanusri Saha-Dasgupta, Aftab Alam",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24478",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24478",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24419": {
+    "arxiv_id": "2606.24419",
+    "title": "On Deformed Phase Space Black Holes",
+    "abstract": "We revisit the Schwarzschild black hole in the context of noncommutative phase space. By mapping the horizon area operator into a two-dimensional harmonic oscillator structure, we derive the modifications induced by phase space noncommutativity. The formalism is developed using the generalized Bopp shift on the canonical coordinates and momenta. We computed the modified area spectrum, black hole mass levels, transition frequencies, Hawking temperature, and entropy, highlighting the physical implications of the deformation parameters $θ$ and $η$ on the thermodynamical properties of the deformed black hole. Finally, we conjecture a connection between the noncommutative contribution to the entropy and Barrow's entropy.",
+    "authors": "A. Crespo-Hernández, E. A. Mena-Barboza, M. Sabido",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24419",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24419",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24410": {
+    "arxiv_id": "2606.24410",
+    "title": "Bottom quark electroweak dipole moments at a high-energy $μ-$collider",
+    "abstract": "We study the sensitivity of a high-energy $μ-$collider with center of mass energy in the multi--TeV range in testing electroweak dipole interactions of the $b-$quark. We parametrize the relevant deformations in the language of the Standard Model effective field theory, where the dominant modifications arise at the $d=6$ level. We analyse $μ^+ μ^- \\to b \\bar b$ and $μ^+ μ^- \\to b \\bar b h$ scatterings, performing a study at the level of a fast detector simulation. Owing the chiral structure of the dipole interaction, the study of the $μ^+ μ^- \\to b \\bar b h$ process allows to enforce the stronger bounds on the Wilson coefficients of the $d=6$ operators. The limits that can be obtained surpass present and future bounds from EW precision measurements also improving upon the ones arising from the measurement of the $ΔF=1$ transitions $B\\to X_sγ$.",
+    "authors": "D. Barducci",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24410",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24410",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24377": {
+    "arxiv_id": "2606.24377",
+    "title": "PDS Joint: A Parametric Double-Spiral Joint Tailored for Dexterous Hands",
+    "abstract": "Compliant joints can embed safety and adaptability into dexterous hands, but achieving large-stroke anthropomorphic motion while maintaining joint-specific, directiondependent stiffness and reliable proprioception remains challenging. This paper presents the PDS joint, a parametric doublespiral (PDS) compliant joint that enables systematic shaping of directional stiffness across multiple deformation modes, including flexion/extension, abduction/adduction, and pronation/supination. We instantiate the joint using Archimedean and logarithmic spiral templates for different hand joints and introduce an asymmetry ratio to tailor stiffness distributions for both grasp stability and hyperextension resistance. To make the joint practically usable under large deformation, we co-design embedded inductive proprioception and propose a learningbased calibration pipeline that maps raw inductive signals to joint states using ArUco-marker tracking. Experiments characterize the stiffness landscapes across geometric parameters and demonstrate a non-monotonic dependence of lateral support on asymmetry, indicating the importance of principled parameter tuning. For joint-state estimation in the most challenging abduction/adduction motion, a learned multilayer-perceptron (MLP) mapping reduces the error compared with conventional curve fitting by 41.6%. Finally, we integrate the proposed joints into an open-source dexterous hand as a demonstration platform, on which the hand grasps a set of nine everyday objects and performs safe, contact-rich human-involved interactions.",
+    "authors": "Haoyang Li, Yibo Wen, Yixiang Fan, Yiheng Xu, Yufeng Yue",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24377",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24377",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24376": {
+    "arxiv_id": "2606.24376",
+    "title": "The Physics of Topological Defects in Glasses",
+    "abstract": "Topological defects play a central role in the mechanical behavior of crystalline materials, yet their relevance to amorphous solids has only recently begun to emerge. Over the last few years, theoretical, computational, and experimental studies have revealed the presence of well-defined topological invariants in vibrational eigenmodes, non-affine displacement fields, and deformation-induced vector fields of glasses. These defects have been shown to correlate strongly with soft spots, localized plastic rearrangements, yielding, and shear-band formation, suggesting a new perspective on the microscopic origins of plasticity in disordered materials. In this review, we provide a comprehensive overview of recent developments in the rapidly growing field of topological defects in glasses. We discuss the underlying theoretical concepts, including Burgers vectors, non-affine plasticity, vibrational modes, and topological invariants, and review recent numerical and experimental advances. Finally, we assess the current achievements, limitations, and open questions, and discuss future directions toward a unified topological description of plasticity and mechanical failure in amorphous solids.",
+    "authors": "Arabinda Bera, Peter Schall, Timothy W. Sirk, Vijayakumar Chikkadi, Alessio Zaccone",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24376",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24376",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24328": {
+    "arxiv_id": "2606.24328",
+    "title": "Dark-Sector Deformations of Holographic Anisotropic Superfluids in Asymptotically Hyperscaling Violation Geometry",
+    "abstract": "We study dark-sector deformations of holographic anisotropic \\(p\\)-wave superfluids in hyperscaling-violating black-brane backgrounds. In the visible \\(SU(2)\\) sector, \\(b(u)\\) fixes the chemical potential and charge density, while \\(ω(u)\\) condenses and selects a boundary direction, producing anisotropic strip entanglement. The visible critical chemical potential, radial profiles, condensate branch, and strip-entanglement difference vary with dimension and hyperscaling-violating exponents. We then add hidden gauge sectors and hidden dark-scalar portals. Hidden-current mixing gives a solvable example, whereas isotropic dark sources cancel in the strip difference. For the kinetic dark-scalar portal, \\(Z_{\\rm dm}(Φ)\\) deforms the Yang--Mills operator; hence \\(b_0(u)\\), \\(ω_1(u)\\), and the order-\\(ε^2\\) anisotropic stress are computed in the same deformed problem. The critical shift depends on the hyperscaling-violating background and can change sign. The main result is a strip susceptibility at vanishing portal strength. It is negative in the \\(D=4\\) and \\(D=5\\) backgrounds, so the portal weakly suppresses visible strip anisotropy. This has a holographic RG interpretation: the normalizable dark scalar is weighted toward the IR horizon, while narrow strips probe the UV near-boundary RT region. Thus, the portal decouples in the UV and the susceptibility vanishes quadratically with strip width; wider strips reach deeper into the bulk and recover the IR dark-sector effects.",
+    "authors": "Ji-Seong Chae",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24328",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.24328",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.24595": {
+    "arxiv_id": "2606.24595",
+    "title": "MEMPROBE: Probing Long-Term Agent Memory via Hidden User-State Recovery",
+    "abstract": "Long-term memory promises LLM agents that grow more capable across sessions, maintaining an accurate, evolving understanding of the user that interaction forms. In practice, however, this memory is evaluated mostly through downstream behavior, such as later answers, personalization quality, or task success, which tests that understanding only indirectly and leaves the memory artifact itself largely unaudited. We argue that long-term memory should instead be evaluated as an auditable post-interaction artifact: after ordinary assistance, what structured user state can be reconstructed from the memory the agent leaves behind? We instantiate this view in MEMPROBE, a benchmark in which a memory-equipped agent assists simulated users, each carrying a hidden, taxonomy-anchored user-state bank, across a trajectory of leak-controlled tasks, after which that bank is reconstructed from the agent's resulting memory under both full-store and top-k access. Built on synthetic ground truth for efficient, scalable measurement, MEMPROBE spans 50 simulated users with 31 hidden dimensions each (1,550 recovery targets) and tests 5 representative memory systems. Testing state-of-the-art memory agents, we find that successful assistance and recoverable memory behave as distinct capabilities. Task completion nearly saturates, even for a memoryless baseline, while category-balanced recovery stays moderate (about 0.6) and drops further under top-k retrieval. MEMPROBE is the first benchmark to study memory recovery directly, reconstructing the user state a system retains and scoring it against ground truth. We see recovery as a concrete objective for future memory agents to optimize, and MEMPROBE as a step toward an environment where agents are trained to remember their users, growing more faithful the longer they know them.",
+    "authors": "Enze Ma, Yufan Zhou, Wei-Chieh Huang, Jie Yang, Huanhuan Ma, Zixuan Wang, Chengze Li, Chunyu Miao, Philip S. Yu, Zhen Wang",
+    "publish_date": "2026-06-23",
+    "arxiv_url": "http://arxiv.org/abs/2606.24595",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2606.24595",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.23543": {
+    "arxiv_id": "2606.23543",
+    "title": "VeriEvol: Scaling Multimodal Mathematical Reasoning via Verifiable Evol-Instruct",
+    "abstract": "Scaling reinforcement learning for visual mathematical reasoning requires more than generating harder questions: as data volume grows, the reward labels themselves must remain reliable. Yet existing data pipelines scale supervision while trusting the labeller, and policy-side methods assume the underlying answers are already correct. We instead treat scaling as a verifiable data-construction problem and decouple two axes before any policy update: prompt difficulty, expanded by route-specific evolution operators, and answer reliability, enforced by offline hypothesis-test falsification. We instantiate this as VeriEvol, an iterative framework with two extensible components: a type-aware evolution module that rewrites low-difficulty image-question seeds into harder, image-grounded prompts; and HTV-Agent, a verifier that accepts an answer only after multi-source counter-evidence has failed to refute it. The resulting verified data scales in volume, extends by adding evolution routes or verifier channels, and plugs directly into existing GRPO-style RL recipes. On a five-benchmark visual-math suite, scaling evolved SFT data from 10K to 250K samples raises the mean accuracy from 35.42 to 54.73; then, with backbone, SFT initialization, and GRPO recipe held fixed, VeriEvol adds a cumulative +3.88 over an un-evolved RL baseline, of which +1.82 comes from evolved prompts and +2.06 from the HTV-Agent verifier. We release the prompts, data, models, code, and the full verifier trace of every sample, so that downstream work can scale and audit the pipeline rather than only inspect its outputs.",
+    "authors": "Haoling Li, Kai Zheng, Jie Wu, Can Xu, Qingfeng Sun, Han Hu, Yujiu Yang",
+    "publish_date": "2026-06-22",
+    "arxiv_url": "http://arxiv.org/abs/2606.23543",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 28,
+    "paper_id": "arxiv:2606.23543",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.23991": {
+    "arxiv_id": "2606.23991",
+    "title": "Critique of Agent Model",
+    "abstract": "What is an agent? What constitutes agency? With the rise of Large Language Model (LLM) systems marketed as ``coding agents'', ``AI co-scientists'', and other ``agentic\" tools that promise to drive up productivity, and at the same time, ``existential\" concerns such as AI escaping human control with destructive power under a speculative ``machine agency\" against humans, it has become essential to clarify where automation ends and agency begins, both for building capable systems and for understanding whether and what to fear. Drawing on Descartes' grounding of agency in independent thought, and on portrayals of autonomous beings in science fiction, we survey the current landscape of AI agents, and analyze agent architectures along five dimensions: goal, identity, decision-making, self-regulation, and learning. Specifically, we argue that genuine agency requires these structures to be \\emph{internalized within the system itself} rather than assembled through external scaffolding. This distinction between \\emph{agentic} systems, whose competence resides in engineered workflows, and \\emph{agentive} systems, whose capabilities (including social interaction) arise endogenously, defines the boundary between systems designed for prescribed tasks, and those capable of operating in the open world with true autonomy. Building on this analysis, we propose the Goal-Identity-Configurator (GIC) architecture for a general-purpose agent model, combining hierarchical goal decomposition, identity evolution, simulative reasoning grounded in a separately trained world model, learned self-regulation, and self-directed learning from both real and simulated experience. Furthermore, we share insight on the auditability, controllability, and safety of agentive systems that possess greater autonomy and ``agency\", but remain under human oversight.",
+    "authors": "Eric Xing, Mingkai Deng, Jinyu Hou",
+    "publish_date": "2026-06-22",
+    "arxiv_url": "http://arxiv.org/abs/2606.23991",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 27,
+    "paper_id": "arxiv:2606.23991",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.22197": {
+    "arxiv_id": "2606.22197",
+    "title": "Multi4D: High-Fidelity Dynamic Gaussian Splatting via Multi-Level Competitive Allocation",
+    "abstract": "Dynamic 3D Gaussian splatting faces a fundamental tension between motion consistency and visual fidelity. Deformation-based approaches preserve temporal correspondence but suffer from motion over-factorization, oversmoothing high-frequency dynamics. In contrast, 4D-primitive methods capture fine visual details yet incur temporal overparameterization, breaking object identity and leading to severe storage overhead. To resolve this, we introduce Multi4D, a framework for high-fidelity dynamic Gaussian Splatting based on multi-level competitive allocation. Instead of a monolithic representation, we distribute modeling capacity across three structured levels: static structure, persistent dynamic geometry, and transient appearance primitives. Through shared rasterization and residual-driven optimization, these levels dynamically compete to explain photometric error, enabling adaptive specialization without pre-assigned decomposition. This allocation preserves long-term motion consistency while capturing fine dynamic detail, achieving state-of-the-art rendering quality and real-time performance with significantly fewer dynamic primitives. Furthermore, because our representation explicitly tracks compact persistent Gaussians over time, semantic features can be embedded afterward, enabling Multi4D to achieve state-of-the-art 4D segmentation accuracy with an order-of-magnitude speedup. Project page: https://batfacewayne.github.io/Multi4D.io/",
+    "authors": "Rui Wang, Quentin Lohmeyer, Siyu Tang, Mirko Meboldt",
+    "publish_date": "2026-06-20",
+    "arxiv_url": "http://arxiv.org/abs/2606.22197",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 5,
+    "score": 25,
+    "paper_id": "arxiv:2606.22197",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.23679": {
+    "arxiv_id": "2606.23679",
+    "title": "Semantic Browsing: Controllable Diversity for Image Generation",
+    "abstract": "Modern text-to-image models excel in visual fidelity and prompt adherence. However, this strict adherence comes at the cost of diversity: generated samples tend to collapse into a single visual interpretation. Existing methods to improve diversity produce outputs driven by incidental variations rather than meaningful design choices. This motivates a new variant of the diversity task where structure is enforced on the generated samples. We introduce a method for controlled diversity that enables Semantic Browsing, where users can navigate structured image galleries and experience creative exploration through a systematic traversal of meaningful, interpretable axes of variation. Achieving this level of semantic control requires a deep understanding of the scene. We exploit the fact that recent text-to-image models are trained on elaborated captions, effectively decoupling semantic decision-making from pixel generation. This enables a paradigm shift: instead of relying on stochastic variation within the text-to-image model, we induce diversity directly at the text level. By leveraging rich textual representations, we allow a Vision Language Model (VLM) to operate on the full scene context. To overcome the generic outputs typical of standard VLMs, we employ an agentic workflow that explicitly enforces structured variation attuned to the original prompt. We demonstrate that our method produces diverse and navigable design spaces where every variation corresponds to a specific, user-understandable semantic decision.",
+    "authors": "Sara Dorfman, Maya Vishnevsky, Omer Dahary, Or Patashnik, Daniel Cohen-Or",
+    "publish_date": "2026-06-22",
+    "arxiv_url": "http://arxiv.org/abs/2606.23679",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 6,
+    "score": 24,
+    "paper_id": "arxiv:2606.23679",
     "source": "arxiv",
     "venue": ""
   }
