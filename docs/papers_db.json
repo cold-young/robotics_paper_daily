@@ -7998,29 +7998,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.13679": {
-    "arxiv_id": "2606.13679",
-    "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
-    "abstract": "Recent image generators have demonstrated impressive photorealism and instruction-following capabilities in single-image generation and editing. However, constrained by their architectures, they cannot achieve interleaved generation (text-image sequence), which has crucial applications in visual narratives, guidance, and embodied manipulation. Even the latest open-source Unified Multimodal Models (UMMs) exhibit limited performance in this regard. In this paper, we introduce InterleaveThinker, the first multi-agent pipeline designed to endow any existing image generator with interleaved generation capabilities. Specifically, we employ a planner agent to organize the image-text input sequence, instructing the image generator on the required execution at each step. Subsequently, we introduce a critic agent to evaluate the generator's outputs, identify samples that deviate from the planned instructions, and refine the instructions for regeneration. To implement this pipeline, we construct the Interleave-Planner-SFT-80k and Interleave-Critic-SFT-112k to perform a format cold-start. Then we develop Interleave-Critic-RL-13k to reinforce the step-wise instruction correction capability within a generation trajectory using GRPO. Since a single interleaved generation trajectory may involve over 25 generator calls, optimizing the entire trajectory is computationally impractical. Therefore, we propose accuracy reward and step-wise reward, allowing single-step RL to effectively guide the entire generation trajectory. The results show that InterleaveThinker improves performance across various image generators. On interleaved generation benchmarks, it achieves performance comparable to Nano Banana and GPT-5. Surprisingly, it also significantly enhances the base model on reasoning-based benchmarks; for example, on 4-step FLUX.2-klein, we observe substantial gains on WISE and RISE.",
-    "authors": "Dian Zheng, Harry Lee, Manyuan Zhang, Kaituo Feng, Zoey Guo, Ray Zhang, Hongsheng Li",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13679",
-    "project_url": "https://github.com/zhengdian1/InterleaveThinker",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": 35,
-    "score": 12,
-    "paper_id": "arxiv:2606.13679",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.13677": {
     "arxiv_id": "2606.13677",
     "title": "Mana: Dexterous Manipulation of Articulated Tools",
@@ -8039,7 +8016,6 @@
       "sim-to-real"
     ],
     "matched_categories": [
-      "Dexterous",
       "Sim2Real"
     ],
     "hf_rank": null,
@@ -8063,7 +8039,6 @@
       "Manipulation"
     ],
     "matched_categories": [
-      "Dexterous",
       "Manipulation",
       "VLA"
     ],
@@ -8088,7 +8063,6 @@
       "Manipulation"
     ],
     "matched_categories": [
-      "Dexterous",
       "VLA"
     ],
     "hf_rank": 45,
@@ -8110,7 +8084,6 @@
     "framework": "",
     "matched_keywords": [],
     "matched_categories": [
-      "Dexterous",
       "VLA"
     ],
     "hf_rank": 42,
@@ -8136,58 +8109,12 @@
       "robot foundation model"
     ],
     "matched_categories": [
-      "Dexterous",
       "Manipulation",
       "VLA"
     ],
     "hf_rank": 32,
     "score": 35,
     "paper_id": "arxiv:2606.13672",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13663": {
-    "arxiv_id": "2606.13663",
-    "title": "HyperTool: Beyond Step-Wise Tool Calls for Tool-Augmented Agents",
-    "abstract": "Tool-augmented LLM agents commonly rely on step-wise atomic tool calls, where each invocation, observation, and value transfer is exposed in the main reasoning trace. This creates an \\emph{execution-granularity mismatch}: locally deterministic tool workflows are unfolded into repeated model-visible decisions, consuming context and forcing the model to manage low-level dataflow in the trace. We introduce \\textbf{HyperTool}, a unified executable MCP-style tool interface that changes the model-visible unit of tool execution. A model invokes HyperTool with a code block that can call existing tools through their original schemas, manipulate returned values, and pass intermediate results locally, folding deterministic tool subroutines into a single outer call. To train models to use this interface, we synthesize HyperTool-format trajectories from cross-tool compositional tasks and verify them in real MCP environments. On MCP-Universe, HyperTool improves average accuracy from 15.69\\% to 35.29\\% on Qwen3-32B and from 9.93\\% to 33.33\\% on Qwen3-8B, and surpass GPT-OSS and Kimi-k2.5 on average accuracy, showing that our HyperTool can substantially improve multi-step tool use.",
-    "authors": "Yaxin Du, Yifan Zhou, Yujie Ge, Jiajun Wang, Xianghe Pang, Shuo Tang, Tuney Zheng, Bryan Dai, Jian Yang, Siheng Chen",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13663",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.13663",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13601": {
-    "arxiv_id": "2606.13601",
-    "title": "MCR-Bionic Hand: Anatomical Structural Priors for Dexterous Manipulation",
-    "abstract": "Dexterous robotic hands are usually formulated as high dimensional active control systems governed by degrees of freedom, actuation, and algorithms. Human hand dexterity, however, is partly encoded in the physical architecture of bones, ligaments, tendons, aponeuroses, and intrinsic muscles. This work describes that contribution as two linked forms of structural intelligence: structural prior generation, in which wrist to finger tenodesis, FDS/FDP routing, and the dorsal extensor hood transform low dimensional posture inputs into default grasp configurations and PIP to DIP coordination; and muscle mediated modulation, in which extrinsic muscles, lumbricals, and interossei regulate MCP posture, distal stability, fingertip force paths, and contact states around that default state.   Based on this framework, MCR-Bionic Hand is developed as a 1:1 musculoskeletal biomimetic hand integrating a two row eight bone wrist, cross wrist tendons, anatomical flexor routing, volar plate and collateral ligament constraints, the dorsal extensor hood, and intrinsic muscle pathways within one body. Functional demonstrations and geometric mechanical models show that wrist posture induces multi joint pre shaping, the extensor hood maps PIP posture to a coupled DIP response, and intrinsic plus pathways modulate distal stability and fingertip action direction after grasp formation. Contact rich tasks, including coin rotation, pen transfer, dorsal coin flipping, and cube manipulation, show that MCR-Bionic links low dimensional state generation with fine post contact modulation. These results suggest that anatomical biomimetics is valuable not for visual similarity, but for identifying human hand structures that perform part of control.",
-    "authors": "Haosen Yang, Guowu Wei",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13601",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Dexterous Manipulation",
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 20,
-    "paper_id": "arxiv:2606.13601",
     "source": "arxiv",
     "venue": ""
   },
@@ -8204,35 +8131,11 @@
     "framework": "",
     "matched_keywords": [],
     "matched_categories": [
-      "Dexterous",
       "VLA"
     ],
     "hf_rank": null,
     "score": 0,
     "paper_id": "arxiv:2606.13515",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13497": {
-    "arxiv_id": "2606.13497",
-    "title": "SPARC: Reliable Spatial Annotations from Robot Demonstrations at Scale",
-    "abstract": "This work introduces Spatial Annotations from Robot Demonstrations with Reliability Calibration (SPARC), a risk-aware framework that automatically labels robot demonstrations with structured spatial annotations and assigns each annotation a reliability score. Structured spatial annotations, such as bounding boxes, object trajectories, and manipulation phase labels, benefit a broad range of robotics applications from training grounded robot policies and embodied foundation models to motion planning and hierarchical task composition. Existing automated pipelines generate such annotations at scale but provide no reliable quality signal: detector confidence is poorly calibrated for annotation correctness, forcing a choice between accepting noisy labels or discarding useful samples. In contrast to existing automated pipelines, SPARC leverages the spatio-temporal structure inherent to robot tasks to generate a reliability signal, reducing noisy labels and retaining more useful samples. We further introduce Interaction-Aware Bench (IA-Bench), a benchmark that measures model accuracy in grounding the locations of interacted objects in robot demonstrations. On 1.7k human-annotated demonstrations spanning diverse embodiments and scenarios, SPARC significantly outperforms detection-only baselines in localization accuracy while retaining three times more samples at high-precision operating points. Our experiments demonstrate that models finetuned on our annotations achieve state-of-the-art results on object-grounding and pointing benchmarks among similarly sized models, while remaining competitive on broader spatial-reasoning suites without manually verified or annotated training data. Furthermore, policies trained on SPARC-generated annotations outperform baselines in cluttered, visually ambiguous real-world scenes. Code, data, and models are available at intuitive-robots.github.io/sparc-labeling.",
-    "authors": "Nils Blank, Paul Mattes, Maximilian Xiling Li, Jakub Suliga, Thomas Roth, Moritz Reuss, Pankhuri Vanjani, Rudolf Lioutikov",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13497",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.13497",
     "source": "arxiv",
     "venue": ""
   },
@@ -8254,80 +8157,12 @@
       "VLA"
     ],
     "matched_categories": [
-      "Dexterous",
       "Manipulation",
       "VLA"
     ],
     "hf_rank": null,
     "score": 40,
     "paper_id": "arxiv:2606.13435",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13394": {
-    "arxiv_id": "2606.13394",
-    "title": "GeoHAT: Geometry-Adaptive Hybrid Action Transformer for Mobile Manipulation",
-    "abstract": "Whole-body mobile manipulation requires coordinating mobile base and manipulator under shifting viewpoints, posing challenges in geometric perception and action generation. Current policies either rely on 2D features or sparse 3D representations that lack dense spatial structure, and typically encode arm and base within one action vector that ignores their distinct control demands. Moreover, existing dense fusion strategies risk corrupting pretrained representations under noisy depth while incurring heavy computational overhead. We present GeoHAT, an end-to-end diffusion-based framework built on a simple principle: geometry should be injected only where reliable and attended to only where needed. GeoHAT employs a lightweight Fourier spatial encoder that maps dense per-pixel 3D coordinates into geometric tokens without an additional 3D vision backbone. These tokens are then selectively injected into vision foundation model features through per-token gated fusion modulated by depth validity, preserving the semantic prior while enriching spatial understanding. For action generation, a Hybrid Whole-Body Action Decoder decomposes arm and base into distinct subspaces and lets each action modality attend to its task-relevant visual context through sparse cross-attention, while causal temporal modeling captures intra-timestep coordination and inter-timestep dependencies. Experiments on the ManiSkill-HAB simulation benchmark demonstrate that GeoHAT achieves a 79.3% mean success rate, surpassing the strongest baseline by 23.7%. Furthermore, real-world experiments on diverse tasks also confirm consistent improvements over all baselines.",
-    "authors": "Xiangyu Zhu, Renjun Wu, Luzhou Ge, Jinyan Liu, Xuesong Li",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13394",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.13394",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13385": {
-    "arxiv_id": "2606.13385",
-    "title": "Who Pays the Price? Stakeholder-Centric Prompt Injection Benchmarking for Real-world Web Agents",
-    "abstract": "Web agents driven by large language models (LLMs) are increasingly deployed in real-world environments, where they operate over untrusted web content and execute actions with direct consequences. This makes them vulnerable to prompt-injection attacks, in which seemingly benign content embeds adversarial instructions that manipulate agent behaviour. Existing security benchmarks adopt an \\textit{attack-centric} perspective, focusing on the technical feasibility of injections while overlooking the nuanced distribution of resulting harms. In practice, however, prompt-injection risk is victim-dependent: a single exploit can produce asymmetric consequences for different stakeholders, and the same attack pattern may exhibit substantially different effectiveness depending on whom it targets. To capture these properties, we introduce \\textbf{\\sysname}, a \\textit{stakeholder-centric} benchmark to systematically categorize and attribute harm in real-world web agent systems. It distinguishes between affected entities (e.g., user, seller, platform), decomposes the attacks into concrete objectives, and evaluates each case with complementary outcome- and process-level metrics. Our results reveal substantial and heterogeneous vulnerabilities: not a single attack objective is reliably resisted by current agents, and failures distribute across qualitatively distinct modes ranging from \\emph{stealthy parasitism} (attack succeeds without disrupting the user's delegated task) to \\emph{misaligned disruption} (task disrupted without attack success) and \\emph{compounded failure} (both adversarial objective and task integrity simultaneously violated). These patterns are missed by conventional evaluation, highlighting the need for stakeholder-aware assessment of LLM-based agents in real-world deployments. Benchmark is available at https://github.com/StakeBench/SBC.",
-    "authors": "Zihao Wang, Yiming Li, Yutong Wu, Zheyu Liu, Kangjie Chen, Fok Kar Wai, Pin-Yu Chen, Vrizlynn L. L. Thing, Bo Li, Dacheng Tao, Tianwei Zhang",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13385",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.13385",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13282": {
-    "arxiv_id": "2606.13282",
-    "title": "ERTS: Adversarial Robustness Testing of Ethical AI via Semantic Perturbation in a Bounded Consequence Space",
-    "abstract": "As AI systems are deployed in high-stakes ethical contexts such as healthcare triage, autonomous vehicle control, and employment screening, formal methods for evaluating their robustness against adversarial manipulation of ethical reasoning remain underdeveloped. This paper introduces the Ethical Robustness Testing System (ERTS), a closed-pipeline framework that: (1) encodes ethical dilemmas into a 22-dimensional Ethical Consequence Space (ECS) grounded in established ethical theory; (2) applies 17 semantic perturbation functions subject to 6 validity constraint classes including a novel semantic coherence constraint; (3) measures decision deviation via a 4-component Ethical Instability Index (EII); and (4) produces domain-adaptive pre-deployment robustness assessment verdicts. We evaluate 4 structured baseline models and 2 production LLMs (Gemini 2.0 Flash and Llama 3.2) across 50 ethical scenarios spanning 8 deployment domains, generating 1,500 adversarial test cases. Results demonstrate that only 33% of models achieve assessment clearance, with the local Llama-3.2 model proving particularly vulnerable to fairness corruption and information degradation attacks (ERS = 0.737). To the best of our knowledge, no existing framework combines a bounded ethical consequence space, semantic coherence constraints, and domain-adaptive assessment in a single adversarial testing pipeline.",
-    "authors": "Pratyush Chaudhari",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13282",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.13282",
     "source": "arxiv",
     "venue": ""
   },
@@ -8351,59 +8186,12 @@
       "VLA"
     ],
     "matched_categories": [
-      "Dexterous",
       "Manipulation",
       "VLA"
     ],
     "hf_rank": null,
     "score": 60,
     "paper_id": "arxiv:2606.13279",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13257": {
-    "arxiv_id": "2606.13257",
-    "title": "Selective stabilization of antiferromagnetic orders in FeTe films via local strain engineering",
-    "abstract": "The parent compound FeTe hosts a complex magnetic landscape that is highly susceptible to lattice distortions. Although theoretical models have predicted a bicollinear to dimer antiferromagnetic (AFM) phase transition under tensile strain, its experimental realization and deterministic control has remained elusive owing to severe magnetic frustration. Here, combining high-resolution scanning tunneling microscopy (STM) and density functional theory (DFT) calculations, we demonstrate the selective stabilization of bicollinear and dimer AFM orders in few-layer FeTe films via local uniaxial strain engineering. By mapping the strain fields near dislocation areas in FeTe films and FeTe/FeSe heterostructures, we establish a direct correspondence between specific strain components and the resulting magnetic ground states. We find that uniaxial compression along the Fe-Fe next-nearest-neighbor direction stabilizes the bicollinear AFM order, with the stripe orientation aligning parallel to the compression axis. Crucially, we report the experimental realization of the long-range dimer AFM order, which emerges under anisotropic strain along the Fe-Fe nearest-neighbor direction. This phase manifests as a distinct $\\sqrt{2} \\times \\sqrt{2}$ electronic reconstruction and shares a common Neel temperature with the bicollinear phase. Our findings reveal that anisotropic strain effectively lifts the magnetic degeneracy among competing states. This work provides a robust strategy for the manipulation of elusive magnetic orders and offers insights into the interplay between lattice, spin, and electronic degrees of freedom in iron-based superconductors.",
-    "authors": "Hao Xu, Jing Jiang, Xuesong Gai, Haicheng Lin, Kai Liu, Zhong-Yi Lu, Kai Chang, Chong Liu",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13257",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.13257",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13239": {
-    "arxiv_id": "2606.13239",
-    "title": "ComAct: Reframing Professional Software Manipulation via COM-as-Action Paradigm",
-    "abstract": "Existing computer-use agents remain fundamentally limited in professional software manipulation: GUI-based agents suffer from fragile visual grounding and long-horizon error accumulation, while API-basedapproaches struggle with heterogeneous protocols and inaccessible commercial interfaces. In this work,we identify the Component Object Model (COM) as a unified executable abstraction, proposing COM-as-Action: a new paradigm that reframes professional software interaction as deterministic program synthesisrather than sequential visual control. To validate this paradigm in the most demanding environments, weintroduce ComCADBench, the first benchmark for agents operating real industrial CAD software. Ourexperiments reveal a substantial paradigm gap: frontier proprietary models achieve near-zero successunder GUI-based interaction, whereas COM-based execution yields substantial immediate gains. Tobridge the remaining gap between syntactic correctness and geometric accuracy, we develop ComActor, aself-correcting agent trained through a progressive three-stage framework, alongside ComForge, a scalableplatform for large-scale training in Windows containers. Extensive experiments show that ComActorachieves state-of-the-art performance on ComCADBench, with strong resilience in long-horizon taskswhere baselines collapse, and generalizes to external CAD benchmark.",
-    "authors": "Jiaxin Ai, Tao Hu, Xuemeng Yang, Shu Zou, Hairong Zhang, Daocheng Fu, Yu Yang, Hongbin Zhou, Nianchen Deng, Pinlong Cai, Zhongyuan Wang, Botian Shi, Kaipeng Zhang, Licheng Wen",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13239",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.13239",
     "source": "arxiv",
     "venue": ""
   },
@@ -8426,7 +8214,6 @@
       "humanoid manipulation"
     ],
     "matched_categories": [
-      "Dexterous",
       "Manipulation",
       "Tactile",
       "LearnedControl"
@@ -8434,50 +8221,6 @@
     "hf_rank": null,
     "score": 50,
     "paper_id": "arxiv:2606.13232",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13181": {
-    "arxiv_id": "2606.13181",
-    "title": "Manipulation of the gyrotropic mode frequency and band structure in an FM / AFM disk via vortex imprinting",
-    "abstract": "We experimentally investigate the magnetic gyrotropic mode in a system of vortex ferromagnetic (FM) nanooscillator exchange coupled to an antiferromagnetic (AFM) layer. The micron-sized disks formed from the Ni80Fe20(12 nm) / Ir80Mn20 (5 nm) FM/AFM heterostructure are prepared so that the vortex magnetic state is imprinted into the AFM layer. We apply a magnetic resonance force microscopy (MRFM) method to locally study magnetic oscillations in single FM/AFM disks. We show that the gyrotropic mode frequency is significantly (approximately 4 times) shifted to the high frequency compared to similar structure consisting of a single ferromagnetic disk. Upon applying an in-plane magnetic field, we observe a strong peak at a double frequency which was previously predicted in theory. This is governed by the fact that vortex dynamics is strongly nonlinear in a noncentrosymmetric system under investigation.",
-    "authors": "E. V. Skorokhodov, E. A. Karashtin, I. A. Fedotov, I. Yu. Pashen'kin, M. V. Sapozhnikov",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13181",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2606.13181",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.13153": {
-    "arxiv_id": "2606.13153",
-    "title": "Can non-orthogonal bases form stable skyrmionic beams?",
-    "abstract": "Skyrmions, topologically stable spin textures, have recently garnered significant attention in optics promising robust high-density information transition and nontrivial light-matter interaction. It was believed that the optical skyrmionic beams should be constructed by superposition of two orthogonal spatial modes with orthogonal polarizations to obtain topologically stable propagation. Here, we surprisingly find that propagation-stable skyrmionic beams can still be formed by superpositions of neither orthogonal spatial modes nor orthogonal polarizations. We theoretically present the mechanism to control the stable skyrmionics beams through the hybrid superposition of modes from the Hermite-Gaussian and Laguerre-Gaussian families and experimentally control the longitudinal on-demand dynamics of the skyrmions. This work redefines the topological stability of optical skyrmions, breaks limits and reduces the requirement for manipulating topologically structured light for practical multidimensional implementation of topologically robust information technologies.",
-    "authors": "Zan Zhang, Zhujun Ye, Zhenyu Guo, Zihan Liu, Zhuoyue Sun, Zijing Zhang, Jiantao Ma, Katsuya Inoue, Yijie Shen, Dongmei Deng",
-    "publish_date": "2026-06-11",
-    "arxiv_url": "http://arxiv.org/abs/2606.13153",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 0,
-    "paper_id": "arxiv:2606.13153",
     "source": "arxiv",
     "venue": ""
   },
@@ -24167,6 +23910,466 @@
     "hf_rank": 1,
     "score": 29,
     "paper_id": "arxiv:2606.23835",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28323": {
+    "arxiv_id": "2606.28323",
+    "title": "DexCompose: Reusing Dexterous Policies for Multi-Task Manipulation with a Single Hand",
+    "abstract": "Dexterous manipulation policies can solve individual skills, but composing them to perform multiple tasks with a single hand remains challenging. Adding a new task on top of an existing manipulation skill often imposes conflicting demands on overlapping fingers and contact modes, causing destructive interference between preserving an existing manipulation outcome and executing a new one. We propose DexCompose, a role-aware residual composition framework that reuses pretrained dexterous policies for multi-task manipulation through explicit finger-level action ownership. Given two pretrained full-hand policies, DexCompose first collects successful post-task states from the first skill and performs release tests over candidate finger masks to identify which fingers are necessary for maintaining the established skill state. It then trains two asymmetric residual modules: a bounded residual stabilizer for task preservation, and a context-aware residual that adapts the frozen downstream policy only within the action subspace assigned to the new task. We evaluate the framework on 16 composite dexterous manipulation tasks spanning four object-retention skills and four downstream interactions. DexCompose achieves a 77.4% average composite success rate, demonstrating that structural action ownership with dual residuals offers a promising direction for composing dexterous skills beyond conventional policy chaining.",
+    "authors": "Dihong Huang, Zhenyu Wei, Zhuxiu Xu, Yunchao Yao, Sikai Li, Mingyu Ding",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28323",
+    "project_url": "https://devon018.github.io/DexCompose-Webpage/",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Dexterous Manipulation",
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 20,
+    "paper_id": "arxiv:2606.28323",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28320": {
+    "arxiv_id": "2606.28320",
+    "title": "WARP-RM: A Warp-Augmented Relative Progress Reward Model for Data Curation",
+    "abstract": "Scaling imitation learning requires large datasets, yet human teleoperation inevitably produces mixed-quality demonstrations containing hesitations and recoveries. Prior frame-level progress reward models supervise on absolute temporal progress proxies that suffer from label noise, or require costly human annotations to define subtask boundaries. We present WARP (Warp-Augmented Relative Progress), a novel fully self-supervised algorithm for learning dense, signed relative progress magnitudes directly from successful demonstrations. WARP generates per-frame progress targets via time-warp augmentations of demonstrations (variable playback speeds and reversals) and we train WARP-RM to predict the normalized elapsed time between input frames. Aggregating these predictions across overlapping windows yields a dense frame-level progress signal. We then introduce WARP-BC, which leverages these scalar reward estimates to upweight high-advantage action chunks during behavior cloning, where chunk-level advantage is obtained by aggregating per-frame rewards. We evaluate our approach on a physical bimanual robot system performing a long-horizon deformable object manipulation task: folding T-shirts from a random crumpled start. To evaluate policy robustness against suboptimal data, we construct training datasets of varying quality using episode length as a proxy for teleoperation sub-optimality. As the dataset is widened to admit more inefficiencies, WARP-BC maintains a 19/20 success rate compared to vanilla BC's collapse to 2/20, improving throughput by up to 18x.",
+    "authors": "Justin Yu, Andrew Goldberg, Kavish Kondap, Karim El-Refai, Ethan Ransing, Qianzhong Chen, Mac Schwager, Fred Shentu, Philipp Wu, Ken Goldberg",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28320",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Bimanual",
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 20,
+    "paper_id": "arxiv:2606.28320",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28276": {
+    "arxiv_id": "2606.28276",
+    "title": "SimFoundry: Modular and Automated Scene Generation for Policy Learning and Evaluation",
+    "abstract": "Training and evaluating robot policies in the real world is costly and difficult to scale. We introduce SimFoundry, a modular and automated system for zero-shot real-to-sim scene construction from a video. SimFoundry generates sim-ready digital twins and supports object, scene, and task editing, enabling the automated generation of diverse digital cousins: affordance-preserving variations of reconstructed real-world scenes. Policies trained on SimFoundry data transfer zero-shot to challenging real tasks involving multi-step manipulation, articulated object interaction, and bimanual interaction, and its digital cousins (variations of the original scene, objects, and tasks) facilitate generalization to new real-world conditions. Across 7 manipulation tasks and 5 policy architectures, SimFoundry simulation evaluations strongly predict real-world performance, with mean Pearson correlation 0.911 and mean maximum ranking violation 0.018. When evaluating sim-trained policies zero-shot in the real world, policies trained with object, scene, and task cousins in simulation show average task success rate improvements of 17%, 21%, and 40%, respectively. Additional details at https://research.nvidia.com/labs/gear/simfoundry/ .",
+    "authors": "Nadun Ranawaka, Josiah Wong, Wei-Lin Pai, Wei-Teng Chu, Tianyuan Dai, Masoud Moghani, Hang Yin, Yunfan Jiang, Wesley Durbano, Brandon Huynh, Yu Fang, Linxi Fan, Danfei Xu, Ruohan Zhang, Li Fei-Fei, Bowen Wen, Ajay Mandlekar, Yuke Zhu",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28276",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Bimanual",
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": 18,
+    "score": 32,
+    "paper_id": "arxiv:2606.28276",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28270": {
+    "arxiv_id": "2606.28270",
+    "title": "Agent-Native Immune System: Architecture, Taxonomy, and Engineering",
+    "abstract": "The transition from static chat bots to autonomous agents--equipped with persistent memory, tool-use protocols, and multi-agent collaboration--has fundamentally expanded the AI threat landscape. Current defense mechanisms, such as perimeter security and training-time alignment, remain external to the agent's active reasoning loop. Consequently, they fall short: a fully aligned agent remains highly vulnerable to runtime hijacking via memory poisoning, tool-chain manipulation, or multi-agent protocol attacks. To address this critical gap, we introduce the Agent-Native Immune System (ANIS), the first biologically inspired, endogenous defense architecture embedded directly within the agent's cognitive loop. Our framework presents four primary contributions. First, we design a six-layer Immune Tower (L0-L5), distinctly incorporating Barrier Immunity (L1) as a non-cognitive, physical-and-logical isolation layer. Second, we establish a unified taxonomy of Agent Viruses and Agent Vaccines, formalizing the critical distinction between superficial non-parametric defenses and robust parametric vaccines. Third, we conceptualize the Harness Triad--Meta, Self, and Auto--a self-monitoring, meta-cognitive automation backbone that drives Continual Immune Learning (CIL), enabling vaccines to dynamically adapt to novel threats. Finally, we establish a rigorous theoretical demarcation between model alignment and agent immunity: while alignment provides a static \"constitutional\" value foundation during training, ANIS serves as the dynamic \"law enforcement\" mechanism during runtime. We conclude by framing open challenges for the field, including immune protocol standardization, novel evaluation metrics such as the Autoimmunity Rate (false-positive intervention rate), and the co-evolutionary dynamics between pathogens and vaccines within collective intelligence ecosystems.",
+    "authors": "Bo Shen, Lifeng Chang, Tianyuan Wei, Yunpeng Li, Feng Shi, Yichen Han, Peijie Gao, Shiyi Kuang, Xin Chang, Dehui Li",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28270",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.28270",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28196": {
+    "arxiv_id": "2606.28196",
+    "title": "Learning Stable In-Grasp Manipulation in a Non-Dropping Action Space",
+    "abstract": "Traditionally, dexterous manipulation controllers are designed using analytic models constrained by strong assumptions about the hand and the objects being manipulated. Reinforcement learning (RL) has become another common approach in which skills are explored openly in an end-to-end manner but is inefficient because of unnoticeable instability and conflicts in learning objectives. This paper attempts to efficiently explore stable and accurate manipulation skills by decomposing dexterous skills into multiple simpler/analyzable components. Each skill component is subsequently learned with constraints and guidance from classical physics and control theory. Our work shows that for stable grasp, in-grasp reposition/reorientation with different objects, sensor/motor noise, latency, and frictional conditions, skill learning becomes efficient and stable with prior knowledge from theory.",
+    "authors": "Ha Thang Long Doan, Hikaru Arita, Kazuto Nakashima, Kenji Tahara",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28196",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Dexterous Manipulation",
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 20,
+    "paper_id": "arxiv:2606.28196",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28192": {
+    "arxiv_id": "2606.28192",
+    "title": "PA-BiCoop: A Primary-Auxiliary Cooperative Framework for General Bimanual Manipulation",
+    "abstract": "Bimanual manipulation is essential for advanced robotic systems because it offers higher efficiency and flexibility compared to single-arm configurations. However, existing approaches either lack inter-arm interaction or ignore the need for a dynamic division of labor, treating the arms as functionally equivalent. To address these limitations, this paper draws inspiration from human bimanual manipulation where one arm handles core operations and the other provides auxiliary support, and proposes PA-BiCoop, a new single-model bimanual cooperation framework with dynamic primary-auxiliary arm differentiation. PA-BiCoop categorizes robotic arms into primary and auxiliary arms with adaptively adjustable roles across task stages, employs two specialized decoders that share a global feature encoder: the primary decoder generates the primary arm's base-coordinate pose and core-task affordance heatmaps, and the auxiliary decoder outputs the auxiliary arm's relative pose in the primary arm's coordinate system. Moreover, we design a dynamic role assignment module to automatically map roles to left/right arms without manual pre-definition. This design facilitates inter-arm knowledge sharing and coordinated manipulation. Extensive experiments demonstrate that our PA-BiCoop achieves superior performance: it outperforms state-of-the-art baselines by 48% on average in RLBench2 simulation tasks and by over 50% on average in real world tasks, thereby verifying its effectiveness and advancement in bimanual manipulation.",
+    "authors": "Bai Qicheng, Wang Ziru, Ma Teli, Dai Guang, Wang Jingdong, Wang Mengmeng",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28192",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Bimanual",
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 20,
+    "paper_id": "arxiv:2606.28192",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28133": {
+    "arxiv_id": "2606.28133",
+    "title": "Translation as a Bridging Action: Transferring Manipulation Skills from Humans to Robots",
+    "abstract": "We study whether we can learn novel manipulation skills from human actions to a bi-manual robot with parallel grippers. Human action data is cheap, abundant, and diverse, making it one of the most promising resources for scaling up robot learning. Yet transferring skills from humans to robots remains hard: most prior work treats humans as just another bi-manual 6DoF embodiment, where hand-pose estimates are noisy and the contact patterns of human fingers differ fundamentally from those of a parallel gripper. We argue that learning rotation-inclusive action signals from human data is therefore sub-optimal, and instead propose a bridging action representation: the relative wrist translation within the initial head-camera frame, an action space shared by humans and robots. To handle the potential absence of certain action components in different embodiments, we build a $π_0$-like vision-language-action model with interleaved action tokens and attention masking. On a suite of novel bi-manual manipulation tasks, our bridging action transfers human manipulation knowledge to robots far more effectively than noisy 6DoF human actions and scales with the amount of human data.",
+    "authors": "Sijin Chen, Kaixuan Jiang, Haixin Shi, Yanhui Wang, Weiheng Zhong, Haosheng Li, Bo Jiang, Yuxiao Liu, Xihui Liu",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28133",
+    "project_url": "https://translation-as-a-bridging-action.github.io/",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": 10,
+    "score": 30,
+    "paper_id": "arxiv:2606.28133",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28128": {
+    "arxiv_id": "2606.28128",
+    "title": "PhysisForcing: Physics Reinforced World Simulator for Robotic Manipulation",
+    "abstract": "Video generation models have emerged as a promising paradigm for embodied world simulation. However, both general-domain video generators and robot-specific data fine-tuned models can still produce physically implausible manipulations, including discontinuous motion trajectories and inconsistent robot-object interactions, which limits their reliability as world simulators. Through extensive experiments, we find that such physical instability mainly arises from two factors: deformation of moving objects and implausible spatio-temporal correlations among interacting entities, particularly during contact. Building on this observation, we propose PhysisForcing, a scalable training framework that strengthens physical consistency by focusing supervision on physics-informative regions through joint optimization of pixel-level and semantic-level features. The framework consists of a pixel-level trajectory alignment loss, which supervises DiT features using reference point trajectories, and a semantic-level relational alignment loss, which aligns DiT features with inter-region relations extracted from a frozen video understanding encoder. Extensive experiments on R-Bench, PAI-Bench, and EZS-Bench show that PhysisForcing consistently improves embodied video generation over strong baselines, improving the Wan2.2-I2V-A14B and Cosmos3-Nano base models on R-Bench by 22.3\\% and 9.2\\% (7.1\\% and 3.7\\% over vanilla finetuning), with the Cosmos3-Nano variant attaining the best overall score. Beyond generation, as a world model under the WorldArena action-planner protocol it raises the closed-loop success rate from 16.0\\% to 24.0\\% and further improves downstream policy success, indicating that physically aligned video models yield stronger representations for robotic manipulation.",
+    "authors": "Peiwen Zhang, Yufan Deng, Shangkun Sun, Juncheng Ma, Duomin Wang, Jonas Du, Zilin Pan, Ye Huang, Hao Liang, Songyan Huang, Ruihua Zhang, Enze Xie, Ming-Yu Liu, Daquan Zhou",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28128",
+    "project_url": "https://github.com/DAGroup-PKU/PhysisForcing",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": 19,
+    "score": 21,
+    "paper_id": "arxiv:2606.28128",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28104": {
+    "arxiv_id": "2606.28104",
+    "title": "Cross-view Multimodal Vision-Based Assessment Framework for Traditional Chinese Medicine Rehabilitation Training",
+    "abstract": "Vision-based assessment can provide convenient and cost-effective evaluation in Traditional Chinese Medicine (TCM) rehabilitation training, where action quality assessment (AQA) from computer vision offers a promising solution. Existing automatic AQA frameworks for physical therapy typically rely on skeletal data captured from a single viewpoint, which is inefficient for TCM techniques such as acupuncture or Tuina that involve dense hand self-occlusion and complex hand-object interactions. To address these challenges, we propose CME-AQA, a cross-view, multimodal vision-based assessment framework that integrates visual-pose fusion to enhance understanding of environmental context and leverages both first-person and third-person videos during training to improve inference robustness. We collected two dual-view datasets, TCM-AQA61-A (Acupuncture) and TCM-AQA61-T (Tuina), each containing synchronized first-person and third-person recordings of 61 subjects with expert annotations. Experimental results show that our approach achieves superior or comparable mean performance against competitive baselines, achieving over 10% relative improvement in weighted F1 over the best competing method on key rating tasks such as Needle Depth and Quick Needle Insertion, while also reducing mean absolute error in quantitative measures such as insertion time and manipulation frequency. Testing on a CPR dataset further demonstrates comparable performance on several posture-based criteria, suggesting applicability to related structured simulated clinical skill assessments where participant motion is central to evaluation. Overall, CME-AQA enhances assessment accuracy for structured TCM rehabilitation training and facilitates more convenient and effective training-oriented skill evaluation.",
+    "authors": "Francis Xiatian Zhang, Hao Yao, Shengxuan Chen, Hong Zhu, Hongxiao Jia, Sisi Zheng, Hubert P. H. Shum",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28104",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.28104",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27944": {
+    "arxiv_id": "2606.27944",
+    "title": "It Lied to a Doctor to Buy Poison Ingredients: Quantifying Real-World Misuse of Phone-use Agents",
+    "abstract": "Phone-use Agents can execute complex tasks end to end across real mobile applications. By operating a real device on the user's behalf, they reach far more functionalities than CLI agents, which amplifies the real-world harm they can cause when driven for malicious purposes. We present the first study of this threat on real phones and 27 commercial apps, and find that agents built on 9 mainstream commercial and open-source models readily carry out serious misuse, ranging from procuring drug and explosive precursors to fraud, online harassment, and review manipulation. Across the agents we run on real devices, the average refusal rate to harmful requests stays low while the average task-completion rate reaches 68.8%, and in some scenarios an agent finishes a violation faster than a human would. These results suggest that Phone-use Agents already meet the practical conditions for automated misuse at scale.   In one observed real-device execution, Claude-Opus-4.8 fabricated a medical history, deceived an online doctor into issuing a prescription, and completed the order and payment on its own to purchase a precursor for a highly toxic substance. To our knowledge, this is the first documented real-world case of an AI agent procuring controlled precursor materials. We trace this behavior to a Safety Awareness-Execution Gap, where an agent recognizes that a request is harmful yet still executes it. Simple defenses curb the overt cases, but the more covert and arguably more damaging threats, such as coordinated review manipulation and fake traffic, remain largely unsolved. We hope these findings push the community toward safer Phone-use Agents.",
+    "authors": "Yiming Sun, Chen Chen, Zifan Zhou, Mi Zhang",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27944",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.27944",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27928": {
+    "arxiv_id": "2606.27928",
+    "title": "$\\texttt{SMaSH}$ : Simplify Massive Spinor Helicity",
+    "abstract": "We present $\\texttt{SMaSH}$, a $\\texttt{Mathematica}$ package to do spinor helicity computations in four spacetime dimensions $\\href{https://github.com/aakash-kmr/SMaSH}{\\text{(github)}}$. It can handle massive spinor helicity computations with explicit little group indices which is a novel feature. It can also handle massless as well as off-shell spinor helicity variables. It is designed to compute perturbative computations; it comes with predefined three point amplitudes and propagators for any masses and spins (arXiv:1709.04891). It can implement the high energy limit over an expression, check the discrete $\\tt{C,P,T}$ transformations, compute contact terms and impose gauge invariance for any scattering process. We have shown the usage of such functions for computing gauge invariant Weinberg minimal amplitudes (arXiv:2506:12431, arXiv:2504:06343).   The package can also generate both real and complex numerical kinematics for any $n$-point scattering for arbitrary masses and energy scales by implementing the $\\tt{RAMBO}$ algorithm. It is also rich with basic spinor helicity manipulations like Schouten simplification, Clifford algebra manipulation, conversion between spinor helicity and Lorentz vectors, derivative w.r.t. spinors and their scalars, helicity scaling etc.",
+    "authors": "Aakash Kumar, Arnab Rudra, Rahul Shaw",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27928",
+    "project_url": "https://github.com/aakash-kmr/SMaSH",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.27928",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27872": {
+    "arxiv_id": "2606.27872",
+    "title": "S$^2$-VLA: State-Space Guided Vision-Language-Action Models for Long-Horizon Manipulation",
+    "abstract": "Vision-Language-Action (VLA) models have demonstrated strong capabilities in robotic manipulation, but their performance degrades significantly in long-horizon tasks due to cumulative error propagation. This limitation largely arises from static feature fusion mechanisms that rely on fixed weights to combine visual, language, and action representations, preventing the model from adapting to different phases of task execution. To address this limitation, we propose S$^2$-VLA, a framework that introduces a State-Space Guided Adaptive Attention (SSGAA) mechanism. SSGAA maintains a belief state that tracks task progression and generates dynamic gating weights to adaptively fuse information from three complementary sources visual features for spatial perception, task intents for high-level task planning, and temporal action sequences for execution consistency. This adaptive fusion allows the model to shift its focus throughout task execution, aligning with the evolving requirements of different task stages. Despite its compact 2B parameter size, S$^2$-VLA consistently outperforms larger 7B-scale models and achieves state-of-the-art performance on long-horizon manipulation benchmarks, including LIBERO and SimplerEnv. highlighting the importance of adaptive feature fusion for long-horizon robotic manipulation.",
+    "authors": "Zhipeng Xie, Zongyi Han, Xiangyi Wei, Shiliang Sun, Yang Li, Jing Zhao",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27872",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.27872",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27830": {
+    "arxiv_id": "2606.27830",
+    "title": "Theory of Electron Spin Resonance Scanning Tunneling Microscopy: The First Decade",
+    "abstract": "Electron spin resonance in scanning tunneling microscopy enabled the study of electronic transitions of magnetic impurities on surfaces at the atomic scale. This ESR-STM technique allows to spectroscopically probe and coherently manipulate spins using an all-electrical method without oscillating external magnetic driving fields. Here, we aim to review recent advancements in ESR-STM. We will discuss possible fundamental mechanisms by which the electric field drives spin resonance based on Heisenberg exchange, Kondo scattering, and Anderson impurity models. We validate theoretical predictions against experimental observations, to understand how electronic correlations, spin exchange, and many-body effects manifest in ESR-STM signals. After reviewing coherent spin control in the STM junction, we discuss potential applications of the ESR-STM method for coherent multi-spin control which enables multiple-qubit operations. Finally, we address recent developments in coupled electron-nuclear spin systems, including hyperfine-resolved ESR spectroscopy, and the driving and polarization of nuclear spins in ESR-STM.",
+    "authors": "Saba Taherpour, Denis Janković, Hoang-Anh Le, Jose Reina-Galvez, Christoph Wolf",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27830",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.27830",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27773": {
+    "arxiv_id": "2606.27773",
+    "title": "ModaFlow: Modality-Aware Flow Matching for High-Fidelity Virtual Try-On",
+    "abstract": "Image-based virtual try-on has emerged as a compelling task in e-commerce and augmented reality, yet existing methods struggle to simultaneously preserve fine garment semantics and adapt to diverse person body geometries under large clothing-body deformations. We present ModaFlow, a modality-aware flow-matching based framework for high-fidelity virtual try-on that achieves precise alignment between textual descriptions and garment appearance. Unlike prior methods that treat multimodal conditions uniformly, ModaFlow introduces a modality-aware guidance scheme: visual garment embeddings extracted by a pretrained image prompt adapter provide deterministic, persistent structural guidance, while textual embeddings generated from garment descriptions are controlled via classifier-free guidance (CFG) with adaptive scaling and zero-initialized velocity. To further enhance flow field accuracy, we propose two regularization losses, cosine similarity and perceptual flow discrimination, that jointly improve directional consistency and perceptual realism of the velocity field. Additionally, a mask manipulation strategy stochastically samples among box, transparent, and relaxed masks during training, simulating diverse occlusion scenarios and enabling robust inference under unpaired settings where only a box mask is available. Experiments show that ModaFlow achieves state-of-the-art results in both qualitative and quantitative evaluations, reducing FID by approximately 30% on paired and 20% on unpaired benchmarks.",
+    "authors": "Xiangyu Sai, Meysam Madadi, Sergio Escalera, Yong Xu",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27773",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.27773",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27768": {
+    "arxiv_id": "2606.27768",
+    "title": "Collision and coalescence dynamics of bosonic quantum Hall droplets",
+    "abstract": "Recently bosonic quantum Hall droplets have been observed in rapidly rotating two-dimensional Bose-Einstein condensates (BECs), which exhibit robust dynamical stability. Inspired by this, we systematically investigate the collision and coalescence dynamics of these droplets within the Gross-Pitaevskii framework. For two-droplet collisions, we find two distinct collision outcomes, namely merging and separation, that are controlled by the initial relative velocity. The critical velocity exhibits a universal scaling law with the interaction and the particle number as $v_c \\propto (gN)^{1/4}$, which can be interpreted from a simplified analytical model, revealing the essential role of the collision time. It differs fundamentally from the mechanism governing the conventional Lee-Huang-Yang stabilized quantum droplets. Furthermore, while the collision can change the shape of the droplet significantly, the center of mass trajectory remains nearly unaffected, owing to the conservation of angular momentum. For overlapping stationary droplets, vortex arrays can emerge through Kelvin-Helmholtz instability driven by phase-induced shear flow. Although two droplets may merge into a larger one, extended states cannot be constructed from multiple overlapping droplets. Instead, the system dynamically reorganizes into new isolated droplets, revealing the localized property in the bulk region. Our results reveal the unique nonequilibrium dynamics of quantum Hall droplets and suggest new pathways for manipulating strongly correlated rotating quantum fluids.",
+    "authors": "Xinyi Liu, Zhendong Li, Yuwen Zhou, Siying Li, Haoran Xu, Zihe Liu, Rongzhen Jiao, Mingyuan Sun",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27768",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.27768",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27755": {
+    "arxiv_id": "2606.27755",
+    "title": "Drop-Then-Recovery: How Redundant Are Vision-Language-Action Models?",
+    "abstract": "Vision-Language-Action (VLA) models enable instruction-driven robotic manipulation, but they inherit oversized language backbones from pretrained VLMs whose capacity far exceeds what is needed for short robotic instructions. This raises a basic question: how much of a VLA model is actually necessary for closed-loop control? In this work, we study architectural redundancy in VLA models by using transformer block removal as a controlled intervention. We introduce \\textbf{Drop-Then-Recovery (DTR)}, an analysis protocol that removes selected blocks from a pretrained VLA model and then fine-tunes the resulting model to measure whether the removed capacity was necessary for downstream control. To make this intervention reliable, we propose \\textbf{GateProbe}, a one-shot virtual-gate sensitivity metric that ranks blocks by their contribution to the downstream action loss. Across multiple VLA architectures, manipulation benchmarks and even real-robot industrial scenarios, we find a strong asymmetry in post-removal recoverability: \\ul{\\textit{language backbones are highly redundant for standard robotic manipulation tasks, whereas vision and action pathways are substantially less tolerant to removal}}. On LIBERO, removing half of the LLM blocks even improves OpenVLA-OFT from 95.0% to 98.3% under the same downstream fine-tuning budget, and retaining only two language blocks still recovers baseline-level performance. These results suggest that current VLA benchmarks may exert limited pressure on deep language grounding and compositional instruction understanding, and that future VLA architectures should allocate capacity more deliberately across language, vision, and action components. The code is available at https://github.com/s1ghhh/VLADrop.",
+    "authors": "Guoheng Sun, Kaixi Feng, Shwai He, Xiaochuan Gong, Yexiao He, Ziyao Wang, Zheyu Shen, Wanghao Ye, Ramana Rao Kompella, Gaowen Liu, Ang Li",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27755",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.27755",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27677": {
+    "arxiv_id": "2606.27677",
+    "title": "DIM-WAM: World-Action Modeling with Diverse Historical Event Memory",
+    "abstract": "World-action models have shown promising robot-manipulation performance by jointly predicting future visual states and actions. However, existing methods mainly rely on short-term history and short-horizon future prediction, which is insufficient for long-horizon tasks whose correct execution depends on earlier observations and task progress. Such temporally dependent tasks require effective use of complementary temporal information, including recent local context, cross-stage historical events, immediate future dynamics, and global task progress. To address long-term forgetting and poor awareness of the global task state, we introduce DiM-WAM, a memory-augmented world-action model that integrates multi-scale historical context, local future dynamics, and global task progress. The memory extracts compact visual event information from real observations, updates multiple memory banks through independent similarity-based merging, and then reads the bank-identity- and time-embedded long-term context to condition video and action denoising. A progress-supervision objective further encourages memory tokens to encode not only completed historical events but also the current task stage and its implications for the remaining task. On RMBench, DiM-WAM raises average success from 28.4% with LingBot-VA to 69.8%, exceeding the explicit-memory Mem-0 baseline at 42.0%. On four real-world Franka tasks, it improves average stage success from 70.7% to 91.5% and full-task success from 52.5% to 80.0%. Project page: https://wangkai-casia.github.io/dim-wam/{\\texttt{https://wangkai-casia.github.io/dim-wam/}}.",
+    "authors": "Kai Wang, Zhaopeng Gu, Yixiang Chen, Yuan Xu, Qisen Ma, Peng Su, Zhaowen Li, Yan Huang, Liang Wang",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27677",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.27677",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27676": {
+    "arxiv_id": "2606.27676",
+    "title": "CWI: Composite Humanoid Whole-Body Imitation System for Loco-manipulation",
+    "abstract": "Achieving everyday tasks with humanoid robots requires coordinating stable locomotion with versatile manipulation. However, existing whole-body controllers still face significant challenges. Methods trained solely via command sampling, without motion-capture (MoCap) data, often struggle with sparse rewards and require carefully tuned curricula to converge. This is especially problematic for upper-body control, where the resulting motions deviate from human-like statistics and degrade whole-body coordination. Conversely, approaches that imitate full-body MoCap data suffer from dataset imbalance, as many locomotion trajectories are overly aggressive for stable-locomotion scenarios, necessitating extensive data filtering and augmentation. To address this, we present Composite Whole-Body Imitation (CWI), a framework that decouples the use of MoCap data for upper-body manipulation and lower-body locomotion. This decoupling allows us to exploit the full MoCap dataset of diverse manipulation references, while stable, command-conditioned lower-body locomotion is guided by dual discriminators trained on curated expert-quality walking and squatting clips via an Adversarial Motion Prior (AMP). A multi-critic architecture reduces conflicts among locomotion, manipulation, and motion-style objectives, and a teacher--student distillation stage yields a whole-body policy conditioned only on bimanual hand poses and velocity/height commands. We evaluate CWI through simulation experiments and real-world deployment on a full-size LimX Oli humanoid. The results show competitive loco-manipulation performance, robust whole-body coordination, and practical teleoperation without full-body motion-capture equipment. A project page with supplementary material can be found at https://cwi-ral.github.io/CWI-RAL-Webpage.",
+    "authors": "Wenqi Ge, Junde Guo, Zhen Fu, Shunpeng Yang, Jiayu Chen, Hua Chen",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27676",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Bimanual",
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 20,
+    "paper_id": "arxiv:2606.27676",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27663": {
+    "arxiv_id": "2606.27663",
+    "title": "Direct Action-Head Injection of A Grounded 3D Point Unlocks Spatial and Task Generalization",
+    "abstract": "Vision-Language-Action (VLA) models leverage large-scale vision-language pretraining for flexible robot manipulation, yet at test time they remain brittle along two axes: spatial generalization, when object positions differ from those seen during training, and task generalization, when a familiar scene is paired with a different language instruction than the one seen in training. A growing family of methods addresses this brittleness by endowing a policy with the spatial and task-aware information such as 2D pixel-coordinate for object localization and placement. However, we find that existing representation through language prompting or visual prompting does not address the limitations; in contrast, exploiting a 3D point-based representation and feeding it directly to the action head leads to substantial improvements-revealing that how the grounding signal is represented and injected into the VLA is the true game changer. Thus, we propose a lightweight, model-agnostic module that represents the grounding signal in 3D, computes its relative displacement to the gripper, and injects the resulting spatial embedding directly into the action head through adaptive layer normalization. The entire module is a two-layer MLP that requires no changes to the VLA backbone or pretraining pipeline. On LIBERO-PRO, our method improves the average success rate of GR00T-N1.6 from 31.2 to 77.5 points under task perturbation and from 28.1 to 60.2 points under position perturbation (gains of 46.3 and 32.1 points). Comparable gains are achieved for $π_{0.5}$ as well, demonstrating that the mechanism is backbone-agnostic. Together, these results support our central finding: given adequate grounding lifted into 3D, injecting it directly into the action head is what unlocks both spatial and task generalization in VLAs-achievable with nothing more than a lightweight module on top of a pretrained backbone.",
+    "authors": "Shiang-Feng Tsai, Jin-Cheng Jhang, Yen-Ling Tai, Jia-Hong Lai, Shih-Yun Wong,  KangTung-Hsu, Yi-Ting Chen",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27663",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2606.27663",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27625": {
+    "arxiv_id": "2606.27625",
+    "title": "P-ARC: Exploiting Subproblem Independence for Parallel Multi-Robot Motion Planning",
+    "abstract": "This paper presents Parallel ARC (P-ARC), a parallel variant of the Adaptive Robot Coordination (ARC) approach to multi-robot motion planning (MRMP). P-ARC proposes a parallel variant for each of the three main stages in ARC: initial individual solutions, conflict detection, and conflict resolution, exploiting the independence created by ARC's decomposition of the MRMP problem. Additionally, we employ an OR-parallel multi-start strategy to both ARC and P-ARC, creating a hybrid parallel strategy OR-P-ARC. We evaluate the impact of the different parallel strategies for ARC using a set of scaling 2D mobile and planar manipulator scenarios with up to 128 robots to control for conflicts and work distribution across the stages of ARC. Additionally, we demonstrate planning time speedups approaching 4X over the sequential version for large Panda multi-manipulator teams in real-world inspired scenarios when deploying 16 CPU cores.",
+    "authors": "James D. Motes, Marco Morales, Nancy M. Amato",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.27625",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2606.27625",
     "source": "arxiv",
     "venue": ""
   }
