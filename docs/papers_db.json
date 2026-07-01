@@ -11632,69 +11632,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.19047": {
-    "arxiv_id": "2606.19047",
-    "title": "RODS: Reward-Driven Online Data Synthesis for Multi-Turn Tool-Use Agents",
-    "abstract": "Multi-turn tool-use RL is bottlenecked by the rapid depletion of informative samples in static datasets. We observe that the gradient signal in GRPO concentrates on tasks with the highest rollout reward variance, a consequence of the Popoviciu upper bound. Consequently, samples near the agent's capability boundary -- where successes and failures are roughly balanced -- contribute disproportionately large policy gradients. As training progresses, this boundary continuously shifts, which gradually depletes the pool of informative samples in a static dataset. We propose RODS (Reward-driven Online Data Synthesis) to resolve this depletion. RODS closes the loop between RL training and data generation by repurposing the progress reward variance as a practical, zero-cost boundary detector that requires no extra inference beyond the rollouts already computed for training. It continuously identifies such boundary samples, synthesizes new multi-turn variants matching their structural complexity (e.g., API topology and dependency depth) via a skill-aligned resampling pipeline, and manages a dynamic replay buffer that co-evolves with the policy. Starting from 400 human seeds and maintaining an active training pool of ~800 samples, RODS achieves comparable performance to a 17K-sample offline pipeline while requiring roughly 20x fewer trajectories, and improves over fixed-data RL and environment augmentation in our controlled setting.",
-    "authors": "Ruishan Fang, Siyuan Lu, Chenyi Zhuang, Tao Lin",
-    "publish_date": "2026-06-17",
-    "arxiv_url": "http://arxiv.org/abs/2606.19047",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 49,
-    "score": 26,
-    "paper_id": "arxiv:2606.19047",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.19236": {
-    "arxiv_id": "2606.19236",
-    "title": "STARE: Surprisal-Guided Token-Level Advantage Reweighting for Policy Entropy Stability",
-    "abstract": "Reinforcement Learning with Verifiable Rewards algorithms like GRPO have emerged as the dominant post-training paradigm for complex reasoning in LLMs, yet commonly suffer from policy entropy collapse during training. We conduct a first-order gradient analysis of token-level entropy dynamics under GRPO and identify a token-level credit assignment mismatch: the per-token entropy variation decomposes into the product of the trajectory-level advantage and an entropy sensitivity function over the next-token distribution, yielding an advantage-surprisal four-quadrant structure and a near-criticality property. Motivated by it, we propose STARE (Surprisal-guided Token-level Advantage Reweighting for policy Entropy stability), which identifies entropy-critical token subsets via batch-internal surprisal quantiles, selectively reweights their effective advantages, and incorporates a target-entropy closed-loop gate for stable entropy regulation. Across model scales from 1.5B to 32B and three task families (Short CoT, Long CoT, and Multi-Turn Tool Use), STARE sustains stable RL training over thousands of steps while maintaining policy entropy within the target band. On AIME24 and AIME25, STARE outperforms DAPO and other competitive baselines by 4%-8% in average accuracy, with reflection tokens and response length growing in tandem, indicating sustained exploration-exploitation balance that further unlocks RL training potential.Code is available at https://github.com/hp-luo/STARE.",
-    "authors": "Haipeng Luo, Qingfeng Sun, Songli Wu, Can Xu, Wenfeng Deng, Han Hu, Yansong Tang",
-    "publish_date": "2026-06-17",
-    "arxiv_url": "http://arxiv.org/abs/2606.19236",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 44,
-    "score": 23,
-    "paper_id": "arxiv:2606.19236",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.18967": {
-    "arxiv_id": "2606.18967",
-    "title": "EfficientRollout: System-Aware Self-Speculative Decoding for RL Rollouts",
-    "abstract": "Reinforcement learning (RL) has become a representative post-training paradigm for LLMs, enabling strong reasoning and agentic capabilities. However, rollout generation remains a dominant latency bottleneck because autoregressive sampling decodes responses sequentially and a small number of long-tailed generations often determine completion time. Speculative decoding (SD) offers a natural way to address this bottleneck, as it is a well-established technique for serving fixed LLMs that reduces latency by rapidly drafting tokens and accepting them through parallel verification while preserving the target-model distribution. However, its practical speedups do not directly carry over to RL rollouts: (i) the evolving target policy makes any fixed drafter increasingly mismatched with the policy's output distribution; and (ii) active batch sizes shrink throughout rollout decoding, shifting decoding from compute-bound to memory-bound regimes where parallel verification can exploit underutilized compute. Therefore, accelerating RL rollouts requires both a drafter that remains effective under long, high-temperature generations from an evolving policy and system-aware use of SD that avoids compute-bound regimes. We present EfficientRollout, a system-aware self-SD framework designed to address this gap for RL rollouts. EfficientRollout induces a quantized drafter from the target model (i.e. self-speculative decoding), keeping it coupled to the evolving policy without separate drafter pretraining or online adaptation. It further coordinates a system-aware SD toggle policy with acceptance-aware draft-length adaptation, enabling speculation only in beneficial regimes while matching the drafting budget to evolving drafter quality. EfficientRollout reduces rollout and end-to-end latency by up to 19.6% and 12.7%, respectively, over an accelerated AR rollout baseline, while preserving final model quality.",
-    "authors": "Minseo Kim, Minjae Lee, Seunghyuk Oh, Kevin Galim, Donghoon Kim, Coleman Hooper, Harman Singh, Amir Gholami, Hyung Il Koo, Wonjun Kang",
-    "publish_date": "2026-06-17",
-    "arxiv_url": "http://arxiv.org/abs/2606.18967",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 47,
-    "score": 20,
-    "paper_id": "arxiv:2606.18967",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.19341": {
     "arxiv_id": "2606.19341",
     "title": "Native Active Perception as Reasoning for Omni-Modal Understanding",
@@ -11716,27 +11653,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.19005": {
-    "arxiv_id": "2606.19005",
-    "title": "Sumi: Open Uniform Diffusion Language Model from Scratch",
-    "abstract": "Diffusion models have become a promising alternative to autoregressive models. Among these, uniform diffusion language models (UDLMs) permit any token to be updated at any step, in principle enabling more flexible generation. However, no UDLM has yet been pretrained from scratch at both large parameter scale and large token budget. Both autoregressive modeling and masked diffusion modeling already have capable models at scale that the community can study and build on; uniform diffusion has none. A scratch-pretrained UDLM at scale would provide a clean reference point for studying scaling behavior, generation dynamics, controllability, and trade-offs against established autoregressive and masked diffusion models. To this end, we introduce Sumi (\"ink\" in Japanese), a fully open 7B uniform diffusion language model pretrained from scratch on 1.5T tokens. Sumi performs competitively with autoregressive models trained at comparable token budgets on knowledge, reasoning, and coding benchmarks, while under-performing on commonsense benchmarks, where our education-heavy data mixture is a likely contributor. We release our model weights, checkpoints, and full training recipe, including a complete specification of the data mixture over publicly available corpora. We hope this release enables the community to study native uniform diffusion at scale and catalyzes work on its as-yet poorly understood aspects.",
-    "authors": "Mengyu Ye, Keito Kudo, Wataru Ikeda, Ryosuke Matsuda, Keisuke Sakaguchi, Jun Suzuki",
-    "publish_date": "2026-06-17",
-    "arxiv_url": "http://arxiv.org/abs/2606.19005",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 17,
-    "score": 13,
-    "paper_id": "arxiv:2606.19005",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.19336": {
     "arxiv_id": "2606.19336",
     "title": "Learning User Simulators with Turing Rewards",
@@ -11755,27 +11671,6 @@
     "hf_rank": 20,
     "score": 10,
     "paper_id": "arxiv:2606.19336",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.18943": {
-    "arxiv_id": "2606.18943",
-    "title": "Physics-IQ Verified",
-    "abstract": "Video generative models ( VGMs) have become a new frontier that can be used not just for video generation but for a multitude of downstream tasks, including world modeling. To advance these tasks, a good video model must understand the physical reality of the world. Evaluating this understanding is an emerging field and has led to the Physics-IQ benchmark, which quantifies this explicitly by comparing model-generated videos to real-world videos of physical experiments. In this work, we present a systematic audit of the Physics-IQ benchmark, expose shortcomings and propose three solutions that sharpen how we can measure physical understanding of VGMs. Specifically, we improve prompt and ground-truth quality to reduce the influence of confounding factors and further introduce a sample-level scoring system that weights each sample and metric equally. Our resulting benchmark, Physics-IQ Verified, refines 57.6\\% of all samples and improves over 34.8\\% of prompts. In a comparison study using six image-to-video generative models, we observe moderate but meaningful ranking changes (Kendall's $τ= 0.46$). We hope Physics-IQ Verified advances the community by providing a more reliable signal toward physically accurate VGMs. The code for the benchmark can be accessed at https://github.com/google-deepmind/physics-iq-benchmark",
-    "authors": "Tim Rädsch, Yuki M Asano, Hilde Kuehne, Stefan Bauer, Priyank Jaini, Robert Geirhos, Carsten T. Lüth",
-    "publish_date": "2026-06-17",
-    "arxiv_url": "http://arxiv.org/abs/2606.18943",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 22,
-    "score": 8,
-    "paper_id": "arxiv:2606.18943",
     "source": "arxiv",
     "venue": ""
   },
@@ -13046,27 +12941,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.19195": {
-    "arxiv_id": "2606.19195",
-    "title": "Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance",
-    "abstract": "While 10B-level industrial foundation models have pushed the boundaries of image inpainting, their prohibitive computational costs severely hinder practical deployment. Constructing a highly optimized task-specific specialist offers a promising solution; however, extreme structural compression inevitably triggers a severe representation bottleneck. To conquer this, we propose Moebius, a highly efficient lightweight inpainting framework. We systematically reconstruct the diffusion backbone by introducing the Local-$λ$ Mix Interaction ($LλMI$) block. Comprising Local-$λ$ and Interactive-$λ$ modules, it elegantly summarizes spatial contexts and global semantic priors into fixed-size linear matrices, preserving complex latent interactions while drastically shedding parameters. Furthermore, to unlock the full representational capacity of this highly compact architecture, we synergistically pair it with an adaptive multi-granularity distillation strategy. Operating strictly within the latent space to avoid expensive pixel-space decoding, this strategy dynamically balances multiple gradient-based losses to achieve high-fidelity alignment. Extensive experiments across natural and portrait benchmarks demonstrate that this optimal synergy enables Moebius to rival or even surpass the generation quality of the 10B-level industrial generalist FLUX.1-Fill-Dev. Remarkably, Moebius achieves this using less than 2\\% of the parameters (0.22B vs. 11.9B) while delivering a $>15\\times$ acceleration in total inference time, setting a new efficiency standard for high-fidelity inpainting. Project page at https://hustvl.github.io/Moebius.",
-    "authors": "Kangsheng Duan, Ziyang Xu, Wenyu Liu, Xiaohu Ruan, Xiaoxin Chen, Xinggang Wang",
-    "publish_date": "2026-06-17",
-    "arxiv_url": "http://arxiv.org/abs/2606.19195",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 46,
-    "score": 6,
-    "paper_id": "arxiv:2606.19195",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.19495": {
     "arxiv_id": "2606.19495",
     "title": "LooseControlVideo: Directorial Video Control using Spatial Blocking",
@@ -13106,48 +12980,6 @@
     "hf_rank": 49,
     "score": 3,
     "paper_id": "arxiv:2606.19808",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.19162": {
-    "arxiv_id": "2606.19162",
-    "title": "The Reward Was in Your Data All Along: Correcting Flow Matching with Discriminator-Guided RL",
-    "abstract": "Score- and flow-matching models often rely on preference-based reinforcement learning for two purposes: aligning with subjective preferences and, surprisingly, recovering properties such as visual realism and coherent object structure that matching-based training is intended to learn from the data itself. We argue that this reflects a structural mismatch. Matching losses measure $\\ell_2$ regression error on the velocity or score field under training-time marginals, a proxy poorly aligned with the visual and semantic properties that determine sample quality at inference. Given a reward aligned with these properties, RL sidesteps the mismatch by evaluating the model on its own samples and following the reward landscape directly. The challenge is to obtain such a reward without relying on human preferences, which are expensive and conflate data realism with annotator inclinations.   We propose Discriminator-Guided RL (DRL). DRL trains a discriminator to separate data from base-model samples in a pretrained representation space and uses its logit as the reward in KL-regularized RL. The pretrained space restricts the discriminator to perceptually meaningful directions, and the logit estimates the log-likelihood ratio between data and model, which is the optimal reward for targeting the data distribution. Across SiT, JiT, REPA, and RAE, DRL reduces guidance-free FID (e.g., $9.38 \\to 2.62$ on SiT) and semantic-space FD (e.g., $88.2 \\to 19.3$ on DINOv3 for SiT), with consistent gains across all backbones, and improves human-preference rewards without training on them. It also yields a better Pareto frontier between preference reward and image fidelity under subsequent preference-based post-training, increasing alignment while reducing low-level artifacts such as oversaturation and excessive brightness.",
-    "authors": "Nicolas Beltran-Velez, Felix Friedrich, Zhang Xiaofeng, Reyhane Askari-Hemmat, Xiaochuang Han, Adriana Romero-Soriano, Michal Drozdzal",
-    "publish_date": "2026-06-17",
-    "arxiv_url": "http://arxiv.org/abs/2606.19162",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 50,
-    "score": 0,
-    "paper_id": "arxiv:2606.19162",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.19120": {
-    "arxiv_id": "2606.19120",
-    "title": "Seeing Before Reasoning: Decoupling Perception and Reasoning for Shortcut-Resilient Multimodal On-Policy Self-Distillation",
-    "abstract": "On-policy self-distillation (OPSD) trains a model on its own rollouts and uses a frozen copy to provide dense token-level targets conditioned on a reference target. This works well for LLM reasoning, but a direct extension to multimodal large language models (MLLMs) can create a shortcut: the privileged target may guide tokens mainly based on the text reference target rather than the image. We propose ViGOS, a visually grounded OPSD framework for MLLM post-training. The student first writes a visual description and then reasons toward the final answer. For valid rollouts, an image-only perception teacher supervises the description, while a privileged reasoning teacher supervises the reasoning and final answer on the same student prefix. A reference teacher is used only for invalid rollouts to recover the output format. Across general vision-language, expert reasoning, visual math, spatial grounding, and visual-language-prior benchmarks, ViGOS keeps the main benefits of OPSD and improves image-grounded behavior in shortcut-prone settings.",
-    "authors": "Sihan Wang, Xiyao Liu, Lianqing Liu, Zhi Han",
-    "publish_date": "2026-06-17",
-    "arxiv_url": "http://arxiv.org/abs/2606.19120",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 43,
-    "score": 0,
-    "paper_id": "arxiv:2606.19120",
     "source": "arxiv",
     "venue": ""
   },
@@ -20997,9 +20829,10 @@
     "matched_categories": [
       "Dexterous",
       "Manipulation",
-      "VLA"
+      "VLA",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 3,
     "score": 10,
     "paper_id": "arxiv:2606.27755",
     "source": "arxiv",
@@ -21542,7 +21375,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 49,
     "score": 29,
     "paper_id": "arxiv:2606.20905",
     "source": "arxiv",
@@ -21563,7 +21396,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 39,
+    "hf_rank": 50,
     "score": 28,
     "paper_id": "arxiv:2606.20970",
     "source": "arxiv",
@@ -23334,7 +23167,7 @@
     "matched_categories": [
       "Sim2Real"
     ],
-    "hf_rank": 11,
+    "hf_rank": 22,
     "score": 19,
     "paper_id": "arxiv:2606.29501",
     "source": "arxiv",
@@ -23535,7 +23368,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 12,
     "score": 29,
     "paper_id": "arxiv:2606.29600",
     "source": "arxiv",
@@ -23556,7 +23389,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 13,
     "score": 28,
     "paper_id": "arxiv:2606.22749",
     "source": "arxiv",
@@ -23577,7 +23410,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 14,
     "score": 27,
     "paper_id": "arxiv:2606.30054",
     "source": "arxiv",
@@ -23598,7 +23431,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 15,
     "score": 26,
     "paper_id": "arxiv:2606.30410",
     "source": "arxiv",
@@ -23619,7 +23452,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 16,
     "score": 25,
     "paper_id": "arxiv:2606.27282",
     "source": "arxiv",
@@ -23640,7 +23473,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 17,
     "score": 24,
     "paper_id": "arxiv:2606.28733",
     "source": "arxiv",
@@ -23661,7 +23494,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 18,
     "score": 23,
     "paper_id": "arxiv:2606.27708",
     "source": "arxiv",
@@ -23682,7 +23515,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 19,
     "score": 22,
     "paper_id": "arxiv:2606.25393",
     "source": "arxiv",
@@ -23703,7 +23536,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 9,
+    "hf_rank": 20,
     "score": 21,
     "paper_id": "arxiv:2606.30170",
     "source": "arxiv",
@@ -23724,7 +23557,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 21,
     "score": 20,
     "paper_id": "arxiv:2606.25363",
     "source": "arxiv",
@@ -23745,7 +23578,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 23,
     "score": 18,
     "paper_id": "arxiv:2606.30308",
     "source": "arxiv",
@@ -23766,7 +23599,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 24,
     "score": 17,
     "paper_id": "arxiv:2606.22473",
     "source": "arxiv",
@@ -23787,7 +23620,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 25,
     "score": 16,
     "paper_id": "arxiv:2606.27828",
     "source": "arxiv",
@@ -23808,7 +23641,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 26,
     "score": 15,
     "paper_id": "arxiv:2606.24256",
     "source": "arxiv",
@@ -23829,7 +23662,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 27,
     "score": 14,
     "paper_id": "arxiv:2606.26740",
     "source": "arxiv",
@@ -23850,7 +23683,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 28,
     "score": 13,
     "paper_id": "arxiv:2606.30292",
     "source": "arxiv",
@@ -23871,7 +23704,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 29,
     "score": 12,
     "paper_id": "arxiv:2606.29655",
     "source": "arxiv",
@@ -23892,7 +23725,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 30,
     "score": 11,
     "paper_id": "arxiv:2606.28480",
     "source": "arxiv",
@@ -23913,7 +23746,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 31,
     "score": 10,
     "paper_id": "arxiv:2606.29537",
     "source": "arxiv",
@@ -23934,7 +23767,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 32,
     "score": 9,
     "paper_id": "arxiv:2606.30045",
     "source": "arxiv",
@@ -23955,7 +23788,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 33,
     "score": 8,
     "paper_id": "arxiv:2606.29887",
     "source": "arxiv",
@@ -23976,7 +23809,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 34,
     "score": 7,
     "paper_id": "arxiv:2606.30084",
     "source": "arxiv",
@@ -23997,7 +23830,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 35,
     "score": 6,
     "paper_id": "arxiv:2606.29686",
     "source": "arxiv",
@@ -24018,7 +23851,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 37,
     "score": 4,
     "paper_id": "arxiv:2606.30017",
     "source": "arxiv",
@@ -24039,7 +23872,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 38,
     "score": 3,
     "paper_id": "arxiv:2606.29814",
     "source": "arxiv",
@@ -24060,7 +23893,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 39,
     "score": 2,
     "paper_id": "arxiv:2606.30251",
     "source": "arxiv",
@@ -24081,7 +23914,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 40,
     "score": 1,
     "paper_id": "arxiv:2606.23404",
     "source": "arxiv",
@@ -24102,7 +23935,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 41,
     "score": 0,
     "paper_id": "arxiv:2606.30616",
     "source": "arxiv",
@@ -24123,7 +23956,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 42,
     "score": 0,
     "paper_id": "arxiv:2606.29225",
     "source": "arxiv",
@@ -24144,7 +23977,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 43,
     "score": 0,
     "paper_id": "arxiv:2606.26938",
     "source": "arxiv",
@@ -24165,7 +23998,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 44,
     "score": 0,
     "paper_id": "arxiv:2606.29705",
     "source": "arxiv",
@@ -24186,7 +24019,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 45,
     "score": 0,
     "paper_id": "arxiv:2606.28186",
     "source": "arxiv",
@@ -24207,7 +24040,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 46,
     "score": 0,
     "paper_id": "arxiv:2606.29445",
     "source": "arxiv",
@@ -24228,7 +24061,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 47,
     "score": 0,
     "paper_id": "arxiv:2606.26016",
     "source": "arxiv",
@@ -24249,9 +24082,177 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 48,
     "score": 0,
     "paper_id": "arxiv:2606.24143",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.29308": {
+    "arxiv_id": "2606.29308",
+    "title": "MirrorPPR: Exemplar-Based Portrait Photo Retouching",
+    "abstract": "While text-guided image editing has made remarkable progress, it remains limited in structural portrait retouching. Textual descriptions struggle to convey fine-grained changes to facial features and body proportions. To address this gap, we introduce Exemplar-Based Portrait Photo Retouching, where the model is given an exemplar pair and tasked with inferring and applying the same retouching operations to a new query image. Existing exemplar-based editing methods primarily focus on tasks with pronounced visual transformations. In contrast, structural portrait retouching involves extremely delicate and localized modifications, making accurate extraction and transfer of these edits challenging. To tackle this, we propose MirrorPPR, a novel framework designed to capture and transfer subtle structural retouching operations. Our method uses a Retouching Operation Extractor to capture the subtle differences from the exemplar pair. The extracted representations are then injected into a pre-trained Diffusion Transformer (DiT) through a connector and Low-Rank Adaptation (LoRA) modules. Furthermore, constructing perfectly aligned cross-identity training pairs is severely hindered by operation misalignment. To overcome this, we propose an advanced data self-augmentation paradigm that ensures strictly aligned retouching operations. To alleviate data scarcity and support this novel task, we introduce MirrorPPR47M, a large-scale dataset with over 47 million retouched pairs. By structuring the dataset into simulated and professional subsets, we enable progressive curriculum learning to smoothly optimize the network. Extensive experiments demonstrate that MirrorPPR significantly outperforms existing baselines in both retouching quality and identity preservation. The project page is available at https://sjtu-deng-lab.github.io/MirrorPPR.",
+    "authors": "Zhihong Liu, Zheng Li, Jiachun Jin, Siqi Kou, Yitao Jian, Fengpei Yu, Zhijie Deng",
+    "publish_date": "2026-06-28",
+    "arxiv_url": "http://arxiv.org/abs/2606.29308",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2606.29308",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27409": {
+    "arxiv_id": "2606.27409",
+    "title": "Delayed Verification Destabilizes Multi-Agent LLM Belief: Instability Thresholds and Optimal Corrector Placement",
+    "abstract": "Multi-agent large language model (LLM) systems often rely on verifier and critic agents to suppress hallucinations, but verification is delayed. During this delay, false claims can propagate through the agent network. We model this process as delayed consensus on a graph with grounded corrector nodes. Spectral decomposition by the grounded Laplacian yields a closed-form stability threshold for the verification dose: correction that is too strong or too delayed can turn consensus into oscillation. The most unstable regime occurs when the communication and verification delays coincide; for delay two, the threshold is the inverse golden ratio. The same framework gives a supermodular placement objective and a greedy (1-1/e)-approximation rule for assigning a limited corrector budget to influential nodes. Experiments across five open models confirm the predicted dose-delay oscillations. By contrast, grounded factual answering makes truth an absorbing boundary and eliminates the effect, suggesting that the instability is specific to signed-belief tasks while grounded verification remains stabilizing",
+    "authors": "Igor Itkin",
+    "publish_date": "2026-06-25",
+    "arxiv_url": "http://arxiv.org/abs/2606.27409",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 28,
+    "paper_id": "arxiv:2606.27409",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.23885": {
+    "arxiv_id": "2606.23885",
+    "title": "Mind the Heads: Topological Representation Alignment for Multimodal LLMs",
+    "abstract": "Representation alignment has emerged as an effective approach to improve Multimodal Large Language Models (MLLMs) by regularizing their internal representations toward those of an external vision encoder. However, existing methods typically align a fixed layer of the language backbone, overlooking the fine-grained structure of Transformer models. In this work, we propose Head-Wise Representation Alignment (HeRA), a method that enforces cross-modal alignment at the level of individual attention heads. Our approach is grounded in the Platonic Representation Hypothesis, focusing on preserving the topological structure of representations (i.e., their local neighborhood relationships) across modalities. Following the Mutual K-Nearest Neighbor (MKNN) alignment metric, we introduce a contrastive objective that acts as a differentiable proxy for matching local structures. HeRA applies this objective during multimodal training to specific attention heads in the LLM, selected by their alignment score according to the MKNN metric. Counterintuitively, we find that aligning the least aligned heads yields the largest gains. Extensive evaluations across multiple MLLMs and 18 benchmarks demonstrate that HeRA consistently improves performance on challenging vision-centric tasks and serves as an effective regularizer against visual hallucinations by naturally curbing the over-reliance on linguistic priors. Our code is publicly released.",
+    "authors": "Davide Caffagni, Alberto Compagnoni, Federico Melis, Sara Sarto, Pier Luigi Dovesi, Mark Granroth-Wilding, Marcella Cornia, Lorenzo Baraldi",
+    "publish_date": "2026-06-22",
+    "arxiv_url": "http://arxiv.org/abs/2606.23885",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 5,
+    "score": 25,
+    "paper_id": "arxiv:2606.23885",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.29957": {
+    "arxiv_id": "2606.29957",
+    "title": "SWE-Together: Evaluating Coding Agents in Interactive User Sessions",
+    "abstract": "Most coding-agent benchmarks are static: an agent receives a complete task description up front and is judged only by its final code. Real coding assistance is interactive, with users clarifying goals, adding constraints, and correcting mistakes over multiple turns. We introduce SWE-Together, a multi-turn benchmark reconstructed from real user-agent coding sessions. To make real interactions verifiable, we curate 109 repository-level tasks from 11,260 recorded sessions, selecting sessions with recoverable repository states, clear user goals, and observable outcomes. To replay these interactions across agents, we build a reactive LLM-based user simulator that preserves the original users' intents and provides feedback when the coding agent's progress requires it. To evaluate agents as collaborators, we measure both final repository correctness and the number of corrective feedback turns required during the interaction. Experiments with frontier coding agents show that stronger agents generally achieve higher final success rates while requiring fewer interventions, suggesting an improved user experience.",
+    "authors": "Yifan Wu, Zhuokai Zhao, Songlin Li, Ho Hin Lee, Jiacheng Zhu, Shirley Wu, Tianhe Yu, Serena Li, Lizhu Zhang, Xiangjun Fan, Shengzhi Li",
+    "publish_date": "2026-06-29",
+    "arxiv_url": "http://arxiv.org/abs/2606.29957",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 6,
+    "score": 24,
+    "paper_id": "arxiv:2606.29957",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28525": {
+    "arxiv_id": "2606.28525",
+    "title": "A Gravitational Interpretation of Fine-Tuning Reversion",
+    "abstract": "Fine-tuning on harmless data can partially undo behaviors acquired earlier in training. Safety can erode under benign post-alignment updates, unlearned capabilities can re-emerge, latent traits can transfer through apparently unrelated supervision, and related post-alignment fragility appears in other generative settings. We argue these phenomena are usefully viewed through a common training-history lens. Our hypothesis is geometric: large early training phases create dominant behavioral manifolds, while later alignment or specialization phases are shallower displacements from them. Subsequent fine-tuning can therefore inherit a persistent reversion component pointing back toward a witness of the dominant manifold. We call this the gravitational interpretation of fine-tuning reversion. Across our main settings, representational drift rapidly acquires a component along a history-defined reversion direction (v_rev). In our main track, alignment with v_rev rises from cos = 0.429 +/- 0.052 after the first update to 0.647 +/- 0.021 by step 20. Across 24 run-step pairs, every observed alignment exceeds the p99 of an isotropic activation-space null. We demonstrate that selectively blocking motion along v_rev changes the final alignment at T=100 from 0.648 +/- 0.009 to -0.211 +/- 0.021 and reduces harmfulness from 19.0% +/- 4.0% to 8.5% +/- 1.5% with little task cost. These results support v_rev as a causally relevant mediator of early post-alignment reversion in our setup. Importantly, we do not claim that v_rev is the unique safety direction, nor that the dominant manifold is directly observed; rather, we identify a robust, history-defined direction that explains and partially controls early reversion dynamics.",
+    "authors": "Samuele Poppi, Nils Lukas",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28525",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 8,
+    "score": 22,
+    "paper_id": "arxiv:2606.28525",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.25621": {
+    "arxiv_id": "2606.25621",
+    "title": "One Model, Many Latencies: Universal Speech Enhancement for Diverse Real-Time Applications",
+    "abstract": "Different real-time speech applications impose distinct latency budgets, often requiring separately trained enhancement models for each scenario. In this paper, we propose a one-for-all, real-time universal speech enhancement model that provides explicit control over both algorithmic and computational latency. Algorithmic latency is flexibly adjusted via configurable look-ahead frames. To avoid learning inefficiency caused by varying padding configurations, we introduce parallel convolutional layers corresponding to different look-ahead settings. Computational latency is controlled through an early-exit mechanism, enabling inference at different network depths. To narrow the performance gap between specialized and flexible models, we propose a two-stage training strategy with a shared-to-multiple decoder transition. Overall, the proposed framework enables a single model to be deployed across diverse latency budgets without retraining separate models. Model weights are available for download at: https://huggingface.co/nvidia/Real-time_RE-USE",
+    "authors": "Szu-Wei Fu, Rong Chao, Xuesong Yang, Sung-Feng Huang, Ante Jukić, Yu Tsao, Yu-Chiang Frank Wang",
+    "publish_date": "2026-06-24",
+    "arxiv_url": "http://arxiv.org/abs/2606.25621",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 9,
+    "score": 21,
+    "paper_id": "arxiv:2606.25621",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.27339": {
+    "arxiv_id": "2606.27339",
+    "title": "SAM2Matting: Generalized Image and Video Matting",
+    "abstract": "Despite impressive advances in image matting, video matting remains challenging due to the inherent gap between high-level tracking, which requires frame-wise understanding, and low-level matting, which focuses on extremely fine-grained details. Existing methods attempt this with expensive and narrowly-scoped video matting datasets, which may limit out-of-domain generalization and compromise tracking robustness. We rethink the paradigm with SAM2Matting, a tracker-to-matting framework that advances VOS trackers to high-fidelity video matting. Specifically, it decouples the task by enhancing a foundational tracker (e.g., SAM2, SAM3) with a region-proposal bridge and dedicated matting heads, enabling the uncompromised tracker to handle temporal consistency while the matting components resolve fine-grained details. Notably, despite being trained only on images, SAM2Matting establishes new state-of-the-art performance on video matting, supports diverse prompt types, maintains strong temporal consistency, and demonstrates robust generalization across both human-centric and in-the-wild scenarios.",
+    "authors": "Ruiqi Shen, Guangquan Jie, Chang Liu, Henghui Ding",
+    "publish_date": "2026-06-25",
+    "arxiv_url": "http://arxiv.org/abs/2606.27339",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 10,
+    "score": 20,
+    "paper_id": "arxiv:2606.27339",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.30634": {
+    "arxiv_id": "2606.30634",
+    "title": "One-Step Gradient Delay is Not a Barrier for Large-Scale Asynchronous Pipeline Parallel LLM Pretraining",
+    "abstract": "Modern large-scale LLM pretraining benefits from utilizing Pipeline Parallelism; however, synchronous implementations leave GPUs idle during pipeline bubbles, wasting computational resources. Asynchronous Pipeline Parallelism eliminates these bubbles, maximizing throughput at the cost of gradient staleness. Among asynchronous schedules, PipeDream-2BW is particularly appealing: unlike the original PipeDream schedule, it ensures a constant one-step gradient delay regardless of pipeline depth. However, its adoption remains limited due to the common belief that optimizing under staleness is fundamentally unstable. In this work, we challenge this assumption, demonstrating that degradation under one-step delay depends strongly on optimizer choice rather than being an intrinsic limitation. We provide the first comprehensive empirical analysis showing that while AdamW, the predominant optimizer at the time when PipeDream-2BW was introduced, indeed suffers from severe degradation, recent methods like Muon exhibit strong robustness under a one-step delay. We introduce an optimizer-agnostic Error Feedback-inspired correction to further mitigate delay effects. We provide supporting theoretical analysis demonstrating convergence for Muon with and without this correction. Extensive evaluation on models up to 10B parameters confirms that our strategies bridge the performance gap with synchronous training, highlighting the practical potential of asynchronous pipeline parallelism at scale.",
+    "authors": "Philip Zmushko, Egor Petrov, Nursultan Abdullaev, Mikhail Khrushchev, Samuel Horváth",
+    "publish_date": "2026-06-29",
+    "arxiv_url": "http://arxiv.org/abs/2606.30634",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 11,
+    "score": 19,
+    "paper_id": "arxiv:2606.30634",
     "source": "arxiv",
     "venue": ""
   }
