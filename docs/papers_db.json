@@ -10147,9 +10147,10 @@
       "VLA"
     ],
     "matched_categories": [
-      "VLA"
+      "VLA",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 7,
     "score": 20,
     "paper_id": "arxiv:2606.19297",
     "source": "arxiv",
@@ -11400,90 +11401,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.20381": {
-    "arxiv_id": "2606.20381",
-    "title": "Rethinking Shrinkage Bias in LLM FP4 Pretraining: Geometric Origin, Systemic Impact, and UFP4 Recipe",
-    "abstract": "FP4 training promises substantial reductions in memory and computation cost for LLM pretraining, yet current FP4 hardware paths and recipes, including NVIDIA Blackwell/Rubin-class systems and AMD MI350-series GPUs, remain centered on E2M1 data elements. In this study, we identify a fundamental limitation of that choice: non-uniform formats such as E2M1 inherently suffer from Shrinkage Bias, a systematic negative rounding error caused by the geometric asymmetry of their representable bins. We show that this bias accumulates multiplicatively across layers and is amplified by the Random Hadamard Transform (RHT), providing a unified explanation for the training instability observed in existing E2M1-based FP4 recipes. In contrast, uniform grids (E1M2/INT4) bypass this grid-geometry error and better convert the improved bucket utilization from RHT into higher quantization quality. Based on this finding, we propose UFP4, a uniform 4-bit training recipe that applies RHT to all three training GEMMs while restricting stochastic rounding to dY alone. On Dense 1.5B, MoE 7.9B, and MoE 124B long-run pretraining, UFP4 consistently achieves lower BF16-relative loss degradation than strong E2M1-based baselines, supported by scaling-law analysis and ablation studies. Our results suggest that future accelerators should support E1M2/INT4-style uniform 4-bit grids as first-class training primitives alongside E2M1.",
-    "authors": "Qian Zhao, Kunlong Chen, Changxin Tian, Zhonghui Jiang, Haitao Zhang, Chaofan Yu, Peijie Jiang, Mingliang Gong, Jia Liu, Ziqi Liu, Zhiqiang Zhang, Jun Zhou",
-    "publish_date": "2026-06-18",
-    "arxiv_url": "http://arxiv.org/abs/2606.20381",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 24,
-    "score": 28,
-    "paper_id": "arxiv:2606.20381",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.20517": {
-    "arxiv_id": "2606.20517",
-    "title": "Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages",
-    "abstract": "LiveCodeBench (LCB) has recently become a widely adopted benchmark for evaluating large language models (LLMs) on code-generation tasks. By curating competitive programming problems, constantly adding fresh problems to the set, and filtering them by release dates, LCB provides contamination-aware evaluation and offers a holistic view of coding capability. However, LCB remains restricted to Python, leaving open the question of whether LLMs can generalize across the diverse programming languages required in real-world software engineering.   We introduce Multi-LCB, a benchmark for evaluating LLMs across twelve programming languages, including Python. Multi-LCB transforms Python tasks from the LCB dataset into equivalent tasks in other languages while preserving LCB's contamination controls and evaluation protocol. Because it is fully compatible with the original LCB format, Multi-LCB will automatically track future LCB updates, enabling systematic assessment of cross-language code generation competence and requiring models to sustain performance well beyond Python.   We evaluated 24 LLMs for instruction and reasoning on Multi-LCB, uncovering evidence of Python overfitting, language-specific contamination, and substantial disparities in multilingual performance. Our results establish Multi-LCB as a rigorous new benchmark for multi-programming-language code evaluation, directly addressing LCB's primary limitation and exposing critical gaps in current LLM capabilities.",
-    "authors": "Maria Ivanova, Pavel Zadorozhny, Rodion Levichev, Ivan Petrov, Adamenko Pavel, Ivan Lopatin, Alexey Kutalev, Dmitrii Babaev",
-    "publish_date": "2026-06-18",
-    "arxiv_url": "http://arxiv.org/abs/2606.20517",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 25,
-    "score": 27,
-    "paper_id": "arxiv:2606.20517",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.20404": {
-    "arxiv_id": "2606.20404",
-    "title": "FlowBender: Feedback-Aware Training for Self-Correcting Conditional Flows",
-    "abstract": "Conditional diffusion and flow models routinely fail to satisfy the very constraints that define their task. For instance, a depth-conditioned model often produces images whose re-extracted depth disagrees with the input, even though the forward operator--the depth predictor defining the constraint--is available during both training and inference. Existing approaches generally fall into two categories: supervised models that treat the conditioning signal as a static cue and ignore alignment information at inference, and guidance-based methods that consult it through hand-tuned linear updates, typically trading fidelity to the condition against the plausibility of the generated sample. We argue that the fundamental gap in both paradigms is that the model is never trained to utilize its own alignment error. We introduce FlowBender, a closed-loop framework that treats this error as a first-class input, training the network to learn a correction policy conditioned on inference-time feedback. At each step, an unguided look-ahead pass estimates the clean signal, a task-specific deviation is computed via the forward operator, and a refinement pass consumes this signal to produce a corrected velocity. We propose several variants of FlowBender, including a gradient-based formulation for differentiable operators and a zero-order variant for non-differentiable settings such as JPEG compression. For efficient sampling, we introduce a prior-step shortcut that enables closed-loop correction at a minimal additional computational cost. Across image-to-image translation, restoration, and 3D mesh texturing, FlowBender consistently outperforms standard supervised baselines, alignment-loss-augmented training, and state-of-the-art inference-time guidance, improving fidelity and plausibility simultaneously rather than trading them against each other. Project page: https://flow-bender.github.io/",
-    "authors": "Daniel Gilo, Sven Elflein, Ido Sobol, Or Litany",
-    "publish_date": "2026-06-18",
-    "arxiv_url": "http://arxiv.org/abs/2606.20404",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 28,
-    "score": 24,
-    "paper_id": "arxiv:2606.20404",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.20515": {
-    "arxiv_id": "2606.20515",
-    "title": "S-Agent: Spatial Tool-Use Elicits Reasoning for Spatial Intelligence",
-    "abstract": "Real-world spatial intelligence requires reasoning over a continuous and evolving 3D world, yet existing VLMs and tool-augmented agents largely remain tied to static, stateless inference from isolated visual observations. We introduce \\textbf{\\textsc{S-Agent}}, a spatial tool-use agentic paradigm for understanding and reasoning over continuous multi-view images and videos. By formulating spatial reasoning as spatio-temporal evidence accumulation rather than isolated frame-level prediction, \\textsc{S-Agent} reshapes spatial perception into scene-centric understanding beyond frame-centric recognition. Specifically, \\textsc{S-Agent} casts the VLM as a semantic planner that decides what evidence is needed, while a hierarchy of spatial tools and experts grounds objects in 2D, lifts them into 3D geometric evidence, and aggregates this evidence into high-level spatial knowledge (\\textit{e.g.}, counting, measurement, orientation, and relative position). Additionally, a temporal memory mechanism, including Scene Memory for maintaining the evolving scene state and Agent Memory for accumulating reasoning context, enables evidence integration across frames and reasoning steps. Comprehensive experiments on multi-view and video spatial reasoning benchmarks show that \\textsc{S-Agent} consistently improves both open-source and closed-source VLMs in a training-free manner. Beyond inference-time augmentation, supervised fine-tuning (SFT) on \\textsc{S-Agent}-generated spatial trajectories \\textsc{S-300K} yields \\textsc{S-Agent-8B}, a compact spatial agent that significantly surpasses similar-scale baselines (e.g., Qwen3-VL-8B) and performs comparably to advanced closed-source models (e.g., GPT-5.4 and Gemini 3).",
-    "authors": "Yalun Dai, Hao Li, Shulin Tian, Runmao Yao, Yuhao Dong, Fangzhou Hong, Zhaoxi Chen, Fangfu Liu, Baoliang Tian, Dingwen Zhang, Tao Wang, Kim-Hui Yap, Ziwei Liu",
-    "publish_date": "2026-06-18",
-    "arxiv_url": "http://arxiv.org/abs/2606.20515",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 33,
-    "score": 19,
-    "paper_id": "arxiv:2606.20515",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.20563": {
     "arxiv_id": "2606.20563",
     "title": "JanusMesh: Fast and Zero-Shot 3D Visual Illusion Generation via Cross-Space Denoising",
@@ -11502,27 +11419,6 @@
     "hf_rank": 34,
     "score": 18,
     "paper_id": "arxiv:2606.20563",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.20506": {
-    "arxiv_id": "2606.20506",
-    "title": "FreeStyle: Free Control of Style-Content Dual-Reference Generation from Community LoRA Mining",
-    "abstract": "Style-content dual-reference generation aims to synthesize an image that preserves the structure and semantics of a content reference while adopting the style of a separate style reference.Despite recent progress, this setting remains challenging because models must balance content fidelity, style alignment, and instruction following avoiding semantic leakage from the style reference.A key bottleneck is the lack of large-scale triplet data with clean content-style separation and broad long-tail style coverage.In this work, we propose FreeStyle, a scalable dual-reference generation framework based on community LoRA mining.We treat community LoRAs as compositional anchors for style and content, and design a rigorous generation and filtering pipeline to construct large-scale Style-Reference and Content-Reference triplets across multiple base models.To address content leakage, we adopt a two-stage curriculum with stage-specific disentanglement mechanisms: an attention-level enrichment constraint that suppresses style-reference leakage in the style-transfer stage, and a frequency-aware RoPE modulation strategy that targets positional-correspondence-based leakage in the harder dual-reference stage.We also introduce a benchmark covering both style-reference and dual-reference generation, with evaluations on style similarity, content preservation, aesthetics, instruction following, and leakage rejection. The benchmark incorporates a style-invariant Content Alignment Score (CAS) and introduces a calibrated VLM-based Rejection Score for evaluating generation reliability and leakage suppression.Extensive experiments show that our model achieves a strong balance among style alignment, content preservation, and leakage suppression.",
-    "authors": "Jinghong Lan, Wei Cheng, Yunuo Chen, Ziqi Ye, Peng Xing, Yixiao Fang, Rui Wang, Yufeng Yang, Xuanyang Zhang, Xianfang Zeng, Difan Zou, Gang Yu, Chi Zhang",
-    "publish_date": "2026-06-18",
-    "arxiv_url": "http://arxiv.org/abs/2606.20506",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 41,
-    "score": 11,
-    "paper_id": "arxiv:2606.20506",
     "source": "arxiv",
     "venue": ""
   },
@@ -13580,27 +13476,6 @@
     "hf_rank": 47,
     "score": 0,
     "paper_id": "arxiv:2606.20781",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.20097": {
-    "arxiv_id": "2606.20097",
-    "title": "HydraHead: From Head-Level Functional Heterogeneity to Specialized Attention Hybridization",
-    "abstract": "The quadratic complexity of attention poses a critical bottleneck for long-context processing, spurring interest in hybrid attention designs. Most open-source hybrid models adopt a layer-wise strategy. Yet, prior work has noted the inherent difficulty of integrating Linear Attention (LA) with Full Attention (FA), suggesting that the design space of attention hybridization remains underexplored. To probe this space, we conduct interpretability analysis and observe that layers exhibit block-wise functional similarity, while individual heads within the same layer display distinct functional specialization despite sharing input features. This head-level heterogeneity suggests that the head dimension provides a natural and principled granularity for fusing heterogeneous attention signals. Building on this insight, we introduce HydraHead, a novel architecture that hybridizes FA and LA along the head axis. HydraHead features two key innovations: (1) an interpretability-driven selection strategy that identifies retrieval-critical heads and preserves FA only for them, and (2) a scale-normalized fusion module that reconciles the distributional gap between FA and LA head outputs. By leveraging a three-stage transfer pipeline with parameter reuse and distillation, we achieve high-performance hybrid models with minimal training overhead. Under a unified training setup, HydraHead outperforms other hybrid designs in long-context tasks while maintaining strong general reasoning. With interpretability-driven head selection, it matches a 3:1 layer-wise hybrid's long-context performance at a 7:1 LA-to-FA ratio. Crucially, trained on only 15B tokens, HydraHead achieves over 69% improvement over the baseline at 512K context length, approaching Qwen3.5, a leading model of comparable size with a native context length of 256K. This highlights the significant scaling potential of head-level hybridization.",
-    "authors": "Zhentao Tan, Wei Chen, Jingyi Shen, Yao Liu, Xu Shen, Yue Wu, Jieping Ye",
-    "publish_date": "2026-06-18",
-    "arxiv_url": "http://arxiv.org/abs/2606.20097",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 48,
-    "score": 0,
-    "paper_id": "arxiv:2606.20097",
     "source": "arxiv",
     "venue": ""
   },
@@ -16674,27 +16549,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.20196": {
-    "arxiv_id": "2606.20196",
-    "title": "Distill Once, Adapt Life-Long: Exploring Dataset Distillation for Continual Test-Time Adaptation",
-    "abstract": "Continual Test-Time Adaptation (CTTA) aims to maintain model performance under evolving target domains by adapting online without labeled data. However, practical deployments often cannot retain the source dataset due to privacy or licensing constraints, and purely source-free CTTA methods tend to become unstable under long-term distribution shift, suffering from compounding self-training errors and catastrophic forgetting. We introduce DO-ALL (Distill Once, Adapt Life-Long), a plug-and-play framework that revisits source information in a compact and privacy-conscious form via Dataset Distillation (DD). Before deployment, DO-ALL performs DD to produce a small set of synthetic distilled anchors that summarize the source distribution. During adaptation, each target sample is matched with its most semantically aligned anchor, which provides a stable reference for various CTTA via source replay, representation alignment, and manifold-smoothing regularization. DO-ALL can be seamlessly integrated into existing CTTA algorithms, consistently improving long-term robustness across CIFAR100-C, ImageNet-C, and the CCC benchmark. This demonstrates the potential of leveraging DD to enable stable and continuous adaptation without retaining raw source data. The code is available at https://github.com/blue-531/DOALL.",
-    "authors": "Hyun-Kurl Jang, Jihun Kim, Hyeokjun Kweon, Kuk-Jin Yoon",
-    "publish_date": "2026-06-18",
-    "arxiv_url": "http://arxiv.org/abs/2606.20196",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 35,
-    "score": 28,
-    "paper_id": "arxiv:2606.20196",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.23104": {
     "arxiv_id": "2606.23104",
     "title": "ReNIO: Reweighting Negative Trajectory Importance for LLM On-Policy Distillation",
@@ -18172,9 +18026,10 @@
       "sim-to-real"
     ],
     "matched_categories": [
-      "Sim2Real"
+      "Sim2Real",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 4,
     "score": 10,
     "paper_id": "arxiv:2606.26428",
     "source": "arxiv",
@@ -19102,7 +18957,7 @@
       "VLA",
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 39,
     "score": 10,
     "paper_id": "arxiv:2606.27755",
     "source": "arxiv",
@@ -20080,9 +19935,10 @@
       "Manipulation"
     ],
     "matched_categories": [
-      "Dexterous"
+      "Dexterous",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 10,
     "score": 10,
     "paper_id": "arxiv:2606.30599",
     "source": "arxiv",
@@ -21639,7 +21495,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 48,
     "score": 29,
     "paper_id": "arxiv:2606.29600",
     "source": "arxiv",
@@ -21660,7 +21516,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 39,
+    "hf_rank": 49,
     "score": 28,
     "paper_id": "arxiv:2606.22749",
     "source": "arxiv",
@@ -21681,7 +21537,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 40,
+    "hf_rank": 50,
     "score": 27,
     "paper_id": "arxiv:2606.30054",
     "source": "arxiv",
@@ -22374,7 +22230,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 37,
     "score": 29,
     "paper_id": "arxiv:2606.29308",
     "source": "arxiv",
@@ -22395,7 +22251,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 38,
     "score": 28,
     "paper_id": "arxiv:2606.27409",
     "source": "arxiv",
@@ -22416,7 +22272,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 41,
     "score": 25,
     "paper_id": "arxiv:2606.23885",
     "source": "arxiv",
@@ -22437,7 +22293,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 42,
     "score": 24,
     "paper_id": "arxiv:2606.29957",
     "source": "arxiv",
@@ -22458,7 +22314,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 44,
     "score": 22,
     "paper_id": "arxiv:2606.28525",
     "source": "arxiv",
@@ -22479,7 +22335,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 45,
     "score": 21,
     "paper_id": "arxiv:2606.25621",
     "source": "arxiv",
@@ -22500,7 +22356,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 46,
     "score": 20,
     "paper_id": "arxiv:2606.27339",
     "source": "arxiv",
@@ -22521,7 +22377,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 47,
     "score": 19,
     "paper_id": "arxiv:2606.30634",
     "source": "arxiv",
@@ -23324,7 +23180,7 @@
     "matched_categories": [
       "VLA"
     ],
-    "hf_rank": 18,
+    "hf_rank": 28,
     "score": 12,
     "paper_id": "arxiv:2606.31410",
     "source": "arxiv",
@@ -23754,7 +23610,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 11,
     "score": 29,
     "paper_id": "arxiv:2606.29667",
     "source": "arxiv",
@@ -23775,7 +23631,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 12,
     "score": 28,
     "paper_id": "arxiv:2606.32034",
     "source": "arxiv",
@@ -23796,7 +23652,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 13,
     "score": 27,
     "paper_id": "arxiv:2606.31247",
     "source": "arxiv",
@@ -23817,7 +23673,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 14,
     "score": 26,
     "paper_id": "arxiv:2606.23127",
     "source": "arxiv",
@@ -23838,7 +23694,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 16,
     "score": 24,
     "paper_id": "arxiv:2606.31537",
     "source": "arxiv",
@@ -23859,7 +23715,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 17,
     "score": 23,
     "paper_id": "arxiv:2606.31811",
     "source": "arxiv",
@@ -23880,7 +23736,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 18,
     "score": 22,
     "paper_id": "arxiv:2606.29513",
     "source": "arxiv",
@@ -23901,7 +23757,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 9,
+    "hf_rank": 19,
     "score": 21,
     "paper_id": "arxiv:2606.26968",
     "source": "arxiv",
@@ -23922,7 +23778,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 20,
     "score": 20,
     "paper_id": "arxiv:2606.32039",
     "source": "arxiv",
@@ -23943,7 +23799,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 21,
     "score": 19,
     "paper_id": "arxiv:2606.30062",
     "source": "arxiv",
@@ -23964,7 +23820,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 22,
     "score": 18,
     "paper_id": "arxiv:2606.29215",
     "source": "arxiv",
@@ -23985,7 +23841,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 23,
     "score": 17,
     "paper_id": "arxiv:2606.32032",
     "source": "arxiv",
@@ -24006,7 +23862,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 24,
     "score": 16,
     "paper_id": "arxiv:2606.31029",
     "source": "arxiv",
@@ -24027,7 +23883,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 25,
     "score": 15,
     "paper_id": "arxiv:2606.30968",
     "source": "arxiv",
@@ -24048,7 +23904,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 26,
     "score": 14,
     "paper_id": "arxiv:2606.30319",
     "source": "arxiv",
@@ -24069,7 +23925,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 27,
     "score": 13,
     "paper_id": "arxiv:2606.31315",
     "source": "arxiv",
@@ -24090,7 +23946,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 29,
     "score": 11,
     "paper_id": "arxiv:2606.30673",
     "source": "arxiv",
@@ -24111,7 +23967,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 30,
     "score": 10,
     "paper_id": "arxiv:2606.31734",
     "source": "arxiv",
@@ -24132,7 +23988,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 31,
     "score": 9,
     "paper_id": "arxiv:2606.30534",
     "source": "arxiv",
@@ -24153,7 +24009,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 32,
     "score": 8,
     "paper_id": "arxiv:2606.30811",
     "source": "arxiv",
@@ -24174,7 +24030,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 33,
     "score": 7,
     "paper_id": "arxiv:2606.29082",
     "source": "arxiv",
@@ -24195,7 +24051,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 34,
     "score": 6,
     "paper_id": "arxiv:2606.30626",
     "source": "arxiv",
@@ -24216,7 +24072,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 25,
+    "hf_rank": 35,
     "score": 5,
     "paper_id": "arxiv:2606.28436",
     "source": "arxiv",
@@ -24237,9 +24093,156 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 36,
     "score": 4,
     "paper_id": "arxiv:2606.30697",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.32033": {
+    "arxiv_id": "2606.32033",
+    "title": "SpheRoPE: Zero-Shot Optimization-Free 360 Panorama Generation with Spherical RoPE",
+    "abstract": "We present a zero-shot, training-free and optimization-free framework for generating 360 panoramic images and videos by directly injecting spherical priors into pre-trained diffusion transformers. Existing methods either rely on costly fine-tuning on scarce panoramic data that limits generalization, or leverage multi-step optimization that incurs prohibitive inference latency. We observe that contemporary generative models natively exhibit some panoramic priors from large-scale training. However, these emergent capabilities are insufficient, as the models fundamentally fail to satisfy the rigorous topological constraints imposed by equirectangular projection (ERP). We introduce a zero-shot and optimization-free approach that resolves these constraints at inference time. Spherical RoPE replaces standard rotary position embeddings: low-frequency channels are re-parameterized as 3D Cartesian coordinates to natively encode the spherical manifold, while high-frequency channels are harmonically quantized to enforce exact periodicity. Coupled with complementary Semantic Distortion classifier-free guidance (CFG) that explicitly steers geometry, we avoid retraining and inherit the full creative breadth of state-of-the-art models. Our approach generalizes across diverse backbones and 360 generation modalities. We demonstrate this across text-to-panorama using Flux.1, Flux.2, and LTX-Video backbones, achieving competitive performance against baselines, all while remaining training-free. Project page: https://orhir.github.io/SpheRoPE",
+    "authors": "Or Hirschorn, Aaron Olender, Eli Alshan, Ianir Ideses, Lior Fritz, Sagie Benaim",
+    "publish_date": "2026-06-30",
+    "arxiv_url": "http://arxiv.org/abs/2606.32033",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2606.32033",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.32017": {
+    "arxiv_id": "2606.32017",
+    "title": "TRIAGE: Role-Typed Credit Assignment for Agentic Reinforcement Learning",
+    "abstract": "Agentic reinforcement learning requires assigning credit to environment-facing actions such as searches, clicks, edits, navigation commands, and object interactions. Standard GRPO uses the final verifier outcome as a uniform advantage over all action tokens. This outcome signal is useful but structurally incomplete: it punishes useful exploration in failed rollouts and reinforces redundant or regressive actions in successful rollouts. We propose TRIAGE, a role-typed credit assignment framework that adds a semantic role axis to outcome credit. A structured judge classifies each segment as decisive progress, useful exploration, no-progress infrastructure, or regression, and a fixed role-conditioned rule maps these labels to bounded segment-level process rewards. This keeps verifier outcomes as the source of optimization direction while correcting the two main blind spots of outcome-only credit. We further show that role-conditioned credit is the optimal segment-level correction expressible from role labels alone -- a projection of the per-segment advantage residual onto the role variable -- so that the fixed role constants reduce advantage estimation error whenever the judge is reliable, and we connect this to lower-variance policy gradients. Across ALFWorld, Search-QA, and WebShop, TRIAGE improves success rates over GRPO for two policy models and outperforms both a scalar judge-derived process reward and an outcome-supervised shared-backbone value baseline. Ablations show that the gain comes from role typing rather than merely adding dense rewards: reliable detection of regression inside successful trajectories is the dominant contributor, while exploration credit provides a consistent secondary gain; on completed ALFWorld and WebShop rollouts, TRIAGE also reduces environment-facing turns by an additional $10.4\\%$ and $14.8\\%$ relative to GRPO.",
+    "authors": "Yuanda Xu, Zhengze Zhou, Hejian Sang, Xiaomin Li, Jiaxin Zhang, Xinchen Du, Zhipeng Wang, Alborz Geramifard",
+    "publish_date": "2026-06-30",
+    "arxiv_url": "http://arxiv.org/abs/2606.32017",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 28,
+    "paper_id": "arxiv:2606.32017",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.30573": {
+    "arxiv_id": "2606.30573",
+    "title": "SWE-INTERACT: Reimagining SWE Benchmarks as User-Driven Long-Horizon Coding Sessions",
+    "abstract": "We introduce SWE-Interact, a new testbed for evaluating coding agents on multi-turn, interactive, user-driven software engineering tasks. Existing frontier SWE benchmarks typically provide complete requirements upfront and evaluate agents on autonomous implementation. In contrast, SWE-Interact places agents in a realistic developer workflow: a carefully designed user simulator starts with vague or incomplete instructions, progressively reveals requirements, inspects the agent's workspace, and provides targeted feedback, revisions, and new constraints until the full task goal has been handed off. Grounded in large-scale studies of real coding-agent interactions, this setup tests whether agents can discover user intent, adapt to evolving requirements, and build on their own prior work. Across a suite of frontier and open-weight models, we find that strong performance on single-turn SWE tasks does not reliably transfer to multi-turn, user-driven workflows: the best-performing models solve roughly 50% of single-turn baseline tasks but only 25% of the corresponding SWE-Interact tasks. The strongest models in our evaluation, including Opus 4.8 and GPT 5.5, start strong even in the face of vague initial instructions, persevere until all the requirements are surfaced by the user, integrate them better and write clean code. However, they still suffer from over-agentic coding, forgetting requirements and technical mistakes. Weaker models start poorly under ambiguity, give up early, forget or ignore instructions and rework their code more. Overall, SWE-Interact measures an orthogonal, real-world capability axis for frontier model development: interactive goal discovery and iterative refinement with a user in the loop.",
+    "authors": "Mohit Raghavendra, Anisha Gunjal, Aakash Sabharwal, Yunzhong He",
+    "publish_date": "2026-06-29",
+    "arxiv_url": "http://arxiv.org/abs/2606.30573",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 27,
+    "paper_id": "arxiv:2606.30573",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.29315": {
+    "arxiv_id": "2606.29315",
+    "title": "Hierarchical Experimentalist Agents",
+    "abstract": "Large language models (LLMs) are increasingly used to take actions in the real world and support human decision-making, yet most agents rely on parametric knowledge, fixed post-training data, retrieval, or search. This paradigm breaks down in novel domains and for sophisticated queries that cannot be answered from prior knowledge alone. Knowing the laws of physics, for instance, does not by itself enable LLMs to answer queries or complete long-horizon tasks in a complex physical system. To address this, we introduce Hierarchical Experimentalist Agents (HExA), an in-context self-improvement framework to learn from active experimentation. HExA iteratively designs and refines query-relevant experiments, learns a reusable library of composable skills from experience, and integrates experimental evidence to answer queries or take actions. HExA is training-free, compatible with any black-box model, and does not require external supervision, oracles, or offline data. To evaluate active experimentation, we introduce Interphyre, a tool-calling benchmark built on the PHYRE 2D procedural physics environment, where agents propose interventions and test hypotheses through simulation APIs. Experiments show that current LLM agents struggle in these settings, especially on the hardest levels of Interphyre. Claude Sonnet 4.6 achieves only 2% success, while HExA improves the same model to up to 77% success. HExA also improves open-weight models and outperforms agentic baselines such as ReAct and Reflexion. Moreover, using only skills learned from easier levels and transferred without active experimentation, HExA achieves 44% success, demonstrating the reusability and generalization of its learned skills. Overall, HExA shows that learning through active experimentation can help agents discover useful knowledge, acquire reusable skills, and make efficient progress on novel long-horizon tasks.",
+    "authors": "Abhranil Chandra, Sankaran Vaidyanathan, Utsav Dhanuka, Varun Gandhi, Scott Niekum",
+    "publish_date": "2026-06-28",
+    "arxiv_url": "http://arxiv.org/abs/2606.29315",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 5,
+    "score": 25,
+    "paper_id": "arxiv:2606.29315",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.29985": {
+    "arxiv_id": "2606.29985",
+    "title": "Are We Measuring Strategy or Phrasing? The Gap Between Surface- and Approach-Level Diversity in LLM Math Reasoning",
+    "abstract": "Diversity in LLM mathematical reasoning is critical for exploration, but common diversity metrics mostly capture surface-level variation rather than differences in how a problem is solved. We address this gap by introducing approach-level diversity: variation in strategies across correct solutions to the same problem. Using a human-calibrated LLM judge framework, we show that prior diversity measures are unreliable proxies for approach-level diversity, and this mismatch carries over to diversity-aware RLVR, where target metrics are preserved while approach-level diversity declines. Investigating when approach-level diversity helps and whether it can be directly induced, we find that approach-diverse candidate sets improve test-time scaling. However, optimizing an LLM judge diversity reward during training causes the policy to exploit judge-specific preferences rather than broaden its approaches, leaving direct optimization of approach-level diversity as an open problem. Together, our work introduces the notion of approach-level diversity and uncovers a systematic divergence between surface- and approach-level signals, marking a step toward LLMs that reason in genuinely diverse, human-like ways.",
+    "authors": "Sangmook Lee, Minbeom Kim, Jeonghye Kim, Dohyung Kim, Sojeong Rhee, Kyomin Jung",
+    "publish_date": "2026-06-29",
+    "arxiv_url": "http://arxiv.org/abs/2606.29985",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 6,
+    "score": 24,
+    "paper_id": "arxiv:2606.29985",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.22207": {
+    "arxiv_id": "2606.22207",
+    "title": "Lexical Consensus: Grounded Word Learning and Shared Meaning in Artificial Agents",
+    "abstract": "Artificial intelligence systems are commonly evaluated through task performance and behavioral imitation, but such evaluations leave open whether an artificial agent can acquire, stabilize, and use new lexical meanings from grounded experience. This paper introduces Lexical Consensus, an experimental framework for studying grounded word learning over a structured perceptual substrate. Using frozen DINOv2 visual embeddings, Carroll-style nonce words, and interpretable lexical learners plus linear baselines, we test whether agents can acquire artificial labels for visual concepts, generalize them bidirectionally, and stabilize them across controlled settings.   The main result is a robust perceptual-coherence gradient: native categories are easiest to learn, coherent overextensions remain learnable, mid-range disjunctive concepts degrade, and far-disjunctive concepts approach chance. A pre-registered CIFAR-100 dissociation experiment confirms that this gradient is governed by perceptual distance rather than semantic relatedness: perceptual distance predicts acquisition accuracy (partial R^2 = 0.245, p < 1e-7), while semantic distance adds no significant explanatory power (partial R^2 = 0.002, p = 0.660).   Bidirectional evaluation shows that naming and retrieval are distinct: exemplar-based mechanisms outperform centroid prototypes in label-to-image retrieval, exposing a memory-fidelity dimension separate from naming accuracy. Falsification controls, homogeneous candidate-pool evaluations, and null results on representational restructuring indicate that frozen perceptual geometry both enables lexical grounding and limits what can be acquired without representational adaptation.",
+    "authors": "Patricio M. Vera",
+    "publish_date": "2026-06-20",
+    "arxiv_url": "http://arxiv.org/abs/2606.22207",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 8,
+    "score": 22,
+    "paper_id": "arxiv:2606.22207",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.30406": {
+    "arxiv_id": "2606.30406",
+    "title": "MOPD: Multi-Teacher On-Policy Distillation for Capability Integration in LLM Post-Training",
+    "abstract": "Modern large language models (LLMs) rely on reinforcement learning during post-training to push specific capabilities, yet integrating multiple capabilities into one model remains hard. Existing methods, such as Off-Policy Finetune and Mix-RL, are either inefficient or lose performance. In this work, we propose Multi-teacher On-Policy Distillation (MOPD), a post-training paradigm for combining the capabilities of multiple domain RL teachers: we first run per-domain specialised RL to obtain a set of domain teachers, then distill these teachers into the student on its own rollouts. This eliminates exposure bias and provides a dense optimization signal. On Qwen3-30B-A3B, MOPD outperforms Mix-RL, Cascade RL, Off-Policy Finetune, and Param-Merge baselines, inheriting nearly all of each teacher's capability. MOPD also enables parallel, independent development of domain teachers, removing the cross-domain coupling typical of multi-domain post-training. MOPD has been deployed in the post-training of MiMo-V2-Flash, an industrial-scale frontier model, demonstrating its practical value for capability integration in frontier-scale LLMs.",
+    "authors": "Wenhan Ma, Jianyu Wei, Liang Zhao, Hailin Zhang, Bangjun Xiao, Lei Li, Qibin Yang, Bofei Gao, Yudong Wang, Rang Li, Jinhao Dong, Zhifang Sui, Fuli Luo",
+    "publish_date": "2026-06-29",
+    "arxiv_url": "http://arxiv.org/abs/2606.30406",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 9,
+    "score": 21,
+    "paper_id": "arxiv:2606.30406",
     "source": "arxiv",
     "venue": ""
   }
