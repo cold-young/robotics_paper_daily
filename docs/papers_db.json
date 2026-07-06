@@ -10953,48 +10953,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.23514": {
-    "arxiv_id": "2606.23514",
-    "title": "Arbor: Explicit Geometric Conditioning for Controllable 3D Asset Generation",
-    "abstract": "Text and image conditioned 3D models now generate convincing assets, but they still offer little direct control over the space an object should occupy or avoid. In authoring, this spatial intent is often known before generation starts. A chair should fit a seating envelope, a prop should leave clearance for motion, or a part should expose a contact surface. Prompts and image views are poor carriers for such constraints, requiring the need for an explicit control interface.   We present Arbor, a trainable attachment for text conditioned latent 3D generation. Arbor introduces constraint meshes as a native 3D control interface. The interface uses hull regions where geometry should exist, avoidance regions that should remain empty, and touch regions the object should contact. Unlike completion or whole object scaffold control, these meshes are not target evidence. They are local typed requirements and can include regions where no surface should appear. Arbor keeps this signal as geometry by converting constraint meshes into tokens and learning a routed attachment inside a frozen denoiser. Each latent region can therefore receive the part of the constraint that matters for its spatial location.   We evaluate Arbor on automatic and artist curated control benchmarks with hull, avoidance, and touch constraints, and compare the metric trends to a user preference study. Even without dedicated compliance losses, Arbor improves constraint obedience while preserving object quality and variation under fixed constraints.",
-    "authors": "Jan-Niklas Dihlmann, Andreas Engelhardt, Simon Donne, Hendrik P. A. Lensch, Mark Boss",
-    "publish_date": "2026-06-22",
-    "arxiv_url": "http://arxiv.org/abs/2606.23514",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 47,
-    "score": 29,
-    "paper_id": "arxiv:2606.23514",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.23503": {
-    "arxiv_id": "2606.23503",
-    "title": "UniverSat: Resolution- and Modality-Agnostic Transformers for Earth Observation",
-    "abstract": "Vision Transformers (ViT) dominate computer vision. However, their reliance on rigid patch projectors hinders transfer to Earth Observation (EO), where input modalities, scales, and resolutions vary widely. We introduce UniverSat, a ViT-style backbone built around a Universal Patch Encoder that maps patches from arbitrary spatial, spectral, and temporal resolutions, and from both optical and non-optical sensors, into a shared embedding space with a shared set of weights. This enables training a single model on heterogeneous multimodal corpora via self-supervision, yielding robust, sensor-agnostic spatial features. We validate this approach with strong results across classification and segmentation on standard EO benchmarks from GeoBench, PANGEABench, and SpectralEarth. Our code and models are available at https://github.com/gastruc/UniverSat.",
-    "authors": "Yohann Perron, Guillaume Astruc, Nicolas Gonthier, Clement Mallet, Loic Landrieu",
-    "publish_date": "2026-06-22",
-    "arxiv_url": "http://arxiv.org/abs/2606.23503",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 30,
-    "score": 16,
-    "paper_id": "arxiv:2606.23503",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.23670": {
     "arxiv_id": "2606.23670",
     "title": "Tapered Language Models",
@@ -11016,69 +10974,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.23525": {
-    "arxiv_id": "2606.23525",
-    "title": "Self-Compacting Language Model Agents",
-    "abstract": "Long agent traces composed of chains of thought and tool calls accumulate stale content that anchor subsequent generations, and eventually outgrow the context window. Existing scaffolds mitigate it with fixed-interval compaction triggered at a token threshold. Such triggers pay no heed to trajectory structure, risking discard of partial results mid-derivation or mid-search. We propose SelfCompact, a scaffold that allows the model itself to decide when and how to compact. Specifically, it pairs two inference-time elements: (i) a compaction tool the model invokes to summarize the accumulated context, and (ii) a lightweight rubric specifying when to fire (a sub-task has resolved, or the trajectory is converging) and when to suppress (mid-derivation, or when stuck). Both are needed. The tool alone is unevenly used across open-weight models, often invoked at unhelpful moments or not at all; the rubric alone cannot act. Together, they elicit effective adaptive compaction without any fine-tuning or external supervision. We present empirical results on six benchmarks (competitive math and agentic search) and seven models. Our results show that SelfCompact matches or exceeds fixed-interval summarization at a fraction of the token cost, improving over a no-summarization baseline by up to 18.1 points on math and 5-9 points on agentic search at 30-70% lower per-question cost. Our results expose a meta-cognitive gap: although unprompted models cannot reliably tell when their own context is rotting, a lightweight rubric closes this gap, reframing when to compact as a capability that scaffolds can supply without training.",
-    "authors": "Tianjian Li, Jingyu Zhang, William Jurayj, Xi Wang, Chuanyang Jin, Mehrdad Farajtabar, Eric Nalisnick, Daniel Khashabi",
-    "publish_date": "2026-06-22",
-    "arxiv_url": "http://arxiv.org/abs/2606.23525",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 37,
-    "score": 9,
-    "paper_id": "arxiv:2606.23525",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.23557": {
-    "arxiv_id": "2606.23557",
-    "title": "Dense Reward for Multi-View 3D Reasoning with Global Maps and Local Views",
-    "abstract": "Multi-view 3D Visual Question Answering (MV3D-VQA) requires integrating partial observations into a coherent 3D scene representation and selecting informative viewpoints for multi-step spatial reasoning. However, current multimodal LLMs are typically trained with sparse, answer-level supervision, which often yields inconsistent cross-view reasoning and brittle view selection. We present DR-MV3D (Dense Reward for MV3D-VQA), a map-grounded learning framework that provides dense, verifiable rewards to supervise the reasoning process. Our approach decomposes MV3D-VQA into (i) allocentric global map construction, (ii) question-conditioned view-trajectory planning, and (iii) egocentric grounding for answer prediction. To make intermediate steps learnable without manual annotations, we introduce two rewards: a global consistency reward that aligns the predicted map with geometry-consistent pseudo targets from frozen 3D vision foundation models (e.g., VGGT + SAM3), and a local trajectory reward that supervises ordered viewpoint selection. We optimize the full pipeline with trajectory-level policy optimization (GRPO). Experiments on MindCube, VSI-Bench, and BLINK (MV) show that DR-MV3D consistently improves over strong multi-image baselines, supporting the effectiveness of process-level dense supervision for multi-view 3D reasoning.",
-    "authors": "Jiho Choi, Seonho Lee, Seojeong Park, Hyunjung Shim",
-    "publish_date": "2026-06-22",
-    "arxiv_url": "http://arxiv.org/abs/2606.23557",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 38,
-    "score": 8,
-    "paper_id": "arxiv:2606.23557",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.23608": {
-    "arxiv_id": "2606.23608",
-    "title": "Causal Discovery in the Era of Agents",
-    "abstract": "Recent attempts to combine large language models (LLMs) with causal discovery ask models to infer pairwise directions, propose graph structures, or inject language-model outputs as priors and constraints. These approaches promise faster analysis, but they also obscure whether a causal evidence is supported by data and assumptions or by textual associations, prompt artifacts and hallucinated mechanisms. We argue for a different role for agents in causal discovery. Agents should inspect data, retrieve context, explain method assumptions and clarify graph outputs, but they should not supply edges, orientations, priors, constraints or causal conclusions. We propose the principle that agents assist the workflow, while causal claims remain grounded in data, explicit assumptions, formal algorithms, diagnostics and user or domain-expert decisions. We instantiate this principle in causal-learn+, an online platform that coordinates data analysis, preprocessing, method recommendation, expert-knowledge incorporation, formal discovery and interpretation around the algorithmic ecosystem of causal-learn. A case study on Big Five personality data illustrates agent-assisted pipeline of causal discovery without turning language-model unreliability into causal evidence. The platform is available at causallearn.com.",
-    "authors": "Yujia Zheng, Vishal Verma, Mantej Gill, Haoyue Dai, Peter Spirtes, Kun Zhang",
-    "publish_date": "2026-06-22",
-    "arxiv_url": "http://arxiv.org/abs/2606.23608",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 39,
-    "score": 7,
-    "paper_id": "arxiv:2606.23608",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.23654": {
     "arxiv_id": "2606.23654",
     "title": "EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions",
@@ -11097,27 +10992,6 @@
     "hf_rank": 40,
     "score": 6,
     "paper_id": "arxiv:2606.23654",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.23610": {
-    "arxiv_id": "2606.23610",
-    "title": "Vera: A Layered Diffusion Model for Content-Preserving Video Editing",
-    "abstract": "Video diffusion models have enabled remarkable progress in video generation and editing. However, content preservation remains a core challenge: existing methods regenerate every pixel and often alter elements that should remain unchanged, such as characters or background scenes. We introduce Vera, a layered diffusion framework for content-preserving video editing. Instead of regenerating the entire video, Vera generates an edit layer along with an alpha matte for compositing with the source video, separating creative editing from content preservation by design. To encourage coherent composition with the source video, we extend the text-to-video DiT into a Mixture-of-Transformers (MoT) architecture, with separate DiTs for each layer that interact through joint self-attention. To support the training of Vera, we further construct a high-quality layered dataset with accurate alpha mattes, diverse scenes and dynamics, and visual effects. Across our quantitative benchmark and human preference study, Vera outperforms leading open-source video editing models in content preservation while remaining competitive in edit quality, using 486K frames of layered training data.",
-    "authors": "Hongkai Zheng, Ta-Ying Cheng, Benjamin Klein, Yisong Yue, Zhuoning Yuan",
-    "publish_date": "2026-06-22",
-    "arxiv_url": "http://arxiv.org/abs/2606.23610",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 39,
-    "score": 21,
-    "paper_id": "arxiv:2606.23610",
     "source": "arxiv",
     "venue": ""
   },
@@ -12548,27 +12422,6 @@
     "hf_rank": 33,
     "score": 29,
     "paper_id": "arxiv:2606.24595",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.23543": {
-    "arxiv_id": "2606.23543",
-    "title": "VeriEvol: Scaling Multimodal Mathematical Reasoning via Verifiable Evol-Instruct",
-    "abstract": "Scaling reinforcement learning for visual mathematical reasoning requires more than generating harder questions: as data volume grows, the reward labels themselves must remain reliable. Yet existing data pipelines scale supervision while trusting the labeller, and policy-side methods assume the underlying answers are already correct. We instead treat scaling as a verifiable data-construction problem and decouple two axes before any policy update: prompt difficulty, expanded by route-specific evolution operators, and answer reliability, enforced by offline hypothesis-test falsification. We instantiate this as VeriEvol, an iterative framework with two extensible components: a type-aware evolution module that rewrites low-difficulty image-question seeds into harder, image-grounded prompts; and HTV-Agent, a verifier that accepts an answer only after multi-source counter-evidence has failed to refute it. The resulting verified data scales in volume, extends by adding evolution routes or verifier channels, and plugs directly into existing GRPO-style RL recipes. On a five-benchmark visual-math suite, scaling evolved SFT data from 10K to 250K samples raises the mean accuracy from 35.42 to 54.73; then, with backbone, SFT initialization, and GRPO recipe held fixed, VeriEvol adds a cumulative +3.88 over an un-evolved RL baseline, of which +1.82 comes from evolved prompts and +2.06 from the HTV-Agent verifier. We release the prompts, data, models, code, and the full verifier trace of every sample, so that downstream work can scale and audit the pipeline rather than only inspect its outputs.",
-    "authors": "Haoling Li, Kai Zheng, Jie Wu, Can Xu, Qingfeng Sun, Han Hu, Yujiu Yang",
-    "publish_date": "2026-06-22",
-    "arxiv_url": "http://arxiv.org/abs/2606.23543",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 34,
-    "score": 28,
-    "paper_id": "arxiv:2606.23543",
     "source": "arxiv",
     "venue": ""
   },
@@ -19643,7 +19496,7 @@
       "Dexterous",
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 37,
     "score": 10,
     "paper_id": "arxiv:2606.31719",
     "source": "arxiv",
@@ -22306,7 +22159,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 46,
     "score": 29,
     "paper_id": "arxiv:2607.00115",
     "source": "arxiv",
@@ -22327,7 +22180,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 47,
     "score": 28,
     "paper_id": "arxiv:2607.00924",
     "source": "arxiv",
@@ -22348,7 +22201,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 39,
+    "hf_rank": 48,
     "score": 27,
     "paper_id": "arxiv:2606.26040",
     "source": "arxiv",
@@ -22369,7 +22222,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 40,
+    "hf_rank": 49,
     "score": 26,
     "paper_id": "arxiv:2607.00553",
     "source": "arxiv",
@@ -22390,7 +22243,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 41,
+    "hf_rank": 50,
     "score": 25,
     "paper_id": "arxiv:2607.00407",
     "source": "arxiv",
@@ -22747,7 +22600,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 38,
     "score": 28,
     "paper_id": "arxiv:2607.00152",
     "source": "arxiv",
@@ -22768,7 +22621,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 39,
     "score": 27,
     "paper_id": "arxiv:2606.28661",
     "source": "arxiv",
@@ -22789,7 +22642,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 40,
     "score": 26,
     "paper_id": "arxiv:2606.28430",
     "source": "arxiv",
@@ -22810,7 +22663,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 41,
     "score": 25,
     "paper_id": "arxiv:2606.31179",
     "source": "arxiv",
@@ -22831,7 +22684,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 42,
     "score": 24,
     "paper_id": "arxiv:2607.01211",
     "source": "arxiv",
@@ -22852,7 +22705,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 43,
     "score": 23,
     "paper_id": "arxiv:2606.29464",
     "source": "arxiv",
@@ -22873,7 +22726,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 44,
     "score": 22,
     "paper_id": "arxiv:2606.30124",
     "source": "arxiv",
@@ -22894,7 +22747,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 45,
     "score": 21,
     "paper_id": "arxiv:2606.30030",
     "source": "arxiv",
@@ -23133,7 +22986,7 @@
     "matched_categories": [
       "Dexterous"
     ],
-    "hf_rank": 7,
+    "hf_rank": 16,
     "score": 29,
     "paper_id": "arxiv:2607.02271",
     "source": "arxiv",
@@ -23405,7 +23258,7 @@
       "Manipulation",
       "VLA"
     ],
-    "hf_rank": 20,
+    "hf_rank": 29,
     "score": 46,
     "paper_id": "arxiv:2607.02466",
     "source": "arxiv",
@@ -23650,7 +23503,7 @@
       "Manipulation",
       "VLA"
     ],
-    "hf_rank": null,
+    "hf_rank": 5,
     "score": 30,
     "paper_id": "arxiv:2607.01804",
     "source": "arxiv",
@@ -23717,7 +23570,7 @@
     "matched_categories": [
       "VLA"
     ],
-    "hf_rank": null,
+    "hf_rank": 9,
     "score": 30,
     "paper_id": "arxiv:2607.02501",
     "source": "arxiv",
@@ -24012,7 +23865,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 17,
     "score": 28,
     "paper_id": "arxiv:2606.25178",
     "source": "arxiv",
@@ -24033,7 +23886,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 9,
+    "hf_rank": 18,
     "score": 27,
     "paper_id": "arxiv:2606.31924",
     "source": "arxiv",
@@ -24054,7 +23907,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 19,
     "score": 26,
     "paper_id": "arxiv:2606.31825",
     "source": "arxiv",
@@ -24075,7 +23928,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 20,
     "score": 25,
     "paper_id": "arxiv:2607.02440",
     "source": "arxiv",
@@ -24096,7 +23949,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 21,
     "score": 24,
     "paper_id": "arxiv:2607.02255",
     "source": "arxiv",
@@ -24117,7 +23970,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 22,
     "score": 23,
     "paper_id": "arxiv:2607.02508",
     "source": "arxiv",
@@ -24138,7 +23991,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 23,
     "score": 22,
     "paper_id": "arxiv:2607.01436",
     "source": "arxiv",
@@ -24159,7 +24012,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 24,
     "score": 21,
     "paper_id": "arxiv:2606.27669",
     "source": "arxiv",
@@ -24180,7 +24033,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 25,
     "score": 20,
     "paper_id": "arxiv:2607.01874",
     "source": "arxiv",
@@ -24201,7 +24054,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 26,
     "score": 19,
     "paper_id": "arxiv:2607.02032",
     "source": "arxiv",
@@ -24222,7 +24075,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 27,
     "score": 18,
     "paper_id": "arxiv:2607.02375",
     "source": "arxiv",
@@ -24243,7 +24096,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 28,
     "score": 17,
     "paper_id": "arxiv:2606.30562",
     "source": "arxiv",
@@ -24264,7 +24117,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 30,
     "score": 15,
     "paper_id": "arxiv:2607.01642",
     "source": "arxiv",
@@ -24285,7 +24138,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 31,
     "score": 14,
     "paper_id": "arxiv:2607.02517",
     "source": "arxiv",
@@ -24306,7 +24159,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 32,
     "score": 13,
     "paper_id": "arxiv:2607.01763",
     "source": "arxiv",
@@ -24327,7 +24180,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 33,
     "score": 12,
     "paper_id": "arxiv:2607.02269",
     "source": "arxiv",
@@ -24348,7 +24201,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 25,
+    "hf_rank": 34,
     "score": 11,
     "paper_id": "arxiv:2607.02512",
     "source": "arxiv",
@@ -24369,7 +24222,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 35,
     "score": 10,
     "paper_id": "arxiv:2607.02291",
     "source": "arxiv",
@@ -24390,7 +24243,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 36,
     "score": 9,
     "paper_id": "arxiv:2607.01647",
     "source": "arxiv",
@@ -24411,7 +24264,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 10,
     "score": 29,
     "paper_id": "arxiv:2607.01283",
     "source": "arxiv",
@@ -24432,7 +24285,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 11,
     "score": 28,
     "paper_id": "arxiv:2606.27821",
     "source": "arxiv",
@@ -24453,7 +24306,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 12,
     "score": 27,
     "paper_id": "arxiv:2607.01686",
     "source": "arxiv",
@@ -24474,7 +24327,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 13,
     "score": 26,
     "paper_id": "arxiv:2607.01224",
     "source": "arxiv",
@@ -24495,7 +24348,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 14,
     "score": 25,
     "paper_id": "arxiv:2606.29961",
     "source": "arxiv",
@@ -24516,9 +24369,156 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 15,
     "score": 24,
     "paper_id": "arxiv:2607.01002",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.28551": {
+    "arxiv_id": "2606.28551",
+    "title": "DataComp-VLM: Improved Open Datasets for Vision-Language Models",
+    "abstract": "Building performant Vision-Language Models (VLMs) requires carefully curating large-scale training datasets, yet the community lacks systematic benchmarks for evaluating such curation strategies. We introduce DataComp for VLMs (DCVLM), a benchmark for controlled data-centric experiments to improve VLM training. As part of DCVLM, we collect 160 datasets spanning four data types -- image-caption pairs, multimodal interleaved documents, text-only, and instruction-tuning data -- into a corpus of 6T multimodal tokens. DCVLM allows participants to test curation strategies (filtering, mixing, formatting, sampling) across 1B-8B models and 6.25B-200B token budgets. Models are then evaluated on a carefully selected suite of up to 52 downstream benchmarks across 9 domains. We conduct extensive experiments on DCVLM and find that data mixing, not filtering, is key to a high-quality training dataset: instruction-heavy mixtures scale better than caption-heavy ones, with gains widening at larger scales. The resulting dataset, DCVLM-Baseline, enables training an 8B VLM to 63.6% accuracy on our 33-task core suite with 200B training tokens. Compared to FineVision, the state-of-the-art open VLM training dataset, this represents an improvement of +5.4pp. DCVLM and all accompanying artifacts will be made publicly available at https://www.datacomp.ai/dcvlm/.",
+    "authors": "Matteo Farina, Vishaal Udandarao, Thao Nguyen, Selim Kuzucu, Maximilian Böther, Andreas Hochlehnert, Adhiraj Ghosh, Marianna Nezhurina, Karsten Roth, Joschka Struber, Yuhui Zhang, Sebastian Dziadzio, Elaine Sui, Soumya Jahagirdar, Dhruba Ghosh, Hasan Hammoud, Thomas De Min, Simone Caldarella, Jehanzeb Mirza, Sedrick Keh, Mehdi Cherti, Hilde Kuehne, Bernt Schiele, Serena Yeung-Levy, Muhammad Ferjad Naeem, Federico Tombari, Ana Klimovic, Elisa Ricci, Matthias Bethge, Sewoong Oh, Ameya Prabhu, Alessio Tonioni, Jenia Jitsev, Massimiliano Mancini, Ludwig Schmidt, Nikhil Parthasarathy",
+    "publish_date": "2026-06-26",
+    "arxiv_url": "http://arxiv.org/abs/2606.28551",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2606.28551",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.02471": {
+    "arxiv_id": "2607.02471",
+    "title": "Interpretation-Oriented Cloud Removal via Observation-Anchored Residual Flow with Geo-Contextual Alignment",
+    "abstract": "Cloud removal (CR) is essential for optical remote sensing, serving as a prerequisite for reliable downstream interpretation, such as semantic segmentation and change detection. However, existing CR approaches often prioritize visual realism while overlooking their impact on subsequent analytical tasks, leading to semantic drift and degraded downstream performance. To address this issue, we propose Geo-Anchored Cloud Removal (GACR), a unified framework that jointly ensures faithful reconstruction and robust interpretability. At its core, GACR incorporates Observation-Anchored Residual Flow (OAR-Flow), which reformulates CR as a physically grounded residual inversion process. By anchoring the generative trajectory to the cloudy observation rather than pure noise, OAR-Flow enables fast, stable, and faithful reconstruction. To further preserve semantic structures critical for downstream interpretation, GACR integrates Geo-Contextual Prior Alignment (GCPA) to constrain the reconstruction within a semantic manifold induced by a Vision Foundation Model (VFM). Consequently, GACR strictly maintains the spatial-semantic integrity of complex landscapes. Extensive experiments across six CR datasets and twelve downstream tasks demonstrate that GACR produces superior reconstruction quality while consistently improving downstream task accuracy. The code is available at https://github.com/wzy6055/GACR.",
+    "authors": "Ziyao Wang, Maonan Wang, Yucheng He, Xianping Ma, Ziyi Wang, Hongyang Zhang, Yirong Cheng, Man-on Pun",
+    "publish_date": "2026-07-02",
+    "arxiv_url": "http://arxiv.org/abs/2607.02471",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 28,
+    "paper_id": "arxiv:2607.02471",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.02461": {
+    "arxiv_id": "2607.02461",
+    "title": "OrbitQuant: Data-Agnostic Quantization for Image and Video Diffusion Transformers",
+    "abstract": "Diffusion transformers (DiTs) achieve state-of-the-art image and video generation, but their multi-step sampling and growing parameter count make inference expensive. Post-training quantization (PTQ) is the natural remedy, yet DiT activations shift across timesteps, prompts, and guidance branches, forcing prior methods to re-fit calibration data for every new checkpoint or modality. We present OrbitQuant, a data-agnostic weight-activation quantizer that bypasses range estimation by quantizing in a normalized, rotated basis. In this basis, a randomized permuted block-Hadamard (RPBH) rotation concentrates each coordinate around one fixed, known marginal regardless of the input, so a single Lloyd-Max codebook serves all timesteps, prompts, and layers of a given input dimension. We extend the same quantizer to weight rows offline, absorbing the rotation into the weights so that it cancels inside each linear layer and only a forward rotation on the activations remains at runtime. The same recipe transfers from image to video with no per-modality tuning. Across FLUX.1, Z-Image-Turbo, Wan 2.1, and CogVideoX, it sets the state of the art for PTQ at several low-bit settings. It also pushes PTQ of image diffusion transformers to W2A4 with usable generation quality.",
+    "authors": "Donghyun Lee, Jitesh Chavan, Duy Nguyen, Sam Huang, Liming Jiang, Priyadarshini Panda, Timo Mertens, Saurabh Shukla",
+    "publish_date": "2026-07-02",
+    "arxiv_url": "http://arxiv.org/abs/2607.02461",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 27,
+    "paper_id": "arxiv:2607.02461",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.01420": {
+    "arxiv_id": "2607.01420",
+    "title": "MultAttnAttrib: Training-Free Multimodal Attribution in Long Document Question Answering",
+    "abstract": "As grounded QA systems are increasingly deployed in AI assistants, accurately attributing generated answers to evidence is critical for user trust and model safety. While unimodal attributions have been explored in depth, the multimodal setting remains relatively under-researched. As a result, we introduce MultAttnAttrib, a training-free attribution-generation method that leverages a model's prefill pass, selected attention heads, and calibrated thresholds to locate source evidence within a document. To establish baseline results for the method, we introduce MultAttrEval, a complementary benchmark dataset annotated with fine-grained, ground-truth attributions for answer components grounded in multimodal source documents. To our knowledge, this is the first evaluation dataset designed specifically for multimodal attribution in long-form documents. Experimental results show that MultAttnAttrib consistently outperforms a variety of attribution-generation methods, including several strong prompting-based approaches and matches the latest frontier models such as GPT 5.4. Our method not only substantially improves attribution accuracy for both unimodal and multimodal attribution types, but also produces attributions at up to one-seventh of the direct inference latency compared to prompting on the same base model.",
+    "authors": "Dang Quang Thien Tran, Quang V. Dang, Vinamra Tyagi, Sai Soorya Rao Veeravalli, Trang Nguyen, Ryan A. Rossi, Franck Dernoncourt, Nedim Lipka, Koustava Goswami, Samyadeep Basu",
+    "publish_date": "2026-07-01",
+    "arxiv_url": "http://arxiv.org/abs/2607.01420",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 4,
+    "score": 26,
+    "paper_id": "arxiv:2607.01420",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.31227": {
+    "arxiv_id": "2606.31227",
+    "title": "Securing the AI Agent: A Unified Framework for Multi-Layer Agent Red Teaming",
+    "abstract": "The fast growth of open-source AI infrastructure, from model serving engines and agent platforms to the Model Context Protocol (MCP) ecosystem and the language models themselves, has outpaced the security tooling available to defend it. We present AI-Infra-Guard, an open-source framework that organizes AI red teaming around a single observation: the attack surface of an AI agent is stratified across layers (infrastructure, protocol/tool, agent behavior, and model), and no single detection paradigm fits all of them. The framework therefore matches a paradigm to each layer, from deterministic rule matching over 75+ AI components and 1{,}400+ vulnerability rules, through LLM-driven agentic auditing of MCP servers and agent-skill packages and multi-turn black-box agent red teaming, to a jailbreak harness with 26+ attack operators over sixteen datasets. To our knowledge it is the only open-source framework to span all of these, including supply-chain auditing of the agent skills that increasingly extend AI agents. We release AI-Infra-Guard as open source so that \\emph{layer-paradigm matching} can serve as a practical foundation for agent security and a shared base for the community to build on.",
+    "authors": "Yong Yang, Xing Zheng, Huiyu Wu, Huangsheng Cheng, Xiaorong Shi, Jing Guo, Bo Yang, Yi Zhou, Xiangfan Wu, Zonghao Ying",
+    "publish_date": "2026-06-30",
+    "arxiv_url": "http://arxiv.org/abs/2606.31227",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 6,
+    "score": 24,
+    "paper_id": "arxiv:2606.31227",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.00052": {
+    "arxiv_id": "2607.00052",
+    "title": "AGE: Adaptive-masking for Graph Embedding in Graph Retrieval-Augmented Generation",
+    "abstract": "GraphRAG is an extension of retrieval-augmented generation (RAG) that supports large language models (LLMs) by referring to graph-structured data as external knowledge. While this technique ideally captures intricate relationships, it often struggles with graph representations for LLMs, particularly for frozen LLMs, due to the misalignment between graph-based and text-based latent features. We tackle this issue by introducing the {\\it Adaptive-masking for Graph Embedding (AGE)}. AGE employs a Transformer in a mask-based self-supervised learning (SSL) approach. We designed the architecture similar to text embedding encoders, addressing the latent feature misalignment. In contrast to natural language texts, graphs are concise representations, and there exist {\\it key nodes} that hold dominant contextual information, which are challenging to predict from their surroundings. Masking such key nodes leads to inefficiency in the SSL process. Therefore, AGE focuses on predicting nodes apart from key nodes, utilizing a learnable node sampler. Our experimental results indicate that AGE significantly improves approaches using non-parametric search component in GraphQA tasks, achieving superior accuracy across four benchmark datasets with distinct characteristics.",
+    "authors": "Bao Long Nguyen Huu, Atsushi Hashimoto",
+    "publish_date": "2026-06-30",
+    "arxiv_url": "http://arxiv.org/abs/2607.00052",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 7,
+    "score": 23,
+    "paper_id": "arxiv:2607.00052",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.29526": {
+    "arxiv_id": "2606.29526",
+    "title": "The Mirage of Optimizing Training Policies: Monotonic Inference Policies as the Real Objective for LLM Reinforcement Learning",
+    "abstract": "Reinforcement learning (RL) has gained growing attention in large language model (LLM) post-training, yet RL training remains fragile and can suffer from instability or collapse. One vital cause is training-inference mismatch: LLM adopts separate inference and training engines for generation efficiency and training precision, which in practice exhibits inconsistent probabilities for the same trajectories on training and inference sides, even with synchronized model parameters. This naturally induces a special type of off-policyness ever existing and poisoning the training. Prior works have made various efforts in addressing the off-policyness to stabilize the training policies under the mismatch. In this paper, we point out the objective misalignment neglected by existing works that an effective update to the policy in the training engine not necessarily ensures the improvement of the inference policy, i.e., the one used in deployment. To this end, we propose a new policy optimization objective for LLM RL, named Monotonic Inference Policy Improvement (MIPI). Following this principle, we introduce Monotonic Inference Policy Update (MIPU), a two-step LLM RL framework that constructs sampler-referenced candidate updates and selectively accepts synchronized candidates using an inference-side gap proxy. Experiments conducted on two model scales under high mismatch show that MIPU improves average reasoning performance and training stability.",
+    "authors": "Jing Liang, Hongyao Tang, Yi Ma, Yancheng He, Weixun Wang, Xiaoyang Li, Ju Huang, Wenbo Su, Jinyi Liu, Yan Zheng, Jianye Hao, Bo Zheng",
+    "publish_date": "2026-06-28",
+    "arxiv_url": "http://arxiv.org/abs/2606.29526",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 8,
+    "score": 22,
+    "paper_id": "arxiv:2606.29526",
     "source": "arxiv",
     "venue": ""
   }
