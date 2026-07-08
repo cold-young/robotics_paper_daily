@@ -12033,27 +12033,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.25182": {
-    "arxiv_id": "2606.25182",
-    "title": "What Intermediate Layers Know: Detecting Jailbreaks from Entropy Dynamics",
-    "abstract": "Jailbreak attacks reveal a persistent weakness in aligned Large Language Models: carefully crafted prompts can elicit policy-violating responses despite safety training. While most defenses operate at the prompt or output level, it remains unclear how harmful intent is encoded within the model's internal representations. We investigate this question by analyzing token-level predictive entropy trajectories across layers of a frozen LLM using the logit lens. We find that static aggregate statistics of prompt-level entropy (e.g., mean, variance) carry little discriminative signal, whereas features capturing how entropy evolves across token positions, such as monotonic rank-based trend scores, are substantially more informative. Importantly, this signal is not uniform across model depth: it is concentrated in intermediate layers and degrades at the final layer, indicating that jailbreak-relevant structure is most pronounced in mid-network representations rather than at the output head. Across multiple models (Llama, Qwen, Gemma) and adversarial benchmarks, these entropy dynamics provide architecture-consistent separation without additional training. Together, our findings show that jailbreak behavior is reflected in structured intermediate uncertainty dynamics, clarifying both which entropy-derived features encode harmful intent and where in the network that signal is most pronounced.",
-    "authors": "Sofiia Nikolenko, Michele Papucci, Mina Rezaei, Shireen Kudukkil Manchingal",
-    "publish_date": "2026-06-23",
-    "arxiv_url": "http://arxiv.org/abs/2606.25182",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 34,
-    "score": 29,
-    "paper_id": "arxiv:2606.25182",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.25605": {
     "arxiv_id": "2606.25605",
     "title": "Constraint Tax in Open-Weight LLMs: An Empirical Study of Tool Calling Suppression Under Structured Output Constraints",
@@ -12114,27 +12093,6 @@
     "hf_rank": 39,
     "score": 24,
     "paper_id": "arxiv:2606.25763",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.25319": {
-    "arxiv_id": "2606.25319",
-    "title": "V-Zero: Answer-Label-Free On-Policy Distillation with Contrastive Evidence Gating for Fine-Grained Visual Reasoning",
-    "abstract": "Fine-grained visual reasoning requires multimodal large language models (MLLMs) to identify task-relevant visual evidence and ground their reasoning in local image regions. Existing agentic methods typically rely on reinforcement learning with verifiable rewards or supervised fine-tuning on large-scale annotated reasoning traces, leading to costly exploration, hand-designed verification rules, or heavy dependence on textual supervision. A natural way to avoid such external answer labels is to learn from trajectories sampled by the student itself, which points to On-Policy Distillation (OPD). To understand what OPD can and cannot provide for visual reasoning, we revisit it as negative-free stop-gradient alignment. This perspective shows that, although OPD provides effective token-level correction, its ceiling is constrained by the absence of trajectory-level discrimination. Motivated by these observations, we propose V-Zero, an answer-label-free framework for visual reasoning with contrastive evidence gating. V-Zero uses no annotated textual answer labels; instead, during training it pairs a question-relevant regional crop with a negative visual view to evaluate student-sampled trajectories and gate dense token-level distillation. Experiments on multiple visual reasoning benchmarks show that V-Zero consistently improves fine-grained visual reasoning while preserving strong generalization. Notably, V-Zero is more than 5$\\times$ faster than previous supervised fine-tuning methods and more than 10$\\times$ faster than reinforcement learning baselines. Code and dataset will be released at https://github.com/eVI-group-SCU/V-Zero",
-    "authors": "Haoxiang Sun, Zhihang Yi, Langxuan Deng, Yuhao Zhou, Peiqi Jia, Jian Zhao, Li Yuan, Jiancheng Lv, Tao Wang",
-    "publish_date": "2026-06-24",
-    "arxiv_url": "http://arxiv.org/abs/2606.25319",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 44,
-    "score": 19,
-    "paper_id": "arxiv:2606.25319",
     "source": "arxiv",
     "venue": ""
   },
@@ -12219,48 +12177,6 @@
     "hf_rank": 49,
     "score": 9,
     "paper_id": "arxiv:2606.25473",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.25041": {
-    "arxiv_id": "2606.25041",
-    "title": "Wan-Streamer v0.1: End-to-end Real-time Interactive Foundation Models",
-    "abstract": "We present Wan-Streamer, a native-streaming, end-to-end interactive foundation model designed from the ground up for real-time, low-latency, full-duplex audio-visual interaction. Wan-Streamer seamlessly models language, audio, and video as both input and output within a single Transformer, where the sequence is represented as interleaved visual, audio, and text input tokens together with visual, audio, and text output tokens, coordinated by block-causal attention for incremental streaming. Unlike cascaded interactive systems that rely on separate VAD, ASR, language, TTS, audio-driven animation, or video-generation modules, Wan-Streamer does not rely on external language, speech, avatar, or video-generation modules: perception, reasoning, generation, response timing, turn management, and cross-modal synchronization are learned jointly within one unified model, reducing pipeline latency and error accumulation. To support natural audio-visual responsiveness, we redesign the entire stack around streamability, including causal encoders, causal decoders, block-causal attention, and low-latency multimodal token scheduling, enabling streaming units as short as 160 ms at 25 fps. Wan-Streamer achieves approximately 200 ms model-side response latency and approximately 550 ms total interaction latency when combined with 350 ms bidirectional network latency, supporting sub-second duplex audio-visual communication. These results position Wan-Streamer as a unified, end-to-end, multimodal interactive foundation model for low-latency streaming interaction.",
-    "authors": "Lianghua Huang, Zhifan Wu, Wei Wang, Yupeng Shi, Mengyang Feng, Junjie He, Chenwei Xie, Yu Liu, Jingren Zhou, Ang Wang, Bang Zhang, Baole Ai, Chen Liang, Cheng Yu, Chongyang Zhong, Jinwei Qi, Kai Zhu, Pandeng Li, Peng Zhang, Wenyuan Zhang, Xinhua Cheng, Yitong Huang, Yun Zheng, Zoubin Bi",
-    "publish_date": "2026-06-23",
-    "arxiv_url": "http://arxiv.org/abs/2606.25041",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 32,
-    "score": 5,
-    "paper_id": "arxiv:2606.25041",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.25013": {
-    "arxiv_id": "2606.25013",
-    "title": "Do Thinking Tokens Help with Safety?",
-    "abstract": "Today's reasoning models use thinking tokens to attain stronger performance on benchmarks than their instruction-tuned counterparts. It is also generally believed that this more \"deliberative\" mode should improve alignment and safety, by providing the model a safe space to consider whether its planned answer to a request violates its safety principles. We present evidence that this intuition is not always correct. Across frontier open-weight reasoning models spanning GPT-OSS, Qwen, Olmo, and Phi families, we find that the eventual refusal/compliance outcome is already strongly predictable via a trained head on the first token's hidden representation ($0.84$-$0.95$ AUROC and $\\sim88\\%$ balanced accuracy for predicting refusal/compliance) before any visible thinking. The thinking process turns out to be more akin to prefix completion than to deliberative revision, with the final outcome rarely changing after the first $\\sim20\\%$ of thinking, despite giving the appearance of deliberation at the text level ($\\sim74\\%$ of text-level deliberations occur when the response distribution is already locked to one refusal/compliance side). We also find that existing inference-time and training-based safety interventions, despite being motivated by the goal of inducing deliberation, largely shift model behavior toward over-refusal while suppressing already-scarce deliberation signals. Our results suggest that safety behavior in current reasoning models is much less deliberative than commonly assumed, and highlight the need for methods that induce real safety deliberation.",
-    "authors": "Narutatsu Ri, Abhishek Panigrahi, Sanjeev Arora",
-    "publish_date": "2026-06-23",
-    "arxiv_url": "http://arxiv.org/abs/2606.25013",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 28,
-    "score": 28,
-    "paper_id": "arxiv:2606.25013",
     "source": "arxiv",
     "venue": ""
   },
@@ -21028,9 +20944,10 @@
     ],
     "matched_categories": [
       "Dexterous",
-      "Manipulation"
+      "Manipulation",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 2,
     "score": 20,
     "paper_id": "arxiv:2607.02403",
     "source": "arxiv",
@@ -21640,7 +21557,7 @@
       "VLA",
       "HF-Hot"
     ],
-    "hf_rank": 40,
+    "hf_rank": 49,
     "score": 30,
     "paper_id": "arxiv:2607.01804",
     "source": "arxiv",
@@ -21985,27 +21902,6 @@
     "hf_rank": null,
     "score": 10,
     "paper_id": "arxiv:2607.01574",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.25178": {
-    "arxiv_id": "2606.25178",
-    "title": "Transferability for General Reasoning: An Automated Curriculum for Multi-Domain RLVR",
-    "abstract": "Reinforcement learning with verifiable rewards (RLVR) has been extended from single-domain training to multi-domain reasoning suites spanning mathematics, programming, and science. However, the training curriculum (how often each domain is sampled) is typically fixed or hand-tuned, even though reasoning skills transfer unevenly across domains. Existing learnability-based curricula adapt to where the policy is currently improving, but are blind to whether a gradient step on the selected domain benefits the remaining domains. In this paper, we propose Transfer-Aware Curriculum (TAC), a bandit-style online curriculum that prioritizes domains whose updates broadly benefit the rest of the training suite. TAC repurposes signals already produced by RL training: per-domain advantages capture local learnability, and projected gradients, taken from the GRPO step being computed, estimate cross-domain transferability via gradient-geometry alignment, at negligible cost (<1% wall-clock overhead). Across a six-domain reasoning suite, TAC achieves the best macro-averaged accuracy on both Qwen3-1.7B and Llama3.2-3B, outperforming proportional random sampling, a hand-designed schedule, and a learnability-only bandit, and improving over the last of these by up to 2.8 points (10% relative). Ablations show performance degrades sharply when the transferability term is removed, and TAC remains robust on imbalanced training mixtures where learnability-only curricula over-commit to dominant domains. Our findings establish cross-domain transferability as a key signal for curriculum design in multi-domain RLVR.",
-    "authors": "Yongjin Yang, Jiarui Liu, Yinghui He, Lechen Zhang, Bernhard Schölkopf, Zhijing Jin",
-    "publish_date": "2026-06-23",
-    "arxiv_url": "http://arxiv.org/abs/2606.25178",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 21,
-    "score": 28,
-    "paper_id": "arxiv:2606.25178",
     "source": "arxiv",
     "venue": ""
   },
@@ -22528,7 +22424,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 45,
     "score": 29,
     "paper_id": "arxiv:2606.28551",
     "source": "arxiv",
@@ -22549,7 +22445,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 46,
     "score": 28,
     "paper_id": "arxiv:2607.02471",
     "source": "arxiv",
@@ -22570,7 +22466,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 47,
     "score": 27,
     "paper_id": "arxiv:2607.02461",
     "source": "arxiv",
@@ -22591,7 +22487,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 39,
+    "hf_rank": 48,
     "score": 26,
     "paper_id": "arxiv:2607.01420",
     "source": "arxiv",
@@ -22612,7 +22508,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 41,
+    "hf_rank": 50,
     "score": 24,
     "paper_id": "arxiv:2606.31227",
     "source": "arxiv",
@@ -22675,7 +22571,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 41,
     "score": 29,
     "paper_id": "arxiv:2606.31036",
     "source": "arxiv",
@@ -22696,7 +22592,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 42,
     "score": 28,
     "paper_id": "arxiv:2607.01233",
     "source": "arxiv",
@@ -22717,7 +22613,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 44,
     "score": 26,
     "paper_id": "arxiv:2606.31959",
     "source": "arxiv",
@@ -22772,7 +22668,7 @@
       "Manipulation",
       "Tactile"
     ],
-    "hf_rank": 20,
+    "hf_rank": 29,
     "score": 60,
     "paper_id": "arxiv:2607.05390",
     "source": "arxiv",
@@ -22943,7 +22839,7 @@
       "Dexterous",
       "Manipulation"
     ],
-    "hf_rank": 14,
+    "hf_rank": 23,
     "score": 36,
     "paper_id": "arxiv:2607.04988",
     "source": "arxiv",
@@ -23808,7 +23704,7 @@
     "matched_categories": [
       "VLA"
     ],
-    "hf_rank": null,
+    "hf_rank": 5,
     "score": 20,
     "paper_id": "arxiv:2607.03751",
     "source": "arxiv",
@@ -24119,30 +24015,9 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 10,
     "score": 29,
     "paper_id": "arxiv:2607.03296",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.28393": {
-    "arxiv_id": "2606.28393",
-    "title": "Transition-Aware best-of-N sampling for Longitudinal Chest X-ray Reports",
-    "abstract": "In longitudinal clinical practice, every chest X-ray is read in the context of the patients prior exam, and much of what the radiologist communicates is the change from one visit to the next. To the best of our knowledge, we present the first training-free best-of-N sampling scheme for pre-trained chest X-ray report generators that is explicitly aware of this longitudinal prior to current transition. We call it transition-aware best-of-N sampling, each report is split into sentences and embedded into an unordered set in Rd; each (prior, current) pair is reduced to a fixed-dim directional vector via a set-to-set distance designed to encode the change between the two sets; and candidates are scored by cosine distance from their candidate transition vector to a cached bank of ground-truth training transition vectors, aggregated as min or kNN. We instantiate the framework with four directional set distances (mean-shift, novelty residual, directed-Hausdorff anchor, and cost-weighted optimal transport) and evaluate on a multi-visit AP-PA cohort, running inference under three prompts on three vision-language generators. Transition-aware best-of-N outperforms random selection across the board, with the largest relative gains on the Impression section.",
-    "authors": "Halil Ibrahim Gulluk, Max Van Puyvelde, Wim Van Criekinge, Olivier Gevaert",
-    "publish_date": "2026-06-23",
-    "arxiv_url": "http://arxiv.org/abs/2606.28393",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 2,
-    "score": 28,
-    "paper_id": "arxiv:2606.28393",
     "source": "arxiv",
     "venue": ""
   },
@@ -24161,7 +24036,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 12,
     "score": 27,
     "paper_id": "arxiv:2607.03973",
     "source": "arxiv",
@@ -24182,7 +24057,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 13,
     "score": 26,
     "paper_id": "arxiv:2607.04410",
     "source": "arxiv",
@@ -24203,7 +24078,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 14,
     "score": 25,
     "paper_id": "arxiv:2607.00597",
     "source": "arxiv",
@@ -24224,7 +24099,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 15,
     "score": 24,
     "paper_id": "arxiv:2607.05061",
     "source": "arxiv",
@@ -24245,7 +24120,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 16,
     "score": 23,
     "paper_id": "arxiv:2607.05376",
     "source": "arxiv",
@@ -24266,7 +24141,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 17,
     "score": 22,
     "paper_id": "arxiv:2607.02998",
     "source": "arxiv",
@@ -24287,7 +24162,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 9,
+    "hf_rank": 18,
     "score": 21,
     "paper_id": "arxiv:2607.03524",
     "source": "arxiv",
@@ -24308,7 +24183,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 19,
     "score": 20,
     "paper_id": "arxiv:2607.04605",
     "source": "arxiv",
@@ -24329,7 +24204,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 20,
     "score": 19,
     "paper_id": "arxiv:2607.04033",
     "source": "arxiv",
@@ -24350,7 +24225,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 21,
     "score": 18,
     "paper_id": "arxiv:2607.04428",
     "source": "arxiv",
@@ -24371,7 +24246,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 24,
     "score": 15,
     "paper_id": "arxiv:2607.05155",
     "source": "arxiv",
@@ -24392,7 +24267,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 25,
     "score": 14,
     "paper_id": "arxiv:2607.02646",
     "source": "arxiv",
@@ -24413,7 +24288,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 26,
     "score": 13,
     "paper_id": "arxiv:2607.05391",
     "source": "arxiv",
@@ -24434,7 +24309,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 27,
     "score": 12,
     "paper_id": "arxiv:2607.05352",
     "source": "arxiv",
@@ -24455,7 +24330,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 28,
     "score": 11,
     "paper_id": "arxiv:2607.03068",
     "source": "arxiv",
@@ -24476,7 +24351,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 30,
     "score": 9,
     "paper_id": "arxiv:2607.05373",
     "source": "arxiv",
@@ -24497,7 +24372,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 31,
     "score": 8,
     "paper_id": "arxiv:2607.04425",
     "source": "arxiv",
@@ -24518,7 +24393,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 32,
     "score": 7,
     "paper_id": "arxiv:2607.05247",
     "source": "arxiv",
@@ -24539,7 +24414,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 33,
     "score": 6,
     "paper_id": "arxiv:2607.04064",
     "source": "arxiv",
@@ -24560,7 +24435,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 25,
+    "hf_rank": 34,
     "score": 5,
     "paper_id": "arxiv:2607.02881",
     "source": "arxiv",
@@ -24581,7 +24456,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 35,
     "score": 4,
     "paper_id": "arxiv:2607.02642",
     "source": "arxiv",
@@ -24602,7 +24477,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 36,
     "score": 3,
     "paper_id": "arxiv:2607.04438",
     "source": "arxiv",
@@ -24623,7 +24498,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 37,
     "score": 2,
     "paper_id": "arxiv:2607.01793",
     "source": "arxiv",
@@ -24644,7 +24519,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 38,
     "score": 1,
     "paper_id": "arxiv:2607.04443",
     "source": "arxiv",
@@ -24665,7 +24540,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 39,
     "score": 0,
     "paper_id": "arxiv:2607.04439",
     "source": "arxiv",
@@ -24686,9 +24561,135 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 40,
     "score": 0,
     "paper_id": "arxiv:2607.01764",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.05369": {
+    "arxiv_id": "2607.05369",
+    "title": "GaP: A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks",
+    "abstract": "For robots to work reliably in commercial and industrial applications, can recent advances in agentic coding systems combine interpretable robot programming with the open-world adaptability of model-free policies? We focus on \"Variational Automation\" (VA), a class of tasks that have larger variations in object geometry and pose than fixed automation. Model-free policies often struggle to close the reliability gap for VA tasks, which must be executed persistently and reliably in commercial and industrial applications. Motivated by prior work on Task and Motion Planning (TAMP) and the Robot Operating System (ROS), we introduce Graph-as-Policy (GaP), a multi-agent coding harness that generates directed computation graphs with perception, planning, and control nodes from a Modular Open Robot Skill Library (MORSL). GaP then generates an internal simulation environment to rehearse task instances with different graphs in parallel to iteratively refine the graph structure and parameters to improve success rates and throughput. Evaluation with 8 new open VA task benchmarks, 4 in-simulation and 4 in real-world, suggests that GaP can achieve success rates that significantly outperform baselines. Details, code, and data can be found online: https://graph-robots.github.io/gap",
+    "authors": "Kaiyuan Chen, Shuangyu Xie, Letian Fu, Justin Yu, William Pacini, Sandeep Bajamahal, Hudson Kim, Jaimyn Drake, Daehwa Kim, Haoru Xue, Jonathan Francis, Christian Juette, Peter Schaldenbrand, Muhammet Yunus Seker, Ruwan Wickramarachchi, Uksang Yoo, Guanzhi Wang, Adithyavairavan Murali, Balakumar Sundaralingam, S. Shankar Sastry, Spencer Huang, Yuke Zhu, Linxi \"Jim\" Fan, Ken Goldberg",
+    "publish_date": "2026-07-06",
+    "arxiv_url": "http://arxiv.org/abs/2607.05369",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2607.05369",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2606.31145": {
+    "arxiv_id": "2606.31145",
+    "title": "SeKV: Resolution-Adaptive KV Cache with Hierarchical Semantic Memory for Long-Context LLM Inference",
+    "abstract": "Large language models increasingly operate over long contexts, where the KV cache becomes a dominant memory bottleneck: its size grows linearly with sequence length and must be retained throughout decoding, making full GPU caching prohibitively expensive without compression. Existing KV cache compression methods struggle to balance efficiency with faithful context preservation. Token eviction discards information, while semantic grouping fixes compression decisions at prefill time; neither can recover token-level detail from a compressed span once it becomes relevant during generation. As a solution, we propose SeKV, a resolution-adaptive semantic KV cache that organizes context into entropy-guided semantic spans and stores them across a GPU-CPU memory hierarchy without discarding information. Each span keeps a lightweight summary vector on GPU for coarse routing and a low-rank SVD basis on CPU for on-demand token-level reconstruction. A trained zoom-in mechanism selectively expands query-relevant spans during decoding, enabling precise retrieval without materializing the full KV cache on GPU. SeKV enables adaptive token-level reconstruction while keeping the base LLM fully frozen and adding fewer than 0.05% trainable parameters. Across four benchmarks, SeKV improves over the strongest semantic compression baseline by 5.9% on average while reducing GPU memory by 53.3% versus full KV caching at 128K context. Code is available on https://github.com/AmirAbaskohi/SeKV.",
+    "authors": "Amirhossein Abaskohi, Giuseppe Carenini, Peter West, Yuhang He",
+    "publish_date": "2026-06-30",
+    "arxiv_url": "http://arxiv.org/abs/2606.31145",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 27,
+    "paper_id": "arxiv:2606.31145",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.03748": {
+    "arxiv_id": "2607.03748",
+    "title": "Bridging Interleaved Multi-Modal Reasoning as a Unified Decision Process",
+    "abstract": "Unified multi-modal models (UMMs) have shown promising interleaved text-image reasoning capabilities, yet effectively optimizing such multi-turn generation via reinforcement learning (RL) remains an open challenge. Existing approaches apply RL exclusively to text steps, relegating image generation to supervised surrogates, preventing policy gradients from propagating through the full interleaved trajectory across heterogeneous modalities. This leaves the potential of RL for UMMs largely untapped. In the paper, we introduce \\textbf{BRAID} (\\textbf{B}ridging inte\\textbf{R}le\\textbf{A}ved mult\\textbf{I}-modal reasoning as a unified \\textbf{D}ecision process), a simple framework that casts multi-turn text-image-text reasoning as a unified Markov decision process (MDP), enabling joint optimization of textual and visual generation via a single, principled RL objective. BRAID computes a shared trajectory-level advantage and propagates it coherently into both text tokens and image denoising paths, each optimized through its modality-native policy gradient mechanism. To further address long-horizon credit assignment, BRAID employs a vision-language model (VLM) judge that scores each intermediate image on its reasoning utility, supplying dense turn-level feedback to sharpen learning at critical visual branches. Experiments on spatial reasoning and visual perception benchmarks show that BRAID consistently outperforms various baselines, confirming that a unified MDP formulation with vision-thinking guidance is essential for effective multi-modal reasoning.",
+    "authors": "Zican Hu, Xuyang Hu, Yiming Liu, Zuwei Long, Wei Liu, Yunzhuo Hao, Jiawei Gu, Linjie Li, Yu Cheng, Zhenhong Sun, Weibo Gu, Xing Sun, Zhi Wang",
+    "publish_date": "2026-07-04",
+    "arxiv_url": "http://arxiv.org/abs/2607.03748",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 6,
+    "score": 24,
+    "paper_id": "arxiv:2607.03748",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.02904": {
+    "arxiv_id": "2607.02904",
+    "title": "Speaker-Aware Temporal Aggregation Strategies on Segment Representations for Depression Detection in Dyadic Interaction: A Benchmark Study",
+    "abstract": "Speech-based depression detection compresses features from short audio segments into one speaker-level decision, a step called temporal aggregation rarely studied on its own. Most benchmarks fix a single self-supervised encoder and a single hand-picked layer, so a reported gain may reflect the pipeline rather than the aggregation method itself. We introduce DEPOOL, a controlled benchmark that compares six aggregation architectures with six frozen speech backbones on an English and a Mandarin depression corpus, where each configuration learns which backbone layers matter rather than fixing one by hand. Across the resulting 72-configuration grid, a third of configurations collapse into predicting a single class for every speaker, a failure tied to the backbone as much as to the method, and the architecture that is most stable in a single-seed run becomes unreliable when training repeats across seeds. Robustness to backbone and seed, rather than average accuracy across a single pipeline, should be a first-class benchmarking criterion for temporal aggregation in clinical speech.",
+    "authors": "Anisha Pattanayak, Huang-Cheng Chou, Shrikanth Narayanan, Sudarsana Reddy Kadiri",
+    "publish_date": "2026-07-03",
+    "arxiv_url": "http://arxiv.org/abs/2607.02904",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 7,
+    "score": 23,
+    "paper_id": "arxiv:2607.02904",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.05392": {
+    "arxiv_id": "2607.05392",
+    "title": "SynCity 3000: Bootstrapping Scene-Scale 3D Diffusion",
+    "abstract": "We present SynCity 3000, a framework for generating 3D scenes that are globally coherent while enabling fine-grained layout control. Building on the ability of current image-to-3D generators to produce complex 3D assets from a single image, we extend this capability to the scale of entire scenes by adapting the generator to be applicable as a convolutional operator. We achieve this by fine-tuning the model on scene-like data generated by a new synthetic data engine, which we propose to address the scarcity of 3D scene data for training. The convolutional generator is then applied to a dimetric image of the entire scene, generated from the user prompt, resulting in 3D scenes of arbitrary size and complexity. Across diverse prompts and layouts, SynCity 3000 produces large, coherent, and detailed scenes, addressing the shortcomings of prior approaches to 3D scene generation.",
+    "authors": "Paul Engstler, Iro Laina, Christian Rupprecht, Andrea Vedaldi",
+    "publish_date": "2026-07-06",
+    "arxiv_url": "http://arxiv.org/abs/2607.05392",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 8,
+    "score": 22,
+    "paper_id": "arxiv:2607.05392",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.05196": {
+    "arxiv_id": "2607.05196",
+    "title": "Unified Audio Intelligence Without Regressing on Text Intelligence",
+    "abstract": "Audio intelligence involves understanding, reasoning about, and generating both audio and speech. In this work, we introduce Nemotron-Labs-Audex-30B-A3B (Audex), a unified audio-text LLM built on Nemotron-Cascade-2-30B-A3B, a strong text-only MoE LLM. Audex adopts a simple unified design with a single Transformer decoder: audio inputs are encoded and projected into the text embedding space, while text tokens and quantized audio output tokens are treated uniformly during generation. This architecture enables strong audio-text fusion, seamless multimodal generation, and compatibility with standard LLM training and inference infrastructure. For training, we meticulously curate audio-text datasets comprising 157.4B audio tokens and 320.5B text tokens. We apply multi-stage supervised training on these datasets, followed by text-only Cascade RL and multi-domain on-policy distillation. Audex delivers state-of-the-art audio understanding, speech recognition and translation, text-to-speech, audio generation, and speech-to-speech generation, while preserving very compelling reasoning, alignment, knowledge, long-context, and agentic capabilities of its text-only LLM backbone with marginal or no regression. We release the model checkpoints to facilitate open research.",
+    "authors": "Zhifeng Kong, Sang-gil Lee, Jaehyeon Kim, Boxin Wang, Zihan Liu, Sungwon Kim, Yang Chen, Arushi Goel, Rajarshi Roy, Wenliang Dai, Zhuolin Yang, Yangyi Chen, Dongfu Jiang, Sreyan Ghosh, Tuomas Rintamaki, Andrew Tao, Jonathan Raiman, Mohammad Shoeybi, Bryan Catanzaro, Wei Ping",
+    "publish_date": "2026-07-06",
+    "arxiv_url": "http://arxiv.org/abs/2607.05196",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 9,
+    "score": 21,
+    "paper_id": "arxiv:2607.05196",
     "source": "arxiv",
     "venue": ""
   }
