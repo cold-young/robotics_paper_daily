@@ -12276,7 +12276,7 @@
       "VLA",
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 34,
     "score": 0,
     "paper_id": "arxiv:2606.30111",
     "source": "arxiv",
@@ -13282,27 +13282,6 @@
     "hf_rank": 41,
     "score": 0,
     "paper_id": "arxiv:2606.30616",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.29225": {
-    "arxiv_id": "2606.29225",
-    "title": "PolicyGuard: A Dialogue-Grounded Sub-Agent Verifier for Policy Adherence in LLM Agents",
-    "abstract": "LLM agents handle user requests on behalf of organizations through tool calls and must follow the company policies stated in their system prompts. Prior work approaches this as a safeguarding problem -- external checks that block non-compliant agent actions. We argue that policy adherence is a broader problem: real workflows unfold across many turns, require explicit user confirmation and prerequisite reads, and hinge on the content of the dialogue rather than on any single argument value. Meeting this bar requires (i) full conversation context, (ii) self-reasoning over the policy and the current dialogue, and (iii) conversation-specific remediation that guides the agent's next turn -- three capabilities that prior safeguard work has often underestimated. We introduce POLICYGUARD, a sub-agent verifier that shares the agent's view of the dialogue, reasons over the policy in context, and provides actionable feedback for the agent's next turn. On tau^2-BENCH airline across three vendors (GPT-5.4, Claude Sonnet 4.6, Gemini 2.5 Pro) with four trials per setting, POLICYGUARD improves PASS4 by +12.0 / +6.0 / +12.0 pp. Per-call analyses show POLICYGUARD achieves higher policy-violation recall while blocking roughly half as often as argument-level guards.",
-    "authors": "Seongjae Kang, Taehyung Yu, Sung Ju Hwang",
-    "publish_date": "2026-06-28",
-    "arxiv_url": "http://arxiv.org/abs/2606.29225",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 42,
-    "score": 0,
-    "paper_id": "arxiv:2606.29225",
     "source": "arxiv",
     "venue": ""
   },
@@ -14793,27 +14772,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2606.29215": {
-    "arxiv_id": "2606.29215",
-    "title": "Multi-Block Diffusion Language Models",
-    "abstract": "Block Diffusion Language Models (BD-LMs) improve diffusion-based text generation with KV caching and flexible-length generation. A natural next step is to extend them from Single-Block Diffusion (SingleBD) to Multi-Block Diffusion (MultiBD), where a running-set of consecutive blocks is decoded concurrently for inter-block parallelism. However, existing BD-LMs are mostly trained under teacher forcing, where the model observes only one noisy block conditioned on a clean prefix. While the recent diffusion forcing strategy introduces visibility among multiple noisy blocks, its training states still differ from MultiBD inference, where decoding operates on a bounded running-set with heterogeneous slot-wise noise patterns. To bridge this gap, we propose Multi-Block Diffusion Language Models (MBD-LMs), obtained by post-training BD-LMs with Multi-block Teacher Forcing (MultiTF). MultiTF integrates teacher forcing and diffusion forcing by training on bounded noise-groups conditioned on clean prefixes, with randomized noise-schedulers that better match MultiBD inference states. To make MultiBD practically executable, we further introduce an optimized decoding algorithm based on the Block Buffer mechanism that preserves prefix-cache reuse, keeps input shapes static, and translates increased decoding parallelism into wall-clock acceleration. Empirically, MBD-LLaDA2-Mini increases average Tokens Per Forward pass (TPF) from 3.47 to 6.19 and improves average accuracy from 79.95% to 81.03%; when combined with DMax, MBD-LLaDA2-Mini-DMax reaches an average TPF of 9.34 with only a 1.02% accuracy drop on math and code benchmarks.",
-    "authors": "Yijie Jin, Jiajun Xu, Yuxuan Liu, Chenkai Xu, Yi Tu, Jiajun Li, Dandan Tu, Xiaohui Yan, Kai Yu, Pengfei Liu, Zhijie Deng",
-    "publish_date": "2026-06-28",
-    "arxiv_url": "http://arxiv.org/abs/2606.29215",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 48,
-    "score": 18,
-    "paper_id": "arxiv:2606.29215",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2606.32032": {
     "arxiv_id": "2606.32032",
     "title": "Reinforcement Learning with Metacognitive Feedback Elicits Faithful Uncertainty Expression in LLMs",
@@ -14979,27 +14937,6 @@
     "hf_rank": 32,
     "score": 8,
     "paper_id": "arxiv:2606.30811",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2606.29082": {
-    "arxiv_id": "2606.29082",
-    "title": "Evolution Fine-Tuning: Learning to Discover Across 371 Optimization Tasks",
-    "abstract": "Would experience designing faster GPU kernels also help close in on a long-standing open mathematical conjecture? Large Language Models (LLMs) integrated into evolutionary search have recently produced state-of-the-art solutions on optimization tasks, including open mathematical conjectures, GPU kernel design, scientific law discovery, and combinatorial puzzles. To achieve this, prior work applied search scaffolds to one target task at a time, so every new problem is approached from scratch and the experience accumulated during search is discarded once the model finishes its attempt. This leaves the capability of iteratively evolving a solution (e.g., knowing which part to mutate and how, deciding when to backtrack) entirely in the scaffold rather than in the model itself. Whether the model itself could acquire this capability and reuse it across different tasks has been largely unexamined. To address this, we introduce Evolution Fine-Tuning (EFT), a mid-training paradigm that teaches LLMs to evolve solutions across tasks by converting evolutionary search trajectories into supervision. We construct Finch Collection, a 156K-trajectory dataset spanning 10 domains and 371 optimization tasks, and fine-tune open-source LLMs from 2B to 9B parameters. Empirically, EFT confers cross-task generalization: across 22 held-out tasks, our models surpass their base counterparts by 10.22% on average. Furthermore, when paired with test-time RL, our model matches state-of-the-art performance on two circle-packing tasks and outperforms its base-model counterpart on the Erdős minimum-overlap problem. EFT thus serves as a \"practice phase\" for general-purpose discovery agents that do not solve new problems from scratch.",
-    "authors": "Young-Jun Lee, Seungone Kim, Minki Kang, Alistair Cheong Liang Chuen, Zerui Chen, Seungho Han, Taehee Jung, Dongyeop Kang",
-    "publish_date": "2026-06-27",
-    "arxiv_url": "http://arxiv.org/abs/2606.29082",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 33,
-    "score": 7,
-    "paper_id": "arxiv:2606.29082",
     "source": "arxiv",
     "venue": ""
   },
@@ -16143,7 +16080,7 @@
     "matched_categories": [
       "Tactile"
     ],
-    "hf_rank": 27,
+    "hf_rank": 30,
     "score": 0,
     "paper_id": "arxiv:2607.00302",
     "source": "arxiv",
@@ -19695,7 +19632,7 @@
     "matched_categories": [
       "Tactile"
     ],
-    "hf_rank": 24,
+    "hf_rank": 27,
     "score": 10,
     "paper_id": "arxiv:2607.03723",
     "source": "arxiv",
@@ -19808,7 +19745,7 @@
       "Sim2Real",
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 37,
     "score": 0,
     "paper_id": "arxiv:2607.04434",
     "source": "arxiv",
@@ -22178,7 +22115,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 41,
+    "hf_rank": 44,
     "score": 29,
     "paper_id": "arxiv:2607.04412",
     "source": "arxiv",
@@ -22199,7 +22136,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 42,
+    "hf_rank": 45,
     "score": 28,
     "paper_id": "arxiv:2607.01232",
     "source": "arxiv",
@@ -22220,7 +22157,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 44,
+    "hf_rank": 47,
     "score": 26,
     "paper_id": "arxiv:2607.04540",
     "source": "arxiv",
@@ -22241,7 +22178,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 45,
+    "hf_rank": 48,
     "score": 25,
     "paper_id": "arxiv:2607.01293",
     "source": "arxiv",
@@ -22262,7 +22199,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 46,
+    "hf_rank": 49,
     "score": 24,
     "paper_id": "arxiv:2607.03738",
     "source": "arxiv",
@@ -22283,7 +22220,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 47,
+    "hf_rank": 50,
     "score": 23,
     "paper_id": "arxiv:2607.06065",
     "source": "arxiv",
@@ -22374,7 +22311,7 @@
       "Dexterous",
       "Manipulation"
     ],
-    "hf_rank": 35,
+    "hf_rank": 38,
     "score": 42,
     "paper_id": "arxiv:2607.07608",
     "source": "arxiv",
@@ -22730,7 +22667,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 31,
     "score": 29,
     "paper_id": "arxiv:2607.07508",
     "source": "arxiv",
@@ -22751,7 +22688,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 32,
     "score": 28,
     "paper_id": "arxiv:2607.07386",
     "source": "arxiv",
@@ -22772,7 +22709,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 33,
     "score": 27,
     "paper_id": "arxiv:2607.05966",
     "source": "arxiv",
@@ -22793,7 +22730,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 35,
     "score": 25,
     "paper_id": "arxiv:2607.07708",
     "source": "arxiv",
@@ -22814,7 +22751,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 36,
     "score": 24,
     "paper_id": "arxiv:2607.04939",
     "source": "arxiv",
@@ -22835,7 +22772,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 39,
     "score": 21,
     "paper_id": "arxiv:2607.06838",
     "source": "arxiv",
@@ -22856,7 +22793,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 40,
     "score": 20,
     "paper_id": "arxiv:2607.07534",
     "source": "arxiv",
@@ -22880,7 +22817,7 @@
       "HF-Hot",
       "Dexterous"
     ],
-    "hf_rank": 38,
+    "hf_rank": 41,
     "score": 19,
     "paper_id": "arxiv:2607.07675",
     "source": "arxiv",
@@ -22901,7 +22838,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 40,
+    "hf_rank": 43,
     "score": 17,
     "paper_id": "arxiv:2606.32020",
     "source": "arxiv",
@@ -23559,7 +23496,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 25,
     "score": 29,
     "paper_id": "arxiv:2607.06018",
     "source": "arxiv",
@@ -23580,7 +23517,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 26,
     "score": 28,
     "paper_id": "arxiv:2607.03949",
     "source": "arxiv",
@@ -23601,7 +23538,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 25,
+    "hf_rank": 28,
     "score": 26,
     "paper_id": "arxiv:2607.06309",
     "source": "arxiv",
@@ -23622,7 +23559,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 29,
     "score": 25,
     "paper_id": "arxiv:2607.06624",
     "source": "arxiv",
@@ -24691,7 +24628,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 4,
     "score": 29,
     "paper_id": "arxiv:2607.07816",
     "source": "arxiv",
@@ -24712,7 +24649,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 5,
     "score": 28,
     "paper_id": "arxiv:2607.07953",
     "source": "arxiv",
@@ -24733,7 +24670,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 6,
     "score": 27,
     "paper_id": "arxiv:2607.08404",
     "source": "arxiv",
@@ -24754,7 +24691,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 7,
     "score": 26,
     "paper_id": "arxiv:2607.08770",
     "source": "arxiv",
@@ -24775,7 +24712,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 8,
     "score": 25,
     "paper_id": "arxiv:2607.08765",
     "source": "arxiv",
@@ -24796,7 +24733,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 9,
     "score": 24,
     "paper_id": "arxiv:2607.08526",
     "source": "arxiv",
@@ -24817,7 +24754,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 11,
     "score": 22,
     "paper_id": "arxiv:2607.08768",
     "source": "arxiv",
@@ -24838,7 +24775,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 13,
     "score": 20,
     "paper_id": "arxiv:2607.03936",
     "source": "arxiv",
@@ -24859,7 +24796,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 14,
     "score": 19,
     "paper_id": "arxiv:2607.03803",
     "source": "arxiv",
@@ -24880,7 +24817,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 15,
     "score": 18,
     "paper_id": "arxiv:2607.06238",
     "source": "arxiv",
@@ -24901,7 +24838,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 16,
     "score": 17,
     "paper_id": "arxiv:2607.08093",
     "source": "arxiv",
@@ -24922,7 +24859,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 17,
     "score": 16,
     "paper_id": "arxiv:2607.06987",
     "source": "arxiv",
@@ -24943,7 +24880,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 18,
     "score": 15,
     "paper_id": "arxiv:2607.03118",
     "source": "arxiv",
@@ -24964,7 +24901,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 19,
     "score": 14,
     "paper_id": "arxiv:2607.04461",
     "source": "arxiv",
@@ -24985,7 +24922,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 20,
     "score": 13,
     "paper_id": "arxiv:2607.08741",
     "source": "arxiv",
@@ -25006,7 +24943,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 21,
     "score": 12,
     "paper_id": "arxiv:2607.07740",
     "source": "arxiv",
@@ -25027,7 +24964,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 22,
     "score": 11,
     "paper_id": "arxiv:2607.08758",
     "source": "arxiv",
@@ -25048,7 +24985,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 23,
     "score": 10,
     "paper_id": "arxiv:2607.08763",
     "source": "arxiv",
@@ -25069,9 +25006,72 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 24,
     "score": 9,
     "paper_id": "arxiv:2607.08766",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.08716": {
+    "arxiv_id": "2607.08716",
+    "title": "Remember When It Matters: Proactive Memory Agent for Long-Horizon Agents",
+    "abstract": "In long-horizon tasks, decision-relevant state is often scattered across an expanding trajectory, while the action agent must surface it and act. As trajectories grow, task requirements, environment facts, prior attempts, diagnoses, and open subgoals can be buried in the context window or pushed beyond it, failing to influence decisions when needed. We call this failure mode \"behavioral state decay\". We study memory as an active intervention mechanism rather than passive retrieval. A separate memory agent runs alongside an unmodified action agent, updating a structured memory bank from the recent trajectory and deciding whether to inject a memory-grounded reminder or remain silent. The module is plug-and-play with frontier action agents and existing agent harnesses. Across Terminal-Bench 2.0 and $τ^2$-Bench, it improves pass@1 for both weaker and stronger action agents, with gains of +8.3 pp on Terminal-Bench and +6.8 pp on $τ^2$-Bench. Ablations show that selective intervention outperforms passive bank exposure, always-on injection, advisor-only guidance, and general retrieval. As an early step toward open-weight memory policies, we train Qwen3.5-27B on SETA using SFT and GRPO, improving validation reward and achieving partial transfer to Terminal-Bench.",
+    "authors": "Yifan Wu, Lizhu Zhang, Yuhang Zhou, Mingyi Wang, Bo Peng, Serena Li, Xiangjun Fan, Zhuokai Zhao",
+    "publish_date": "2026-07-09",
+    "arxiv_url": "http://arxiv.org/abs/2607.08716",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2607.08716",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.04690": {
+    "arxiv_id": "2607.04690",
+    "title": "PAST-TIDE: Prototype-Anchored Statement Tuning with Topic-Invariant Normalization for Stance Detection",
+    "abstract": "We introduce PAST-TIDE, our stance detection system addressing both subtasks of the StanceNakba Shared Task at NakbaNLP@LREC-COLING 2026. The main idea is statement tuning. We redefine stance as cloze-style masked language modeling (MLM), letting a verbalizer map label words to stance categories through the pre-trained MLM head rather than appending a randomly initialized classification head. We complement this with prototypical contrastive learning, which uses learnable class prototypes for batch-size independent contrastive training, and topic-conditional layer normalization for cross-topic Arabic stance detection. PAST-TIDE achieves macro-F1 scores of 0.75 for Subtask A and 0.74 for Subtask B on the official leaderboard, indicating that minimal architectural additions to a pre-trained model can remain competitive in low-resource settings.",
+    "authors": "Md. Shakhoyat Rahman Shujon, MD Jahid Hasan Jim, Md. Milon Islam, Md Rezwanul Haque, Fakhri Karray",
+    "publish_date": "2026-07-06",
+    "arxiv_url": "http://arxiv.org/abs/2607.04690",
+    "project_url": "https://doi.org/10.63317/4an3eqwpdtpf",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 28,
+    "paper_id": "arxiv:2607.04690",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.08688": {
+    "arxiv_id": "2607.08688",
+    "title": "SAM-MT: Real-Time Interactive Multi-Target Video Segmentation",
+    "abstract": "Modern Video Object Segmentation (VOS) involves tracking and segmenting user-specified targets. While recent approaches have achieved remarkable performance in single-target scenarios, extending them to multi-target settings typically involves replicating the single-target processing for each individual object, resulting in reduced frame rates (FPS) with unbounded latency as target count increases. Built upon Segment Anything 2 (SAM2), we propose SAM-MT, which addresses this by transforming the model into an interactive framework for real-time Multi-Target video segmentation. SAM-MT uses explicit queries to represent different individual targets, in parallel with a shared representation for global context. It employs decoupled masked attention to keep individual identities distinct from cross-target interference, and sparse memory for stable temporal evolution, along with specialized strategies for occlusion handling and overlap prevention. SAM-MT successfully decouples latency from the number of targets, achieving real-time speed on par with single-target baselines (>36 FPS for 10 targets) while maintaining SAM2's robust video segmentation performance.",
+    "authors": "Ruiqi Shen, Chang Liu, Henghui Ding",
+    "publish_date": "2026-07-09",
+    "arxiv_url": "http://arxiv.org/abs/2607.08688",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 27,
+    "paper_id": "arxiv:2607.08688",
     "source": "arxiv",
     "venue": ""
   }
