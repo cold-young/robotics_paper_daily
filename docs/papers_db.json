@@ -10547,27 +10547,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2607.02255": {
-    "arxiv_id": "2607.02255",
-    "title": "AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents",
-    "abstract": "Memory for a long-horizon LLM agent is a contract about what each future decision is allowed to see. The simplest contract appends past observations, tool calls, and reflections to every prompt, which makes prior context easy to access but also turns it into a jumbled mixture in which the effect of any single memory component is hard to isolate. We introduce and instrument an alternative bounded contract: every decision is made from a fresh user message assembled by typed retrieval, with no raw cross-decision transcript appended. The prompt thus stays bounded across runs of any length, and any single layer can be ablated in isolation. We instantiate the contract in Slay the Spire 2, a closed-rule stochastic deck-building game whose runs require hundreds of tactical and strategic decisions. A public online benchmark of frontier LLMs on the same game reports zero wins at the lowest difficulty across five configurations, and the developer-reported human win rate at the same difficulty is 16%; the task is hard but not saturated. Within our harness, a fixed-A0 ablation shows the largest observed difference when triggered strategic skills are enabled: the no-store baseline wins 3/10 games and adding the skill layer 6/10. At this sample size the comparison is directional rather than statistically decisive (Fisher exact p\\approx0.37); a cross-backbone probe and public accumulating-context baselines are reported as operational comparisons rather than controlled tests of the contract variable itself. We release a reproducible testbed: 298 completed trajectories with condition tags, frozen memory/skill snapshots, prompt records, and analysis scripts -- an agent design and a validated, reusable methodology for studying how explicit memory layers shape long-horizon LLM-agent decisions.",
-    "authors": "Xiangchen Cheng, Yunwei Jiang, Jianwen Sun, Zizhen Li, Chuanhao Li, Xiangcheng Cao, Yihao Liu, Fanrui Zhang, Li Jin, Kaipeng Zhang",
-    "publish_date": "2026-07-02",
-    "arxiv_url": "http://arxiv.org/abs/2607.02255",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 25,
-    "score": 24,
-    "paper_id": "arxiv:2607.02255",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2607.02508": {
     "arxiv_id": "2607.02508",
     "title": "From SRA to Self-Flow: Data Augmentation or Self-Supervision?",
@@ -10586,48 +10565,6 @@
     "hf_rank": 26,
     "score": 23,
     "paper_id": "arxiv:2607.02508",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2607.02032": {
-    "arxiv_id": "2607.02032",
-    "title": "PACE: A Proxy for Agentic Capability Evaluation",
-    "abstract": "Evaluating LLM agents on benchmarks like SWE-Bench and GAIA can be expensive, time-consuming, and requires complex infrastructure. A single evaluation can cost thousands of dollars and take days to complete. In contrast, non-agentic LLM benchmarks that test individual capabilities (e.g., reasoning, code generation) are fast and cheap to run. In this paper, we investigate whether performance on expensive agentic benchmarks can be accurately predicted by the performance on a small, carefully selected subset of atomic evaluation instances. We introduce PACE, a framework that constructs proxy benchmarks by selecting instances from existing non-agentic evaluations whose aggregate scores most reliably predict model performances on agentic benchmarks. Given a pool of candidate instances spanning atomic capabilities, PACE fits a regression that maps a model's scores on a compact subset of source instances to its score on the target agentic benchmark. The subset itself is curated by combining two complementary instance-selection strategies, target-relevance local selection and globally informative global selection. We apply PACE to the 4 target agentic benchmarks in this paper, which yields PACE-Bench, the concrete proxy benchmark that we evaluate in the paper. Experiments across 14 models, 4 agentic benchmarks, and 19 non-agentic benchmarks show that PACE-Bench predicts agentic scores with leave-one-out cross-validation (LOOCV) mean absolute error (MAE) under 4%, Spearman correlation above 0.80, and pairwise model-ranking accuracy around 85%, all at much less than 1% of the full agentic evaluation cost. We further analyze the selected proxy instances, revealing which skills each agentic benchmark uniquely demands. PACE enables practitioners to obtain reliable estimates of agentic performance during model development, selection, and routing, without the overhead of full agent evaluation.",
-    "authors": "Yueqi Song, Lintang Sutawika, Jiarui Liu, Lindia Tjuatja, Jiayi Geng, Yunze Xiao, Daniel Lee, Aditya Bharat Soni, Vincent Lo, Xiang Yue, Graham Neubig",
-    "publish_date": "2026-07-02",
-    "arxiv_url": "http://arxiv.org/abs/2607.02032",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 30,
-    "score": 19,
-    "paper_id": "arxiv:2607.02032",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2607.02375": {
-    "arxiv_id": "2607.02375",
-    "title": "Representation Distribution Matching for One-Step Visual Generation",
-    "abstract": "We elucidate the design space of Representation Distribution Matching (RDM), our name for the paradigm that trains a one-step image generator by matching generated and reference feature distributions under frozen pretrained encoders. We identify two design axes, how the distributions are compared and the representations they are compared in, and controlled studies along them yield three findings. First, the classical MMD, which could not train convincing generators a decade ago, becomes a strong and scalable objective once estimated right. Second, the generated batch is then the operative variable, with an optimum above 2048, far beyond customary batch sizes. Third, any single representation can be gamed, driven below the real score while images stay visibly fake, so we match against a balanced battery of encoders and evaluate with SW_r14, a Sliced-Wasserstein distance over 14 encoders that is independent of the training loss and resists gaming. Combining the preferred choices yields improved RDM (iRDM): it sets the one-step state of the art on ImageNet at SW_r14 1.30, corroborated by PickScore, a human-preference proxy our objective never optimizes, which prefers it over the prior best one-step generator on 71.2% of matched samples. The same recipe post-trains the four-step FLUX.2 [klein] into a one-step generator, surpassing the four-step version on GenEval, 0.826 to 0.794, and on PickScore, 22.76 to 22.58, in 90 H200 GPU-hours. Project page: https://alan-lanfeng.github.io/rdm/.",
-    "authors": "Lan Feng, Wuyang Li, Eloi Zablocki, Matthieu Cord, Alexandre Alahi",
-    "publish_date": "2026-07-02",
-    "arxiv_url": "http://arxiv.org/abs/2607.02375",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 31,
-    "score": 18,
-    "paper_id": "arxiv:2607.02375",
     "source": "arxiv",
     "venue": ""
   },
@@ -10652,27 +10589,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2607.02269": {
-    "arxiv_id": "2607.02269",
-    "title": "AnyGroundBench: A Specialized-Domain Benchmark for Video Grounding in Vision-Language Models",
-    "abstract": "Vision-Language Models (VLMs) have demonstrated immense promise in Spatio-Temporal Video Grounding (STVG). However, current evaluation protocols are largely confined to zero-shot assessments on general, daily-life benchmarks. This creates a critical disconnect from real-world applications in specialized fields, where models inevitably encounter rare visual concepts and complex spatio-temporal dynamics. Since exhaustive pre-training across infinite data distributions is infeasible, the ability to adapt to novel domains is essential. To bridge this gap, we introduce AnyGroundBench, a domain-adaptation benchmark designed to shift the STVG evaluation paradigm from static zero-shot testing to rigorous domain adaptation. Targeting five specialized domains (animal, industry, sports, surgery, and public security), AnyGroundBench pairs newly captured videos such as expert-annotated mouse behaviors with established datasets, unifying them through dense, high-fidelity spatio-temporal annotations. Crucially, the benchmark provides dedicated training subsets to systematically measure domain adaptability. We extensively evaluate 15 state-of-the-art VLMs, assessing their zero-shot generalization and In-Context Learning (ICL) capabilities under practical computational constraints. Ultimately, our findings reveal that current models fail in both zero-shot and ICL-based adaptation when confronted with specialized domains, exposing critical flaws in spatio-temporal reasoning that future research must address.",
-    "authors": "Rintaro Otsubo, Ryo Fujii, Reina Ishikawa, Taiki Kanaya, Kanta Sawafuji, Hiroki Kajita, Shigeki Sakai, Hideo Saito, Ryo Hachiuma",
-    "publish_date": "2026-07-02",
-    "arxiv_url": "http://arxiv.org/abs/2607.02269",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 37,
-    "score": 12,
-    "paper_id": "arxiv:2607.02269",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2607.02512": {
     "arxiv_id": "2607.02512",
     "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
@@ -10691,27 +10607,6 @@
     "hf_rank": 38,
     "score": 11,
     "paper_id": "arxiv:2607.02512",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2607.02291": {
-    "arxiv_id": "2607.02291",
-    "title": "Optimizing Visual Generative Models via Distribution-wise Rewards",
-    "abstract": "Conventional reinforcement learning strategies for visual generation typically employ sample-wise reward functions, yet this practice frequently results in reward hacking that degrades image diversity and introduces visual anomalies. To address these limitations, we present a novel framework that finetunes generative models using distribution-wise rewards, ensuring better alignment with real-world data distributions. Unlike rewards that evaluate samples individually, distribution-wise reward accounts for the data distribution of the samples, mitigating the mode collapse problem that occurs when all samples optimize towards the same direction independently. To overcome the prohibitive computational cost of estimating these rewards, we introduce a subset-replace strategy that efficiently provides reward signals by updating only a small subset of a generated reference set. Additionally, we apply RL to optimize post-hoc model merging coefficients, potentially mitigating the train-inference inconsistency caused by introducing stochastic differential equation (SDE) in regular RL practices. Extensive experiments show our approach significantly improves FID-50K across various base models, from 8.30 to 5.77 for SiT and from 3.74 to 3.52 for EDM2. Qualitative evaluation also confirms that our method enhances perceptual quality while preserving sample diversity.",
-    "authors": "Ruihang Li, Mengde Xu, Shuyang Gu, Leigang Qu, Fuli Feng, Han Hu, Wenjie Wang",
-    "publish_date": "2026-07-02",
-    "arxiv_url": "http://arxiv.org/abs/2607.02291",
-    "project_url": "",
-    "code_url": "",
-    "pwc_url": "",
-    "framework": "",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 39,
-    "score": 10,
-    "paper_id": "arxiv:2607.02291",
     "source": "arxiv",
     "venue": ""
   },
@@ -19217,9 +19112,10 @@
       "pi0"
     ],
     "matched_categories": [
-      "VLA"
+      "VLA",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 6,
     "score": 30,
     "paper_id": "arxiv:2607.11498",
     "source": "arxiv",
@@ -20096,7 +19992,7 @@
       "Dexterous",
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 40,
     "score": 10,
     "paper_id": "arxiv:2607.12800",
     "source": "arxiv",
@@ -23776,7 +23672,7 @@
     "matched_categories": [
       "Sim2Real"
     ],
-    "hf_rank": 26,
+    "hf_rank": 32,
     "score": 10,
     "paper_id": "arxiv:2607.15058",
     "source": "arxiv",
@@ -23931,7 +23827,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 33,
     "score": 29,
     "paper_id": "arxiv:2607.10995",
     "source": "arxiv",
@@ -23952,7 +23848,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 34,
     "score": 28,
     "paper_id": "arxiv:2607.14952",
     "source": "arxiv",
@@ -23973,7 +23869,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 35,
     "score": 27,
     "paper_id": "arxiv:2607.14660",
     "source": "arxiv",
@@ -23994,7 +23890,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 36,
     "score": 26,
     "paper_id": "arxiv:2607.10463",
     "source": "arxiv",
@@ -24015,7 +23911,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 37,
     "score": 25,
     "paper_id": "arxiv:2607.03065",
     "source": "arxiv",
@@ -24036,7 +23932,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 38,
     "score": 24,
     "paper_id": "arxiv:2607.15277",
     "source": "arxiv",
@@ -24057,7 +23953,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 39,
     "score": 23,
     "paper_id": "arxiv:2607.14076",
     "source": "arxiv",
@@ -24078,7 +23974,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 41,
     "score": 21,
     "paper_id": "arxiv:2607.13491",
     "source": "arxiv",
@@ -24099,7 +23995,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 42,
     "score": 20,
     "paper_id": "arxiv:2607.14935",
     "source": "arxiv",
@@ -24120,7 +24016,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 43,
     "score": 19,
     "paper_id": "arxiv:2607.14189",
     "source": "arxiv",
@@ -24141,7 +24037,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 44,
     "score": 18,
     "paper_id": "arxiv:2607.14202",
     "source": "arxiv",
@@ -24162,7 +24058,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 39,
+    "hf_rank": 45,
     "score": 17,
     "paper_id": "arxiv:2607.13399",
     "source": "arxiv",
@@ -24183,7 +24079,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 40,
+    "hf_rank": 46,
     "score": 16,
     "paper_id": "arxiv:2607.13188",
     "source": "arxiv",
@@ -24204,7 +24100,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 41,
+    "hf_rank": 47,
     "score": 15,
     "paper_id": "arxiv:2607.14749",
     "source": "arxiv",
@@ -24225,7 +24121,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 42,
+    "hf_rank": 48,
     "score": 14,
     "paper_id": "arxiv:2607.15257",
     "source": "arxiv",
@@ -24246,7 +24142,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 43,
+    "hf_rank": 49,
     "score": 13,
     "paper_id": "arxiv:2607.15207",
     "source": "arxiv",
@@ -24267,7 +24163,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 44,
+    "hf_rank": 50,
     "score": 12,
     "paper_id": "arxiv:2607.15273",
     "source": "arxiv",
@@ -24309,7 +24205,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 28,
     "score": 29,
     "paper_id": "arxiv:2607.14387",
     "source": "arxiv",
@@ -24330,7 +24226,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 29,
     "score": 28,
     "paper_id": "arxiv:2607.15278",
     "source": "arxiv",
@@ -24351,7 +24247,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 30,
     "score": 27,
     "paper_id": "arxiv:2607.14187",
     "source": "arxiv",
@@ -24372,7 +24268,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 26,
     "score": 29,
     "paper_id": "arxiv:2607.09061",
     "source": "arxiv",
@@ -24393,7 +24289,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 27,
     "score": 28,
     "paper_id": "arxiv:2607.12227",
     "source": "arxiv",
@@ -25226,7 +25122,7 @@
     "matched_categories": [
       "VLA"
     ],
-    "hf_rank": 9,
+    "hf_rank": 15,
     "score": 41,
     "paper_id": "arxiv:2607.15330",
     "source": "arxiv",
@@ -25379,7 +25275,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 7,
     "score": 29,
     "paper_id": "arxiv:2607.07690",
     "source": "arxiv",
@@ -25400,7 +25296,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 9,
     "score": 27,
     "paper_id": "arxiv:2607.14614",
     "source": "arxiv",
@@ -25421,7 +25317,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 10,
     "score": 26,
     "paper_id": "arxiv:2607.16169",
     "source": "arxiv",
@@ -25442,7 +25338,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 11,
     "score": 25,
     "paper_id": "arxiv:2607.15686",
     "source": "arxiv",
@@ -25463,7 +25359,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 12,
     "score": 24,
     "paper_id": "arxiv:2607.11683",
     "source": "arxiv",
@@ -25484,7 +25380,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 13,
     "score": 23,
     "paper_id": "arxiv:2607.11699",
     "source": "arxiv",
@@ -25505,7 +25401,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 14,
     "score": 22,
     "paper_id": "arxiv:2607.14088",
     "source": "arxiv",
@@ -25526,7 +25422,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 16,
     "score": 20,
     "paper_id": "arxiv:2607.15161",
     "source": "arxiv",
@@ -25547,7 +25443,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 17,
     "score": 19,
     "paper_id": "arxiv:2607.15901",
     "source": "arxiv",
@@ -25568,7 +25464,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 18,
     "score": 18,
     "paper_id": "arxiv:2607.14530",
     "source": "arxiv",
@@ -25589,7 +25485,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 19,
     "score": 17,
     "paper_id": "arxiv:2607.15524",
     "source": "arxiv",
@@ -25610,7 +25506,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 20,
     "score": 16,
     "paper_id": "arxiv:2607.15314",
     "source": "arxiv",
@@ -25631,7 +25527,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 21,
     "score": 15,
     "paper_id": "arxiv:2607.16051",
     "source": "arxiv",
@@ -25652,7 +25548,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 22,
     "score": 14,
     "paper_id": "arxiv:2607.16107",
     "source": "arxiv",
@@ -25673,7 +25569,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 23,
     "score": 13,
     "paper_id": "arxiv:2607.13196",
     "source": "arxiv",
@@ -25694,7 +25590,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 24,
     "score": 12,
     "paper_id": "arxiv:2607.15591",
     "source": "arxiv",
@@ -25715,9 +25611,114 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 25,
     "score": 11,
     "paper_id": "arxiv:2607.16097",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.15263": {
+    "arxiv_id": "2607.15263",
+    "title": "Beyond Success Rate: Cost-Aware Evaluation of Offensive and Defensive Security Agents",
+    "abstract": "Security-agent evaluations commonly measure peak offensive capability under generous inference budgets, emphasizing vulnerability discovery, exploit development, penetration testing, and CTF completion. Such measurements are useful but incomplete: in operational security, every reasoning step, tool call, telemetry query, and enrichment request consumes budget. We evaluate language-model security agents through this cost-success lens on offensive Cybench challenges and defensive Splunk BOTS v1 investigation challenges. Instead of reporting only best-case success, we compare models at fixed cost levels and decompose performance by inference spend and tool spend. Our results show distinct scalingregimes for red- and blue-team tasks. Offensive CTF performance improves with additional test-time compute, and scaled open-weight models can approach frontier proprietary systems while remaining cost-competitive. Defensive SOC investigation does not scale in the same way: success depends more heavily on disciplined tool use, telemetry navigation, and selective enrichment than on raw reasoning budget alone. We argue that security-agent benchmarks should measure economic efficiency and operational fit alongside task success. Cost-aware, SOC-native evaluations provide a clearer picture of which models are practically useful today and where defensive agents still need to improve. We present an interactive website with our results https://evals.frontier.security.",
+    "authors": "Paul Kassianik, Blaine Nelson, Yaron Singer",
+    "publish_date": "2026-07-16",
+    "arxiv_url": "http://arxiv.org/abs/2607.15263",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2607.15263",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.10966": {
+    "arxiv_id": "2607.10966",
+    "title": "SVR-R1: Bootstrapping Multi-modal Reasoning with Self-verification in Reinforcement Learning",
+    "abstract": "We introduce Self-Verified Reasoner (SVR-R1), a multi-turn RL framework that turns a model's own verification into a learning signal for multimodal reasoning. For each query, the model proposes an answer using the same weights, and issues a binary self-verdict (Yes/No). A 'No' triggers a second-chance rethink; a 'Yes,' or a turn cap, finalizes the output for computing the outcome-based reward. SVR-R1 is implemented with GRPO and an asynchronous multi-turn rollout framework and needs no external supervision or auxiliary critics. We evaluate SVR-R1 on vision-language reasoning benchmarks and show that it improves accuracy by a large margin over strong standard GRPO baselines. Training dynamics show decreasing reliance on verification-fewer verification turns, yet higher test accuracy-indicating that the gap between verification and generation narrows as the policy internalizes self-correction and chooses the most confident answer via our framework. SVR-R1 bridges the less explored intersection of inference-time self-refinement and RL training for VLMs, offering a simple yet effective recipe for bootstrapping multimodal reasoning. We will open-source \\textbf{SVR-R1} to facilitate future research in VLMs.",
+    "authors": "Mingyuan Wu, Jingcheng Yang, Shengyi Qian, Xudong Wang, Jize Jiang, Qifan Wang, Aashu Singh, Khoi Pham, Fei Liu, Zhaolun Su, Zhuokai Zhao, Klara Nahrstedt, Jianyu Wang, Hanchao Yu",
+    "publish_date": "2026-07-13",
+    "arxiv_url": "http://arxiv.org/abs/2607.10966",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 28,
+    "paper_id": "arxiv:2607.10966",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.11915": {
+    "arxiv_id": "2607.11915",
+    "title": "Benchmarking Sensor Robustness in Plasma Diagnostic Models: A Systematic Evaluation on TokaMark",
+    "abstract": "Plasma diagnostic models for tokamak fusion devices are almost universally evaluated on clean, complete sensor data. In practice, fusion diagnostics fail regularly: acquisition systems start late, individual sensors die, and signal dropouts cluster precisely when a plasma disruption is approaching. We present the first systematic robustness benchmark for plasma diagnostic ML using the TokaMark dataset of 11,573 MAST shots, evaluating XGBoost, LSTM, Transformer, and the TokaMark CNN baseline across six physically-grounded failure scenarios and three imputation strategies. We introduce the Robustness Score (RS) for standardized cross-architecture comparison. Our central finding is that disruption-proximate sensor failure (corruption injected in the final window timesteps) collapses sequence model performance (LSTM +212% NRMSE) while a statistical feature model remains comparatively stable (XGBoost +37%). Forward-fill imputation eliminates nearly all degradation from random dropout for sequence models (LSTM +57% to ~0%), but offers little help when the end of the window is corrupted. Shot-level alarm evaluation using ground-truth disruption timestamps reveals that LSTM alarm detection collapses to TPR=0.00 under proximate sensor failure, while mean-fill imputation recovers it to TPR=1.00, a reversal of the pattern observed in NRMSE. Plasma current emerges as the single most critical diagnostic across all architectures (+73% to +140% upon removal). Code, data, and trained checkpoints are available at https://github.com/Neerav-Gupta/tokamark-robustness.",
+    "authors": "Neerav Gupta",
+    "publish_date": "2026-07-05",
+    "arxiv_url": "http://arxiv.org/abs/2607.11915",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 27,
+    "paper_id": "arxiv:2607.11915",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.09082": {
+    "arxiv_id": "2607.09082",
+    "title": "REBASE: Reference-Background Subspace Elimination for Training-Free In-Context Segmentation",
+    "abstract": "Training-free in-context segmentation enables new object categories to be introduced at inference time from a single annotated reference image, eliminating the retraining and memory overhead of class-incremental learning. Recent approaches achieve this by combining vision foundation models for semantic correspondence with promptable segmentation networks like SAM. However, their performance is fundamentally limited by the quality of the cross-image similarity map; shared contextual backgrounds between the reference and query systematically elevate similarity in non-target regions, degrading prompt localization. We present REBASE, a training-free framework that explicitly suppresses these spurious contextual correspondences. Our method identifies the low-rank background feature subspace from the reference image and project the reference and query features onto its orthogonal complement in closed form, yielding cleaner semantic matching. We then generate positive point prompts using similarity-weighted farthest-point sampling, paired with a refined dense similarity prior. Without any training or parameter updates, our approach establishes a new state of the art among training-free methods on PACO-Part, FSS-1000, and cross-domain datasets such as ISIC2018, demonstrating that explicit background subspace removal is a highly effective principle for one-shot localization.",
+    "authors": "Mantha Sai Gopal, Jaison Saji Chacko, Harsh Nandwana, Sandesh Hegde, Debarshi Banerjee, Uma Mahesh",
+    "publish_date": "2026-07-10",
+    "arxiv_url": "http://arxiv.org/abs/2607.09082",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 4,
+    "score": 26,
+    "paper_id": "arxiv:2607.09082",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2607.06815": {
+    "arxiv_id": "2607.06815",
+    "title": "Behavioral Privacy Leakage in Agentic Negotiation: Formalizing and Mitigating Inference Attacks via Randomized Policies",
+    "abstract": "Autonomous negotiation agents are increasingly deployed in high-stakes settings such as insurance and procurement. While cryptographic techniques protect explicitly disclosed constraint values, they fail to address a subtler threat: behavioral privacy leakage, where an adversary infers private constraints from observable negotiation dynamics such as concession trajectories, timing, and convergence patterns. This paper investigates behavioral differential privacy in multi-round negotiation protocols. We design an adaptive stochastic negotiation policy that jointly guarantees $(\\varepsilon, δ)$-differential privacy, almost-sure convergence of the offer sequence (reaching agreement when the counterparty's reservation value permits), and high negotiation utility. Evaluated on 3,000 synthetic bilateral negotiations, our mechanism reduces adversarial inference accuracy by 43-50% while maintaining a negotiation success rate and utility above 90%, demonstrating that strong privacy guarantees can be achieved without significant loss of performance.",
+    "authors": "Barkha Rani",
+    "publish_date": "2026-07-07",
+    "arxiv_url": "http://arxiv.org/abs/2607.06815",
+    "project_url": "",
+    "code_url": "",
+    "pwc_url": "",
+    "framework": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 5,
+    "score": 25,
+    "paper_id": "arxiv:2607.06815",
     "source": "arxiv",
     "venue": ""
   }
