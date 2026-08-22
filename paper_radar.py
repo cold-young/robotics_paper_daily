@@ -56,10 +56,9 @@ class Paper:
     publish_date: str     # "YYYY-MM-DD"
     arxiv_url: str
     project_url: str = ""
-    # Papers With Code fields
+    # Code / HF Papers fields
     code_url: str = ""        # GitHub repo URL
-    pwc_url: str = ""         # paperswithcode.com page
-    framework: str = ""       # "PyTorch" / "TensorFlow" / ""
+    hf_url: str = ""          # huggingface.co/papers page
     # Collection metadata
     matched_keywords: list[str] = field(default_factory=list)
     matched_categories: list[str] = field(default_factory=list)
@@ -98,11 +97,12 @@ class Paper:
         return parts[0]
 
 # ─────────────────────────────────────────────
-# Papers With Code fetcher
+# HuggingFace Papers fetcher (code links)
+# Successor to Papers With Code (service shut down in 2025)
 # ─────────────────────────────────────────────
 
-# Uses config.yaml base_url as-is
-PWC_BASE_URL = "https://arxiv.paperswithcode.com/api/v0/papers/"
+HF_PAPERS_API      = "https://huggingface.co/api/papers/"
+HF_PAPERS_PAGE_URL = "https://huggingface.co/papers/"
 ARXIV_API    = "https://export.arxiv.org/api/query"  # fallback
 ARXIV_DEFAULT_DELAY_SECONDS = 5.0
 ARXIV_DEFAULT_RETRIES = 4
@@ -141,18 +141,20 @@ def _arxiv_backoff_seconds(attempt: int, backoff_seconds: tuple[float, ...]) -> 
     return backoff_seconds[-1]
 
 
-def fetch_pwc_by_id(arxiv_id: str) -> dict:
+def fetch_hf_paper_by_id(arxiv_id: str) -> dict:
     """
-    Query Papers With Code API for a single paper's code info.
-    Example response:
+    Query HuggingFace Papers API for a single paper's code info.
+    Example response (subset):
       {
-        "paper": {"id": "2603.09761", "title": "...", ...},
-        "repository": {"url": "https://github.com/...", "framework": "PyTorch"},
-        "paper_with_code": {"url": "https://paperswithcode.com/paper/..."}
+        "id": "2406.09246",
+        "title": "OpenVLA: An Open-Source Vision-Language-Action Model",
+        "githubRepo": "https://github.com/openvla/openvla",
+        "githubStars": 6870,
+        "projectPage": "https://..."
       }
-    Returns empty dict on failure.
+    Returns empty dict on failure or 404 (paper not indexed on HF).
     """
-    url = f"{PWC_BASE_URL}{arxiv_id}"
+    url = f"{HF_PAPERS_API}{arxiv_id}"
     req = urllib.request.Request(url, headers={"User-Agent": "PaperRadar/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=10) as resp:
@@ -161,22 +163,19 @@ def fetch_pwc_by_id(arxiv_id: str) -> dict:
         return {}
 
 
-def enrich_with_pwc(paper: "Paper") -> None:
+def enrich_with_hf_paper(paper: "Paper") -> None:
     """
-    Enrich a Paper object in-place with PWC code info.
+    Enrich a Paper object in-place with HF Papers code info.
     """
-    data = fetch_pwc_by_id(paper.arxiv_id)
+    data = fetch_hf_paper_by_id(paper.arxiv_id)
     if not data:
         return
 
-    repo = data.get("repository") or {}
-    if repo.get("url"):
-        paper.code_url  = repo["url"]
-        paper.framework = repo.get("framework", "")
-
-    pwc = data.get("paper_with_code") or {}
-    if pwc.get("url"):
-        paper.pwc_url = pwc["url"]
+    paper.hf_url = f"{HF_PAPERS_PAGE_URL}{paper.arxiv_id}"
+    if data.get("githubRepo"):
+        paper.code_url = data["githubRepo"]
+    if data.get("projectPage") and not paper.project_url:
+        paper.project_url = data["projectPage"]
 
 
 # ─────────────────────────────────────────────
@@ -189,6 +188,7 @@ def _build_query_string(keywords: list[str]) -> str:
       - Multi-word keywords are quoted
       - Single-word keywords are used as-is
       - Joined with OR
+      - Restricted to the robotics category (cat:cs.RO)
     """
     ESCAPE = '"'
     parts = []
@@ -197,7 +197,8 @@ def _build_query_string(keywords: list[str]) -> str:
             parts.append(ESCAPE + kw + ESCAPE)
         else:
             parts.append(kw)
-    return " OR ".join(parts)
+    keyword_query = " OR ".join(parts)
+    return f"({keyword_query}) AND cat:cs.RO"
 
 
 def fetch_arxiv(
@@ -348,6 +349,9 @@ def _paper_from_dict(d: dict) -> Paper:
         d["source"] = "arxiv"
     if "venue" not in d:
         d["venue"] = ""
+    # Legacy Papers With Code fields (service shut down; links are dead)
+    d.pop("pwc_url", None)
+    d.pop("framework", None)
     return Paper(**d)
 
 
@@ -413,10 +417,9 @@ def merge_into_db(
                     old_p.matched_keywords.append(kw)
             # Refresh with new info (code links, HF rank, etc.)
             if new_p.code_url:
-                old_p.code_url  = new_p.code_url
-                old_p.framework = new_p.framework
-            if new_p.pwc_url:
-                old_p.pwc_url = new_p.pwc_url
+                old_p.code_url = new_p.code_url
+            if new_p.hf_url:
+                old_p.hf_url = new_p.hf_url
             if new_p.hf_rank is not None:
                 old_p.hf_rank = new_p.hf_rank
         else:
@@ -689,21 +692,21 @@ def collect_papers(config: dict, include_conferences: bool = False, **kwargs) ->
                         venue=label,
                     )
 
-    # 6. Enrich with Papers With Code links
+    # 6. Enrich with HF Papers code links
     #    0.5s delay to avoid rate limiting
     #    Skip conference papers without arXiv ID
-    print(f"\n[PWC] Enriching {len(all_papers)} papers with code links...")
-    pwc_count = 0
+    print(f"\n[HF Papers] Enriching {len(all_papers)} papers with code links...")
+    code_count = 0
     for i, (pid, paper) in enumerate(all_papers.items()):
         if not paper.arxiv_id:
             continue  # skip conference papers without arXiv ID
         time.sleep(0.5)
-        enrich_with_pwc(paper)
+        enrich_with_hf_paper(paper)
         if paper.code_url:
-            pwc_count += 1
+            code_count += 1
         if (i + 1) % 20 == 0:
-            print(f"  → {i+1}/{len(all_papers)} processed, {pwc_count} with code")
-    print(f"[PWC] Done. {pwc_count}/{len(all_papers)} papers have code links.")
+            print(f"  → {i+1}/{len(all_papers)} processed, {code_count} with code")
+    print(f"[HF Papers] Done. {code_count}/{len(all_papers)} papers have code links.")
 
     # 7. Final score computation (includes code bonus)
     for p in all_papers.values():
@@ -803,7 +806,7 @@ def _abstract_short(abstract: str, max_len: int = 400) -> str:
 
 
 def _paper_links(p: Paper) -> str:
-    """Build markdown links for arXiv/OpenReview/code/PWC."""
+    """Build markdown links for arXiv/OpenReview/code/HF Papers."""
     if p.arxiv_url:
         links = f"[ArXiv]({p.arxiv_url})"
     elif p.project_url:
@@ -814,8 +817,8 @@ def _paper_links(p: Paper) -> str:
         links += f" / [Code]({p.code_url})"
     elif p.project_url and p.arxiv_url:
         links += f" / [Web]({p.project_url})"
-    if p.pwc_url:
-        links += f" / [PWC]({p.pwc_url})"
+    if p.hf_url:
+        links += f" / [HF]({p.hf_url})"
     return links
 
 
@@ -893,7 +896,7 @@ def _keyword_cell(p: Paper, max_keywords: int = 2) -> str:
 
 
 def _paper_row(p: Paper) -> str:
-    """README table row format with PWC code links."""
+    """README table row format with code links."""
     links = _paper_links(p)
     badges = p.keyword_badges()
     badge_str = f" {badges}" if badges else ""
