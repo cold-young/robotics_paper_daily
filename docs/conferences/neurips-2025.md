@@ -15,8 +15,7 @@ title: "NeurIPS 2025"
 <a href="{{ site.baseurl }}/manipulation.html">Manipulation</a>
 <a href="{{ site.baseurl }}/vla.html">VLA</a>
 <a href="{{ site.baseurl }}/tactile.html">Tactile</a>
-<a href="{{ site.baseurl }}/sim2real.html">Sim2Real</a>
-<a href="{{ site.baseurl }}/learnedcontrol.html">LearnedControl</a></nav>
+<a href="{{ site.baseurl }}/sim2real.html">Sim2Real</a></nav>
 
 ## NeurIPS 2025
 
