@@ -1,8 +1,9 @@
 name: Conference Radar (Monthly)
 
 on:
-  schedule:
-    - cron: "0 0 1 * *"      # 1st of every month, UTC 00:00
+  # No recurring schedule: accepted-paper lists don't change once announced.
+  # Trigger manually (workflow_dispatch) after each venue's decisions come out
+  # (e.g. ICRA/RSS/IROS/CoRL/NeurIPS/RA-L announcement dates).
   workflow_dispatch:
     inputs:
       year:

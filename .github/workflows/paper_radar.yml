@@ -2,7 +2,10 @@ name: PaperRadar Daily Update
 
 on:
   schedule:
-    - cron: "0 0/12 * * *"
+    # Twice daily at 6:37 AM/PM Indiana time (EST, UTC-5); off-hour minute
+    # avoids the top-of-the-hour arXiv rate-limit crush on shared runners.
+    # During EDT (Mar-Nov) this fires at 7:37 AM/PM local.
+    - cron: "37 11,23 * * *"
   workflow_dispatch:
 
 jobs:

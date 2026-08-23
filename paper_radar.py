@@ -435,9 +435,12 @@ def merge_into_db(
 
     papers_to_remove: set[str] = set()
     for cat in all_cats:
+        # Conference papers (venue set) are kept permanently: they are shown in
+        # their own venue sections, not category sections, so they must neither
+        # count toward nor be evicted by the per-category cap.
         cat_papers = [
             p for p in merged.values()
-            if cat in p.matched_categories
+            if cat in p.matched_categories and not p.venue
         ]
         if len(cat_papers) <= max_per_category:
             continue
