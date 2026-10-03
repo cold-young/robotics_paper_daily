@@ -14441,26 +14441,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2609.33665": {
-    "arxiv_id": "2609.33665",
-    "title": "CompoWorld: Compositional Environment Scaling for General Agents",
-    "abstract": "Automatically generated environments provide a scalable source of interaction data for training general agents. However, existing approaches mainly generate tasks within a single environment, while real-world workflows require agents to connect information and actions across multiple services. We introduce Compositional Environment Scaling (\\textbf{CompoWorld}), which expands the task space by composing a finite library of reusable services. Coding agents turn tool specifications into verified services with typed states and shared interfaces, while a world model handles tools that cannot be reliably implemented. A random-walk procedure connects services through dependency graphs, enabling the generation and verification of tasks that require information to flow across services. Verified trajectories support supervised fine-tuning (SFT), while our Completion-Focused Rubric Reward guides reinforcement learning (RL) toward full task completion by emphasizing criteria with lower pass rates within each rollout group. We construct 448 services exposing 10,130 tools and use 3K SFT trajectories and 1K RL tasks to train Qwen3.6-35B-A3B. Experimental results show that CompoWorld improves on its backbone by 9.17 points on average across eight benchmarks. On AutomationBench, it surpasses frontier models such as Claude Opus 4.6 and leads all compared agent-specialized 35B-A3B models.",
-    "authors": "Xiao-Wen Yang, Weiyi Xu, Wen Da, Hang Xu, Canwei Li, Hong-Jie You, Pusen Dong, Yucheng Zeng, Zhaokai Luo, Yu-Feng Li, Yao Hu, Mu Chuan",
-    "publish_date": "2026-09-27",
-    "arxiv_url": "http://arxiv.org/abs/2609.33665",
-    "project_url": "",
-    "code_url": "https://github.com/AllSpark-Research/CompoWorld",
-    "hf_url": "https://huggingface.co/papers/2609.33665",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 1,
-    "score": 34,
-    "paper_id": "arxiv:2609.33665",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2609.33855": {
     "arxiv_id": "2609.33855",
     "title": "Program-Verified Self-Evolution for Vision-Language Models",
@@ -14498,26 +14478,6 @@
     "hf_rank": 4,
     "score": 31,
     "paper_id": "arxiv:2609.33803",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2609.33757": {
-    "arxiv_id": "2609.33757",
-    "title": "YuE2: Unifying Symbolic and Audio Music Generation at Frontier Quality",
-    "abstract": "Symbolic models make melody, harmony, rhythm, and form explicit but typically stop before a finished recording; audio models produce complete songs while leaving composition implicit. We introduce YuE2, which unifies symbolic and audio music generation at frontier quality through symbolic planning. A single AR-NAR Mixture-of-Transformers (MoT) first writes a readable score specifying melody and harmony, expands it into semantic music tokens, and realizes it as full-song audio. In comparisons using the same checkpoint, experts prefer symbolic planning for overall quality and musicality, with 49.3% of overall preferences versus 34.6% without planning. Experts also favor the unified model over a separate language model and diffusion Transformer. On WildSongBench, YuE2 scores 6.73 on SongBench Global Avg, exceeding all evaluated public baselines. Selecting from eight candidates (best-of-8), YuE2 reaches 6.96, the highest observed mean among all evaluated systems. Expert listening further establishes its competitiveness with proprietary song generators, favoring best-of-8 over Suno v4.5 and yielding nearly balanced preferences against Suno v5. To learn this generation process from recordings without aligned scores, we introduce MERT2 and SheetSage2 to supply semantic and symbolic supervision. MERT2 sets a new state of the art in music representation learning, surpassing previous best results on 14 of 15 MARBLE metrics; SheetSage2 leads 12 of 15 benchmark-metric pairs in our lead-sheet transcription comparison. The same checkpoint follows score edits while largely preserving unedited musical content and generates zero-shot covers without cover-specific training. Its readable score also enables agentic music editing, with external language models translating user feedback into revisions of the composition.",
-    "authors": "Ruibin Yuan, Jiahao Pan, Junyan Jiang, Zhiyue Wu, Ziya Zhou, Jiankai Sun, Yizhi Li, Ge Zhang, Yicheng Gu, Zeyue Tian, Junyu Dai, Hanfeng Lin, Kai Li, Shangda Wu, Xuanjie Liu, Jiaming Wang, Zihan Liu, Yue Wang, Yinghao Ma, Hanzhi Yin, Kangrui Chen, Xinyue Zhang, Ziyang Ma, Mengqi Liao, Hejia Zhao, Guowei Huang, Chao Yan, Lei Ke, Jianwei Yu, Bei Liu, Joe Guo, Liumeng Xue, Gus Xia, Wei Xue, Yike Guo",
-    "publish_date": "2026-09-27",
-    "arxiv_url": "http://arxiv.org/abs/2609.33757",
-    "project_url": "https://map-yue2.github.io/",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2609.33757",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 6,
-    "score": 24,
-    "paper_id": "arxiv:2609.33757",
     "source": "arxiv",
     "venue": ""
   },
@@ -15541,26 +15501,6 @@
     "hf_rank": 31,
     "score": 29,
     "paper_id": "arxiv:2609.34044",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2609.33645": {
-    "arxiv_id": "2609.33645",
-    "title": "Pruned CTC for Memory-Efficient Large-Vocabulary ASR Training",
-    "abstract": "Connectionist temporal classification (CTC) naturally supports offline and streaming speech recognition with utterance-level supervision, but conventional implementations materialize frame-by-vocabulary activations in memory, making CTC training with native LLM vocabularies prohibitively memory-intensive. A key observation is that every valid CTC alignment uses only target tokens and blank, and their union across a batch typically forms a small subset of the full vocabulary. We introduce Pruned CTC, which restricts alignment computation to this subset while retaining full-vocabulary normalization. We prove that this vocabulary reduction is exactly equivalent to full-vocabulary CTC in loss and gradients. Head-and-loss activation memory no longer scales linearly with vocabulary size. We further apply finite-beam alignment pruning. Building on Pruned CTC, we develop LLM-CTC, which adapts pretrained LLMs for non-autoregressive ASR while retaining causal attention and native vocabularies, and extend it to bounded-history streaming, avoiding chunk-level speech--text alignments. Experiments show that, with Zipformer-M encoder and 180K vocabulary, Pruned CTC reduces full-step memory by 5.1$\\times$ with only 17% step-time overhead. Across three corpora, it matches standard CTC accuracy. On GigaSpeech, across six Qwen3 model sizes from 0.6B to 32B, LLM-CTC remains within 7% relative WER of LLM-CE with 7 to 10$\\times$ faster recognition; when fine-tuning Qwen3-ASR for bounded-history streaming, LLM-CTC remains within 3% relative WER of matched offline models on the test set. Together, these results establish Pruned CTC as a scalable sequence objective for native-vocabulary LLM ASR across offline and streaming settings.",
-    "authors": "Yifan Yang, Xiaoyu Yang, Zengrui Jin, Xian Shi, Yuxuan Wang, Yu Xi, Ziyang Ma, Qi Chen, Ruiyang Xu, Hui Wang, Dongchao Yang, Jin Xu, Xie Chen",
-    "publish_date": "2026-09-27",
-    "arxiv_url": "http://arxiv.org/abs/2609.33645",
-    "project_url": "",
-    "code_url": "https://github.com/yfyeung/PrunedCTC",
-    "hf_url": "https://huggingface.co/papers/2609.33645",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 32,
-    "score": 28,
-    "paper_id": "arxiv:2609.33645",
     "source": "arxiv",
     "venue": ""
   },
@@ -17272,26 +17212,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2609.33780": {
-    "arxiv_id": "2609.33780",
-    "title": "Selecting Diverse SFT Traces Improves Post-RL Generalization",
-    "abstract": "Verified solutions are not equally useful for preparing reasoning models for reinforcement learning (RL). We present a comprehensive study of route diversity, the variation in the sequences of reasoning steps in supervised fine-tuning (SFT) data, and propose a lightweight, rule-based fingerprint to select for it. From one pool at one budget, with matched training recipes and checkpoints, selecting diverse rather than similar routes improves post-RL problem coverage across puzzles and mathematics, including on problems harder than those seen in either training stage. In synthetic experiments, route-diverse SFT improves OLMo3-7B's pass@8 by 16.9 points on environments held out from SFT. In a single-model condition, where one model writes every candidate, diverse selection gains up to 6.2 points of mean pass@8 across 10 mathematics benchmarks. Pre-RL diagnostics suggest why: diverse SFT can produce both successful and failed attempts on more prompts despite slightly lower mean accuracy, giving group-relative RL more prompts with a learning signal. On 3 open-source corpora, our CPU-only selector, without model calls, outperforms more expensive alternatives in every comparison of mean post-RL performance. These results identify reasoning-route diversity as a practical criterion for selecting SFT data that better prepares models for RL.",
-    "authors": "Dylan Zhang, Mingyuan Wu, Jinning Li",
-    "publish_date": "2026-09-27",
-    "arxiv_url": "http://arxiv.org/abs/2609.33780",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2609.33780",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 16,
-    "score": 14,
-    "paper_id": "arxiv:2609.33780",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2609.36246": {
     "arxiv_id": "2609.36246",
     "title": "Learning from Teacher Continuations at Student States",
@@ -17409,26 +17329,6 @@
     "hf_rank": 11,
     "score": 32,
     "paper_id": "arxiv:2609.36730",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2609.33620": {
-    "arxiv_id": "2609.33620",
-    "title": "Learning Dynamics of Continual Learning: A Unified View of Data Attribution, Forgetting, and Plasticity Loss",
-    "abstract": "Modern language models are likely to be updated throughout their lifetime rather than trained once and frozen. Each update therefore participates in a recurring cycle: decide which experience to learn from, understand what that update changes, and remain capable of learning from what comes next. We show that these challenges are governed by the same evolving update--behavior interaction. We derive a token- and layer-wise decomposition of how learning from one token changes another prediction. By separating the softmax force, shared readout geometry, and residual connections, it exposes two interaction channels and yields a forward-computable approximation. Following this interaction through time reveals a unified picture of continual adaptation. Positive interaction identifies useful experience; negative interaction produces either concentrated collision or accumulated erosion; over longer horizons, updates reshape the shared geometry mediating future learning signals, reducing their transmission. These predictions lead to effective data selection, mechanism-specific controls for interference, and a readout-based diagnostic of future learnability whose degradation predicts the benefit of restoring the readout. Across models and training regimes, the same local interaction thus explains both what an update changes now and how learning today changes what can be learned tomorrow. This view connects data attribution, forgetting, and plasticity loss as distinct regimes of the same evolving learning dynamics.",
-    "authors": "Yi Ren, Wenlong Deng, Guanzhe Hong, Clare Lyle, Yarin Gal",
-    "publish_date": "2026-09-27",
-    "arxiv_url": "http://arxiv.org/abs/2609.33620",
-    "project_url": "https://joshua-ren.github.io/learning-dynamics-cl/",
-    "code_url": "https://github.com/Joshua-Ren/learning-dynamics-cl",
-    "hf_url": "https://huggingface.co/papers/2609.33620",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 13,
-    "score": 30,
-    "paper_id": "arxiv:2609.33620",
     "source": "arxiv",
     "venue": ""
   },
@@ -17732,26 +17632,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2609.33627": {
-    "arxiv_id": "2609.33627",
-    "title": "StoryEngine: A State-Grounded Agentic Framework for Video Storytelling",
-    "abstract": "Despite recent progress in agentic multi-shot video generation, producing coherent and consistent long-form stories remains challenging. Existing agentic pipelines typically rely on textual shot plans or previously generated pixels, yet lack an explicit mechanism for propagating the consequences of story events and maintaining the video world state across shots. As a result, missing visual details may be reconstructed inaccurately, while visual drift may propagate across subsequent shots, undermining both narrative coherence and visual consistency. To address these challenges, we propose StoryEngine, a state-grounded agentic framework for video storytelling. StoryEngine establishes a separation between authoritative semantic plans and unreliable visual observations. Specifically, StoryEngine maintains a structured representation of entity placement and story-relevant states, and propagates event-induced changes to define the intended start and end states of each shot. To visually realize these states, StoryEngine constructs canonical references for recurring entities and environments, and compiles state and visual constraints into executable render plans. Meanwhile, to realize these states correctly, a bounded evaluation-guided repair loop further corrects local state inconsistencies. Together, these mechanisms preserve causal story progression and prevent local visual errors from propagating across shots. To comprehensively evaluate long-form storytelling, we construct a benchmark across diverse scenarios and visual styles, with metrics assessing storytelling quality, narrative coherence, and visual consistency. Experimental results demonstrate that StoryEngine consistently outperforms state-of-the-art methods across all evaluation dimensions, validating its effectiveness for coherent and consistent video storytelling.",
-    "authors": "Yingrui Wang, Zeqing Wang, Yeying Jin",
-    "publish_date": "2026-09-27",
-    "arxiv_url": "http://arxiv.org/abs/2609.33627",
-    "project_url": "https://wwwtaylor.github.io/StoryEngine/",
-    "code_url": "https://github.com/wwwTaylor/StoryEngine",
-    "hf_url": "https://huggingface.co/papers/2609.33627",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 32,
-    "score": 11,
-    "paper_id": "arxiv:2609.33627",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2609.35342": {
     "arxiv_id": "2609.35342",
     "title": "Jev thinks \"I don't know'', but doesn't say it: Introducing Sys1Cal-v1 Dataset for Probability Calibration",
@@ -17929,26 +17809,6 @@
     "hf_rank": 45,
     "score": 5,
     "paper_id": "arxiv:2609.35932",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2609.33591": {
-    "arxiv_id": "2609.33591",
-    "title": "Pretraining Transformers with Quantized Softmax in Attention",
-    "abstract": "Low-precision Transformer systems increasingly quantize attention matrix multiplications, while softmax often remains at higher precision. During pretraining, an approximate softmax changes the gradients that train the model as well as its forward computation. We study this interaction with K-interval attention, which approximates the exponential using K+1 grid values. We vary per-row grid calibration, interpolation versus hard rounding, and the placement of a straight-through surrogate relative to normalization. We derive the corresponding backward rules, including calibration derivatives, and compare these choices in pretraining experiments matched on model, data, and optimizer. Detaching the row extrema leaves the forward computation unchanged but produces a delayed increase in validation loss. With hard rounding at K=4, min-max calibration and a pre-normalization surrogate incur a large loss gap; changing either choice substantially reduces it. At 124M parameters and 2.5B training tokens, fixed-window calibration with a post-normalization surrogate yields a validation loss gap of +0.019 nats relative to softmax at K=4, and with a pre-normalization surrogate yields +0.004 nats at K=16.",
-    "authors": "Shangzhen Zhu, Muyan Hu, Tomasz Kozlowski",
-    "publish_date": "2026-09-27",
-    "arxiv_url": "http://arxiv.org/abs/2609.33591",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2609.33591",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 46,
-    "score": 0,
-    "paper_id": "arxiv:2609.33591",
     "source": "arxiv",
     "venue": ""
   },
@@ -20273,7 +20133,7 @@
       "Dexterous",
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 44,
     "score": 10,
     "paper_id": "arxiv:2610.02196",
     "source": "arxiv",
@@ -20359,7 +20219,7 @@
     "arxiv_url": "http://arxiv.org/abs/2610.02089",
     "project_url": "",
     "code_url": "",
-    "hf_url": "",
+    "hf_url": "https://huggingface.co/papers/2610.02089",
     "matched_keywords": [
       "Manipulation"
     ],
@@ -21639,7 +21499,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 11,
     "score": 29,
     "paper_id": "arxiv:2610.02202",
     "source": "arxiv",
@@ -21659,7 +21519,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 12,
     "score": 28,
     "paper_id": "arxiv:2609.35259",
     "source": "arxiv",
@@ -21679,7 +21539,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 13,
     "score": 32,
     "paper_id": "arxiv:2609.34210",
     "source": "arxiv",
@@ -21699,7 +21559,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 14,
     "score": 31,
     "paper_id": "arxiv:2610.00686",
     "source": "arxiv",
@@ -21719,7 +21579,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 15,
     "score": 25,
     "paper_id": "arxiv:2610.02117",
     "source": "arxiv",
@@ -21739,7 +21599,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 16,
     "score": 24,
     "paper_id": "arxiv:2610.02185",
     "source": "arxiv",
@@ -21759,7 +21619,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 17,
     "score": 23,
     "paper_id": "arxiv:2609.36602",
     "source": "arxiv",
@@ -21779,7 +21639,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 18,
     "score": 27,
     "paper_id": "arxiv:2610.00437",
     "source": "arxiv",
@@ -21799,7 +21659,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 20,
     "score": 25,
     "paper_id": "arxiv:2609.36138",
     "source": "arxiv",
@@ -21819,7 +21679,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 21,
     "score": 24,
     "paper_id": "arxiv:2609.40222",
     "source": "arxiv",
@@ -21839,7 +21699,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 22,
     "score": 23,
     "paper_id": "arxiv:2610.00559",
     "source": "arxiv",
@@ -21859,7 +21719,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 23,
     "score": 22,
     "paper_id": "arxiv:2610.01942",
     "source": "arxiv",
@@ -21879,7 +21739,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 24,
     "score": 16,
     "paper_id": "arxiv:2610.01428",
     "source": "arxiv",
@@ -21899,7 +21759,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 25,
     "score": 20,
     "paper_id": "arxiv:2610.00348",
     "source": "arxiv",
@@ -21919,7 +21779,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 26,
     "score": 19,
     "paper_id": "arxiv:2610.01595",
     "source": "arxiv",
@@ -21939,7 +21799,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 27,
     "score": 18,
     "paper_id": "arxiv:2609.36820",
     "source": "arxiv",
@@ -21959,7 +21819,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 28,
     "score": 17,
     "paper_id": "arxiv:2610.01939",
     "source": "arxiv",
@@ -21979,7 +21839,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 29,
     "score": 16,
     "paper_id": "arxiv:2610.01762",
     "source": "arxiv",
@@ -21999,7 +21859,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 30,
     "score": 15,
     "paper_id": "arxiv:2610.01499",
     "source": "arxiv",
@@ -22019,7 +21879,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 31,
     "score": 9,
     "paper_id": "arxiv:2609.37533",
     "source": "arxiv",
@@ -22039,7 +21899,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 32,
     "score": 13,
     "paper_id": "arxiv:2609.39378",
     "source": "arxiv",
@@ -22059,7 +21919,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 33,
     "score": 12,
     "paper_id": "arxiv:2610.02148",
     "source": "arxiv",
@@ -22079,7 +21939,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 34,
     "score": 6,
     "paper_id": "arxiv:2610.01108",
     "source": "arxiv",
@@ -22099,7 +21959,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 36,
     "score": 4,
     "paper_id": "arxiv:2609.39687",
     "source": "arxiv",
@@ -22119,7 +21979,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 37,
     "score": 3,
     "paper_id": "arxiv:2609.37568",
     "source": "arxiv",
@@ -22139,7 +21999,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 38,
     "score": 7,
     "paper_id": "arxiv:2610.02206",
     "source": "arxiv",
@@ -22159,7 +22019,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 40,
     "score": 5,
     "paper_id": "arxiv:2610.00544",
     "source": "arxiv",
@@ -22179,7 +22039,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 41,
     "score": 0,
     "paper_id": "arxiv:2609.38104",
     "source": "arxiv",
@@ -22199,7 +22059,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 42,
     "score": 5,
     "paper_id": "arxiv:2609.38886",
     "source": "arxiv",
@@ -22219,7 +22079,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 43,
     "score": 0,
     "paper_id": "arxiv:2609.38987",
     "source": "arxiv",
@@ -22239,7 +22099,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 46,
     "score": 5,
     "paper_id": "arxiv:2609.34621",
     "source": "arxiv",
@@ -22259,7 +22119,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 47,
     "score": 5,
     "paper_id": "arxiv:2609.40362",
     "source": "arxiv",
@@ -22279,7 +22139,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 48,
     "score": 0,
     "paper_id": "arxiv:2610.02201",
     "source": "arxiv",
@@ -22299,7 +22159,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 39,
+    "hf_rank": 49,
     "score": 5,
     "paper_id": "arxiv:2610.00574",
     "source": "arxiv",
@@ -22319,7 +22179,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 40,
+    "hf_rank": 50,
     "score": 5,
     "paper_id": "arxiv:2610.02122",
     "source": "arxiv",
@@ -22522,6 +22382,146 @@
     "hf_rank": 50,
     "score": 5,
     "paper_id": "arxiv:2609.35690",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.01092": {
+    "arxiv_id": "2610.01092",
+    "title": "Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation",
+    "abstract": "Video generation models are increasingly being explored as world simulators for embodied planning and learning. To do so effectively, these models must not only generate visually appealing frames, but also predict how environments dynamically evolve when executing goal-directed actions. While evaluating these capabilities is crucial, existing benchmarks focus mainly on single short actions or step-by-step instructions. This leaves multi-step physical reasoning underexplored, especially in egocentric video generation that requires planning to simulate proper execution to accomplish high-level goals by carrying out multiple real-world manipulations. We introduce Ego2Act, a goal-directed benchmark featuring 2,640 videos from 110 real-world tasks across day-to-day settings, varying object clutter and multi-step complexity. Given an initial scene image and a high-level goal, Ego2Act evaluates whether video generation models can produce realistic egocentric videos of a hand manipulating objects to carry out the task. To support scalable evaluation, we also introduce Ego2ActJudge, a reference-free evaluation pipeline that achieves better task completion and physics plausibility evaluation alignment with human consensus compared to relevant baselines. Our findings reveal that models' generated simulations often skip or partially execute steps, leaving later steps missing dependent states, which leads to unfulfilled goal. Furthermore, models consistently fail at fine-grained physical dynamics, particularly during complex object manipulation and persistent world modeling. We hope Ego2Act provides a rigorous testbed for advancing video models toward physically plausible, goal-directed simulation.",
+    "authors": "Patrick Amadeus Irawan, Iskandar Muda Rizky Parlambang, Rava Maulana, Qinrong Cui, Erland Hilman Fuadi, Zayd M. K. Zuhri, Nanda Ryaas Absar, Ahmed Elshabrawy, Wilfried Ariel Mulyawan, Shoubin Yu, Yue Zhang, Mohit Bansal, Alham Fikri Aji",
+    "publish_date": "2026-10-01",
+    "arxiv_url": "http://arxiv.org/abs/2610.01092",
+    "project_url": "https://ego2act.github.io/",
+    "code_url": "https://github.com/ego2act/ego2act",
+    "hf_url": "https://huggingface.co/papers/2610.01092",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 33,
+    "paper_id": "arxiv:2610.01092",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2609.36435": {
+    "arxiv_id": "2609.36435",
+    "title": "MemFold: Learning Compact Soft Memory for Long-Context Personalization via On-Policy Optimization",
+    "abstract": "An assistant that serves the same user over a long horizon has to answer from what that user has revealed: which preferences still hold, which were revised, and which constraints apply now. Retaining that information is not the same as acting on it, and the two are usually optimized as if they were. Keeping the information as text makes the reader's input grow with the retained history, while compressing it into a fixed number of latent vectors bounds the interface but is typically trained to reconstruct text or imitate reference answers, both of which are scored on sequences the reader never produced. We present MemFold, which optimizes a fixed-budget soft memory by the behavior it supports. A query-conditioned textual memory is compressed into K continuous vectors that form the reader's memory interface, and the reader is then trained on its own rollouts under two complementary signals: group-relative rewards for task outcomes, and confidence-gated on-policy distillation in which a frozen textual-memory teacher re-scores the student's sampled tokens under the textual memory. The teacher is never sampled from, so supervision stays on the student's current distribution and adds no autoregressive decoding; at inference it is removed entirely. Across three Qwen backbones, MemFold attains the highest accuracy we measure on PersonaMem-32K and PersonaMem-128K, with margins that widen at the longer history length, and transfers to PrefEval and LongMemEval without target-domain training. Ablations attribute most of the task gain to the reward term and a smaller additional gain to the teacher signal, and memory interventions show that the reader depends on the instance-specific content of its soft memory.",
+    "authors": "Jingxuan Wu, Yuzhe Yang, Yiqiao Huang, Chengzhi Liu, Qingni Wang, Chengxuan Qian, Shutong Wu, Jiawei Zhang, Xin Eric Wang",
+    "publish_date": "2026-09-29",
+    "arxiv_url": "http://arxiv.org/abs/2609.36435",
+    "project_url": "https://memfold.github.io/",
+    "code_url": "https://github.com/Johnny221B/memfold",
+    "hf_url": "https://huggingface.co/papers/2609.36435",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 32,
+    "paper_id": "arxiv:2609.36435",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.00812": {
+    "arxiv_id": "2610.00812",
+    "title": "Video Generation Models: A Survey of Post-Training and Alignment",
+    "abstract": "Video generation has rapidly progressed from short, low-quality clips to high-resolution, long-duration sequences with complex spatiotemporal dynamics. Despite strong generative priors learned through large-scale pretraining, pretrained video models often fail to reliably follow human intent, maintain temporal coherence, or satisfy physical and safety constraints. Compared with image and text generation, alignment in video generation presents unique challenges, including error accumulation over time, motion-appearance coupling, multi-objective trade-offs, and limited supervision for temporal properties. These challenges motivate systematic post-training strategies that adapt pretrained models without retraining them from scratch. In this survey, we present the first comprehensive review of post-training and alignment in video generation models. We frame post-training as a unifying framework and distinguish between implicit alignment and explicit alignment based on how alignment signals are enforced. From this perspective, we organize existing approaches into four broad categories: supervised fine-tuning methods, self-training and distillation methods, preference- and reward-based methods, and inference-time methods. This taxonomy provides a coherent view of how alignment signals shape model behavior across both training and deployment. Beyond methodological advances, we review commonly used datasets, benchmarks, and evaluation practices, and discuss open challenges such as scalable reward design, long-horizon temporal consistency, stability-expressiveness trade-offs, and safety-aware generation. This survey aims to provide a structured conceptual foundation and practical guidance for advancing controllable and reliable video generation models.",
+    "authors": "Chaoyu Li, Xiaoyi Gu, Yogesh Kulkarni, Eun Woo Im, Mohammadmahdi Honarmand, Zeyu Wang, Juntong Song, Fei Du, Xilin Jiang, Kexin Zheng, Tianzhi Li, Fei Tao, Pooyan Fazli",
+    "publish_date": "2026-09-30",
+    "arxiv_url": "http://arxiv.org/abs/2610.00812",
+    "project_url": "",
+    "code_url": "https://github.com/people-robots/Awesome-Video-Generation-Post-Training",
+    "hf_url": "https://huggingface.co/papers/2610.00812",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 4,
+    "score": 31,
+    "paper_id": "arxiv:2610.00812",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2609.36388": {
+    "arxiv_id": "2609.36388",
+    "title": "Persona Dosing: Calibrated Activation Steering for Graded Trait Control",
+    "abstract": "An activation-steering coefficient sets intervention strength, but requesting a particular degree of persona expression requires a behavioral scale. We study persona dosing: controlling a language model through a trait description and a requested mean intensity. PersonaDose specializes a shared, description-conditioned FLAS controller on persona responses, then calibrates its flow time against measured trait expression. Training responses are not paired with requested target intensities. Across Llama-3.1-8B, Qwen3-8B, and Gemma-3-4B, PersonaDose raises core-trait expression at the Persona Vectors coherence floor of 75 by 33.2, 18.3, and 17.8 points over contrastive activation addition. Calibration-selected settings retain an expression advantage on held-out questions, although the coherence floor does not hold for every trait there. Across seven trained traits, calibrated requests yield mean targeting errors of 4.7-6.2 points over 14-22 calibration-reachable targets out of 28 per model. These results separate the behavioral range learned by a controller from the accuracy of requests within that range.",
+    "authors": "Zehao Jin, Junran Wang, Ruixuan Deng, Jiahao Chen, Jingyuan Zhang, Yuxuan Zhang, Xinjie Shen",
+    "publish_date": "2026-09-28",
+    "arxiv_url": "http://arxiv.org/abs/2609.36388",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2609.36388",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 5,
+    "score": 25,
+    "paper_id": "arxiv:2609.36388",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2609.36585": {
+    "arxiv_id": "2609.36585",
+    "title": "Transformers Stop Thinking Too Early, and a Tiny LoRA Fixes It",
+    "abstract": "Pretrained transformers use little of their depth to follow references in context. Thirteen base models reliably follow only 1.4-3.6 lines, and extra pretrained loops add little. A task-trained rank-8 LoRA at one early layer extends this computation with all model weights frozen. Qwen3-8B improves from 15.5% to 99% exact accuracy on 24-line chains; a longer-trained LoRA reaches 50 lines. Ouro-1.4B reaches 60 lines after four loops and at least 160 after eight. The LoRA starts a relay: program lines pass on their chain identity through a short range of middle layers. Frozen heads read progressively further up the chain, and removing parent-line attention stops the relay. A frozen-model measurement locates the last useful intervention layer within tolerance in three of four held-out models. Task-specific LoRAs also improve MuSiQue. Default answers therefore understate the computation accessible through a tiny edit. Code and an interactive demo are available at https://lunamos.github.io/stop-thinking-too-early/",
+    "authors": "Zehao Jin, Ruixuan Deng, Junran Wang",
+    "publish_date": "2026-09-29",
+    "arxiv_url": "http://arxiv.org/abs/2609.36585",
+    "project_url": "https://lunamos.github.io/stop-thinking-too-early/",
+    "code_url": "https://github.com/Lunamos/stop-thinking-too-early",
+    "hf_url": "https://huggingface.co/papers/2609.36585",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 6,
+    "score": 29,
+    "paper_id": "arxiv:2609.36585",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2609.37690": {
+    "arxiv_id": "2609.37690",
+    "title": "Honeycomb: Constant-Size Scene Memory Representation for Video World Models",
+    "abstract": "Video world models require persistent scene memory to maintain consistency during long-horizon video generation. Existing spatial memories accumulate RGB observations or latent features, increasing storage requirements as generation proceeds. We introduce Honeycomb, a video world model built on HexMemory, our proposed low-rank representation for storing scene features in a fixed-size memory with a total of six spatial and spatiotemporal planes. A feed-forward writer maps each generated chunk into new plane features. As the spatial coverage or temporal range expands, we warp the previous planes while preserving their dimensions, then fuse them with the new features through confidence-weighted pooling and a learned residual correction. A reader retrieves latents from HexMemory to condition subsequent video generation. The writer processes only observations from the new chunk, avoiding per-scene optimization and repeated processing of the full history. Experiments on WorldScore and RealEstate10K demonstrate strong video generation quality and robust revisit consistency while keeping HexMemory feature storage constant throughout generation. Code and additional visualizations are available on our project page at https://jackswl.github.io/honeycomb/.",
+    "authors": "Jack Wei Lun Shi, Kaichen Zhou, Haoyu Chen, Yufeng Weng, Keane Ong, Ruojin Cai, Hang Hua, Justin K. W. Yeoh, Mengyu Wang",
+    "publish_date": "2026-09-29",
+    "arxiv_url": "http://arxiv.org/abs/2609.37690",
+    "project_url": "https://jackswl.github.io/honeycomb/",
+    "code_url": "https://github.com/kaichen-z/HoneyComb",
+    "hf_url": "https://huggingface.co/papers/2609.37690",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 7,
+    "score": 28,
+    "paper_id": "arxiv:2609.37690",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.02142": {
+    "arxiv_id": "2610.02142",
+    "title": "Keyword Harnesses Fail Open: A Cheap Diagnostic Ladder for Tool-Use Claims in Small Language Models",
+    "abstract": "Keyword-matching benchmarks can credit small models for tool use they never perform. We document such a false positive in a matched-architecture pair of Spanish security language models and propose a ladder of strict, cheap diagnostics. A 661.6M parameter model (approx. 65% code/technical text; no dedicated SFT) and a 1,109M model (web-heavy multi-phase curriculum; 6B-token tool-SFT) share decoder, tokenizer, and special tokens, scoring almost identically on lenient tool-use metrics (B4: 0.660 vs. 0.650).   Verbatim-reproduction checks on training examples separate them completely: the 600M emits valid tool calls with generalized arguments on 6/6 examples; the 1B does so on 0/6 across checkpoints. A first-token probe localizes the 1B's failure to a missing prior (prob. $10^{-4}$--$10^{-5}$ on <|tool_call|>), which was erased by its web-heavy training phase. A targeted SFT recipe (diverse corpus, 5x higher learning rate, 2,202 steps, ~3.3 GPU-hours) repairs the 1B using three orders of magnitude fewer tokens than the failed phase. On all 269 corpus rows, valid emission rises from 0.100 to 0.959 (600M: 0.926). On 238 unseen prompts, the repaired 1B passes 0.536 vs. the 600M's 0.428 ($p = 0.004$). Embedding-drift checks show the repair did not move the trigger token's tied embedding (97.7% of the bf16 table remains bit-identical), meaning changes live in the surrounding network.   Both models over-trigger, rarely answering negative prompts without a call (0.09 for 600M, 0.17 for repaired 1B). Factorial analyses confirm all repair configurations install the format, though suppression benefits from a diverse corpus remain a hypothesis due to seed sensitivity. This cheap diagnostic ladder costs minutes of CPU time and should gate tool-use claims on small models.",
+    "authors": "Juan S. Santillana",
+    "publish_date": "2026-10-01",
+    "arxiv_url": "http://arxiv.org/abs/2610.02142",
+    "project_url": "https://vectrayx.com",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2610.02142",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 10,
+    "score": 20,
+    "paper_id": "arxiv:2610.02142",
     "source": "arxiv",
     "venue": ""
   }
