@@ -9586,7 +9586,7 @@
       "Manipulation",
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 29,
     "score": 0,
     "paper_id": "arxiv:2609.37359",
     "source": "arxiv",
@@ -10472,8 +10472,8 @@
     "publish_date": "2026-09-30",
     "arxiv_url": "http://arxiv.org/abs/2609.39601",
     "project_url": "https://github.com/groundingpi/GroundingPI",
-    "code_url": "",
-    "hf_url": "",
+    "code_url": "https://github.com/groundingpi/GroundingPI",
+    "hf_url": "https://huggingface.co/papers/2609.39601",
     "matched_keywords": [
       "Manipulation",
       "Robotic Manipulation",
@@ -10483,9 +10483,10 @@
     "matched_categories": [
       "Dexterous",
       "Manipulation",
-      "VLA"
+      "VLA",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 1,
     "score": 40,
     "paper_id": "arxiv:2609.39601",
     "source": "arxiv",
@@ -14320,26 +14321,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2610.05303": {
-    "arxiv_id": "2610.05303",
-    "title": "ASCENT: Online Test-Time Training of Long-Horizon Agents via Self-Distillation of Verified Experience",
-    "abstract": "A large language model (LLM) agent solves long-horizon tasks through many reasoning-action turns, with one verification signal at termination. Deployed agents face streams of related tasks, making their trajectories a natural resource for improvement. In-context adaptation agents store reflections, memories, or skills as text, so reuse depends on retrieving the right experience and on a frozen policy executing it. We study Online Agentic Test-Time Training (OaTTT), which trains the LLM's weights on its own execution trajectories during deployment. The agent executes each task once, in one pass over the stream, and the executed trajectory with its verification result is the only learning signal for weight updates that persist across tasks. Directly imitating or reinforcing the generated tokens of this single attempt destabilizes the policy. We introduce ASCENT (Agentic Self-distillation for Cross-task EvolutioN at Test-time), which instead self-distills verified experience. A stable version of the LLM, its frozen initial copy, receives the verified trajectory as privileged information and predicts next-token distributions along it with this hindsight. Distilling them into persistent LoRA fast weights updates the agent for later tasks, without an external reference solution or stronger teacher. By further removing invalid-action turns, ASCENT distills enhanced privileged experience for more efficient execution. We characterize its population target and the limits of sparse outcome selection. Across ALFWorld, WebShop, and AppWorld at varied model scales, ASCENT improves task success and interaction efficiency as experience accumulates, outperforms online adaptation methods, and transfers to held-out scenes, showing that an agent can consolidate verified experience into its weights without a separate training phase or memory retrieval. Project page: https://artificer-ai-lab.github.io/ASCENT",
-    "authors": "Haodong Lu, Dong Gong",
-    "publish_date": "2026-10-04",
-    "arxiv_url": "http://arxiv.org/abs/2610.05303",
-    "project_url": "https://artificer-ai-lab.github.io/ASCENT/",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2610.05303",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 1,
-    "score": 29,
-    "paper_id": "arxiv:2610.05303",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2610.05416": {
     "arxiv_id": "2610.05416",
     "title": "Prism: Dynamic Sparse Attention for Native 2K Joint Video-Audio Generation Model Training",
@@ -14560,26 +14541,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2610.05107": {
-    "arxiv_id": "2610.05107",
-    "title": "SearchJev: A Fast and Calibrated System-1 Model for Search Agents",
-    "abstract": "Search agents repeatedly make short decisions about relevance, evidence sufficiency, and search actions. Using generative language models for these decisions introduces latency and unreliable confidence. We present SearchJev, a fast and calibrated System-1 model that separates search decisions from System-2 reasoning and generation. Given a search state and a decision schema, SearchJev directly scores legal options without autoregressive output generation. We propose Soft-Label Learning for Calibrated Decisions (SLCD) to learn decision probabilities from uncertain supervision and calibrate their confidence. In a dual-system search agent, SearchJev handles short decisions and delegates uncertain judgments to System 2, which retains planning, query generation, and answer composition. We also introduce SearchDecision-Bench, a benchmark unifying six types of search decisions for training and evaluation. On SearchDecision-Bench, SEARCHJEV improves decision quality over same-size Qwen3.5 autoregressive models, achieves 5.2-5.3 times faster decisions, and reduces average expected calibration error by 41-74%. On BrowseComp-Plus, the dual-system agents achieve a 3.7-4.7 times speedup in active search time while improving answer accuracy from 45% to up to 54%.",
-    "authors": "Congfeng Cao, Lipeng Zuo, Konstantinos Papakostas, Qiwei Xu, Songwei Xu, Lun Zhou, Zhaochun Ren, Yougang Lyu, Xiaohui Yan",
-    "publish_date": "2026-10-04",
-    "arxiv_url": "http://arxiv.org/abs/2610.05107",
-    "project_url": "https://huggingface.co/SearchJev/models",
-    "code_url": "https://github.com/EvoScientist/SearchJev",
-    "hf_url": "https://huggingface.co/papers/2610.05107",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 35,
-    "score": 5,
-    "paper_id": "arxiv:2610.05107",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2610.06648": {
     "arxiv_id": "2610.06648",
     "title": "Representation-Space MMD for Diffusion Language Models",
@@ -14597,26 +14558,6 @@
     "hf_rank": 39,
     "score": 5,
     "paper_id": "arxiv:2610.06648",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.05162": {
-    "arxiv_id": "2610.05162",
-    "title": "Memadapter: Counterfactual Adaptation Against Memory-induced Sycophancy",
-    "abstract": "Long-term memory enables LLM-based agents to retain and reuse information across tasks and sessions, supporting personalization and long-horizon interactions. However, persistent memories can also induce sycophancy, causing agents to over-align with users' historical beliefs even when they are inaccurate, outdated, or inconsistent with objective evidence. Existing mitigation methods assume that memory-induced sycophancy originates from biased or incorrect memories and attempt to reduce this risk by filtering such memories at different stages of the memory pipeline. However, in the real world, objective and correct memories can still induce sycophancy, and the same memory can warrant different influence across different contexts. To this end, we propose MemAdapter, a novel framework that adaptively integrates retrieved memories to support objective and reliable reasoning. Specifically, MemAdapter consists of three components: (i) Counterfactual Induction, which leverages counterfactual reasoning to uncover the potential risk of retrieved memories; (ii) Context-Aware Reflection, which calibrates the inferential influence of each retrieved memory in light of the current task via self-reflection; and (iii) Evidence-Based Reasoning, which grounds the final response in appropriate evidence while preserving the legitimate influence of memory. Extensive experiments on three benchmarks demonstrate that MemAdapter consistently improves memory reliability across diverse scenarios. Our code is available at https://github.com/DEEP-JLU/MemAdapter.",
-    "authors": "Ruqing Ning, Haibo Meng, Zhishang Xiang, Zerui Chen, Jinsong Su, Xin Wang, Qinggang Zhang",
-    "publish_date": "2026-10-04",
-    "arxiv_url": "http://arxiv.org/abs/2610.05162",
-    "project_url": "https://github.com/DEEP-JLU/MemAdapter.git",
-    "code_url": "https://github.com/DEEP-JLU/MemAdapter",
-    "hf_url": "https://huggingface.co/papers/2610.05162",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 45,
-    "score": 5,
-    "paper_id": "arxiv:2610.05162",
     "source": "arxiv",
     "venue": ""
   },
@@ -15667,26 +15608,6 @@
     "hf_rank": 3,
     "score": 27,
     "paper_id": "arxiv:2610.08791",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.05140": {
-    "arxiv_id": "2610.05140",
-    "title": "AutoSciBench: Autonomous Benchmark Generation for Evaluating Scientific Agents",
-    "abstract": "As agents rapidly evolve, existing benchmarks can become saturated, limiting their ability to distinguish capabilities and reveal remaining failure modes. Particularly in scientific domains, constructing and updating benchmarks requires substantial time, labor, and domain expertise, making it difficult to keep evaluation aligned with advances in agent capabilities. We address this challenge by investigating whether scientific-agent benchmarks can be automatically generated and iteratively adapted as agent capabilities evolve. We introduce AutoSciBench, a framework that represents each task as a high-level concept specifying the scientific domain, data modality, and required reasoning approach, together with a low-level recipe specifying how the question, environment, and ground-truth answer are constructed and verified. Agents attempt to solve each task, producing solver trajectories and corresponding judge feedback which AutoSciBench uses to revise the recipe or concept, closing observed shortcuts and shifting tasks toward raw-data re-examination, interpretation of intermediate results, and evidence integration. Experience distilled from completed refinement trajectories further guides new concept generation, allowing lessons from earlier task refinement to inform subsequent benchmark construction. Starting from existing benchmarks, we evaluate AutoSciBench across computational biology, materials science, and clinical imaging. Generated benchmarks reduce average solver accuracy by 22.4 and 25.5 percentage points relative to the human-curated benchmarks in computational biology and materials science, respectively, while generated tasks receive higher average quality ratings across all three domains, suggesting that scientific-agent evaluation can adapt as agent capabilities advance.",
-    "authors": "Dongki Kim, Namkyeong Lee, Surag Nair, Carl Edwards, Xiner Li, Edward De Brouwer, Jenna Lynn Collier, Sung Ju Hwang, Gabriele Scalia, Ehsan Hajiramezanali",
-    "publish_date": "2026-10-04",
-    "arxiv_url": "http://arxiv.org/abs/2610.05140",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2610.05140",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 4,
-    "score": 26,
-    "paper_id": "arxiv:2610.05140",
     "source": "arxiv",
     "venue": ""
   },
@@ -17577,26 +17498,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2610.05289": {
-    "arxiv_id": "2610.05289",
-    "title": "Mobile-4DGS: Unified Static-Dynamic Real-time Mobile Gaussian Splatting",
-    "abstract": "Recent advances in 3D Gaussian Splatting (3DGS) have achieved remarkable performance in novel view synthesis, yet deploying both static and dynamic Gaussian representations on resource-constrained mobile devices remains challenging due to heavy storage, redundant primitives, and costly per-frame computation. We present Mobile-4DGS, a unified lightweight framework for high-fidelity real-time static and dynamic Gaussian rendering on mobile platforms. For compact appearance modeling, we introduce a Monte Carlo Specular Energy Aggregator that compresses high-order radiance residuals into the first-order Spherical Harmonics (SH), together with an Attribute-Conditioned SH Enhancement module whose predicted offsets are pre-baked before inference. We further propose a Multi-View Alpha-Based Densification and Pruning strategy to suppress redundant primitives while maintaining multi-view consistency. For dynamic scenes, we develop a compact explicit 4D representation by constructing second-order Gaussian motion, learnable temporal support, and a binary static-dynamic partition, enabling continuous-time modeling without runtime deformation networks. Based on this partition, a Depth-Order Certificate selectively reuses previously committed depth orders to reduce re-projection, sorting, merging, and index-buffer updates during playback. Extensive experiments on static and dynamic scenes demonstrate that Mobile-4DGS substantially reduces storage and rendering overhead while maintaining competitive visual quality, enabling real-time 3D and 4D Gaussian Splatting on mobile devices. \\textcolor{magenta}{\\href{https://xiaobiaodu.github.io/mobile-4dgs-project/}{Code has been released: https://xiaobiaodu.github.io/mobile-4dgs-project/}}.",
-    "authors": "Xiaobiao Du, Beixi Hao, Zhen Fang, Tianqing Zhu, Richard Hartley, Xin Yu",
-    "publish_date": "2026-10-04",
-    "arxiv_url": "http://arxiv.org/abs/2610.05289",
-    "project_url": "https://xiaobiaodu.github.io/mobile-4dgs-project/",
-    "code_url": "https://github.com/xiaobiaodu/mobile-4dgs",
-    "hf_url": "https://huggingface.co/papers/2610.05289",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 17,
-    "score": 18,
-    "paper_id": "arxiv:2610.05289",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2610.08963": {
     "arxiv_id": "2610.08963",
     "title": "On KL-Regularized Policy Optimization",
@@ -17834,26 +17735,6 @@
     "hf_rank": 33,
     "score": 30,
     "paper_id": "arxiv:2610.09683",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.05324": {
-    "arxiv_id": "2610.05324",
-    "title": "CoDance: Learning Reactive and Compliant Human-Humanoid Interaction from Video",
-    "abstract": "Partnered human-humanoid interaction couples locomotion with continuous physical contact. A humanoid needs to coordinate with a person's motion while responding to interaction forces and maintaining stable and natural movement. We present CoDance, a framework for learning reactive and compliant human-humanoid interaction from video. We study partnered dancing as a challenging instantiation, where a humanoid coordinates its footsteps with a moving partner and maintains continuous two-hand contact. Given a single video of two human dancers, CoDance retargets their motions into a robot reference and a moving partner. We introduce a multi-link compliance augmentation that transforms the kinematic demonstration into force-aware training data by adapting the robot reference under structured forces at both hands. Policies trained on this data follow the observed partner while preserving the demonstrated locomotion style and responding compliantly to physical interaction. In simulation, the policies adapt their footsteps to changes in the partner and reproduce approximately 80% of the wrist displacement encoded by the augmented demonstrations. On a physical humanoid, CoDance enables sustained two-hand dancing with a human partner including repeated transitions between forward and backward motions.",
-    "authors": "Zhuoqun Chen, Shucheng Jia, Boyuan Chen",
-    "publish_date": "2026-10-04",
-    "arxiv_url": "http://arxiv.org/abs/2610.05324",
-    "project_url": "https://generalroboticslab.com/CoDance",
-    "code_url": "https://github.com/generalroboticslab/codance",
-    "hf_url": "https://huggingface.co/papers/2610.05324",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 34,
-    "score": 29,
-    "paper_id": "arxiv:2610.05324",
     "source": "arxiv",
     "venue": ""
   },
@@ -18177,7 +18058,7 @@
       "Dexterous",
       "Sim2Real"
     ],
-    "hf_rank": 22,
+    "hf_rank": 32,
     "score": 40,
     "paper_id": "arxiv:2610.12470",
     "source": "arxiv",
@@ -20973,7 +20854,7 @@
     "arxiv_url": "http://arxiv.org/abs/2610.12818",
     "project_url": "https://le-wam.github.io/",
     "code_url": "",
-    "hf_url": "",
+    "hf_url": "https://huggingface.co/papers/2610.12818",
     "matched_keywords": [
       "behavior cloning"
     ],
@@ -21475,7 +21356,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 11,
     "score": 34,
     "paper_id": "arxiv:2610.12453",
     "source": "arxiv",
@@ -21495,7 +21376,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 12,
     "score": 33,
     "paper_id": "arxiv:2610.12307",
     "source": "arxiv",
@@ -21515,7 +21396,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 13,
     "score": 32,
     "paper_id": "arxiv:2610.11069",
     "source": "arxiv",
@@ -21535,7 +21416,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 14,
     "score": 31,
     "paper_id": "arxiv:2610.10512",
     "source": "arxiv",
@@ -21555,7 +21436,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 15,
     "score": 25,
     "paper_id": "arxiv:2610.12102",
     "source": "arxiv",
@@ -21575,7 +21456,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 16,
     "score": 24,
     "paper_id": "arxiv:2610.11215",
     "source": "arxiv",
@@ -21595,7 +21476,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 17,
     "score": 28,
     "paper_id": "arxiv:2610.07207",
     "source": "arxiv",
@@ -21615,7 +21496,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 18,
     "score": 22,
     "paper_id": "arxiv:2610.12582",
     "source": "arxiv",
@@ -21635,7 +21516,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 21,
     "score": 24,
     "paper_id": "arxiv:2610.12602",
     "source": "arxiv",
@@ -21655,7 +21536,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 22,
     "score": 23,
     "paper_id": "arxiv:2610.09633",
     "source": "arxiv",
@@ -21675,7 +21556,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 24,
     "score": 21,
     "paper_id": "arxiv:2610.07018",
     "source": "arxiv",
@@ -21695,7 +21576,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 25,
     "score": 20,
     "paper_id": "arxiv:2610.12416",
     "source": "arxiv",
@@ -21715,7 +21596,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 27,
     "score": 13,
     "paper_id": "arxiv:2610.12114",
     "source": "arxiv",
@@ -21735,7 +21616,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 28,
     "score": 17,
     "paper_id": "arxiv:2610.10893",
     "source": "arxiv",
@@ -21755,7 +21636,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 30,
     "score": 15,
     "paper_id": "arxiv:2610.13527",
     "source": "arxiv",
@@ -21775,7 +21656,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 31,
     "score": 9,
     "paper_id": "arxiv:2610.11291",
     "source": "arxiv",
@@ -21795,7 +21676,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 33,
     "score": 12,
     "paper_id": "arxiv:2610.12570",
     "source": "arxiv",
@@ -21815,7 +21696,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 34,
     "score": 11,
     "paper_id": "arxiv:2610.13316",
     "source": "arxiv",
@@ -21835,7 +21716,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 25,
+    "hf_rank": 35,
     "score": 5,
     "paper_id": "arxiv:2610.09607",
     "source": "arxiv",
@@ -21855,7 +21736,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 36,
     "score": 9,
     "paper_id": "arxiv:2610.11993",
     "source": "arxiv",
@@ -21875,7 +21756,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 37,
     "score": 8,
     "paper_id": "arxiv:2610.10288",
     "source": "arxiv",
@@ -21895,7 +21776,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 38,
     "score": 7,
     "paper_id": "arxiv:2610.12341",
     "source": "arxiv",
@@ -21915,7 +21796,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 39,
     "score": 6,
     "paper_id": "arxiv:2610.13171",
     "source": "arxiv",
@@ -21935,7 +21816,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 40,
     "score": 5,
     "paper_id": "arxiv:2610.12984",
     "source": "arxiv",
@@ -21955,7 +21836,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 42,
     "score": 5,
     "paper_id": "arxiv:2610.12611",
     "source": "arxiv",
@@ -21975,7 +21856,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 43,
     "score": 0,
     "paper_id": "arxiv:2610.12939",
     "source": "arxiv",
@@ -21995,7 +21876,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 44,
     "score": 5,
     "paper_id": "arxiv:2610.13118",
     "source": "arxiv",
@@ -22015,7 +21896,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 45,
     "score": 0,
     "paper_id": "arxiv:2610.13113",
     "source": "arxiv",
@@ -22035,7 +21916,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 46,
     "score": 5,
     "paper_id": "arxiv:2610.12772",
     "source": "arxiv",
@@ -22055,7 +21936,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 47,
     "score": 5,
     "paper_id": "arxiv:2610.12572",
     "source": "arxiv",
@@ -22075,7 +21956,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 48,
     "score": 0,
     "paper_id": "arxiv:2610.12668",
     "source": "arxiv",
@@ -22095,7 +21976,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 39,
+    "hf_rank": 49,
     "score": 5,
     "paper_id": "arxiv:2610.12569",
     "source": "arxiv",
@@ -22218,6 +22099,126 @@
     "hf_rank": 48,
     "score": 5,
     "paper_id": "arxiv:2610.13947",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.13166": {
+    "arxiv_id": "2610.13166",
+    "title": "Scaling Agentic Data for Long-Horizon Terminal Intelligence",
+    "abstract": "Terminal agents are moving beyond local operations toward completing real-world professional tasks. Short trajectories can demonstrate commands and tool calls, but they do not fully show how agents accumulate evidence through exploration, use it to inform judgments, continually adjust strategies based on feedback, and turn intermediate results into final deliverables. High-quality long-horizon trajectories capture these agentic behavioral patterns and their connections within a single problem-solving process, providing richer experience for sustained autonomous work. However, environment synthesis may complete or simplify the key work underlying these patterns in advance and thus remove the need for exploration, implementation, and verification that the agent was meant to perform. To address this, we introduce TerminalHorizon, a fully automated data synthesis engine for long-horizon terminal agents. Starting from real-world professional work, it uses independent execution to identify key work omitted during construction and uses the resulting evidence to guide environment reconstruction. To extend these patterns across stages, it progressively expands tasks under the same goal, introducing new requirements that build on prior results and call for further exploration and improvement. Using this engine, we construct 1.5K task environments and perform supervised fine-tuning of Qwen3.5-27B on the resulting dataset to obtain TerminalHorizon-27B. We achieve substantial performance gains on all 12 benchmarks spanning coding-agent tasks, agentic tasks in real-world production settings, and general reasoning. Multiple RSI case studies, each with a 12-hour research budget, further demonstrate the model's ability to continue experimenting beyond an initial solution, improve its methods based on feedback, and retain effective improvements in its final deliverables.",
+    "authors": "Shun Zou, Ziyu Ma, Yi Zou, Yong Wang, Lin Chen, Zehui Chen, Guanhua Chen, Xiangxiang Chu, Feng Zhao",
+    "publish_date": "2026-10-09",
+    "arxiv_url": "http://arxiv.org/abs/2610.13166",
+    "project_url": "https://zs1314.github.io/TerminalHorizon",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2610.13166",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 2,
+    "score": 28,
+    "paper_id": "arxiv:2610.13166",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.09396": {
+    "arxiv_id": "2610.09396",
+    "title": "ARCS: Towards Precise Text-to-SQL via Structured Disambiguation",
+    "abstract": "As text-to-SQL systems move beyond demonstrations toward real-world deployment, ambiguity in user questions becomes a primary source of errors. Such ambiguities are often subtle, domain- or data-specific, and can silently cause system outputs to deviate from the user's true intent. Ambiguity is traditionally addressed through conversational clarification, which is often inefficient, cognitively demanding, and poorly aligned with real-world user workflows. We propose structured disambiguation, a new paradigm in which ambiguity is resolved through explicit, constrained interactions rather than free-form dialogue. We construct ARCS (Ambiguity Resolution Corpus for SQL), the first text-to-SQL benchmark featuring naturally occurring, unconstrained ambiguities over real-world databases, with complete annotations of all valid ambiguity points, interpretations, and SQL queries. Experimental results show that text-to-SQL remains challenging in the presence of ambiguity: gpt-6-sol achieves only 51% end-to-end execution accuracy, and no open-source model exceeds 27%.",
+    "authors": "Yihao Hu, Yanlin Feng, Naoki Otani, Nikita Bhutani",
+    "publish_date": "2026-10-07",
+    "arxiv_url": "http://arxiv.org/abs/2610.09396",
+    "project_url": "https://megagonlabs.github.io/tabulaflow/research/arcs/",
+    "code_url": "https://github.com/megagonlabs/tabulaflow",
+    "hf_url": "https://huggingface.co/papers/2610.09396",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 4,
+    "score": 31,
+    "paper_id": "arxiv:2610.09396",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.11765": {
+    "arxiv_id": "2610.11765",
+    "title": "Thinking Inertia: LLMs Keep Thinking When Told Not To",
+    "abstract": "Large Language Models (LLMs) increasingly ship with explicit \"thinking modes\", yet their counterpart, \"no-thinking\", has received far less attention. We study LLMs' no-thinking behavior along two axes. a. How to measure no-thinking? Prior work typically defines no-thinking through proxies such as a disabled thinking mode or the absence of long traces. These proxies are unreliable: disabled thinking modes may still emit reasoning, while long traces may contain filler rather than genuine inference. We instead normalize each response into a pre-answer trace and final answer, and evaluate it at three levels: (i) Empty-Thinking Rate for strict answer-only compliance; (ii) instruction-aware Question-Pre-answer Relevance for similarity between the question and pre-answer trace; and (iii) LLM-as-judge Explicit Inference Rate for visible explicit inference. Together, these metrics distinguish answer-only output, relevant but non-inferential text, and explicit inference. b. How does no-thinking vary across tasks and models? We evaluate six prompting interventions on six LLMs across Boolean, multiple-choice, and open-ended questions. We find that explicit no-think controls cannot reliably eliminate visible inference. Models instead exhibit \"Thinking Inertia\": explicit inference persists even under strict controls and becomes more prevalent as the answer space opens. Accuracy remains stable on Boolean and multiple-choice tasks, whereas open-ended tasks reveal a trade-off between answer-only compliance and task accuracy. Rewriting the same questions across answer spaces shows that supplying candidate answers makes answer-only responses easier to produce. These findings establish no-thinking as a non-trivial capability: stopping explicit reasoning cannot be assumed from model settings or instructions alone and deserves systematic evaluation alongside reasoning ability.",
+    "authors": "Dianqiao Lei, Kevin Qinghong Lin, Pan Lu, Philip Torr, James Zou",
+    "publish_date": "2026-10-08",
+    "arxiv_url": "http://arxiv.org/abs/2610.11765",
+    "project_url": "https://thinking-inertia.github.io/",
+    "code_url": "https://github.com/thinking-inertia/code",
+    "hf_url": "https://huggingface.co/papers/2610.11765",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 6,
+    "score": 29,
+    "paper_id": "arxiv:2610.11765",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.13832": {
+    "arxiv_id": "2610.13832",
+    "title": "SpatialASM: Internalizing Active Mentalization for Spatial Reasoning",
+    "abstract": "When solving complex spatial reasoning tasks, ordinary humans naturally revisit the scenes from task-relevant viewpoints and mentally reconstruct the spatial layouts from those viewpoints. But can Large Vision-Language Models (LVLMs) proactively think in the same way? We term this ability Active Spatial Mentalization (ASM), an intrinsic component of visual intelligence that remains substantially underdeveloped in current LVLMs. To bridge this gap, we introduce SpatialASM, a scalable framework to internalize ASM into LVLMs through training-time spatial simulation. SpatialASM employs an allocentric novel-view generator to ground hypothetical viewpoints in visual evidence and produces two complementary forms of supervision: i) explicit ASM trajectories that teach LVLMs when and how to adaptively invoke view planning and imagination during spatial reasoning, and ii) automatically-constructed perspective-taking tasks that further strengthens viewpoint-conditioned scene imagination. On seven benchmarks spanning relatively perception-oriented spatial understanding to more challenging tasks requiring multi-image, cross-view and viewpoint-transformation reasoning, SpatialASM yields performance gain on LVLMs of four LVLM backbones in spatial reasoning while retaining their original general vision capabilities. The experimental results demonstrate that our approach improves average accuracy across the seven spatial benchmarks. And the synthesis of ASM trajectories provides a scalable pathway to alleviate the scarcity of spatial Chain-of-Thought (CoT) supervision for eliciting active viewpoint exploration and mental scene simulation.",
+    "authors": "Yuhong Liu, Shenxi Wu, Junyi Chi, Beichen Zhang, Xuanlang Dai, Jiaqi Wang, Yuhang Zang, Dahua Lin",
+    "publish_date": "2026-10-09",
+    "arxiv_url": "http://arxiv.org/abs/2610.13832",
+    "project_url": "",
+    "code_url": "https://github.com/InternLM/SpatialASM",
+    "hf_url": "https://huggingface.co/papers/2610.13832",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 7,
+    "score": 28,
+    "paper_id": "arxiv:2610.13832",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.13630": {
+    "arxiv_id": "2610.13630",
+    "title": "Multi-Stream Attention Residuals",
+    "abstract": "Attention Residuals (AttnRes) enables content-dependent retrieval over network depth, which can be viewed as single-stream softmax attention along the depth axis. Inspired by the success of multi-head attention along the sequence axis, we introduce Multi-Stream Attention Residuals (MSAR), an extension of AttnRes that generalizes this mechanism to multi-head depth attention, yielding substantial performance gains with minimal additional overhead. MSAR draws stream diversity from sequence context through multi-scale causal convolutions, allowing different heads to retrieve historical representations through distinct contextual views while preserving the integrity of the hidden representation. The retrieved streams are combined through lightweight adaptive mixing to generate the single-stream layer input. By retaining single-stream sources and expanding them on demand, MSAR supports multi-stream computation without requiring persistent multi-stream storage or communication. Across all 12 downstream benchmarks at the 18B and 28B MoE scales, MSAR consistently outperforms prior residual variants, including standard residual connections, manifold-constrained Hyper-Connections (mHC), and AttnRes. Scaling-law experiments yield an iso-loss compute speedup of $1.58\\times$ over the standard residual baseline, compared with $1.35\\times$ for AttnRes and $1.30\\times$ for mHC. These results make MSAR a promising residual architecture for large-scale pre-training.",
+    "authors": "Xiaohan Qin, Xiangdong Zhang, Tuo Dai, Sunan Zou, Huaijin Wu, Yebin Yang, Zhuo Xia, Lin Yao, Yuliang Liu, Junchi Yan",
+    "publish_date": "2026-10-09",
+    "arxiv_url": "http://arxiv.org/abs/2610.13630",
+    "project_url": "",
+    "code_url": "https://github.com/jianke0604/MSAR",
+    "hf_url": "https://huggingface.co/papers/2610.13630",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 9,
+    "score": 26,
+    "paper_id": "arxiv:2610.13630",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.08966": {
+    "arxiv_id": "2610.08966",
+    "title": "Humanity's Sixth Sense: Benchmarking Intuitive Visual Reasoning in Multimodal Models",
+    "abstract": "Humans perceive far more in a scene than what is explicitly depicted: a single glance captures past causes and future trajectories; a quick peek determines if a vehicle can fit between two parked cars; a few seconds of video reveals who holds authority in a room; and a fleeting clip highlights subtle abstract patterns like unwritten rules or hidden labels. This capacity reflects a form of humanity's sixth sense: an intuitive reasoning mechanism that recovers implicit information beyond raw sensory perception. Crucially, this rapid, zero-shot visual intuition underpins everyday navigation and social interaction, making it a vital capability for Multimodal Large Language Models (MLLMs) deployed alongside people. Existing visual benchmarks, however, target either deliberate expert-level analysis in academic and mathematical domains or low-level perception, leaving the intuitive reasoning that people perform largely untested. To bridge this gap, we introduce Humanity's Sixth Sense (HSS), a benchmark for intuitive visual reasoning. HSS spans diverse image and video inputs, organizes items under a structured taxonomy, and pairs each with human-written prompts probing the implicit temporal, spatial, social, and abstract structure that people infer at a glance. Frontier MLLMs fall short of human performance: participants reach 93.1% accuracy, while the strongest model, GPT-6-astra, reaches only 53.6% even at maximum reasoning effort. Despite excelling in many complex tasks that require advanced perception and knowledge, current models still struggle significantly on these visual tasks that are intuitive for humans. We further explore agentic setup that apply dynamic visual manipulation to HSS, which narrows but does not close the gap. HSS establishes intuitive visual reasoning as a measurable axis and directs attention to a capability that scaling on current benchmarks has so far left behind.",
+    "authors": "Xingang Guo, Jing Gu, Brian Jang, Renxiong Wang, Utkarsh Tyagi, Daniel Quigley, Steven Li, David Yan, Daniel Yue Zhang, Darvin Yi, Forrest Huang, HiJae Kim, Tianyi Zhang, Jared Lichtarge, Jihua Huang, Le Xue, Manan Tomar, Qiuyi Richard Zhang, Ruofei Yu, Seth Neel, Yaning Hu, Marcella Valentine, Xinzhe Jiang, Daniel Evans, Chenguang Wang, Dustin Tran, Tong Zhao, Yinfei Yang, Yunzhong He",
+    "publish_date": "2026-10-06",
+    "arxiv_url": "http://arxiv.org/abs/2610.08966",
+    "project_url": "https://labs.scale.com/blog/introducing-humanitys-sixth-sense",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2610.08966",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 10,
+    "score": 20,
+    "paper_id": "arxiv:2610.08966",
     "source": "arxiv",
     "venue": ""
   }
