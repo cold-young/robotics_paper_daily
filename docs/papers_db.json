@@ -14156,46 +14156,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2610.27406": {
-    "arxiv_id": "2610.27406",
-    "title": "More Memory, Worse Agents: Error Reproduction and Anti-Persistence in LLM Agents",
-    "abstract": "LLM agents can improve across tasks without updating model parameters by storing experience from their own executions in external memory and reusing it to guide later decisions. A central design question is whether to retain only observed trajectories and outcomes or also the rules, summaries, and skills inferred from them. Retaining these abstractions allows agents to reuse strategies without repeatedly deriving them from raw trajectories. However, errors in stored abstractions can propagate to subsequent decisions through retrieval and reuse. They can also shape execution trajectories, which then become the basis for new abstractions that reproduce the original errors. We term this feedback mechanism error reproduction: errors are regenerated through a cycle of abstraction, execution, and re-abstraction, extending their persistence beyond direct reuse of the original faulty knowledge. We propose Anti-Persistence, a memory design that accumulates trajectories and outcomes while reconstructing task-specific guidance on demand. An adaptive selector uses prior outcomes to decide whether and how to synthesize guidance, which is discarded after execution. This prevents its direct reuse as a stored object, although indirect feedback through retained trajectories remains possible. Across different benchmarks and backbones, Anti-Persistence achieves higher overall held-out success and the lowest average LLM-call cost among the evaluated memory designs. These results support separating experience accumulation from abstraction persistence in memorybased self-improvement.",
-    "authors": "Ruhan Wang, Kishan Panaganti, Dongruo Zhou",
-    "publish_date": "2026-10-19",
-    "arxiv_url": "http://arxiv.org/abs/2610.27406",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2610.27406",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 38,
-    "score": 0,
-    "paper_id": "arxiv:2610.27406",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.27435": {
-    "arxiv_id": "2610.27435",
-    "title": "Harness Self-Evolution for Long-Horizon Terminal Agents",
-    "abstract": "Long-horizon terminal agents may solve a task in one run yet fail across repeated runs. Stochastic errors can propagate through actions and context, creating a gap between capability and reliable execution. We present RiseHarness, a framework for iteratively improving agent harnesses with model weights fixed. It focuses on flipping tasks with both successful and failed runs under the same configuration, using successful runs as references for failure analysis. RiseHarness combines agent trajectories with internal harness traces from a runtime monitor to examine how model actions interact with command execution, feedback, context management, and completion decisions. A Harness Handbook links this evidence to harness behaviors and source code, helping identify recurring problems in mechanisms shared across tasks. RiseHarness then searches other harness frameworks for relevant implementations and adapts them as design references to the current model and execution protocol. Candidate changes undergo behavioral checks and repeated task evaluation; versions with measured gains seed the next iteration. This loop integrates suitable mechanisms from different frameworks into a single harness and uses new execution evidence to guide further changes. We evaluate task success and reliability across models, ablate harness execution evidence and external research, and test transfer to unseen benchmarks with the same model. RiseHarness treats a specific model as the unit of harness adaptation, studying how changes to shared interaction mechanisms can make existing capabilities more reliable across tasks.",
-    "authors": "Ruhan Wang, Yucheng Shi, Zongxia Li, Junyao Yang, Zhongzhi Li, Yue Yu, Haitao Mi, Dongruo Zhou,  Leoweiliang",
-    "publish_date": "2026-10-20",
-    "arxiv_url": "http://arxiv.org/abs/2610.27435",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2610.27435",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 39,
-    "score": 0,
-    "paper_id": "arxiv:2610.27435",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2610.28522": {
     "arxiv_id": "2610.28522",
     "title": "DecisionPivot: A Diagnostic Benchmark for Decision Models in LLM Systems",
@@ -15231,8 +15191,8 @@
     "publish_date": "2026-10-21",
     "arxiv_url": "http://arxiv.org/abs/2610.29702",
     "project_url": "https://causground.github.io",
-    "code_url": "",
-    "hf_url": "",
+    "code_url": "https://github.com/Intelligent-Interaction/CausGround",
+    "hf_url": "https://huggingface.co/papers/2610.29702",
     "matched_keywords": [
       "Manipulation",
       "Robot Manipulation"
@@ -15240,9 +15200,10 @@
     "matched_categories": [
       "Dexterous",
       "Manipulation",
-      "VLA"
+      "VLA",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 6,
     "score": 20,
     "paper_id": "arxiv:2610.29702",
     "source": "arxiv",
@@ -16194,26 +16155,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2610.28679": {
-    "arxiv_id": "2610.28679",
-    "title": "VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents",
-    "abstract": "Agents need reliable ways to validate their outputs, both when completing tasks and when filtering synthetic training data. We study verifier generation: from the instruction and environment available for solving a task, an agent writes an executable verifier that must accept every valid solution and reject invalid ones. We introduce VerifierBench, a benchmark of 222 tasks from six agent benchmarks spanning tool-call, state-based, and code verification, with 4,993 hidden test cases that include alternative valid solutions and attacks; Verifier4Verifier (V4V), a six-check audit, screens its source verifiers and test suites. Across 19 models in a common agent harness, normalized balanced accuracy ranges from 10.6 to 62.1, with generated verifiers consistently rejecting invalid solutions more reliably than they accept valid ones. This apparent strength can mask overly restrictive verification: most false rejections in the analyzed records come from verifiers that accept no tested solution to a task. Case studies reveal unsupported assumptions about solution formats, tool use, and code changes that exclude valid solutions. These errors survive self-testing because agents test solutions that share the verifier's mistaken assumptions, or submit verifiers without confirming that any correct solution passes. These findings suggest testing both whether a verifier accepts a correct solution and whether it accepts other solutions permitted by the task. The project page and dataset are publicly available.",
-    "authors": "Jianing Yin, Ziyi Chen, Hao Wang, Yiyou Sun, Zijian Jin, Dawn Song, Daoan Zhang",
-    "publish_date": "2026-10-19",
-    "arxiv_url": "http://arxiv.org/abs/2610.28679",
-    "project_url": "https://verifierbench.github.io/",
-    "code_url": "https://github.com/DwanZhang-AI/verifier-suite",
-    "hf_url": "https://huggingface.co/papers/2610.28679",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 49,
-    "score": 27,
-    "paper_id": "arxiv:2610.28679",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2610.30066": {
     "arxiv_id": "2610.30066",
     "title": "Looped Uniform Diffusion Language Models",
@@ -16802,17 +16743,18 @@
     "publish_date": "2026-10-22",
     "arxiv_url": "http://arxiv.org/abs/2610.31670",
     "project_url": "https://yunfeixie233.github.io/s2/",
-    "code_url": "",
-    "hf_url": "",
+    "code_url": "https://github.com/yunfeixie233/sensorimotor-alignment",
+    "hf_url": "https://huggingface.co/papers/2610.31670",
     "matched_keywords": [
       "Vision-Language-Action",
       "VLA",
       "robot foundation model"
     ],
     "matched_categories": [
-      "VLA"
+      "VLA",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 9,
     "score": 20,
     "paper_id": "arxiv:2610.31670",
     "source": "arxiv",
@@ -17095,26 +17037,6 @@
     "hf_rank": 37,
     "score": 7,
     "paper_id": "arxiv:2610.30882",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.30181": {
-    "arxiv_id": "2610.30181",
-    "title": "Deep Search in Real-World Web Environments",
-    "abstract": "Despite substantial progress in Deep Search agents, their ability to conduct end-to-end research in real-world open Web environments remains insufficiently evaluated. Unlike static retrieval settings, information on the real-world Web is distributed across diverse sources, modalities, and heterogeneous formats, often involving complex interaction mechanisms that require agents to autonomously search for, access, and integrate relevant evidence during execution. To address this gap, we introduce the OpenDS task, designed to evaluate agents' ability to perform multi-step deep search in the live, open Web. This task requires agents to autonomously explore the real Web, discover and connect relevant evidence from multiple independent sources through Web search, browser interaction, and evidence processing, and ultimately determine a unique factual answer. Building on this task formulation, we construct OpenDS-World, a benchmark comprising 200 challenging tasks spanning diverse information modalities, heterogeneous file formats, and interactive access requirements, with independent human verification to ensure evidence validity and answer uniqueness. We evaluate 12 frontier models under a unified tool environment and execution protocol. The best-performing model achieves 39.0% accuracy, while human evaluation across 1,000 independent attempts yields 21.1% accuracy. Further analyses of tool usage, search cost, termination behavior, and failure recovery reveal substantial differences in research strategies across models, as well as persistent challenges in tool coordination and long-horizon search management. OpenDS-World provides a unified evaluation platform for systematically assessing and advancing agents' autonomous deep search capabilities in real-world open Web environments.",
-    "authors": "Xiaomin Yu, Hongliang Chen, Zhe Huang, Shilin Yan, Shao-Rong Su, Xuqiao Ma, Feiyang Wang, Jiayu Chen, Jiwei Fang, Yu Yan, Yini Huang, Chen Chen, Ruoxi Cheng, Yuzhi He, Yuhui Zhang, Xiaoxing Hu, Chen Liu, Jianbo Lin, Yijiang Li, Xiaobin Hu, Menglong Li, Zhuoran Lu, Weishi Wang, Zhongqi Yue, Chengwei Qin",
-    "publish_date": "2026-10-19",
-    "arxiv_url": "http://arxiv.org/abs/2610.30181",
-    "project_url": "",
-    "code_url": "https://github.com/Yu-xm/OpenDS",
-    "hf_url": "https://huggingface.co/papers/2610.30181",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 38,
-    "score": 6,
-    "paper_id": "arxiv:2610.30181",
     "source": "arxiv",
     "venue": ""
   },
@@ -19243,7 +19165,7 @@
       "VLA",
       "HF-Hot"
     ],
-    "hf_rank": 24,
+    "hf_rank": 35,
     "score": 20,
     "paper_id": "arxiv:2610.34674",
     "source": "arxiv",
@@ -19257,16 +19179,17 @@
     "publish_date": "2026-10-25",
     "arxiv_url": "http://arxiv.org/abs/2610.34186",
     "project_url": "",
-    "code_url": "",
-    "hf_url": "",
+    "code_url": "https://github.com/yliu-cs/HuGe",
+    "hf_url": "https://huggingface.co/papers/2610.34186",
     "matched_keywords": [
       "Vision-Language-Action",
       "VLA"
     ],
     "matched_categories": [
-      "VLA"
+      "VLA",
+      "HF-Hot"
     ],
-    "hf_rank": null,
+    "hf_rank": 7,
     "score": 20,
     "paper_id": "arxiv:2610.34186",
     "source": "arxiv",
@@ -19645,26 +19568,6 @@
     "hf_rank": 50,
     "score": 22,
     "paper_id": "arxiv:2610.27597",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.27364": {
-    "arxiv_id": "2610.27364",
-    "title": "Predictive Closure: A Set-Level Characterization of JEPA's Feature Selection",
-    "abstract": "In joint-embedding predictive architectures (JEPA), an encoder and a predictor are trained together to produce a representation that minimizes the error in predicting the representation of the next observation. Because the representations of both the current and the next observation are learned, it is unclear which features they will include. Earlier characterizations describe the features JEPA selects in terms of their individual predictability, raising the concern that unpredictable features, like a traffic light, will not be encoded into the representation. However, the prediction error is also affected by the relationships between features, e.g., the light's color helps predict whether the traffic will stop. We propose the predictive closure characterization, which accounts for these relationships. Based on a reformulation of the JEPA training objective, we show that selection depends on properties of feature sets. This view agrees with earlier works when features evolve independently, but makes new predictions when they do not, for instance that a feature like the traffic light can still be retained. We test this characterization in controlled experiments, which show that unpredictable features can become better represented when they help predict other features, and that changing one feature's predictive relationships can affect how well others are represented. We also demonstrate implications for steering feature selection: targeting one feature with an auxiliary objective, or supplying it to the predictor as side information, can strengthen the representation of another feature whose future values it helps predict, so steering can be indirect.",
-    "authors": "Mosh Levy, Aly Lidayan, Yoav Goldberg",
-    "publish_date": "2026-10-19",
-    "arxiv_url": "http://arxiv.org/abs/2610.27364",
-    "project_url": "",
-    "code_url": "https://github.com/Mosh0110/predictive-closure",
-    "hf_url": "https://huggingface.co/papers/2610.27364",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 13,
-    "score": 22,
-    "paper_id": "arxiv:2610.27364",
     "source": "arxiv",
     "venue": ""
   },
@@ -20714,7 +20617,7 @@
       "Manipulation",
       "VLA"
     ],
-    "hf_rank": 36,
+    "hf_rank": 47,
     "score": 40,
     "paper_id": "arxiv:2610.37666",
     "source": "arxiv",
@@ -20729,7 +20632,7 @@
     "arxiv_url": "http://arxiv.org/abs/2610.37652",
     "project_url": "https://ian-chuang.github.io/dexsafe/",
     "code_url": "",
-    "hf_url": "",
+    "hf_url": "https://huggingface.co/papers/2610.37652",
     "matched_keywords": [
       "Dexterous Manipulation",
       "Multi-fingered",
@@ -21277,7 +21180,7 @@
     "matched_categories": [
       "Manipulation"
     ],
-    "hf_rank": 21,
+    "hf_rank": 32,
     "score": 10,
     "paper_id": "arxiv:2610.36791",
     "source": "arxiv",
@@ -21367,7 +21270,7 @@
     "matched_categories": [
       "VLA"
     ],
-    "hf_rank": 22,
+    "hf_rank": 33,
     "score": 20,
     "paper_id": "arxiv:2610.37381",
     "source": "arxiv",
@@ -21390,7 +21293,7 @@
     "matched_categories": [
       "VLA"
     ],
-    "hf_rank": 29,
+    "hf_rank": 40,
     "score": 20,
     "paper_id": "arxiv:2610.37219",
     "source": "arxiv",
@@ -22002,7 +21905,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 9,
+    "hf_rank": 20,
     "score": 34,
     "paper_id": "arxiv:2610.34894",
     "source": "arxiv",
@@ -22022,7 +21925,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 21,
     "score": 33,
     "paper_id": "arxiv:2610.36082",
     "source": "arxiv",
@@ -22042,7 +21945,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 22,
     "score": 27,
     "paper_id": "arxiv:2610.37364",
     "source": "arxiv",
@@ -22062,7 +21965,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 23,
     "score": 31,
     "paper_id": "arxiv:2610.29003",
     "source": "arxiv",
@@ -22082,7 +21985,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 24,
     "score": 25,
     "paper_id": "arxiv:2610.35013",
     "source": "arxiv",
@@ -22102,7 +22005,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 25,
     "score": 24,
     "paper_id": "arxiv:2610.35962",
     "source": "arxiv",
@@ -22122,7 +22025,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 27,
     "score": 27,
     "paper_id": "arxiv:2610.37037",
     "source": "arxiv",
@@ -22142,7 +22045,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 17,
+    "hf_rank": 28,
     "score": 26,
     "paper_id": "arxiv:2610.37662",
     "source": "arxiv",
@@ -22162,7 +22065,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 30,
     "score": 19,
     "paper_id": "arxiv:2610.37624",
     "source": "arxiv",
@@ -22182,7 +22085,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 31,
     "score": 18,
     "paper_id": "arxiv:2610.35864",
     "source": "arxiv",
@@ -22202,7 +22105,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 23,
+    "hf_rank": 34,
     "score": 20,
     "paper_id": "arxiv:2610.37255",
     "source": "arxiv",
@@ -22222,7 +22125,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 25,
+    "hf_rank": 36,
     "score": 18,
     "paper_id": "arxiv:2610.36077",
     "source": "arxiv",
@@ -22242,7 +22145,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 37,
     "score": 17,
     "paper_id": "arxiv:2610.34921",
     "source": "arxiv",
@@ -22262,7 +22165,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 39,
     "score": 10,
     "paper_id": "arxiv:2610.37175",
     "source": "arxiv",
@@ -22282,7 +22185,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 41,
     "score": 8,
     "paper_id": "arxiv:2610.37585",
     "source": "arxiv",
@@ -22302,7 +22205,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 42,
     "score": 12,
     "paper_id": "arxiv:2610.36022",
     "source": "arxiv",
@@ -22322,7 +22225,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 43,
     "score": 11,
     "paper_id": "arxiv:2610.37386",
     "source": "arxiv",
@@ -22342,7 +22245,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 44,
     "score": 5,
     "paper_id": "arxiv:2610.33066",
     "source": "arxiv",
@@ -22362,7 +22265,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 45,
     "score": 4,
     "paper_id": "arxiv:2610.37341",
     "source": "arxiv",
@@ -22382,7 +22285,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 46,
     "score": 8,
     "paper_id": "arxiv:2610.34073",
     "source": "arxiv",
@@ -22402,7 +22305,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 48,
     "score": 6,
     "paper_id": "arxiv:2610.35724",
     "source": "arxiv",
@@ -22422,7 +22325,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 49,
     "score": 5,
     "paper_id": "arxiv:2610.35439",
     "source": "arxiv",
@@ -22462,7 +22365,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 13,
     "score": 28,
     "paper_id": "arxiv:2610.33245",
     "source": "arxiv",
@@ -22482,7 +22385,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 14,
     "score": 27,
     "paper_id": "arxiv:2610.30435",
     "source": "arxiv",
@@ -22502,7 +22405,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 17,
     "score": 29,
     "paper_id": "arxiv:2610.31924",
     "source": "arxiv",
@@ -22522,7 +22425,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 18,
     "score": 28,
     "paper_id": "arxiv:2610.36184",
     "source": "arxiv",
@@ -22542,9 +22445,109 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 19,
     "score": 27,
     "paper_id": "arxiv:2610.36192",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.35671": {
+    "arxiv_id": "2610.35671",
+    "title": "Evaluating DeepSeek V4.1 Flash-1017 for loss of control and harmful manipulation risks",
+    "abstract": "As frontier language models grow increasingly capable and autonomous, independent third-party evaluations are critical for characterizing their systemic safety risks. While closed-source releases are routinely accompanied by comprehensive system cards, open-weight models receive less scrutiny regarding frontier risks. To address this gap, we present an independent safety evaluation of DeepSeek V4.1 Flash-1017, the latest version of V4.1 Flash that departs from V4 with a new architecture, scaled-up training, and strong agentic capabilities. Drawing on the EU General-Purpose AI Code of Practice, we evaluate the model across 34 benchmarks, including 5 in-house suites, spanning evaluation integrity, loss of control, and harmful manipulation. Conforming to the AEF-1 standard, we compare V4.1 Flash-1017 against V4.1 Flash, earlier DeepSeek V4 models, and leading closed-source systems (GPT-6 Astra, GPT-5.6 Sol, and Gemini 3.8 Flash). Overall, V4.1 Flash-1017 shows substantial safety improvements over the V4 generation and approaches or matches leading closed-source baselines on several dimensions, while still exhibiting notable behaviors that warrant continued attention. Building on our findings, we highlight three key observations and recommendations. First, because safety can shift and even regress across minor updates, developers should integrate safety evaluation into incremental releases. Second, as final-turn outputs and end-state checks alone cannot reliably detect loss-of-control behaviors, deployments require process-level observability across both reasoning traces and action logs. Third, because public benchmarks elicit strong evaluation awareness and face data contamination risks, developing private benchmarks is essential for trustworthy frontier evaluation.",
+    "authors": "Yao Huang, Zhiyuan Zeng, Yu Wang, Zhitong Zhu, Dingcheng Duan, Hao Li, Shangzhi Xu, Yifan Wang, Jinzhe Tu, Shukun Xiong, Yihe Zang, Han Yan, Hongchang Yang, Fuyu Gu, Wei Xu, Yinpeng Dong, Xiaojian Li",
+    "publish_date": "2026-10-26",
+    "arxiv_url": "http://arxiv.org/abs/2610.35671",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2610.35671",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 29,
+    "paper_id": "arxiv:2610.35671",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.30132": {
+    "arxiv_id": "2610.30132",
+    "title": "LongZero: Enhancing Long-Context Reasoning in LLMs from Zero Data",
+    "abstract": "Reinforcement learning (RL) is an effective way to strengthen the long-context reasoning of large language models (LLMs), but it needs training data that are long, diverse, challenging, and verifiable. Human annotation of such data is expensive, naturally occurring data are too scarce to sustain RL, and existing synthesis methods depend on external corpora or stronger teacher models, which become harder to obtain as the trained models get stronger. Recently, RL from zero data, in which a model learns from tasks it proposes itself, has achieved excellent performance, but existing methods target short-context tasks. Therefore, we propose $\\textbf{LongZero}$, a method that lets an LLM improve its own long-context reasoning without any external data. Instead of writing questions and answers over existing documents, LongZero first has the model synthesize the question and answer with its supporting evidence in a compact structured form, and only then separately expands the evidence into a long multi-document context. LongZero combines these self-written multi-hop reasoning tasks with self-written multi-round retrieval tasks and trains the model with GRPO. We evaluate LongZero on two LLMs across five long-context reasoning benchmarks and compare it with RL on data synthesized from external corpora. Experimental results show that LongZero can generalize to real tasks, and outperforms both baselines, suggesting a viable and promising path to improving long-context reasoning of LLMs.",
+    "authors": "Zhennan Wan, Jianfei Chen",
+    "publish_date": "2026-10-21",
+    "arxiv_url": "http://arxiv.org/abs/2610.30132",
+    "project_url": "",
+    "code_url": "https://github.com/zhennan1/LongZero",
+    "hf_url": "https://huggingface.co/papers/2610.30132",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 4,
+    "score": 31,
+    "paper_id": "arxiv:2610.30132",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.37230": {
+    "arxiv_id": "2610.37230",
+    "title": "TAO: Tool-Aware Joint Scheduling for LLM-Based Agentic Serving",
+    "abstract": "Agentic services alternate between model inference on clustered GPUs and external tools on distributed CPUs. In this scenario, existing systems (1) overlook tool-return readiness in service evaluation, wasting limited resources, and (2) use heuristic strategies to decide admission and placement on GPUs, resulting in suboptimal scheduling decisions. To bridge this gap, we present TAO, a tool-aware joint scheduling framework for LLM-based agentic serving. Its value interface combines near-term tool readiness, node-specific cache credit with time-aware decay, and token footprint; a dynamic program jointly selects and places waiting sessions under capacity constraints. Across the 12 reported model-workload-concurrency settings, TAO reduces latency by up to 26.8%, reduces mean time to first token (TTFT) by up to 36.3%, and increases decode throughput by up to 29.5% relative to the best evaluated state-of-the-art baseline for each metric.",
+    "authors": "Shuhuai Li, Shengdong Ye, Dongdong Ge, Yinyu Ye, Jianghao Lin",
+    "publish_date": "2026-10-27",
+    "arxiv_url": "http://arxiv.org/abs/2610.37230",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2610.37230",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 10,
+    "score": 20,
+    "paper_id": "arxiv:2610.37230",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.35684": {
+    "arxiv_id": "2610.35684",
+    "title": "OmniShowcase: Omnidirectional Subject-Consistent Video Generation from Multi-View Images",
+    "abstract": "Generating videos of a specific subject from a few reference images remains challenging when the camera reveals surfaces that are not visible in the input. Early subject-to-video (S2V) methods condition on a single reference image and must therefore infer the subject's unseen appearance and geometry as the viewpoint changes. To address this limitation, recent methods extend S2V to multiple reference views, providing more information about the subject from different viewpoints. However, they do not explicitly specify the 3D structure that connects these observations. In addition, existing training data do not guarantee that viewpoint changes preserve the same underlying 3D subject. We present OmniShowcase, built on two components: (i) a fully automated data synthesis pipeline that produces training videos along diverse camera trajectories, with viewpoint variation driven by underlying subject geometry, even spanning full 360-degree orbits; and (ii) a geometry-conditioning method that provides the video model with a turntable of surface-normal maps reconstructed from the reference views without requiring temporal alignment with the generated frames. We construct Showcase-4K, a corpus of 3D-asset-based videos covering twelve camera motions across 88 trajectory configurations with reconstruction-derived surface-normal conditioning, and ShowcaseBench, a held-out evaluation set with the source meshes and camera parameters used to render each video. Experiments show state-of-the-art subject identity and 3D consistency while maintaining competitive video quality and motion. Project page: justin4ai.github.io/OmniShowcase",
+    "authors": "Junyeong Ahn, Geonwoo Kim, Kinam Kim, Gihwi Kim, Hoonjin Jung, Hyojin Jang, Jaegul Choo",
+    "publish_date": "2026-10-26",
+    "arxiv_url": "http://arxiv.org/abs/2610.35684",
+    "project_url": "https://justin4ai.github.io/OmniShowcase/",
+    "code_url": "https://github.com/justin4ai/OmniShowcase",
+    "hf_url": "https://huggingface.co/papers/2610.35684",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 11,
+    "score": 24,
+    "paper_id": "arxiv:2610.35684",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2610.32749": {
+    "arxiv_id": "2610.32749",
+    "title": "Efficient Streaming Audio-Visual Target Speaker Extraction for Real-World Acoustic Scenes",
+    "abstract": "Streaming audio-visual target speaker extraction (AVTSE) is essential for latency-sensitive applications. However, current causal systems face two coupled gaps. First, standard benchmarks fix the number of speakers at two and ignore the near-/far-field interference, reverberation, and sudden noise of real scenes. Second, high-performance causal architectures are too heavy for edge deployment. Lightweight alternatives try to reclaim capacity by repeatedly invoking a small separator, which offsets the savings. To address the first gap, we release RealSSA, a realistic AVTSE benchmark consisting of RealSSA-Sim and RealSSA-Real. RealSSA-Sim provides controllable simulated scenes with 1--5 dynamic near-field interfering speakers; scenes with far-field interference additionally include 10--15 far-field interfering speakers. RealSSA-Real provides a held-out real-recorded evaluation set. To address the second gap, we propose Falcon, a causal AVTSE method. Its Separator performs multi-scale time-frequency separation in a single encoder--decoder pass. We train Falcon with an encoder-space speaker contrastive loss. This loss suppresses near-field leakage at zero inference cost and transfers across backbones. Falcon achieves state-of-the-art extraction quality on RealSSA-Sim, LRS2-2Mix, LRS3-2Mix, and VoxCeleb2-2Mix. Compared with the causal AV-TFGridNet baseline, it cuts parameters by 91.9%, computation by 20.2 times, and GPU inference latency by 11.1 times. Code and demo are available at https://cslikai.cn/Falcon/.",
+    "authors": "Wendi Sang, Kai Li, Yifan Li, Jianqiang Huang, Xiaolin Hu",
+    "publish_date": "2026-10-23",
+    "arxiv_url": "http://arxiv.org/abs/2610.32749",
+    "project_url": "https://cslikai.cn/Falcon/",
+    "code_url": "https://github.com/JusperLee/Falcon",
+    "hf_url": "https://huggingface.co/papers/2610.32749",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 12,
+    "score": 23,
+    "paper_id": "arxiv:2610.32749",
     "source": "arxiv",
     "venue": ""
   }
