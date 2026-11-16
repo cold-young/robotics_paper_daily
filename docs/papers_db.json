@@ -8265,74 +8265,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2610.32676": {
-    "arxiv_id": "2610.32676",
-    "title": "Retiming Robot Demonstrations with a Learned Speed Prior",
-    "abstract": "The pace of a robot demonstration is often determined by the teleoperator rather than by the task itself. As a result, the same motion can appear at widely different speeds across demonstrations, and policies trained on such data may inherit operator-specific timing along with task behavior. We propose to learn a speed prior directly from large-scale demonstration data. Given a task instruction, a motion path and the images along it, it predicts a distribution over execution speed along the path, from which a chosen quantile defines a consistent clock for retiming each demonstration. Existing methods derive the acceleration signal from the very data they accelerate, so each new task costs another fit, annotation, or pair of predefined rates. A single trained speed prior instead covers every task in a corpus. We fit a speed prior on both robot teleoperation data and handheld demonstrations in which a human arm, rather than a robot arm, moves the gripper, and use it to retime robot demonstrations to the handheld pace before fine-tuning a vision-language-action policy. For execution, we pair the policy with a real-time optimal-control layer that tracks predicted action chunks under robot constraints using the predicted pace. On 120 RoboLab tasks, policies fine-tuned on our learned clocks succeed more often and move with up to half the jerk compared with policies fine-tuned on the original demonstration timing and uniformly accelerated to the same speed. On a real robot, our policy stacks cups in 3.50s, 1.72$\\times$ faster than the default policy's 6.02s while succeeding as often, in 29 of 30 trials. Videos and further material are available at https://mllab.snu.ac.kr/projects/learned_speed_prior.",
-    "authors": "Seungyong Moon, Deokjae Lee, Hansang Lee, Munkhtselmeg Battsengel, Youngin Kim, Seonghyeon Yun, Sungjin Jeon, SongEun Kim, Jeongmin Park, Hyun Oh Song",
-    "publish_date": "2026-10-23",
-    "arxiv_url": "http://arxiv.org/abs/2610.32676",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "",
-    "matched_keywords": [
-      "Teleoperation",
-      "Vision-Language-Action"
-    ],
-    "matched_categories": [
-      "VLA"
-    ],
-    "hf_rank": null,
-    "score": 20,
-    "paper_id": "arxiv:2610.32676",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.32971": {
-    "arxiv_id": "2610.32971",
-    "title": "RobustRLlib: A Unified Library and Benchmark for Robust Reinforcement Learning Algorithms",
-    "abstract": "Robust reinforcement learning (RL) is critical for reliable real-world deployment, where policies may fail under diverse shifts and disruptions. Existing robust RL algorithms offer a rich set of mechanisms and principles, yet two major barriers limit their broader potential: limited algorithm reusability and an unclear empirical capability boundary. We introduce RobustRLlib, an algorithm-centric library and benchmark that addresses both challenges. It integrates 17 representative robust online, offline, and safe RL algorithms under a unified interface for substantially improved reusability, together with an enhanced evaluation platform spanning diverse real-world shifts and advanced humanoid and vision-language-action tasks. Systematic evaluation over 273 perturbation configurations provides an up-to-date capability map of current robust RL algorithms, revealing where they remain effective and where substantial robustness gaps persist. As an open-source, user-friendly platform, RobustRLlib offers a reproducible and extensible codebase for applying existing methods to new problems and developing new robust RL algorithms.",
-    "authors": "Xi Chen, Fengqi Hu, Zeyu Shen, Jiaying Xu, Shangding Gu, Pan Xu, Anqi Liu, Laixi Shi",
-    "publish_date": "2026-10-23",
-    "arxiv_url": "http://arxiv.org/abs/2610.32971",
-    "project_url": "https://robustrl-lib.github.io/",
-    "code_url": "",
-    "hf_url": "",
-    "matched_keywords": [
-      "Vision-Language-Action"
-    ],
-    "matched_categories": [
-      "VLA"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2610.32971",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.32888": {
-    "arxiv_id": "2610.32888",
-    "title": "When Human Corrections Travel: Safety in Federated VLA Adaptation",
-    "abstract": "Vision-language-action (VLA) policies can adapt to local human intervention, while federated learning can combine distributed robot experience without pooling raw records. We examine their prospective intersection: sharing adaptations derived from diverse human corrections across tasks, environments, people, and robot embodiments. Corrections differ in modality, safety semantics(urgency, behavioral scope, etc.), and privacy sensitivity. A shared update that improves mean task success may suppress a rare safety intervention or produce an unsafe response on another robot. We argue for three requirements: preserve the context and uncertainty of multimodal corrections when deciding what to share; assess candidate updates in each receiving robot's closed loop before deployment; and evaluate leakage alongside retention of safety-critical evidence. Immediate, legible defensive behavior remains necessary during human interaction. We offer counterexamples and a falsifiable evaluation agenda, not experimental results.",
-    "authors": "Vigneshwaran Subbaraju, Obaidullah Zaland, Monowar Bhuyan",
-    "publish_date": "2026-10-23",
-    "arxiv_url": "http://arxiv.org/abs/2610.32888",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "",
-    "matched_keywords": [
-      "Vision-Language-Action",
-      "VLA"
-    ],
-    "matched_categories": [
-      "VLA"
-    ],
-    "hf_rank": null,
-    "score": 20,
-    "paper_id": "arxiv:2610.32888",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2610.32855": {
     "arxiv_id": "2610.32855",
     "title": "Regularised RL improves sim-to-real transfer",
@@ -10282,29 +10214,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2610.42141": {
-    "arxiv_id": "2610.42141",
-    "title": "RoboArchitect: Automating the Design of Robotic Agents with Persistent Memory",
-    "abstract": "Recent work shows that a frozen robot policy performs far better inside an agent harness, where control code decides when to query the policy, consult vision tools, or command the arm directly. Yet today these harnesses are built by hand and redesigned for each new robot or benchmark. We show that harness design can be automated, offering a strong alternative to finetuning on a novel setup. In RoboArchitect, a coding model observes a robot's rollouts, diagnoses failures, and iteratively revises the harness around the frozen policy. The harness evolves on a set of episodes for its optimization and is evaluated on held-out scenes and tasks. Without updating any model weights, RoboArchitect raises average success from 9.7% to 43.3% on unseen scenes (4.5x) and from 12.7% to 40.2% on unseen tasks (3.2x), across multiple benchmarks and policies. The gains are largest where the benchmark is far from the policy's training data: wrapping a general-purpose policy, the evolved harness yields a specialist that often outperforms even the finetuned version. Intuitive control strategies are automatically designed, such as lifting a jammed arm clear or reaching in horizontally when an obstacle blocks the way from above. The harness also evolves its own persistent memory, carrying learned experience, such as effective grasp depths, into later decisions. These results suggest that substantial headroom in robotic manipulation lies in the agent harness, and its design can be effectively automated and optimized without weight updates.",
-    "authors": "Shengguang Wu, Suning Huang, Cherie Ho, Ria Doshi, Hao Zhu, Serena Yeung-Levy",
-    "publish_date": "2026-10-30",
-    "arxiv_url": "http://arxiv.org/abs/2610.42141",
-    "project_url": "https://roboarchitect-ai.github.io/",
-    "code_url": "https://github.com/roboarchitect-ai/RoboArchitect",
-    "hf_url": "https://huggingface.co/papers/2610.42141",
-    "matched_keywords": [
-      "Manipulation",
-      "Robotic Manipulation"
-    ],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": 40,
-    "score": 27,
-    "paper_id": "arxiv:2610.42141",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2610.42021": {
     "arxiv_id": "2610.42021",
     "title": "Nexus-VLA: Bridging Human and Robot Experiences via a Shared Hierarchical Semantic Latent Space",
@@ -10325,101 +10234,6 @@
     "hf_rank": null,
     "score": 20,
     "paper_id": "arxiv:2610.42021",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.41982": {
-    "arxiv_id": "2610.41982",
-    "title": "Suspended-Fabric Robotic Manipulation Surfaces: Modelling, Design Space, and Multimodular Extensio",
-    "abstract": "Robotic Manipulation Surfaces (RMS) reposition objects by deforming the surface on which they rest. A recent class of RMS suspends a continuous fabric sheet from a sparse grid of vertical linear actuators lowering the actuator density of such surfaces but how to design such surfaces so that objects can be controlled everywhere on it, and how to extend it beyond a single module so that objects can pass between modules and achieve parallel, remain open. This paper presents a separable catenary model of the suspended sheet that is fast to compute and provides both the surface shape for given actuator heights and the actuator heights for a desired local slope. The closed form inverse lets a simple PID controller position objects on the sheet, and the model relates fabric length, module span and actuator stroke to the reachable workspace, yielding a minimum fabric length bound and design charts for these surfaces. The approach is then extended to a multimodular platform in which neighbouring modules share actuators. On a $2 \\times 2$ prototype, we demonstrate that centimetre-scale objects are transferred between modules and positioned within 0.03 m over a $1 m^2$ workspace with only nine actuators, enabling multi-object manipulation and opening the way to parallel manipulation.",
-    "authors": "Pratik Ingle, Jørn Lambertsen, Kasper Støy, Andres Faiña",
-    "publish_date": "2026-10-30",
-    "arxiv_url": "http://arxiv.org/abs/2610.41982",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "",
-    "matched_keywords": [
-      "Manipulation",
-      "Robotic Manipulation"
-    ],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 20,
-    "paper_id": "arxiv:2610.41982",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.41702": {
-    "arxiv_id": "2610.41702",
-    "title": "Flexibility-Aware Robotic Manipulation: Deformation Estimation, Kinematics, and Control via Distributed Inertial Measurement",
-    "abstract": "Flexible robot links challenge the rigid-body assumption, making joint measurements alone insufficient for accurate manipulation. This paper introduces a flexibility-aware manipulation framework that connects structural dynamics directly to sensing, kinematics, and control. Instead of prescribing a dense inertial measurement unit (IMU) network, the dominant vibration modes of each flexible link are first identified from response-convergence and excitation-bandwidth criteria. Under a full-rank modal observability condition, $m$ retained modes require only $m$ independent slope measurements and one reference IMU, defining the minimum observable IMU configuration. The resulting measurements are used to reconstruct the continuous link deformation, which is then incorporated into flexibility-aware forward kinematics and a deformation-informed partial differential equation-based controller. Experiments on hydraulic single- and double-link manipulators evaluate the framework. On the long-reach double-link platform, the proposed kinematics achieves end-effector root mean square errors of $0.0107$~m, $0.0194$~m, and $0.0102$~rad while using fewer sensors than the piecewise-rigid method. Closed-loop reaching experiments further demonstrate real-time integration of IMU-estimated joint states and reconstructed deformation into the proposed controller. The results show that dominant modal information can determine sensing requirements and enable real-time flexibility-aware robotic manipulation.",
-    "authors": "Amir Hossein Barjini, Sadeq Yaqubi, Pauli Mustalahti, Jouni Mattila",
-    "publish_date": "2026-10-30",
-    "arxiv_url": "http://arxiv.org/abs/2610.41702",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "",
-    "matched_keywords": [
-      "Manipulation",
-      "Robotic Manipulation"
-    ],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 20,
-    "paper_id": "arxiv:2610.41702",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.41643": {
-    "arxiv_id": "2610.41643",
-    "title": "Direct Action-Manifold Modeling for Efficient and Robust Bimanual Manipulation",
-    "abstract": "Diffusion and flow matching visuomotor policies require iterative denoising or numerical integration for multimodal action generation, introducing latency and execution mismatch. We instead consider a different formulation: conditioned on vision and proprioception, demonstrated bimanual action chunks concentrate in a structured observation-dependent region of joint-action space, making the action target more direct to model than the generative process. Based on this view, we propose the Direct Manifold Action Transformer (DMAT), which reformulates action generation as the direct modeling of clean, observation-conditioned joint-space action chunks from stochastic interpolants, thereby enabling single-step inference without relying on iterative generative inference or auxiliary trajectory-straightening procedures. Within DMAT, local 3D geometry anchors predictions to spatial structure, while State-Consistent Spectral-Time Refinement (STR) reconciles predicted chunks with proprioception and suppresses high-frequency residuals. Across 567 standard and out-of-distribution (OOD) trials per method, DMAT outperformed Improved 3D Diffusion Policy (IDP3) and DiTFlow3D in aggregate success rate, achieving relative improvements of 129.1% and 95.7%, respectively, while generating action chunks 2.06x and 1.34x faster and remaining robust under repeated 50 N interventions. These results pave the way for a novel generative paradigm for efficient and robust bimanual manipulation.",
-    "authors": "Hongren Wang, Mingyu You, Zihan Li, Zhipeng Wang, Shuo Jiang, Bin He",
-    "publish_date": "2026-10-30",
-    "arxiv_url": "http://arxiv.org/abs/2610.41643",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "",
-    "matched_keywords": [
-      "Bimanual",
-      "Bimanual Manipulation",
-      "Manipulation",
-      "diffusion policy"
-    ],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 40,
-    "paper_id": "arxiv:2610.41643",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2610.41625": {
-    "arxiv_id": "2610.41625",
-    "title": "RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge Devices",
-    "abstract": "Low inference latency is critical for closed-loop robotic manipulation, especially under asynchronous inference, where action chunks must be updated promptly to correct accumulated deviations. However, existing visuomotor policies rely on computationally expensive visual backbones, resulting in high inference latency and deployment overhead. In this paper, we propose RTPolicy, a multi-view visuomotor policy that attains accurate manipulation with high inference efficiency. Its core design combines view-aware feature fusion with visual compression to aggregate complementary information across camera views into a compact token representation. The representation conditions a flow-matching action generator with the robot state and flow time, reducing the cost of action generation. Extensive experiments demonstrate that this design reduces the computational cost of visual representation and action generation while preserving visual information required for manipulation. On the RoboTwin~2.0 single-task clean evaluation across 50 tasks, RTPolicy attains a mean success rate of 52.26\\%, outperforming the strongest leaderboard baseline $π_0$ (46.4\\%). We further evaluate RTPolicy under asynchronous streaming inference on a real bimanual platform, where RTPolicy attains a mean success rate of 72.0\\% and sustains real-time inference at 30.35 ms (32.9 Hz) on the RDK S600 and 149.72 ms (6.7 Hz) on the RDK S100, both in INT16. Project Page: https://d-robotics-ai-lab.github.io/RTPolicy.project.",
-    "authors": "Xianbao Hou, Zehao Ni, Yonghao He, Lingfeng Qian, Xin Shi, Hu Su, Wei Sui, Cong Yang",
-    "publish_date": "2026-10-30",
-    "arxiv_url": "http://arxiv.org/abs/2610.41625",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "",
-    "matched_keywords": [
-      "Bimanual",
-      "Manipulation",
-      "Robotic Manipulation"
-    ],
-    "matched_categories": [
-      "Manipulation"
-    ],
-    "hf_rank": null,
-    "score": 30,
-    "paper_id": "arxiv:2610.41625",
     "source": "arxiv",
     "venue": ""
   },
@@ -11610,7 +11424,6 @@
       "visuotactile"
     ],
     "matched_categories": [
-      "Dexterous",
       "Manipulation",
       "Tactile"
     ],
@@ -11636,7 +11449,6 @@
       "VLA"
     ],
     "matched_categories": [
-      "Dexterous",
       "VLA",
       "HF-Hot"
     ],
@@ -12127,66 +11939,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2611.03424": {
-    "arxiv_id": "2611.03424",
-    "title": "IdeaTaste: Do LLMs Share the Research Taste of Human Researchers?",
-    "abstract": "Research taste, the judgment of what to read, which problems to pursue, and which methods to try, increasingly shapes the work of AI scientists, yet it remains far less understood than their ability to execute research. We introduce IdeaTaste, a benchmark that scores an LLM by how closely the research proposals it writes from a literature snapshot frozen at 2025 match the work the same communities published in 2026. Our experiments span six contemporary language models and four research areas from established to emerging fields, covering more than 90{,}000 proposals in total. LLM agents fall well short of human communities in both the literature they cite and the ideas they state, reaching about 26\\% of the human level on citation matching and only 18\\% on idea matching. Their populations can cite as diversely as a community and take up its tasks and methods, yet rarely arrive at the concrete approaches and research plans it pursues. Neither richer field context nor larger populations substantially close this gap. In blinded expert review, AI proposals trail the 2026 papers least in presentation and most in expected success, echoing their gap in concrete approaches, and those whose ideas no human paper shares fare worst, suggesting weaker directions rather than overlooked opportunities. These results indicate that the main bottleneck in AI research taste lies less in finding the directions a community works on than in turning them into the concrete approaches it goes on to pursue. We release IdeaTaste as an open, continuously updated leaderboard (https://cxcscmu.github.io/IdeaTaste) that benchmarks contemporary AI proposals against future publication cycles.",
-    "authors": "Shanshan Zhong, Chen Xu, Jingjie Ning, Zhengzhong Liu, Aviral Kumar, Chenyan Xiong",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03424",
-    "project_url": "https://cxcscmu.github.io/IdeaTaste/",
-    "code_url": "https://github.com/cxcscmu/IdeaTaste",
-    "hf_url": "https://huggingface.co/papers/2611.03424",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 50,
-    "score": 34,
-    "paper_id": "arxiv:2611.03424",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.03602": {
-    "arxiv_id": "2611.03602",
-    "title": "Reviso: Not All Visual Evidence Deserves Equal Attention in Video Captioning",
-    "abstract": "Multimodal large language models (MLLMs) can generate detailed video captions, yet they may overemphasize minor details while overlooking essential context and key events. We argue that not all visual evidence deserves equal attention, as the importance of visual information depends on the content of each video. Motivated by this observation, we propose Reviso, an agentic video captioning framework that learns what to observe and how to gather relevant visual evidence. From a low-frame-rate global preview, Reviso constructs a hierarchical Context--Focus--Points (CFP) observation plan that identifies the video context, prioritizes key aspects, and defines concrete observation targets and corresponding tools. Guided by this plan, Reviso performs goal-directed active perception by selectively revisiting temporal segments and combining tools for fine-grained inspection. It interprets the acquired evidence, updates its plan as needed, and integrates global and local information to generate the final caption. To learn this observation strategy, we develop a verification-guided pipeline that constructs high-quality training trajectories through factual verification and teacher-guided refinement. We further train Reviso using Group Relative Policy Optimization (GRPO), incorporating a key-fact reward for caption quality, a Plan Alignment Reward (PAR) for identifying important observation targets, and an Unproductive Tool-Call Penalty (UTCP) that adjusts observation-cost penalties based on caption quality. Experiments across four video captioning benchmarks show that Reviso outperforms the evaluated open-source baselines, while its generated captions better support downstream video question answering. These findings highlight the effectiveness and potential of priority-guided active observation for video captioning.",
-    "authors": "Tengfei Liu, Yang Shi, Yuran Wang, Yuqi Tang, Yizhuo Jia, Zhuoran Zhang, Qixun Wang, Shujie Li, Xuanyu Zhu, Xinyu Liu, Minghui Guo, Shixuan Liu, Haotian Wang, Yuanxing Zhang, Pengfei Wan",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03602",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2611.03602",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 30,
-    "score": 7,
-    "paper_id": "arxiv:2611.03602",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.03526": {
-    "arxiv_id": "2611.03526",
-    "title": "Library of Layers (LoL): Adaptively Ordering Transformer Layers at Runtime",
-    "abstract": "Computer programmers chain together the same reusable computational primitives, for example, conditional statements or loops, but in different orders to implement different algorithms. In contrast, existing language model architectures always execute their layers in the same order. We introduce Library of Layers (LoL), an architecture that dynamically orders its layers during inference to solve the problem at hand. LoL has a single hyperparameter, the size of its global library of transformer blocks, that allows it to transition seamlessly between parameter reuse and sparsity, generalizing the parameter-efficiency and FLOPs-efficiency tradeoffs of dense, depth-recurrent, and mixture of experts architectures in one unified family. We show that LoL achieves competitive performance with all three above baselines when pretrained on text data. On synthetic sudoku and maze data, we observe that the model employs distinct layer orderings to implement different solution strategies, and we can intervene on routing to force a model to apply a specific solution strategy to a problem instance. In a multilingual natural language setting, we find that LoL chooses different layer order patterns based on language and script. Similarly, we train LoL on safety data and fit probes to its router outputs, finding that these probes distinguish safe from unsafe text with high AUROC. LoL provides a path toward a future in which models dynamically compose their own computational graph, enabling more efficient and controllable reasoning.",
-    "authors": "Abdellah Rahmani, Sean McLeish, Ang Li, Sanae Lotfi, Pascal Frossard, Micah Goldblum",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03526",
-    "project_url": "",
-    "code_url": "https://github.com/arahmani1/library-of-layers",
-    "hf_url": "https://huggingface.co/papers/2611.03526",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 33,
-    "score": 9,
-    "paper_id": "arxiv:2611.03526",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2611.04522": {
     "arxiv_id": "2611.04522",
     "title": "Action Intent as a Bridge: Transferring Manipulation Knowledge from Human-Centric Videos to Robots",
@@ -12447,34 +12199,11 @@
       "Teleoperation"
     ],
     "matched_categories": [
-      "Dexterous",
       "Manipulation"
     ],
     "hf_rank": null,
     "score": 50,
     "paper_id": "arxiv:2611.04083",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.04080": {
-    "arxiv_id": "2611.04080",
-    "title": "FEIJOA: Task-Driven Grounding and Execution for Mobile Manipulation",
-    "abstract": "A mobile manipulator asked to \"put the toys away in the toy box\" must decide which objects are toys and which container the user means, then find base poses, grasps, and placements it can execute. Because a scene representation is built before the instruction is known, it may lack the attributes, affordances, or concepts needed to resolve the task. We present FEIJOA, a language-model agent that grounds the instruction at test time. It queries a grounding tool over a posed RGB-D scan, inspects the returned candidates, and refines its queries until they resolve the instruction. An embodiment-aware harness checks each skill's preconditions, samples base poses from which the target is reachable, and verifies the skill's effect from observations before and after execution. On 103 open-ended grounding queries, FEIJOA resolves 94.2% exactly, compared with 68.0% for the best prebuilt representation. Over 50 real-world trials on Spot, it completes 35 tasks; 17 of these successes follow recovery from a failed tool call or verification check. Of the 15 failed trials, 13 were caused by the robot's physical skills, and only 2 by grounding or the agent's reasoning. Project website: https://williamshen-nz.github.io/feijoa/.",
-    "authors": "Aditya Agarwal, William Shen, Sahit Chintalapudi, Lucy Cai, Nishanth Kumar, Aidan Curtis, Travis Manderson, Tomás Lozano-Pérez, Leslie Pack Kaelbling",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.04080",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "",
-    "matched_keywords": [
-      "Manipulation"
-    ],
-    "matched_categories": [
-      "Dexterous"
-    ],
-    "hf_rank": null,
-    "score": 10,
-    "paper_id": "arxiv:2611.04080",
     "source": "arxiv",
     "venue": ""
   },
@@ -13274,46 +13003,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2611.03806": {
-    "arxiv_id": "2611.03806",
-    "title": "BEND 2.0: Benchmarking the Capabilities Needed to Design DNA",
-    "abstract": "Genomic foundation models are increasingly used to propose DNA sequences and edits. But successful design requires capabilities that current benchmarks do not measure. Here we introduce BEND 2.0 (BENchmark for DNA language models), which tests how well models predict the effects of DNA changes and whether these predictions can guide sequence design. Across eight tasks built on five experimental datasets, we find that model choice and how representations are accessed both affect performance. Linear readouts fitted to frozen representations can match or exceed models' native outputs, and functional post-training substantially improves the models' capabilities. Linear readouts transfer well across experimental assays and genes, suggesting that models capture functional patterns beyond the data used to fit individual predictors. At the same time, strong prediction of average effects can conceal weaker prediction of context-specific effects, and accurate prediction of combined mutation effects does not imply accurate prediction of their interactions. In design tasks, model predictions can reduce the number of candidates needed to find a desired response, but still leave substantial room for better design choices, particularly for context-specific and multi-cell objectives. Our benchmark reveals that genomic models now display signs of general utility but have yet to saturate on performance in even simple tasks.",
-    "authors": "Andreas Bjerregaard, Rachael DeVries, Dionysia Danai Brilli, Panagiotis Antoniadis, Yan Li, Anders Krogh, Wouter Boomsma, Ole Winther, Frederikke Isa Marin",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03806",
-    "project_url": "https://machinelearninglifescience.github.io/BEND2/",
-    "code_url": "https://github.com/MachineLearningLifeScience/BEND2",
-    "hf_url": "https://huggingface.co/papers/2611.03806",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 48,
-    "score": 32,
-    "paper_id": "arxiv:2611.03806",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.03998": {
-    "arxiv_id": "2611.03998",
-    "title": "Dory1.0-4B: A Looped Normalized-GPT",
-    "abstract": "We introduce Dory1.0-4B, a 4-billion-parameter looped (latent-recurrent) language model with elastic depth: a single checkpoint serves different inference compute budgets. Dory1.0-4B is built on a normalized Transformer (nGPT) backbone with interleaved sliding-window and full-attention layers, organized into an input block, a shared recurrent block, and an output block. At inference, the recurrent block can be applied a variable number of times. We pre-trained Dory1.0-4B on 6 trillion tokens. The first 4.5 trillion tokens were trained in NVFP4, and additional pre-training then extended the context length to 256K tokens. Next, we post-trained the model using Supervised Fine-Tuning (SFT) and Reinforcement Learning with Verifiable Rewards (RLVR), with a difficulty-aware loop curriculum that routes harder prompts to deeper loops. Increasing the loop count improves accuracy, with the largest gains on coding, agentic, and long-context benchmarks. With two or more loops, Dory1.0-4B outperforms larger models such as Qwen3.5-9B, Gemma 4 12B, and Gemma 4 26B-A4B on average across 12 benchmarks. Looping also makes Dory1.0-4B more token-efficient on agentic benchmarks: with four loops, it generates 1.3-2.5x fewer tokens than with one loop, as the extra computation is spent in latent space rather than on longer outputs. To reduce memory during looping, Dory1.0-4B caches keys and values only from the last loop, keeping its KV-cache footprint equal to that of a non-looped model at any loop count while retaining most of the accuracy gains. We open-source the BF16, MXFP8, NVFP4, and GGUF quantized checkpoints.",
-    "authors": "Maxim Fishman, Simeng Sun, Shantanu Acharya, Faisal Ladhak, Brian Chmiel, Santiago Akle Serano, Ron Banner, Boris Ginsburg, Krishna C. Puvvada",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03998",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2611.03998",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 49,
-    "score": 26,
-    "paper_id": "arxiv:2611.03998",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2611.04785": {
     "arxiv_id": "2611.04785",
     "title": "Kierston & KierstonBench: Simulation of Allentown, PA and Evaluation of Language Models in Crime Investigation and Surveillance Tasks",
@@ -13494,26 +13183,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2611.03634": {
-    "arxiv_id": "2611.03634",
-    "title": "WebHarbor: Docking Real Websites for Evolving GUI Agent Environments",
-    "abstract": "GUI web agents require realistic and interactive environments that remain stable during both evaluation and training. Live website evaluation suffers from changing content, access restrictions, and limited coverage of authenticated workflows, while existing synthetic environments for training often lack functional depth and visual fidelity. We propose WebHarbor, a suite of 153 executable and dockerized website environments that faithfully reconstruct the visual interfaces, content, and functional workflows of real-world web services under deterministic control. We build WebHarbor through task-driven human-agent collaboration, where environments evolve as new tasks expand their functional scope, coding agents implement the required changes, and human contributors audit visual fidelity, functional correctness, and task validity. The resulting suite comprises 3,518 tasks spanning multi-step and post-authentication workflows, where existing works often fail to cover. Beyond reliable evaluation, WebHarbor provides high-fidelity synthetic web environments for cost-efficient reinforcement learning (RL). We demonstrate that a Qwen 4B-level GUI agent trained with RL in WebHarbor generalizes to unseen tasks and performs competitively with leading open-source GUI web agents across four benchmarks. The code and data are publicly available at https://github.com/aiming-lab/WebHarbor.",
-    "authors": "Zhaoyang Wang, Qianhui Wu, Boyu Gou, Demi Wang, Jiacheng Zhang, Peichun Hua, Qize Li, Shi Qiu, Yifan Jiang, Yifan Zhang, Zexu Jin, Baolin Peng, Bolin Shen, Chetan Bansal, Dehan Kong, Deren Lei, Dongshen Peng, Fengqing Jiang, Hao Cheng, Haoqing Wang, Jiaming Shan, Jicheng Wang, Jingguang Zhou, Jixuan He, Kaide Zeng, Kangyu Zhu, Lama Moukheiber, Mufan Qiu, Peng Xia, Qihan Sun, Qingwei Lin, Qiushi Sun, Ruichen Zhang, Shuqing Luo, Si Qin, Sicheng Fan, Tao Xiong, Wenlin Yao, Xinyu Zhang, Xinyue Zeng, Xuanrui Li, Xuchao Zhang, Yian Wang, Yichao Liu, Yiming Liang, Yiyang Zhou, Yizhu Jiao, Yuetai Li, Yurun Chen, Yuxuan Zhang, Zheyuan Yang, Zhiyuan Yao, Zhongyang Li, Zihao Li, Zili Wang, Jianfeng Gao, Huaxiu Yao",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03634",
-    "project_url": "https://aiming-lab.github.io/WebHarbor/",
-    "code_url": "https://github.com/aiming-lab/WebHarbor",
-    "hf_url": "https://huggingface.co/papers/2611.03634",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 36,
-    "score": 11,
-    "paper_id": "arxiv:2611.03634",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2611.05280": {
     "arxiv_id": "2611.05280",
     "title": "YANAMI: A Large-Scale Multimodal Dataset and Benchmark for Multiturn Stateful Interaction",
@@ -13571,26 +13240,6 @@
     "hf_rank": 44,
     "score": 0,
     "paper_id": "arxiv:2611.04467",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.03747": {
-    "arxiv_id": "2611.03747",
-    "title": "Enhancing Stock Market Information Retrieval with Retrieval-Augmented Generation",
-    "abstract": "Natural Language Processing (NLP) has been widely applied in financial domains, enabling automated analysis and retrieval of stock market information. However, traditional NLP-based systems often struggle with maintaining contextual accuracy and generating relevant responses in dynamic financial environments. To address these challenges, Retrieval-Augmented Generation (RAG) models have emerged as a powerful solution, combining retrieval-based methods with generative capabilities to enhance response quality. In this study, we present a Retrieval-Augmented Generation (RAG) system designed to generate responses related to stock market information. The system integrates retrieval-based and generative approaches to enhance the accuracy and relevance of financial text generation. To evaluate its effectiveness, we employ the ROUGE metric, specifically ROUGE-1, ROUGE-2, and ROUGE-L, to measure lexical and structural similarity between generated and reference texts. Experimental results on a dataset of 100 stock market-related queries demonstrate high ROUGE scores, indicating strong alignment with reference documents. Additionally, we assess latency to evaluate the system responsiveness, achieving an average response time of 1.16 seconds. These findings confirm that our RAG model is capable of providing accurate and timely stock market insights, making it a promising approach for financial information retrieval.",
-    "authors": "Huan Phong Thai, Thu Anh Ngoc Le, Nhu Huynh Thi Le, Nhan Huu Tran, Lenh Cong Phan Pham, Hong Nhung Nguyen",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03747",
-    "project_url": "",
-    "code_url": "https://github.com/nhunguet/SearchEngine",
-    "hf_url": "https://huggingface.co/papers/2611.03747",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 47,
-    "score": 5,
-    "paper_id": "arxiv:2611.03747",
     "source": "arxiv",
     "venue": ""
   },
@@ -14488,26 +14137,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2611.03768": {
-    "arxiv_id": "2611.03768",
-    "title": "Multi-layer Indexer: Overlapping Selection and Attention in DeepSeek Sparse Attention",
-    "abstract": "Sparse attention cuts the cost of long-context inference by making the attention matrix sparse: each query attends only a subset of the sequence, chosen by a fixed pattern or, in recent production LLMs, learned per query. In DeepSeek Sparse Attention (DSA), the attention of DeepSeek-V3.2 and the GLM-5 family, every layer is preceded by a lightning indexer that scores the whole cache and keeps the k=2048 highest-scoring tokens for the layer to attend. At long context this indexer scan, not the sparse attention it feeds, is where the decode time goes. But adjacent layers select nearly the same tokens, so a layer can attend the selection of the previous indexer layer instead of its own. This removes the dependency: each indexer then runs concurrently with the attention of its layer. The resulting Multi-layer Indexer (MLI) needs no retraining and no new weights. Its default realization changes no kernel, running inside SGLang's production decode graph; an optional fused decode kernel accelerates it further on DeepSeek-V3.2. MLI composes with IndexCache (the cross-layer reuse GLM-5.2 ships as IndexShare): IndexCache drops the indexer from some layers, and MLI hides the scan on the rest. We serve DeepSeek-V3.2 and GLM-5 under IndexCache's protocol at retentions 1/2 to 1/32 (the fraction of layers that keep an indexer) and contexts 10K to 195K. At equal retention the composition decodes faster than IndexCache: up to 14.5% faster on DeepSeek-V3.2 and 9.8% on GLM-5 at 1/2, and 7.9% and 5.1% at 1/4, largest where IndexCache keeps the most indexers and growing with context. At retention 1/r it is faster still than IndexCache at 1/(2r) while keeping twice the fresh selections: at 128K it reaches 1.32x the unmodified model's decode throughput at 1/4, above IndexCache's 1.28x at 1/8. Its LongBench, RULER and LongBench v2 accuracy stays within a few percentage points of IndexCache's.",
-    "authors": "Serdarcan Dilbaz, Arjun Krishna, Kiran Kamble, Daniel M. Bikel",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03768",
-    "project_url": "",
-    "code_url": "https://github.com/ArjunKrishnak/dsa-multi-layer-indexer",
-    "hf_url": "https://huggingface.co/papers/2611.03768",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 35,
-    "score": 34,
-    "paper_id": "arxiv:2611.03768",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2611.04408": {
     "arxiv_id": "2611.04408",
     "title": "Halley: A Predictive Control Plane for Optical AI Data Center Networks",
@@ -14545,46 +14174,6 @@
     "hf_rank": 39,
     "score": 30,
     "paper_id": "arxiv:2611.04949",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.03517": {
-    "arxiv_id": "2611.03517",
-    "title": "Ask, Don't Equip: Question-Driven Coding Agents for Deep Kernel Optimization",
-    "abstract": "LLM agents for GPU kernel optimization sit at two ends of a structure-freedom tradeoff. Scripted agents fix what the model does at each step, via a learned policy, an optimization menu, or fixed roles, and are sample-efficient where the recipe applies and stall where it does not. Open-ended agents let a self-directed model mutate a population of kernels and pay for the freedom in trials: thousands of evaluations, repeated edits, and wrong candidates. Both respond to hard targets by equipping the agent with more: parsed profiler output, disassembly analysis, retrieval over documentation and libraries, and stores of lessons. We argue that both lack direction, a hypothesis about where the remaining gap is, and that a short question asked at the right moment supplies it without narrowing what the agent may do next. We present KernelSeek, a question-driven agent that makes an existing CUDA kernel faster with no operator-specific knowledge and no faster implementation to imitate: a general-purpose coding agent, a minimal harness that enforces a verifiable goal, and questions at decision points, first from a human, then from a bank the agent applies to itself. On the same task, evaluator, hardware, and week, a tool-rich autonomous agent built in the prevailing style plateaued at 0.50x FlashAttention-3 after 133 model-driven steps; KernelSeek reached 1.13x. It then produced dependency-free FlashAttention forward kernels for Hopper and Blackwell, single CUDA files with no CUTLASS, CuTe, cuBLAS, or cuDNN, correct on all 182 scenarios per architecture and 1.16x FlashAttention-3 and 1.46x FlashAttention-4 (geometric mean). Across 162 human messages and 11.5K agent tool calls, every large gain followed a question that moved the agent to a different layer of the system or rejected a claimed limit, never one that supplied information. We release the kernels, harness, question bank, and all traces.",
-    "authors": "Gabriele Oliaro, Jaeseong Lee, Zhaoyuan Su, Sreeram Vennam, Zhihao Jia, Samyam Rajbhandari",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03517",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2611.03517",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 41,
-    "score": 23,
-    "paper_id": "arxiv:2611.03517",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.03852": {
-    "arxiv_id": "2611.03852",
-    "title": "Why Pay for Long Reasoning When Rewrite Do Trick? Causal Effects of Reasoning History Compaction on Future Generation and Agent Cost",
-    "abstract": "Reasoning substantially improves language models' ability to solve difficult problems, but long reasoning traces make these gains expensive. Efficient reasoning should express useful analysis in fewer tokens by reducing repetition and text that adds little value to solving the problem. Progress in proprietary models motivates this goal, yet their hidden scratchpads limit direct study of how it is achieved. We investigate whether open-weight models can generate less verbose reasoning by changing the form of their own earlier thoughts, without retraining. Our intervention rewrites prior reasoning into compact state records before pending tool results are revealed, then compares continuations from original and compact histories. Across the tested models, accepted compact histories usually shorten future reasoning; a coding case study also shows less repeated verification after a shared candidate solution. In software-agent deployments, compaction can reduce total spending, although task quality and rewrite-inclusive time depend on the target and compressor. These findings identify reasoning history as one way to reduce future reasoning-token use and motivate model-specific compaction policies evaluated for both efficiency and retained capability.",
-    "authors": "Anton Hristov",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03852",
-    "project_url": "https://doi.org/10.18653/2026.realm-1.84",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2611.03852",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 42,
-    "score": 22,
-    "paper_id": "arxiv:2611.03852",
     "source": "arxiv",
     "venue": ""
   },
@@ -15965,26 +15554,6 @@
     "source": "arxiv",
     "venue": ""
   },
-  "arxiv:2611.03743": {
-    "arxiv_id": "2611.03743",
-    "title": "EvoMemState: Evolving Memory State for Personal Agents",
-    "abstract": "Long-term memory enables large language model (LLM) agents to provide continuous personalized assistance by retaining user information across interactions. Existing systems support this process through fact extraction, organization, updating, and retrieval, but largely maintain memories as independent facts. This fact-centric paradigm may overlook how new facts update, constrain, or conflict with earlier ones, while leaving their applicability, role, and priority for the current request implicit. In this paper, we introduce EvoMemState, a state-centric framework that augments persistent facts with two complementary states: Relational States that capture how facts remain valid and relate to one another as memory evolves, and a Reasoning State that determines how these facts should be applied to the current request. Specifically, EvoMemState consists of three key components: (i) Ontology-Guided Memory State Induction extracts Persistent Facts and constructs Relational States that maintain their validity, scope, and evolving relations. (ii) RL-Based State Evolution internalizes memory-use experience into a policy through reinforcement learning to generate a request-specific Reasoning State. (iii) State-Aware Reasoning then combines the relevant facts with their Relational States and the generated Reasoning State to guide the personal agent. Extensive experiments on long-term dialogue and memory-use benchmarks demonstrate consistent improvements over existing memory systems in retrieval completeness and memory-grounded response accuracy. Our code and implementation details are available at https://github.com/XMUDeepLIT/EvoMemState.git.",
-    "authors": "Zhishang Xiang, Yunbo Tang, Zhongqiao Liu, Junkai Chen, Zerui Chen, Qingguo Hu, Yuxuan Zhang, William Grant, Qinggang Zhang, Jinsong Su",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03743",
-    "project_url": "",
-    "code_url": "https://github.com/XMUDeepLIT/EvoMemState",
-    "hf_url": "https://huggingface.co/papers/2611.03743",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 50,
-    "score": 20,
-    "paper_id": "arxiv:2611.03743",
-    "source": "arxiv",
-    "venue": ""
-  },
   "arxiv:2611.06982": {
     "arxiv_id": "2611.06982",
     "title": "Decode Before You Hear: Speculative Listening for Chunk-Interleaved Full-Duplex Speech Language Models",
@@ -17205,26 +16774,6 @@
     "hf_rank": 49,
     "score": 20,
     "paper_id": "arxiv:2611.07723",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.03953": {
-    "arxiv_id": "2611.03953",
-    "title": "P$^2$-MOPD: Accelerating Multi-Teacher On-Policy Distillation via Parameter Priors",
-    "abstract": "Multi-teacher on-policy distillation consolidates expert capabilities by supervising student-generated trajectories, whereas task arithmetic offers a training-free alternative through linear parameter combinations. We view the linear combination of student and expert parameters as a single differentiable model and propose P$^2$-MOPD, which jointly optimizes the mixing coefficients and the student weights under the same on-policy distillation objective. Unlike task arithmetic, which stays within the span of the frozen student and expert parameters for any choice of merging coefficients, P$^2$-MOPD keeps the student trainable, so the experts act as parameter priors without confining it to this span. Across four domains at 1.7B and 4B scales, P$^2$-MOPD achieves faster and more balanced recovery than MOPD from the same initialization, surpassing its final average recovery in half the training steps. At the end of training, our 1.7B model reaches 94.7% average recovery, versus 80.9% for MOPD.",
-    "authors": "Sinuo Wang, Jiacheng Lu, Zeyu Zhang, Maojia Song, Rui Sun, Beidi Luan, Yutong Xie, Jing Li, Daxin Jiang, Qi Wu, Zuo Bai",
-    "publish_date": "2026-11-02",
-    "arxiv_url": "http://arxiv.org/abs/2611.03953",
-    "project_url": "",
-    "code_url": "https://github.com/SinuoWang/P2-MOPD",
-    "hf_url": "https://huggingface.co/papers/2611.03953",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 50,
-    "score": 19,
-    "paper_id": "arxiv:2611.03953",
     "source": "arxiv",
     "venue": ""
   },
@@ -21839,7 +21388,7 @@
     "matched_categories": [
       "Dexterous"
     ],
-    "hf_rank": 2,
+    "hf_rank": 37,
     "score": 10,
     "paper_id": "arxiv:2611.16728",
     "source": "arxiv",
@@ -21905,7 +21454,7 @@
     "publish_date": "2026-11-12",
     "arxiv_url": "http://arxiv.org/abs/2611.16439",
     "project_url": "",
-    "code_url": "",
+    "code_url": "https://github.com/robbyant-research/Lingbot-ALOHA",
     "hf_url": "https://huggingface.co/papers/2611.16439",
     "matched_keywords": [
       "Bimanual",
@@ -21917,7 +21466,7 @@
       "Dexterous",
       "Manipulation"
     ],
-    "hf_rank": null,
+    "hf_rank": 34,
     "score": 40,
     "paper_id": "arxiv:2611.16439",
     "source": "arxiv",
@@ -22485,7 +22034,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 41,
     "score": 34,
     "paper_id": "arxiv:2611.16961",
     "source": "arxiv",
@@ -22505,7 +22054,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 42,
     "score": 33,
     "paper_id": "arxiv:2611.12750",
     "source": "arxiv",
@@ -22945,7 +22494,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 36,
     "score": 29,
     "paper_id": "arxiv:2611.10439",
     "source": "arxiv",
@@ -22965,7 +22514,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 38,
     "score": 27,
     "paper_id": "arxiv:2611.17336",
     "source": "arxiv",
@@ -22985,7 +22534,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 39,
     "score": 31,
     "paper_id": "arxiv:2611.17190",
     "source": "arxiv",
@@ -23005,7 +22554,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 40,
     "score": 30,
     "paper_id": "arxiv:2611.09567",
     "source": "arxiv",
@@ -23240,6 +22789,428 @@
     "hf_rank": null,
     "score": 20,
     "paper_id": "arxiv:2611.17394",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18562": {
+    "arxiv_id": "2611.18562",
+    "title": "Training Reasoning Models in Simulation to Natively Use Real Robots",
+    "abstract": "Robot-use agents (RUAs) have emerged as a promising approach to general-purpose robot control. However, strong performance has so far been achieved only by frontier proprietary models such as GPT-6 Astra and Claude Fable 5.2, whereas open-weight models remain substantially less capable. We show that an open-weight 27B reasoning model can be trained to use real robots natively through reinforcement learning, entirely in simulation and without demonstrations. Like a computer-use agent (CUA), the model observes the environment, reasons in a chain of thought, and generates the next end-effector pose, without any harness. We build a Post-training Engine for Agentic Robotics (PEAR) and use it to train the model on simulated robot tasks at scale with robot-use reinforcement learning (RURL), mirroring how frontier models acquire computer use. We find that the skills acquired in simulation generalize well beyond the training tasks: they transfer to an unseen robot, to the real world, and to novel instructions. After training on LIBERO and RoboDojo in simulation, the model succeeds in 60% of our trials on a real dual-arm robot, whereas the base model succeeds in none. On LIBERO, training raises the success rate from 1.6% to 74.4%, approaching GPT-6 Astra and GPT-6.1 Sol at maximum reasoning effort. Compared with $π_{0.5}$, a vision-language-action model fine-tuned on demonstrations, our model is substantially more robust to changes in the task itself. On LIBERO-Pro, $π_{0.5}$ succeeds in only 0.75% of episodes when assigned a new task in a familiar scene whereas our model succeeds in 57.4%. Finally, the model retains its general capabilities, with no measurable degradation on nine reasoning, coding and vision benchmarks. These results highlight robot-use reinforcement learning as a promising component of foundation-model post-training.",
+    "authors": "Jiaming Tang, Zhuoyang Zhang, Junxian Guo, Fangzhou Zhao, Yilong Zhao, Zekai Li, Xingyang Li, Yuyang Zhao, Song Bian, Zhijian Liu, Song Han",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18562",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "",
+    "matched_keywords": [
+      "Dual-arm",
+      "Vision-Language-Action"
+    ],
+    "matched_categories": [
+      "Dexterous",
+      "VLA"
+    ],
+    "hf_rank": null,
+    "score": 20,
+    "paper_id": "arxiv:2611.18562",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18372": {
+    "arxiv_id": "2611.18372",
+    "title": "Vision-Language-Action Models: A Life-Cycle Survey of Design, Training and Deployment",
+    "abstract": "Vision-language-action (VLA) models adapt web-pretrained vision-language models to output robot actions, so that web knowledge carries over to physical control. In under 4 years the field has moved from RT-2, the first VLA, to open models that fine-tune on a single consumer GPU and to proprietary generalists that clean unseen homes. This survey reviews 88 works from December 2022 to October 2026, mainly on manipulation and navigation, plus humanoid control, world-action models and evaluation. We follow a VLA through its life cycle, from model design to training and deployment, along seven axes. Model design covers (a) inputs and memory, what the model observes; (b) architecture, how its pipeline is built; (c) action output, how it produces motor commands; and (d) intermediate predictions, what else it predicts, from reasoning steps to future observations. Training covers (e) pretraining data, the mix of robot, web, human and simulated data, and (f) post-training, adaptation to the target robot. Deployment covers (g) real-time execution, keeping pace with the robot. We analyse 22 models on these axes and report their training data, model size, inference speed and hardware. Three trends emerge: (i) training data has broadened, from about 10,000 hours of teleoperated robot data ($π_0$) to 23,000 community-collected episodes (SmolVLA) and 20,000 hours of egocentric human video (GR00T N1.7); (ii) model sizes have split: most recent models have 3-7 billion parameters, while a new group under one billion runs on consumer GPUs; and (iii) generalist VLAs are emerging that handle both manipulation and navigation, such as UniVLA and Qwen-VLA. We also compare VLAs with world-action models, which predict future observations as well as actions. We review evidence that some VLAs with near-perfect benchmark scores fail when objects or the camera move slightly, and open up further research questions.",
+    "authors": "Suvarna Kadam, Soran Parsa",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18372",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "",
+    "matched_keywords": [
+      "Manipulation",
+      "Vision-Language-Action",
+      "VLA"
+    ],
+    "matched_categories": [
+      "Dexterous",
+      "Manipulation",
+      "VLA"
+    ],
+    "hf_rank": null,
+    "score": 30,
+    "paper_id": "arxiv:2611.18372",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18298": {
+    "arxiv_id": "2611.18298",
+    "title": "Objectives as Policies: Vision-Language Model Cost Programs for Contact-Rich Manipulation",
+    "abstract": "Vision-language models (VLMs) have shown strong semantic and spatial reasoning capabilities in 3D environments. Recently, connecting VLMs with model-predictive controllers (MPC) has emerged as a paradigm for combining strong semantic reasoning with physics-based planning. However, connecting these two for contact-rich robotic manipulation requires a task representation that bridges the two and captures how physical interactions can be reasoned by VLMs. In this work, we introduce Objectives as Policies (OaP), a framework that connects a pretrained VLM to a shared sampling-based MPC through an editable objective program. Each program specifies a sequence of stages for completing a task, combining running and terminal costs from a cost library with stage completion conditions. Given a natural-language task instruction and scene observation, we build a simulation-based digital twin through real-to-sim, and the VLM generates an objective program that is executed by the MPC in the simulation. The program is iteratively updated by the VLM based on MPC rollouts, before being deployed in the real world. We evaluate our framework in both simulation and the real world on four tabletop manipulation tasks, and show that it outperforms strong baselines. Additional videos and examples are available on the project website: https://zihaolu001.github.io/oap-project/",
+    "authors": "Zihao Lu, Trong Gia Hung Nguyen, Fuquan Wang, Yifan Zhu",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18298",
+    "project_url": "https://zihaolu001.github.io/oap-project/",
+    "code_url": "",
+    "hf_url": "",
+    "matched_keywords": [
+      "Manipulation",
+      "Robotic Manipulation",
+      "contact-rich manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous",
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 30,
+    "paper_id": "arxiv:2611.18298",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18026": {
+    "arxiv_id": "2611.18026",
+    "title": "A Generalizable Approach to Safety-Aware Robotic Behavior Planning with an Explicit Constraint Space",
+    "abstract": "Large language and vision-language models have substantially advanced robotic behavior planning from natural-language instructions and visual observations. However, safe manipulation in tabletop environments remains challenging because the safety constraints required for a task depend on the surrounding scene and may not be explicitly specified in the instruction. We propose a safety-aware behavior planning framework based on an explicit Constraint Space that stores reusable textual safety rules. Rather than retrieving rules solely by semantic similarity, we formulate constraint selection as task- and environment-conditioned applicability learning. A lightweight query-conditioned dual-tower model identifies the constraints applicable to the current context, which are then provided together with the original task and image to a multimodal behavior planner. To handle incorrect constraint selections and previously unseen hazards, we introduce a multimodal Safety Inspector that evaluates generated primitive plans, reconstructs the complete applicable constraint set, and provides corrective planning feedback. Validated inspection feedback is further used for test-time adaptation of constraint applicability and parameter-efficient adaptation of the Safety Inspector through LoRA, while newly identified constraints are incorporated into the Constraint Space. The resulting framework integrates explicit safety knowledge representation,context-aware constraint selection, corrective safety inspection, and test-time knowledge adaptation for safety-aware robotic behavior planning.",
+    "authors": "Xianxu Wu, Shang-Ching Liu, Zhaocong Liang, Hengxiang Chen, Yujian Ma, Shenwen Deng, Qiang Li, Jianwei Zhang",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18026",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "",
+    "matched_keywords": [
+      "Manipulation"
+    ],
+    "matched_categories": [
+      "Dexterous"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2611.18026",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18546": {
+    "arxiv_id": "2611.18546",
+    "title": "Modeling the Frictional Contact of Continuum Robots with Environments through Linear Complementarity Problem",
+    "abstract": "Accurate friction modeling in continuum robots is essential for precise motion control and path planning. However, current approaches make predictions only for the mechanism's internal friction that is limited by the boundary forces of the Coulomb friction cone, which fail to characterize the static friction and motion hysteresis. In this paper, we propose a novel friction model based on complementarity constraints under the Coulomb friction assumption. This model predicts various friction effects caused by environmental interactions, including both static and sliding frictions and hysteresis behavior, as well as the corresponding robot deformation induced by these interactions, which are crucial for the practical motion planning and control of continuum robots. Additionally, real-time implementation of this model can be achieved, meeting the demand for computational efficiency in robotic applications. Experimental validations demonstrated that this model is able to reduce the maximum tip position error from 45.4 mm in the frictionless model to 5.85 mm in our friction-included model with a 287.9 mm-long tendon-driven continuum robot.",
+    "authors": "Jia Shen, Junhyoung Ha, Yue Chen",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18546",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2611.18546",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18496": {
+    "arxiv_id": "2611.18496",
+    "title": "Toward Resilient Self-Driving Laboratories through Telerobotic Interventions",
+    "abstract": "Self-driving laboratories (SDLs) accelerate scientific research by integrating robotics, automated experimentation, and machine learning to execute experiments autonomously. Biology and chemistry have adopted these systems. However, increasing SDL complexity heightens susceptibility to unexpected faults in automated workflows, highlighting the need for efficient recovery mechanisms. In this study, we investigate telerobotic interventions to enhance SDL resilience against unexpected failures. We developed a teleoperation interface enabling human operators to resolve disruptions during automated tasks. The interface enables precise control of a six-degree-of-freedom (DOF) robotic arm (UR3e) using a 3D mouse (3Dconnexion SpaceMouse Pro). Two velocity-based controller strategies were evaluated: (i) a coupled mode mapping all six DOFs to the 3D mouse's central knob and (ii) a decoupled mode separating translational and rotational motions. To evaluate the framework, teleoperators intervened across three SDL fault scenarios. In the first study, comparative trials showed that the decoupled controller was associated with shorter completion times and reduced rotational motion. In a second study, teleoperators performed an aiming task with and without reference-path guidance. Users were more target-driven and risk-tolerant without guidance but showed behavioral differences under different guidance strategies. These findings suggest that controller configuration and reference-path design influence operator performance during SDL fault recovery, informing teleoperation interface optimization. This work demonstrates the potential feasibility of teleoperation as a human-in-the-loop recovery mechanism for SDL workflows, combining robotic precision with human adaptability and problem-solving. These findings also provide a foundation for future studies in shared autonomy and semi-autonomous intervention.",
+    "authors": "Ziheng Wu, Adrian Vecina Tercero, Andre A. Fatehi, Abhik Sarkar, Brian Giera, Eric B. Duoss, Christopher M. Spadaccini, Nikhil Deshpande, Aldair E. Gongora",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18496",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "",
+    "matched_keywords": [
+      "Teleoperation"
+    ],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 10,
+    "paper_id": "arxiv:2611.18496",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18491": {
+    "arxiv_id": "2611.18491",
+    "title": "When Will You Hand It Over? A Hidden Start Delay Makes Self-Play Handover Robust to Unfamiliar Partners",
+    "abstract": "Cooperative self-play can teach a humanoid to receive an object without any human data, but the partner it meets after training is never the one it trained with; we show that a fluent self-play handover policy breaks with unfamiliar partners, identify the main cause, and repair it. In a physics-based parcel handover between a Unitree G1 and a learned giver, both trained by alternating PPO self-play, the receiver completes 95% and 90% of handovers with its own partner (two training seeds) but only 31% with scripted partners it has never met. Paired interventions isolate the cause: under a shared reward the learned giver always starts its offer at once, so the receiver learns a single rendezvous, and delaying its own partner by one second cuts success from 95% to 6% (87% to 34% in the second seed). We introduce hidden start-delay randomisation (HSD), a one-line rule on the learned partner that the receiver never observes. After 300 further updates, success with unseen scripted partners rises from 31% to 80% in both seeds, against 35--41% for a budget-matched control. The gain holds on a fresh scenario seed, on eleven held-out partner conditions and on partners that start later than any training delay; it cuts high-force contact three- to five-fold and needs no retraining of the partner.",
+    "authors": "Mohammad Khoshnazar, Mike Degany, Deyuan Qu, Qing Yang, Matyas Szanto",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18491",
+    "project_url": "https://github.com/mkhoshnam/Selfplay-PPO-handover",
+    "code_url": "",
+    "hf_url": "",
+    "matched_keywords": [],
+    "matched_categories": [
+      "Manipulation"
+    ],
+    "hf_rank": null,
+    "score": 0,
+    "paper_id": "arxiv:2611.18491",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18176": {
+    "arxiv_id": "2611.18176",
+    "title": "ESI: An Embodied Self-Improvement Flywheel for LLM-VLA Agents",
+    "abstract": "Independently pretrained language models and vision-language-action (VLA) policies provide complementary building blocks for embodied agents, but connecting them does not automatically produce coordinated behavior. The VLA may generate actions that diverge from the LLM's intended subtask and, upon regaining control after a correction, undo the promising state restored by the LLM. We introduce ESI (Embodied Self-Improvement), an automated flywheel that uses environmental interaction to align reasoning and action. ESI treats the modular agent as the unit of post-training, repeatedly refining the prompts that guide the LLM, the shared skill interface that expresses its intent, and the VLA parameters that realize that intent, then redeploying these components together. Our key insight is that collaboration itself can supply supervision for improving this interface. The LLM's subtask decisions provide semantic supervision for what the policy should execute, while its effective corrections and subsequent student continuations provide action-level supervision for recovery and handoff. The student also learns from its own effective execution, allowing locally useful experience to contribute even when the overall episode fails. On ten selected RoboDojo tasks, ESI achieves a mean Score of 62.03 and a mean success rate of 49.41% using an LLM-VLA agent without generating task-specific control code. On both metrics, it outperforms the published reference results of all hybrid embodied agents, including the Agent+WAM system GO-3 Nano Preview (47.27 Score and 36.60% success), as well as all compared code-based methods.",
+    "authors": "Yundi Cai, Zihan Wang, Chenxi Han, Yi Cheng, Houde Liu, Zilei Wang",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18176",
+    "project_url": "https://github.com/Embodied-Self-Improvement/ESI",
+    "code_url": "",
+    "hf_url": "",
+    "matched_keywords": [
+      "Vision-Language-Action",
+      "VLA"
+    ],
+    "matched_categories": [
+      "VLA"
+    ],
+    "hf_rank": null,
+    "score": 20,
+    "paper_id": "arxiv:2611.18176",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18130": {
+    "arxiv_id": "2611.18130",
+    "title": "JFinBench: A Continuously Refreshable Japanese Financial Benchmark from the Latest Certification Exams",
+    "abstract": "Large language models (LLMs) are increasingly applied to finance, creating a need for benchmarks that evaluate their capabilities across financial systems with different regulations and practices. However, existing financial benchmarks provide limited coverage of country-specific financial systems, and they are difficult to keep up to date as released questions leak into training data. We introduce JFinBench, a Japanese financial benchmark comprising 321 examples from the 2026 editions of six regularly administered certification exams covering accounting, tax, financial planning, and banking. To construct it, we develop a human-in-the-loop agentic pipeline in which a coding agent writes exam-specific conversion code and a review page, while a human verifies every example and feeds corrections back to the agent. This pipeline adapts to heterogeneous exam formats and reduces the effort of incorporating new exam editions, enabling periodic refreshes that mitigate data contamination. Evaluating 12 recent LLMs, we find that Claude Fable 5 and GPT-6 Astra exceed 93% overall, while even the best open-weight model, Kimi K3.1 Pro, trails Claude Fable 5 by 12 percentage points. When models can additionally use a terminal and web access, they retrieve the knowledge they lack and every model improves. The gap narrows but about 4 points remain, and the ranking of models stays largely the same, suggesting that knowledge held in the model itself remains valuable even with tools. We release the dataset, the evaluation code, and the construction pipeline.",
+    "authors": "Issa Sugiura, Taro Makino, Takashi Ishida",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18130",
+    "project_url": "https://pub.sakana.ai/jfinbench/",
+    "code_url": "https://github.com/SakanaAI/JFinBench",
+    "hf_url": "https://huggingface.co/papers/2611.18130",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 21,
+    "score": 14,
+    "paper_id": "arxiv:2611.18130",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18529": {
+    "arxiv_id": "2611.18529",
+    "title": "eDIAR: Training-Free Open-Speaker Streaming Diarization for Long Meetings and Large Archives via e-means",
+    "abstract": "Meetings last up to an hour, and nobody knows in advance how many people will speak. Neural diarizers with a fixed number of output slots, such as Streaming Sortformer and Nemotron-3, are accurate and run online, but they cannot name more speakers than they have slots. We remove this limit without retraining. The slot head keeps deciding who is active and when speech overlaps, and speaker embeddings are clustered inside a single slot, with the official e-means algorithm, only after every slot has been used. In the streaming system, re-clustering is confined to a bounded window, labels are revised for a few seconds, and identities are anchored to the slots of the head. The resulting system has no limit on the number of speakers and stays accurate when speakers outnumber the slots, where fixed-slot models break down. On meetings that grow to an hour it stays far more accurate than Streaming Sortformer, which accumulates errors, and its cost per update does not grow with the meeting. The same recipe turns the four-slot Streaming Sortformer into an open-speaker system. Across recordings, e-means makes it affordable to link the speakers of a large archive frame by frame, a task that arises when conversational corpora are prepared, and it reaches the clustering quality of Lloyd's $k$-means several times faster. The method needs little tuning, and e-means runs with its default recipe from a few hundred to more than a million embeddings.",
+    "authors": "Kyudan Jung, Jihwan Kim, Minwoo Lee, Eunji Shin, Jaegul Choo",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18529",
+    "project_url": "https://kyudan1.github.io/eDIAR/",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.18529",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 22,
+    "score": 8,
+    "paper_id": "arxiv:2611.18529",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18549": {
+    "arxiv_id": "2611.18549",
+    "title": "JVT: Just Video Transformer makes pixel-space video diffusion simple",
+    "abstract": "Direct diffusion modeling of high-dimensional raw video data is challenging, and existing pixel-space methods often rely on specialized architectures. We introduce JVT (Just Video Transformer), a simple large-patch DiT-style Transformer for pixel-space video diffusion, without a pretrained autoencoder, auxiliary detailers, cascaded stages, or U-Net-style skip connections. We systematically examine video patch embeddings, register tokens, and adaptive layer normalization to identify design choices that balance generation quality and computational efficiency. The resulting JVT design achieves generation quality competitive with latent diffusion baselines in both class-conditioned and unconditional settings. The pixel-space formulation of JVT also naturally supports joint generation of pixel-aligned modalities. We demonstrate this capability through camera-conditioned RGB-disparity generation, which improves camera following relative to RGB-only baselines and yields explicit scene geometry without an additional reconstruction model at inference. These results highlight the potential of simple DiT-style Transformers for pixel-space video diffusion, and we hope our findings offer useful insights and practical guidance for future research.",
+    "authors": "Jianjun Zhou, Hua Geng, Haoyu Guo",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18549",
+    "project_url": "https://zhoutimemachine.github.io/JVT/",
+    "code_url": "https://github.com/ZhouTimeMachine/JVT",
+    "hf_url": "https://huggingface.co/papers/2611.18549",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 24,
+    "score": 11,
+    "paper_id": "arxiv:2611.18549",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.17820": {
+    "arxiv_id": "2611.17820",
+    "title": "Aligning AI Teams",
+    "abstract": "Previous work has shown that alignment training on individual LLM agents can fail to transfer to multi-agent settings. We investigate the underlying mechanisms for this failure, and explore interventions to preserve alignment transfer to multi-agent LLM teams. We focus on two software-engineering tasks (sepsis triage, a news recommender) and ten consulting-proposal generation tasks. We present four findings: (1) The single-vs-team safety gap does not show a clear trend with more capable models. We find that Anthropic's Mythos Preview shows the largest gap on one of our tasks but the smallest on another; (2) Many natural interventions, such as having agents critique each other's work or coordinate in a group chat, do not reliably bring agent teams back to single-agent alignment behavior; (3) diffusion of responsibility substantially accounts for the safety gap: agents in teams are less likely to proactively check for system-level safety failures and more likely to ignore, rationalize, or deflect responsibility for issues when they arise; (4) having a designated safety lead agent ensure system-level safety, and having a coordinator agent publish a safety specifications document are effective at restoring single-agent alignment. We also release magelab, a multi-agent LLM orchestration and experimentation framework. Our findings can help practitioners design agent teams that successfully preserve the behaviors expected of aligned individual agents.",
+    "authors": "Siddarth Srinivasan, Morgan Jane Matthews, Jascha Sohl-Dickstein, Erik Jones",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.17820",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.17820",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 25,
+    "score": 5,
+    "paper_id": "arxiv:2611.17820",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18397": {
+    "arxiv_id": "2611.18397",
+    "title": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Real-Time Game Agent",
+    "abstract": "We introduce Gamer, a generalist agent framework built for long-horizon tasks in complex interactive environments. Its end-to-end architecture combines perception, memory management, and multi-step reasoning. A shared training and deployment pipeline supports interaction with both conventional 2D graphical interfaces and complex 3D simulated worlds. We first continue pre-training on a dataset constructed from tens of thousands of hours of device-level keyboard and mouse interaction. These trajectories span simulated games and embodied environments, allowing the model to learn environmental dynamics across both physical and virtual domains. Sparse-thinking instruction tuning then substantially reduces redundant computation while preserving the reasoning needed for complex decisions. We train the policy for long-horizon interaction with a stable multi-turn reinforcement learning method that addresses finite context windows, accumulated rollout errors, and sparse rewards. For real-time interaction, a cloud-edge inference engine serves numerous simulated game environments concurrently, supports unbounded-context execution, and keeps online inference latency low. Across multiple challenging 3D open-world games, Gamer demonstrates solid generalization and operational efficiency comparable to skilled players. It also achieves competitive results on a range of conventional 2D game benchmarks. These results suggest that even repetitive keyboard and mouse trajectories can support substantial gains from scaling data and learning algorithms. Training on these trajectories helps Gamer learn complex skills more steadily in environments with both physical and digital properties. This approach offers a path toward generalist agents that can interact across digital and physical worlds.",
+    "authors": "Run Luo, Kuan Zhang, Qi Deng, Yukun Chen, Zhihao Yang, Yufei Zhang, Renrong Hu, Yi Zhang, Guiyu Ma, Tianyu Fan, Longze Chen, Hao Sun, Jiaming Li, Jiaming Yang, Xiaohao Liu, Tao Tan, Minzheng Wang, Hangtian Jia, Shuai Yuan, Lvdi Wang, Xiao Liu, Chao Ma, Yuting Zou, Yinhe Zheng, Xiaobo Xia, Dawei Jiang, Shaoqing Ren",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18397",
+    "project_url": "https://mihoyo-gamer.github.io/",
+    "code_url": "https://github.com/RainBowLuoCS/Gamer",
+    "hf_url": "https://huggingface.co/papers/2611.18397",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 26,
+    "score": 9,
+    "paper_id": "arxiv:2611.18397",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18442": {
+    "arxiv_id": "2611.18442",
+    "title": "CANTraj: Recovering Vehicle Trajectories from CAN Signals in Naturalistic Driving",
+    "abstract": "Open driving releases and usage-based insurance programs often claim to prevent privacy breaches by omitting GPS records when sharing or collecting vehicle data. However, removing GPS coordinates from driving logs does not erase the location information carried by vehicle signals. While prior route-inference attacks have demonstrated that speed, steering, and driving events can be matched to road networks to reconstruct trajectories, existing studies rely on inconsistent prior assumptions and evaluation metrics and are tested only on small, restricted datasets, making their results difficult to compare and their real-world effectiveness uncertain. We release CANTraj, a naturalistic driving dataset pairing decoded CAN events with time-aligned GNSS trajectories (3,940 drives, 454 drivers), and CANTraj-Bench for evaluating trajectory recovery (3,675 drives, 431 drivers, 1,380 hours, 85,919 km). On 776 evaluation drives from 94 unseen drivers, we compare six re-implemented attacks and benchmark baselines under explicit information-access protocols, paired comparisons, and metrics incorporating failures. Experiments show that combining steering signals with road-network constraints yields the largest gain: With a known start and heading, adding steering to speed raises the online map filter's five-minute route recovery from 56% to 87%, with a median average displacement error of 43 m versus 921 m for map-free dead reckoning. Offline beam search recovers 88% of test routes with the heading and 81% without it. Because methods fail on different windows, we also evaluate an LLM harness that selects among candidate routes on 659 five-minute windows; its best configuration recovers 79% of routes on test and 83% on few-shot, outperforming the best baseline on test and matching it on few-shot. Data and code at huggingface.co/datasets/HenryYHW/CANTraj and github.com/WangYuHang-cmd/GPS--CAN.",
+    "authors": "Yuhang Wang, Jingxin Yang, Chuheng Wei, Suyang Chen, Haozhuang Chi, Hao Zhou",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18442",
+    "project_url": "https://wangyuhang-cmd.github.io/cantraj/",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.18442",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 27,
+    "score": 3,
+    "paper_id": "arxiv:2611.18442",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18338": {
+    "arxiv_id": "2611.18338",
+    "title": "MEM-SQL: Memory-Empowered Text-to-SQL",
+    "abstract": "Text-to-SQL systems translate natural language questions into SQL queries over increasingly complex databases. However, widely used benchmarks evaluate questions independently, overlooking settings where earlier queries over the same database can supply joins or calculations for a new question. We introduce HARE (History-AwaRe Text-to-SQL BEnchmark) to measure the accuracy and cost of adapting historical SQL. HARE comprises 1,600 requests derived from a fixed pool of 823 verified queries across four datasets. Annotations record which components each request preserves and which edits it requires, distinguishing whole-query adaptation from partial reuse. Our method, MEM-SQL (Memory-EMpowered Text-to-SQL), stores whole-query templates, reusable SQL blocks, and mappings from domain concepts to schema elements. MEM-SQL uses a layer only if every requirement assigned to it has a match above that layer's threshold. With On-demand Schema Linking (OSL), MEM-SQL consults the schema only when no layer qualifies or the generator judges retrieved evidence insufficient. Across six language models on HARE, mean execution accuracy rises from 37.1% for Direct Generation without history to 50.0% for MEM-SQL, with 76.6% fewer input tokens and 68.8% lower latency on average. Further analysis shows that requests reusing several verified queries remain a bottleneck, with accuracy falling from 56.7% to 29.7%, most sharply when reused components must be placed in a new query structure or combined with a shared join. Applying OSL to three other memory designs consistently reduces generation cost, while its accuracy benefit depends on the memory design. Verified history can thus make generation both more accurate and cheaper, but its value depends on the evidence retained and when the system consults the schema.",
+    "authors": "Xiaoqi Wang, Wenqi Pei, Shizheng Hou, Yilai Liu, Han Chen, Boyan Li, Yuyu Luo, Hongyang Du",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18338",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.18338",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 28,
+    "score": 2,
+    "paper_id": "arxiv:2611.18338",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.17811": {
+    "arxiv_id": "2611.17811",
+    "title": "AI Reviews Are Biased Towards the Appendix",
+    "abstract": "Large language models (LLMs) are increasingly used by reviewers to highlight weaknesses during the reviewing process, and their outputs often shape the reviews that humans submit. Prior work studies how LLM reviews align with human ones, yet we know little about which parts of a paper these models actually criticize. In this work, we investigate 2,000 papers from ACL, EMNLP, COLM, and ICLR, and show that the latest GPT and Claude models draw about 50% or more of their review weaknesses from the appendix. This behavior holds across the API, coding-agent, and web access methods for using LLMs to review a paper. In contrast, we find that humans draw only 8.4% of their weaknesses from the appendix, and these weaknesses primarily revolve around a paper's presentation and content related to its core idea. Meanwhile, LLMs draw weaknesses from deep in the appendix that concern fine-grained technical details not central to the paper's contributions. We anticipate that our analysis will contribute to the scholarly discourse on AI reviews. Our code is publicly available at: https://github.com/cincynlp/review_appendix.",
+    "authors": "Saptarshi Ghosh, Mohammad Saim, Tianyu Jiang",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.17811",
+    "project_url": "",
+    "code_url": "https://github.com/cincynlp/review_appendix",
+    "hf_url": "https://huggingface.co/papers/2611.17811",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 29,
+    "score": 6,
+    "paper_id": "arxiv:2611.17811",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.18359": {
+    "arxiv_id": "2611.18359",
+    "title": "Envisioning Agentic Robotics: A New Era of Robotic Systems",
+    "abstract": "The release of GPT-6 Astra marks the emergence of a new paradigm in robotics: agentic robotics. Within weeks, frontier models with agentic harnesses matched or exceeded task-specific policies on many embodied benchmarks. Instead of training a dedicated policy for each family of tasks, an agentic robotic system applies a foundation model to open-world embodied tasks. It operates in a closed loop: observing the environment, interpreting user intent, reasoning about the task, invoking skills and tools, verifying outcomes, and adapting its strategy. Despite these advances, the community has yet to converge on a shared definition, a reliable evaluation framework, or a research roadmap. We argue that Embodied System 2, realized by a foundation model together with an embodied harness, forms the decision-making core of agentic robotics. Its central challenge is to translate general-purpose reasoning into effective and verifiable actions under physical constraints such as limited reaction time, mechanical limits, unpredictable environment changes, and irreversible consequences. Motivated by this perspective, we propose an evaluation framework that measures both model capabilities and closed-loop system performance. Furthermore, we identify the principles that carry over from digital to physical agents and the challenges that must be addressed to achieve reliable physical autonomy. On top of the Embodied System 2 and the evaluation framework, we envision a research roadmap toward sustained autonomy: the ability to perform work safely and reliably with progressively broader responsibility, from executing individual primitives to fulfilling standing roles.",
+    "authors": "Grid Robotics,  :, Qingfeng Lan, Duo Li, Siyao Li, Yiheng Lyu, Shijian Lu, Zhenghao Qi, Shizun Wang, Xinchao Wang, Ming Yang, Zhiqin Yang, Zuhao Yang, Tao Yu",
+    "publish_date": "2026-11-13",
+    "arxiv_url": "http://arxiv.org/abs/2611.18359",
+    "project_url": "https://grid-robotics-official.github.io/agentic-robotics-roadmap",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.18359",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 30,
+    "score": 0,
+    "paper_id": "arxiv:2611.18359",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.06866": {
+    "arxiv_id": "2611.06866",
+    "title": "GH-AWTrace: A Large-Scale Dataset of GitHub Agentic Workflow Execution Logs",
+    "abstract": "Agentic workflows enable AI agents to perform recurring repository tasks on schedules or in response to repository events. Existing studies examine workflow definitions and outputs, but provide limited evidence of what happens during execution. We present GH-AWTrace, a dataset linking 25,014 verified GitHub Agentic Workflows across 5,051 repositories to 4,112,526 run records and 562,877 nonempty execution log archives. The dataset preserves execution evidence subject to GitHub's log-retention limits and links it to repository metadata and generated workflow configurations. Illustrative cases show how the logs expose tool denials, provider failures, changes in an agent's approach, and delegation among agents. These observations enable research on execution failures, tool use, and the relationship between reported run outcomes and visible task progress. Coverage varies across workflows, and the logs provide partial observations rather than complete agent trajectories. Video: https://youtu.be/KIlfmZhHxtA",
+    "authors": "Jasem Khelifi, Hao Li, Ali Ouni, Mohammed Sayagh, Mohamed Aymen Saied",
+    "publish_date": "2026-11-04",
+    "arxiv_url": "http://arxiv.org/abs/2611.06866",
+    "project_url": "https://www.youtube.com/watch?v=KIlfmZhHxtA",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.06866",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 32,
+    "score": 0,
+    "paper_id": "arxiv:2611.06866",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.14504": {
+    "arxiv_id": "2611.14504",
+    "title": "Emergent Biological Capabilities in a Foundation Model for Molecular Interactions",
+    "abstract": "Foundation models trained on large unlabeled corpora develop emergent capabilities, tasks that go beyond the training objective. We extend this paradigm to multimodal biology with Bonbon, a foundation model for molecular interactions trained on approximately 3.2 trillion tokens of paired protein-ligand sequences. From a single representation space, Bonbon exhibits three zero-shot emergent capabilities at hierarchical levels of resolution: functional (mechanism of action), residue (binding site localization, including orthosteric/allosteric discrimination), and bond (covalent versus non-covalent engagement). All three capabilities generalize to out-of-distribution complexes. Bonbon was trained on protein-ligand sequences alone, without any task-specific supervision and without structural coordinates. We conducted controlled scaling experiments across six model scales from 42M to 1.6B parameters; every capability evaluated shows a sharp jump at the largest scale on continuous metrics, even as pretraining loss decreases smoothly. This demonstrates that loss-based scaling laws alone are insufficient to predict when zero-shot emergent capabilities become available. The capabilities reported here emerge after training at a 1:2,000 parameter-to-token ratio to accommodate the sparsity of paired biological interaction data. The same frozen representations achieve state-of-the-art binding and affinity prediction at five orders of magnitude greater speed than co-folding methods. In prospective wet-lab validation across nine disease targets spanning seven protein families, Bonbon achieves a 61.5% dose-response hit rate on de novo compounds, yielding structurally novel molecules not previously reported to inhibit these proteins, including for out-of-distribution targets.",
+    "authors": "Adi Mashiach",
+    "publish_date": "2026-11-10",
+    "arxiv_url": "http://arxiv.org/abs/2611.14504",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.14504",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 33,
+    "score": 0,
+    "paper_id": "arxiv:2611.14504",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.07226": {
+    "arxiv_id": "2611.07226",
+    "title": "Loopback Transformer: Towards a Unified View of Residual Looped Transformers",
+    "abstract": "Looped Transformers reduce parameter count by repeatedly applying shared blocks, but parameter sharing alone does not determine how the results of repeated computation are reused. We take the depth-memory view of residual connections and analyze which representation is stored after each block application and how later reads weight it. A full block output contains both its input and its new update, so weighting that output also reweights the history already carried by the input. Reading individual updates instead, with the shared stack's input kept on a separate path, gives separate controls over input strength, total update weight, and allocation across updates. The Loopback Transformer implements these controls: geometric decay sets the total update weight and supplies a recency prior, and attention learns how to allocate that weight. On ClimbMix, Loopback reaches lower validation loss than standard Transformer baselines with 40-75% of their Transformer parameters (excluding token embeddings and the output head) at reference scales from 191M to 3B, with training tokens and executed depth matched. It also has higher mean accuracy over thirteen downstream tasks at 1.4B and 3B. At 191M, 374M, and 778M, it has the lowest validation loss and the highest thirteen-task mean among the standard Transformer and seven looped residual designs.",
+    "authors": "Xuan Ouyang, Zefan Cai, Chenlong Zhang, Cheng Luo, Ke Wan, Junjie Hu",
+    "publish_date": "2026-11-04",
+    "arxiv_url": "http://arxiv.org/abs/2611.07226",
+    "project_url": "https://yancyou.github.io/Loopback_page/",
+    "code_url": "https://github.com/yancyou/Loopback",
+    "hf_url": "https://huggingface.co/papers/2611.07226",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 35,
+    "score": 5,
+    "paper_id": "arxiv:2611.07226",
     "source": "arxiv",
     "venue": ""
   }
