@@ -10180,7 +10180,7 @@
     "arxiv_url": "http://arxiv.org/abs/2611.07881",
     "project_url": "",
     "code_url": "",
-    "hf_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.07881",
     "matched_keywords": [
       "In-hand Manipulation",
       "Tactile sensing",
@@ -13483,86 +13483,6 @@
     "hf_rank": 33,
     "score": 26,
     "paper_id": "arxiv:2611.14516",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.14320": {
-    "arxiv_id": "2611.14320",
-    "title": "Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents",
-    "abstract": "External memory enables LLM agents to improve from experience by distilling trajectories of past tasks into concise lessons for new tasks. However, memory can also lead to memory-induced degradation, where an agent fails on tasks it would solve without memory, often because it follows a lesson that is incorrect, or misapplies or misreads a valid one. This is because lessons are inferred from trajectories labeled only with task success or failure, yet are typically provided without the trajectories they came from, leaving the agent no way to check them. To address this, we introduce WikiTrace, an evidence-linked memory system designed to let agents check each lesson against its original trajectory. Specifically, motivated by the finding that a trajectory often still holds the evidence needed to catch an erroneous lesson, WikiTrace stores each lesson as a concise insight linked to a summary of why its trajectory succeeded or failed and to the raw trajectory itself. Then, on a new task, the agent starts from all insights and, whenever one lacks details needed to act, conflicts with another, or comes from a failed task, descends through its links with terminal tools to fill in missing details or correct the insight before acting. We validate WikiTrace on five agentic benchmarks, showing that it consistently outperforms existing memory approaches and a baseline given the same insights alone, while also reducing memory-induced degradation. Our code is available at https://github.com/yukyeongleee/wikitrace",
-    "authors": "Yukyeong Lee, Yumin Choi, Jinheon Baek, Sung Ju Hwang",
-    "publish_date": "2026-11-10",
-    "arxiv_url": "http://arxiv.org/abs/2611.14320",
-    "project_url": "https://yukyeongleee.github.io/wikitrace/",
-    "code_url": "https://github.com/yukyeongleee/wikitrace",
-    "hf_url": "https://huggingface.co/papers/2611.14320",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 40,
-    "score": 19,
-    "paper_id": "arxiv:2611.14320",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.14309": {
-    "arxiv_id": "2611.14309",
-    "title": "MMDM: Measuring Massive Multitask Decision Making",
-    "abstract": "System-1 Decision Models directly make structured probabilistic decisions over query-specified options given a state in a single forward pass, without autoregressively generating reasoning trajectories or textual responses. Recent evaluations cover diverse tasks but often rely on existing benchmarks, where prior exposure to test material can obscure generalization. Moreover, real-world decision making often involves long contexts, large option spaces, and complex logical dependencies, challenges that existing benchmarks do not adequately capture together. Thus, we introduce MMDM (Massive Multitask Decision Making), a benchmark of 5,448 high-quality questions across 16 task categories, combining newly constructed tasks with source-grounded recompositions and rewrites for single-select, multi-select, and soft-label decision making in fresh contexts. It covers realistic scenarios such as agent state tracking, tool and skill selection, preference judgments, and rubric scoring, with option spaces ranging from 2 to 1,024 and inputs extending to 64,817 tokens. With MMDM, we conduct a comprehensive quantitative evaluation of 28 decision models, showing that many perform well on common knowledge yet struggle with interdependent options, constrained decisions, and multi-select tasks. For example, Perplexity Decider-V1.2 reaches 78.75% Hard Single-select Accuracy on world knowledge, but only 53.95% on option logic and 47.95% on constraint planning, while the best Hard Multi-select Accuracy across all models is 36.81%. These results highlight joint reasoning, constraint-aware selection, and complete multi-select recovery as key priorities for decision model development, with MMDM providing a testbed for measuring this progress.",
-    "authors": "Junhao Shen, Qing Zong, Yue Guo, Zhanqiu Zhang, Yiwen Guo, Hong Cheng",
-    "publish_date": "2026-11-10",
-    "arxiv_url": "http://arxiv.org/abs/2611.14309",
-    "project_url": "https://mmdm-benchmark.github.io/",
-    "code_url": "https://github.com/mmdm-benchmark/mmdm",
-    "hf_url": "https://huggingface.co/papers/2611.14309",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 49,
-    "score": 10,
-    "paper_id": "arxiv:2611.14309",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.14418": {
-    "arxiv_id": "2611.14418",
-    "title": "Precision on Demand: Escalating Weight Bits at Uncertain Decoding Steps in a Small Local Model",
-    "abstract": "Local decoding usually fixes one weight precision for the whole generation. We study a different allocation: store 8-bit weights, decode with their top 4 bits, and redo a step at 8 bits only when the low-precision output distribution looks uncertain (entropy above a threshold or a small top-two margin). Quantization is simulated, the model is Qwen3-0.6B, and the benchmark is GSM8K. Cost is counted in weight bytes read per token. On 36724 replayed steps the entropy of the low pass ranks argmax flips with AUC 0.93. At a 15% escalation budget it catches 78% of flips and the margin gate 94%, against the 15% expected for a random gate of equal rate (a computed expectation, not a run). In 150 live problems all-high scores 64.0% and all-low 55.3% (McNemar p=0.053). An entropy gate with a 16% escalation rate scores 62.7% at 0.87 of the all-high weight bytes. Its paired difference is -1.3 (-8.0 to +5.3) points to all-high and +7.3 (+0.0 to +14.7) points to all-low (p=0.080), so the live data do not separate the gate from either end. Verified speculation reaches zero KL at similar bytes in the same cost model. A live random control, a thinking-mode phase rule, a second model and live KL were not run.",
-    "authors": "Mohammed Nayeem Khan, Logesh L, Aliyas Ahmad Misri",
-    "publish_date": "2026-11-10",
-    "arxiv_url": "http://arxiv.org/abs/2611.14418",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2611.14418",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 42,
-    "score": 24,
-    "paper_id": "arxiv:2611.14418",
-    "source": "arxiv",
-    "venue": ""
-  },
-  "arxiv:2611.14413": {
-    "arxiv_id": "2611.14413",
-    "title": "Bits or permutations? Spending a fixed inference budget on weight precision or on option-order averaging in small local language models",
-    "abstract": "Local language models can save memory by storing weights in fewer bits, and they can reduce sensitivity to the order of answer options by averaging a few reorderings. We ask whether the first makes the second worse, and which is the cheaper way to spend a fixed budget. On Qwen3-0.6B and Qwen3-1.7B with simulated round-to-nearest weight quantization (8, 6, 4 and 3 bits, fp16 reference), read from the logits of the letters A to D on ARC-Easy, ARC-Challenge, MMLU and HellaSwag (300 items each), 6 bits lose no accuracy against fp16 (they score +1.8 (+1.0 to +2.5) and +0.9 (+0.3 to +1.5) points higher, which we do not explain), and 8 bits change it by -0.7 (-1.1 to -0.3) and -0.4 (-0.7 to -0.2) points. At 4 bits the answer-slot skew rises from 0.15 to 0.53 (0.6B) and from 0.07 to 0.12 (1.7B); Gaussian noise at the same weight SNR gives 0.15 and 0.37 (two draws) and 0.19 (one draw), so the control is inconclusive on whether rounding adds slot skew beyond equal-power noise. Flip rates rise but stay below an accuracy-matched baseline of independent uniform errors. Averaging four cyclic orders recovers +12.6 points at 4 bits for 0.6B (+5.3 at fp16). We price bits and passes in one machine-independent unit, weight bytes read times passes. In cost-matched pairs, extra orders beat extra bits only when the weights have 6 or more bits, and the decision table reduces to: use 6-bit weights and spend the rest of the budget on up to four orders, one pass each. Everything is simulated on two small models with the simplest quantizer; a title-level search found no earlier study of quantization together with option order.",
-    "authors": "Mohammed Nayeem Khan, Logesh L, Aliyas Ahmad Misri",
-    "publish_date": "2026-11-10",
-    "arxiv_url": "http://arxiv.org/abs/2611.14413",
-    "project_url": "",
-    "code_url": "",
-    "hf_url": "https://huggingface.co/papers/2611.14413",
-    "matched_keywords": [],
-    "matched_categories": [
-      "HF-Hot"
-    ],
-    "hf_rank": 43,
-    "score": 23,
-    "paper_id": "arxiv:2611.14413",
     "source": "arxiv",
     "venue": ""
   },
@@ -18264,7 +18184,7 @@
       "VLA",
       "HF-Hot"
     ],
-    "hf_rank": 42,
+    "hf_rank": 47,
     "score": 30,
     "paper_id": "arxiv:2611.22666",
     "source": "arxiv",
@@ -19870,7 +19790,7 @@
       "Manipulation",
       "HF-Hot"
     ],
-    "hf_rank": 40,
+    "hf_rank": 45,
     "score": 20,
     "paper_id": "arxiv:2611.24011",
     "source": "arxiv",
@@ -21372,7 +21292,7 @@
       "Manipulation",
       "Dexterous"
     ],
-    "hf_rank": 17,
+    "hf_rank": 22,
     "score": 10,
     "paper_id": "arxiv:2611.26617",
     "source": "arxiv",
@@ -21449,7 +21369,7 @@
       "VLA",
       "Dexterous"
     ],
-    "hf_rank": 23,
+    "hf_rank": 28,
     "score": 30,
     "paper_id": "arxiv:2611.26444",
     "source": "arxiv",
@@ -21669,7 +21589,7 @@
     "matched_categories": [
       "Manipulation"
     ],
-    "hf_rank": 25,
+    "hf_rank": 30,
     "score": 10,
     "paper_id": "arxiv:2611.25980",
     "source": "arxiv",
@@ -21941,8 +21861,8 @@
     "publish_date": "2026-11-19",
     "arxiv_url": "http://arxiv.org/abs/2611.26239",
     "project_url": "",
-    "code_url": "",
-    "hf_url": "",
+    "code_url": "https://github.com/franciscoliu/SAFI",
+    "hf_url": "https://huggingface.co/papers/2611.26239",
     "matched_keywords": [
       "Vision-Language-Action",
       "VLA",
@@ -21951,7 +21871,7 @@
     "matched_categories": [
       "VLA"
     ],
-    "hf_rank": null,
+    "hf_rank": 2,
     "score": 30,
     "paper_id": "arxiv:2611.26239",
     "source": "arxiv",
@@ -22278,7 +22198,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 1,
+    "hf_rank": 6,
     "score": 29,
     "paper_id": "arxiv:2611.26627",
     "source": "arxiv",
@@ -22298,7 +22218,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 2,
+    "hf_rank": 7,
     "score": 28,
     "paper_id": "arxiv:2611.23875",
     "source": "arxiv",
@@ -22318,7 +22238,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 3,
+    "hf_rank": 8,
     "score": 27,
     "paper_id": "arxiv:2611.21885",
     "source": "arxiv",
@@ -22338,7 +22258,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 4,
+    "hf_rank": 9,
     "score": 31,
     "paper_id": "arxiv:2611.21053",
     "source": "arxiv",
@@ -22358,7 +22278,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 5,
+    "hf_rank": 10,
     "score": 25,
     "paper_id": "arxiv:2611.25567",
     "source": "arxiv",
@@ -22378,7 +22298,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 6,
+    "hf_rank": 11,
     "score": 29,
     "paper_id": "arxiv:2611.26540",
     "source": "arxiv",
@@ -22398,7 +22318,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 7,
+    "hf_rank": 12,
     "score": 23,
     "paper_id": "arxiv:2611.26211",
     "source": "arxiv",
@@ -22418,7 +22338,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 8,
+    "hf_rank": 13,
     "score": 27,
     "paper_id": "arxiv:2611.26511",
     "source": "arxiv",
@@ -22438,7 +22358,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 9,
+    "hf_rank": 14,
     "score": 21,
     "paper_id": "arxiv:2611.26450",
     "source": "arxiv",
@@ -22458,7 +22378,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 10,
+    "hf_rank": 15,
     "score": 20,
     "paper_id": "arxiv:2611.25179",
     "source": "arxiv",
@@ -22478,7 +22398,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 11,
+    "hf_rank": 16,
     "score": 19,
     "paper_id": "arxiv:2611.19499",
     "source": "arxiv",
@@ -22498,7 +22418,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 12,
+    "hf_rank": 17,
     "score": 23,
     "paper_id": "arxiv:2611.26286",
     "source": "arxiv",
@@ -22518,7 +22438,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 13,
+    "hf_rank": 18,
     "score": 17,
     "paper_id": "arxiv:2611.26408",
     "source": "arxiv",
@@ -22538,7 +22458,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 14,
+    "hf_rank": 19,
     "score": 21,
     "paper_id": "arxiv:2611.25935",
     "source": "arxiv",
@@ -22558,7 +22478,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 15,
+    "hf_rank": 20,
     "score": 15,
     "paper_id": "arxiv:2611.26073",
     "source": "arxiv",
@@ -22578,7 +22498,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 16,
+    "hf_rank": 21,
     "score": 19,
     "paper_id": "arxiv:2611.25279",
     "source": "arxiv",
@@ -22598,7 +22518,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 18,
+    "hf_rank": 23,
     "score": 12,
     "paper_id": "arxiv:2611.26590",
     "source": "arxiv",
@@ -22618,7 +22538,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 19,
+    "hf_rank": 24,
     "score": 16,
     "paper_id": "arxiv:2611.26248",
     "source": "arxiv",
@@ -22638,7 +22558,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 20,
+    "hf_rank": 25,
     "score": 15,
     "paper_id": "arxiv:2611.26107",
     "source": "arxiv",
@@ -22658,7 +22578,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 21,
+    "hf_rank": 26,
     "score": 14,
     "paper_id": "arxiv:2611.26268",
     "source": "arxiv",
@@ -22678,7 +22598,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 22,
+    "hf_rank": 27,
     "score": 13,
     "paper_id": "arxiv:2611.25005",
     "source": "arxiv",
@@ -22698,7 +22618,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 26,
+    "hf_rank": 31,
     "score": 4,
     "paper_id": "arxiv:2611.20455",
     "source": "arxiv",
@@ -22718,7 +22638,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 27,
+    "hf_rank": 32,
     "score": 8,
     "paper_id": "arxiv:2611.26414",
     "source": "arxiv",
@@ -22738,7 +22658,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 28,
+    "hf_rank": 33,
     "score": 7,
     "paper_id": "arxiv:2611.26298",
     "source": "arxiv",
@@ -22758,7 +22678,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 29,
+    "hf_rank": 34,
     "score": 6,
     "paper_id": "arxiv:2611.26629",
     "source": "arxiv",
@@ -22778,7 +22698,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 30,
+    "hf_rank": 35,
     "score": 5,
     "paper_id": "arxiv:2611.26510",
     "source": "arxiv",
@@ -22798,7 +22718,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 31,
+    "hf_rank": 36,
     "score": 5,
     "paper_id": "arxiv:2611.25776",
     "source": "arxiv",
@@ -22818,7 +22738,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 32,
+    "hf_rank": 37,
     "score": 5,
     "paper_id": "arxiv:2611.26624",
     "source": "arxiv",
@@ -22838,7 +22758,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 33,
+    "hf_rank": 38,
     "score": 5,
     "paper_id": "arxiv:2611.24193",
     "source": "arxiv",
@@ -22858,7 +22778,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 34,
+    "hf_rank": 39,
     "score": 5,
     "paper_id": "arxiv:2611.26603",
     "source": "arxiv",
@@ -22878,7 +22798,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 35,
+    "hf_rank": 40,
     "score": 5,
     "paper_id": "arxiv:2611.25387",
     "source": "arxiv",
@@ -22898,7 +22818,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 36,
+    "hf_rank": 41,
     "score": 5,
     "paper_id": "arxiv:2611.26409",
     "source": "arxiv",
@@ -22918,7 +22838,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 37,
+    "hf_rank": 42,
     "score": 5,
     "paper_id": "arxiv:2611.21383",
     "source": "arxiv",
@@ -22938,7 +22858,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 38,
+    "hf_rank": 43,
     "score": 5,
     "paper_id": "arxiv:2611.26380",
     "source": "arxiv",
@@ -22958,7 +22878,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 39,
+    "hf_rank": 44,
     "score": 5,
     "paper_id": "arxiv:2611.26595",
     "source": "arxiv",
@@ -22978,7 +22898,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 41,
+    "hf_rank": 46,
     "score": 0,
     "paper_id": "arxiv:2611.19230",
     "source": "arxiv",
@@ -22998,7 +22918,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 43,
+    "hf_rank": 48,
     "score": 5,
     "paper_id": "arxiv:2611.21373",
     "source": "arxiv",
@@ -23018,7 +22938,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 44,
+    "hf_rank": 49,
     "score": 0,
     "paper_id": "arxiv:2611.24809",
     "source": "arxiv",
@@ -23038,7 +22958,7 @@
     "matched_categories": [
       "HF-Hot"
     ],
-    "hf_rank": 45,
+    "hf_rank": 50,
     "score": 0,
     "paper_id": "arxiv:2611.23835",
     "source": "arxiv",
@@ -23101,6 +23021,86 @@
     "hf_rank": 49,
     "score": 5,
     "paper_id": "arxiv:2611.24059",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.26232": {
+    "arxiv_id": "2611.26232",
+    "title": "Time Series Structure Learning with Local Causal Parent Discovery",
+    "abstract": "Learning and inference on time series can pose significant statistical challenges, including autocorrelated observations, distribution shift over time, and the curse of dimensionality. These challenges complicate the practical application of causal discovery algorithms, which already suffer from high computational and sample complexity in the general case. To mitigate these issues, this work introduces Iterative Temporal Parent Discovery (ITPD): a sound and complete constraint-based procedure for causal structure learning on multivariate time series with causal nonstationarity. ITPD takes a local-to-global learning approach that discovers the global graph by sequentially discovering the parent set for each variable. ITPD exploits temporal structural priors, graph partitioning, and the local Markov condition to swap higher-order conditional independence tests for lower-order alternatives. With an exact oracle, ITPD performed the least number of tests and used the smallest average conditioning set sizes relative to baselines. In benchmarking simulations, ITPD sat on the Pareto frontier with respect to F1 and wall-clock time and was faster than baselines on large graphs ($\\geq$ 1000 nodes). For graphs with 2000 nodes, ITPD ran $2.3\\times$, $9.1\\times$, and $40.9\\times$ faster than iterative IAMB, DF-PC, and PCMCI, respectively.",
+    "authors": "Jacqueline Maasch, Shu Wan, Hank Zhu, Huan Liu, Zhiguang Wang",
+    "publish_date": "2026-11-19",
+    "arxiv_url": "http://arxiv.org/abs/2611.26232",
+    "project_url": "",
+    "code_url": "https://github.com/jmaasch/itpd",
+    "hf_url": "https://huggingface.co/papers/2611.26232",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 1,
+    "score": 34,
+    "paper_id": "arxiv:2611.26232",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.25604": {
+    "arxiv_id": "2611.25604",
+    "title": "PAD: Policy-Aware Data Valuation for Autonomous Driving",
+    "abstract": "End-to-end autonomous driving increasingly depends on scaling training demonstrations, yet data growth does not guarantee proportional gains. However, additional data do not guarantee better policies: a demonstration that benefits one planner may be redundant or harmful to another. Existing curation methods typically infer data value from intrinsic sample properties or training-dependent proxies that do not measure downstream policy utility. To address this, we introduce \\textbf{Policy-Aware Data Valuation (PAD)}, a framework that assigns each candidate demonstration a utility specific to the target driving policy. PAD combines scene-level calibration feedback with projected policy gradients and a regularized approximation of local training geometry, producing scalable influence-based values for the policy. A controlled group-removal study establishes the directional fidelity of these values, while cross-planner analysis shows that the same candidate pool induces markedly different rankings across planner families. On DiffusionDrive, PAD improves EPDMS over real-only training by $3.5$ points on NavTest and $5.0$ points on NavHard. Policy-specific curation consistently outperforms real-only and full-pool training across diffusion-, regression-, and flow-matching-based planners while substantially reducing scene-level regressions. These results establish policy-aware data valuation as a basis for replacing indiscriminate data accumulation with targeted policy improvement, enabling more efficient and reliable scaling of autonomous-driving systems.",
+    "authors": "Chengkai Xu, Yicheng Guo, Jiaqi Liu, Yiming Cui, Shiyu Fang, Peng Hang, Hao Zhang, Jian Sun",
+    "publish_date": "2026-11-19",
+    "arxiv_url": "http://arxiv.org/abs/2611.25604",
+    "project_url": "https://perfectxu88.github.io/PAD/",
+    "code_url": "https://github.com/PerfectXu88/PAD",
+    "hf_url": "https://huggingface.co/papers/2611.25604",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 3,
+    "score": 32,
+    "paper_id": "arxiv:2611.25604",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.15941": {
+    "arxiv_id": "2611.15941",
+    "title": "Lang-SVG: Hierarchical Image Vectorization with Language Priors",
+    "abstract": "Image vectorization reconstructs raster images as compact scalable vector graph- ics (SVG), providing a structured and editable code representation of images. However, most existing vectorization methods optimize for pixel-level render- ing fidelity, often producing SVGs that lack alignment with human-perceived object-part hierarchies, making them difficult to manipulate. To address this, we propose Lang-SVG, which introduces an explicit tree structure to organize SVG primitives with semantic labels and parent-child relationships. Lang-SVG incorporates granularity-controllable and open-vocabulary segmentation priors to initialize object-part hierarchies and leverages multimodal large language models (MLLMs) with SVG tree context to assign semantic labels to unlabeled nodes. To reduce redundancy, we introduce depth-adaptive simplification to reduce shape complexity and Tree-Guided Pruning and Merging to eliminate redundant SVG nodes. L1-SAM-Prompting further recovers missing regions to improve recon- struction fidelity and structural completeness. Beyond reconstruction fidelity, we introduce a new evaluation protocol that measures structural quality and semantic part alignment. Experiments demonstrate that Lang-SVG achieves state-of-the-art performance in both rendering fidelity and structural quality. Project website: https://xiliu8006.github.io/Lang-SVG/.",
+    "authors": "Xi Liu, Chaoyi Zhou, Run Wang, Jiaang Li, Feng Luo, Junxiang Huang, Siyu Huang",
+    "publish_date": "2026-11-11",
+    "arxiv_url": "http://arxiv.org/abs/2611.15941",
+    "project_url": "https://xiliu8006.github.io/Lang-SVG/",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.15941",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 4,
+    "score": 26,
+    "paper_id": "arxiv:2611.15941",
+    "source": "arxiv",
+    "venue": ""
+  },
+  "arxiv:2611.25200": {
+    "arxiv_id": "2611.25200",
+    "title": "Squoosh Bench: Evaluating UX-1 on 318 Historical Website A/B Tests",
+    "abstract": "Experimentation teams must decide which proposed website changes to test with live traffic. We evaluated whether forecasts from simulated shoppers could inform that choice. We screened 412 historical website A/B tests and evaluated four systems on the 318 that ran longer than 21 days. Each system predicted an original win, a variant win, or an inconclusive result. Page roles were masked and recorded outcomes were withheld during inference. Squoosh UX-1, a model fine-tuned on human browsing data, simulated 1,000 shoppers per arm and correctly classified 267 of 318 outcomes (84.0%, 95% Wilson interval 79.5-87.6%, treating experiments as independent). Qwen3 Next 80B, the strongest general-purpose configuration on outcome accuracy, correctly classified 196 of 318 (61.6%). UX-1 favored the variant in 126 experiments. In the live tests, 118 of those variants won (93.7%), four lost, and four had inconclusive results. The remaining 192 experiments included 19 additional variant wins.",
+    "authors": "Rohith Pasula, Johari Dramiga, Viraj Shah, Suzan Halim, Tyler Dooskin",
+    "publish_date": "2026-11-18",
+    "arxiv_url": "http://arxiv.org/abs/2611.25200",
+    "project_url": "",
+    "code_url": "",
+    "hf_url": "https://huggingface.co/papers/2611.25200",
+    "matched_keywords": [],
+    "matched_categories": [
+      "HF-Hot"
+    ],
+    "hf_rank": 5,
+    "score": 25,
+    "paper_id": "arxiv:2611.25200",
     "source": "arxiv",
     "venue": ""
   }
