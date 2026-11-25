@@ -32,6 +32,10 @@ jobs:
         run: mkdir -p docs
 
       - name: Run PaperRadar with conferences
+        env:
+          # OpenReview rejects anonymous API calls from CI; log in with an account
+          OPENREVIEW_USERNAME: ${{ secrets.OPENREVIEW_USERNAME }}
+          OPENREVIEW_PASSWORD: ${{ secrets.OPENREVIEW_PASSWORD }}
         run: |
           python paper_radar.py \
             --config      config.yaml \

@@ -48,12 +48,20 @@ def fetch_openreview_venue(
               "Run: pip install openreview-py")
         return []
 
+    # OpenReview challenges anonymous API traffic (incl. GitHub Actions IPs)
+    # with "ChallengeRequiredError"; logging in avoids that. Credentials come
+    # from env vars (GitHub secrets OPENREVIEW_USERNAME / OPENREVIEW_PASSWORD).
+    import os
+    username = os.environ.get("OPENREVIEW_USERNAME") or None
+    password = os.environ.get("OPENREVIEW_PASSWORD") or None
     try:
         client = openreview.api.OpenReviewClient(
-            baseurl="https://api2.openreview.net"
+            baseurl="https://api2.openreview.net",
+            username=username,
+            password=password,
         )
     except Exception as e:
-        print(f"[ERROR] OpenReview client creation failed: {e}")
+        print(f"[ERROR] OpenReview client creation/login failed: {e}")
         return []
 
     # Query accepted papers
@@ -63,6 +71,9 @@ def fetch_openreview_venue(
         ))
     except Exception as e:
         print(f"[ERROR] OpenReview query failed (venue={venue_id}): {e}")
+        if "ChallengeRequired" in str(e) and not username:
+            print("  [HINT] OpenReview blocks anonymous API requests. Set the "
+                  "OPENREVIEW_USERNAME / OPENREVIEW_PASSWORD repository secrets.")
         return []
 
     print(f"  [OpenReview] {venue_label}: {len(notes)} accepted papers found")
