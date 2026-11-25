@@ -3,12 +3,14 @@ layout: default
 title: "Sim2Real"
 ---
 
-## Updated on 2026.11.24
+## Updated on 2026.11.25
 > Usage instructions: [here]({{ site.baseurl }}/README.html#usage)
 
 <style>.paper-nav{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 1.25rem 0}.paper-nav a{border:1px solid #d0d7de;border-radius:999px;padding:.32rem .7rem;text-decoration:none;color:#24292f;background:#fff;font-size:.92rem}.paper-nav a.active{background:#0969da;color:#fff;border-color:#0969da}</style>
 
 <nav class="paper-nav"><a href="{{ site.baseurl }}/">HF Hot</a>
+<a href="{{ site.baseurl }}/conferences/rss-2026.html">RSS 2026</a>
+<a href="{{ site.baseurl }}/conferences/cvpr-2026.html">CVPR 2026</a>
 <a href="{{ site.baseurl }}/conferences/corl-2025.html">CoRL 2025</a>
 <a href="{{ site.baseurl }}/conferences/neurips-2025.html">NeurIPS 2025</a>
 <a href="{{ site.baseurl }}/dexterous.html">Dexterous</a>
@@ -22,7 +24,7 @@ title: "Sim2Real"
 | Publish Date | Title & Abstract | Authors | Links |
 |:---------|:-----------------------|:---------|:------|
 | **2026-11-23** | **Real2Worlds2Real: Scaling Self-Improving Agentic Real2Sim2Real for Robot Manipulation** `Dexterous` `Manipulation` `Sim2Real`<br>Scaling robot manipulation learning remains challenging due to the high cost of collecting real-world interaction data. Real-to-Sim-to-Real (Real2Sim2Real) offers a promising route by enabling policy learning in simulation grounded in real-world observations, yet scaling this paradigm across diverse tasks and physical interactions remains difficult. We introduce Real2Worlds2Real, a self-improving... | Ruihai Wu Team | [ArXiv](http://arxiv.org/abs/2611.31098) / [HF](https://huggingface.co/papers/2611.31098) |
-| **2026-11-23** | **World Models as Native Latent Action Models** `VLA` `Sim2Real` 🔥 HF#26<br>Large and diverse video sources, such as egocentric human video and heterogeneous robot recordings, carry rich dynamics but come either without actions or without a shared action space. Latent action models (LAMs) can recover these dynamics, but they train their inverse- and forward-dynamics models (IDM, FDM) from scratch, trading off pixel reconstruction against latent capacity and accuracy.... | Chen Change Loy Team | [ArXiv](http://arxiv.org/abs/2611.30898) / [Web](https://pawteam-eai.github.io/native-lam/) / [HF](https://huggingface.co/papers/2611.30898) |
+| **2026-11-23** | **World Models as Native Latent Action Models** `VLA` `Sim2Real` 🔥 HF#27<br>Large and diverse video sources, such as egocentric human video and heterogeneous robot recordings, carry rich dynamics but come either without actions or without a shared action space. Latent action models (LAMs) can recover these dynamics, but they train their inverse- and forward-dynamics models (IDM, FDM) from scratch, trading off pixel reconstruction against latent capacity and accuracy.... | Chen Change Loy Team | [ArXiv](http://arxiv.org/abs/2611.30898) / [Web](https://pawteam-eai.github.io/native-lam/) / [HF](https://huggingface.co/papers/2611.30898) |
 | **2026-11-23** | **Beyond Domain Randomization: Real-World Policy Adaptation in Learned Dynamics for Legged Robots** `Sim2Real`<br>Reinforcement learning policies are often trained with static domain randomization for real-world deployment. However, real-world environments often exhibit unmodeled dynamic variations, such as payload changes or friction shifts, that lie outside the randomization distribution, leading to performance degradation upon deployment. We propose a framework that moves beyond static domain... | Nikos Tsagarakis Team | [ArXiv](http://arxiv.org/abs/2611.30784) |
 | **2026-11-23** | **RoboUniverse-10K: Toward the Scaling Era of Agentic Robotics via Real-to-Sim Environments** `Dexterous` `Manipulation` `Sim2Real`<br>Agentic Robotics, in which foundation models act as coding agents to control robots through executable programs, has emerged as a compelling paradigm for embodied intelligence. Yet unlike software engineering, where massive executable environments power post-training, robotics remains constrained by small, manual benchmarks and in-distribution evaluation. To bridge this gap, we introduce... | Huan-ang Gao Team | [ArXiv](http://arxiv.org/abs/2611.31002) / [Web](https://lab.einsia.ai/robo-universe/) / [HF](https://huggingface.co/papers/2611.31002) |
 | **2026-11-22** | **TASC: Time-to-Collision Anticipation and Selective Crowd Attention for Non-Holonomic Service Robots** `Sim2Real`<br>Service robots that share corridors and lobbies with people must keep moving without endangering them. Reactive planners can stop indefinitely in dense crowds (the freezing robot problem), whereas the attention-based learned navigators that dominate the standard crowd benchmark assume holonomic motion or emit discrete actions unsuited to a differential-drive base. This paper presents TASC, a... | Alois Knoll Team | [ArXiv](http://arxiv.org/abs/2611.29637) |

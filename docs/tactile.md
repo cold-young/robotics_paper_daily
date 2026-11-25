@@ -3,12 +3,14 @@ layout: default
 title: "Tactile"
 ---
 
-## Updated on 2026.11.24
+## Updated on 2026.11.25
 > Usage instructions: [here]({{ site.baseurl }}/README.html#usage)
 
 <style>.paper-nav{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 1.25rem 0}.paper-nav a{border:1px solid #d0d7de;border-radius:999px;padding:.32rem .7rem;text-decoration:none;color:#24292f;background:#fff;font-size:.92rem}.paper-nav a.active{background:#0969da;color:#fff;border-color:#0969da}</style>
 
 <nav class="paper-nav"><a href="{{ site.baseurl }}/">HF Hot</a>
+<a href="{{ site.baseurl }}/conferences/rss-2026.html">RSS 2026</a>
+<a href="{{ site.baseurl }}/conferences/cvpr-2026.html">CVPR 2026</a>
 <a href="{{ site.baseurl }}/conferences/corl-2025.html">CoRL 2025</a>
 <a href="{{ site.baseurl }}/conferences/neurips-2025.html">NeurIPS 2025</a>
 <a href="{{ site.baseurl }}/dexterous.html">Dexterous</a>
