@@ -488,13 +488,35 @@ def fetch_rss_proceedings(
 # Dispatcher
 # ─────────────────────────────────────────────────────────────
 
+def _apply_require_any(results: list[dict], terms: list[str], label: str) -> list[dict]:
+    """Keep papers whose title+abstract contains at least one of `terms`."""
+    if not terms:
+        return results
+    terms_l = [t.lower() for t in terms]
+    kept = [
+        r for r in results
+        if any(t in (r["title"] + " " + r["abstract"]).lower() for t in terms_l)
+    ]
+    print(f"  [{label}] require_any filter: {len(results)} → {len(kept)} papers")
+    return kept
+
+
 def fetch_venue(venue_cfg: dict, keywords: list[str], max_results: int = 0) -> list[dict]:
     """
     Dispatch on venue_cfg["fetcher"]:
       - "openreview" (default): needs venue_id
       - "cvf":                  needs url (CVF Open Access listing, ?day=all)
       - "rss":                  needs url (roboticsproceedings.org index)
+    Optional venue_cfg["require_any"]: extra filter applied after the keyword
+    match (title+abstract must also contain one of these terms).
     """
+    results = _fetch_venue_raw(venue_cfg, keywords, max_results)
+    return _apply_require_any(
+        results, venue_cfg.get("require_any") or [], venue_cfg["label"]
+    )
+
+
+def _fetch_venue_raw(venue_cfg: dict, keywords: list[str], max_results: int = 0) -> list[dict]:
     fetcher = venue_cfg.get("fetcher", "openreview")
     common = dict(
         venue_label=venue_cfg["label"],

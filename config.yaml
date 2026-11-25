@@ -101,6 +101,8 @@ hf_filter_keywords:
 #   rss        : url = roboticsproceedings.org index (RSS 2026 = rss22, 2025 = rss21)
 # cvf/rss options: workers (parallel page fetches, default 8),
 #                  publish_date (YYYY-MM-DD, default: conference month of label year)
+# any fetcher:     require_any (list) = extra filter after keyword match; title+abstract
+#                  must also contain one of these (cuts non-robotics hits in CV venues)
 conferences:
   enabled: true
   # Uses combined keywords from all categories for filtering
@@ -116,6 +118,8 @@ conferences:
       label: "CVPR 2026"
       fetcher: cvf
       url: "https://openaccess.thecvf.com/CVPR2026?day=all"
+      require_any: [robot, embodied, manipulator, grasp, gripper, humanoid,
+                    dexterous, end-effector, teleoperation, tactile]
     - source: corl
       label: "CoRL 2025"
       venue_id: "robot-learning.org/CoRL/2025/Conference"
