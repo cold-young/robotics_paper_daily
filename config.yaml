@@ -93,19 +93,36 @@ hf_filter_keywords:
 
 
 # ─────────────────────────────────────────────────
-# Conference paper collection (OpenReview)
+# Conference paper collection
 # ─────────────────────────────────────────────────
+# fetcher (default: openreview)
+#   openreview : venue_id = OpenReview venueid of accepted papers
+#   cvf        : url = CVF Open Access listing (…/CVPR{year}?day=all)
+#   rss        : url = roboticsproceedings.org index (RSS 2026 = rss22, 2025 = rss21)
+# cvf/rss options: workers (parallel page fetches, default 8),
+#                  publish_date (YYYY-MM-DD, default: conference month of label year)
+# any fetcher:     require_any (list) = extra filter after keyword match; title+abstract
+#                  must also contain one of these (cuts non-robotics hits in CV venues)
 conferences:
   enabled: true
   # Uses combined keywords from all categories for filtering
   venues:
     - source: corl
+      label: "CoRL 2026"
+      venue_id: "robot-learning.org/CoRL/2026/Conference"
+    - source: rss
+      label: "RSS 2026"
+      fetcher: rss
+      url: "https://www.roboticsproceedings.org/rss22/index.html"
+    - source: cvpr
+      label: "CVPR 2026"
+      fetcher: cvf
+      url: "https://openaccess.thecvf.com/CVPR2026?day=all"
+      require_any: [robot, embodied, manipulator, grasp, gripper, humanoid,
+                    dexterous, end-effector, teleoperation, tactile]
+    - source: corl
       label: "CoRL 2025"
       venue_id: "robot-learning.org/CoRL/2025/Conference"
-    # RSS main papers are not hosted on OpenReview (only archived, <3 papers)
-    # - source: rss
-    #   label: "RSS 2024"
-    #   venue_id: "roboticsfoundation.org/RSS/2024/Conference"
     - source: neurips
       label: "NeurIPS 2025"
       venue_id: "NeurIPS.cc/2025/Conference"

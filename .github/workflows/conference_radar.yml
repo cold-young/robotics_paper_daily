@@ -62,8 +62,9 @@ jobs:
 
       - name: Commit and push
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Commit as the repo owner (noreply email links the commit to the account)
+          git config user.name "cold-young"
+          git config user.email "88030365+cold-young@users.noreply.github.com"
           git add README.md docs
           TOTAL=$(python3 -c "import json; print(len(json.load(open('docs/papers_db.json'))))" 2>/dev/null || echo "?")
           git diff --cached --quiet || git commit -m "📚 Conference update $(date +'%Y.%m.%d') — ${TOTAL} papers"

@@ -10,7 +10,8 @@ Improvements over cold-young/robotics_paper_daily:
   6. Cumulative DB (docs/papers_db.json)
      - New papers accumulate daily; oldest papers are pruned
        when per-category limit is exceeded (default: 50/category)
-  7. Conference paper collection via OpenReview (CoRL, NeurIPS, etc.)
+  7. Conference paper collection (OpenReview: CoRL/NeurIPS,
+     CVF Open Access: CVPR, RSS proceedings)
 
 Usage:
     python paper_radar.py                  # collect today, accumulate into DB
@@ -66,7 +67,7 @@ class Paper:
     score: int = 0                   # relevance score (for sorting)
     # Conference/source extension fields
     paper_id: str = ""        # universal PK: "arxiv:2605.12345" | "openreview:AbC123"
-    source: str = "arxiv"     # "arxiv" | "hf" | "corl" | "rss" | "neurips"
+    source: str = "arxiv"     # "arxiv" | "hf" | "corl" | "rss" | "neurips" | "cvpr"
     venue: str = ""           # display label: "CoRL 2024", "" (arXiv)
 
     def compute_score(self):
@@ -422,6 +423,13 @@ def merge_into_db(
                 old_p.hf_url = new_p.hf_url
             if new_p.hf_rank is not None:
                 old_p.hf_rank = new_p.hf_rank
+            # An arXiv paper already in the DB that turns out to be accepted
+            # at a conference: attach the venue so it shows in that section.
+            if new_p.venue and not old_p.venue:
+                old_p.venue = new_p.venue
+                old_p.source = new_p.source
+                if new_p.project_url and not old_p.project_url:
+                    old_p.project_url = new_p.project_url
         else:
             merged[pid] = new_p
 
@@ -643,7 +651,7 @@ def collect_papers(config: dict, include_conferences: bool = False, **kwargs) ->
 
     # 5. Conference paper collection (--conferences mode)
     if include_conferences:
-        from conference_fetch import fetch_openreview_venue
+        from conference_fetch import fetch_venue
         all_keywords = []
         for kws in categories.values():
             all_keywords.extend(kws)
@@ -655,12 +663,11 @@ def collect_papers(config: dict, include_conferences: bool = False, **kwargs) ->
             for venue_cfg in conf_cfg.get("venues", []):
                 source = venue_cfg["source"]
                 label = venue_cfg["label"]
-                venue_id = venue_cfg["venue_id"]
-                print(f"\n[Conference] Fetching {label} (venue={venue_id})...")
-                conf_papers = fetch_openreview_venue(
-                    venue_id=venue_id,
-                    venue_label=label,
-                    source=source,
+                where = venue_cfg.get("venue_id") or venue_cfg.get("url", "")
+                fetcher = venue_cfg.get("fetcher", "openreview")
+                print(f"\n[Conference] Fetching {label} ({fetcher}: {where})...")
+                conf_papers = fetch_venue(
+                    venue_cfg,
                     keywords=all_keywords,
                     max_results=max_conf,
                 )
@@ -668,6 +675,12 @@ def collect_papers(config: dict, include_conferences: bool = False, **kwargs) ->
                 for r in conf_papers:
                     pid = r["paper_id"]
                     if pid in all_papers:
+                        # Same arXiv paper also collected today: tag it with the venue
+                        existing = all_papers[pid]
+                        if not existing.venue:
+                            existing.venue = label
+                            existing.source = source
+                            existing.project_url = existing.project_url or r.get("project_url", "")
                         continue
                     # Assign categories by keyword matching
                     text = (r["title"] + " " + r["abstract"]).lower()
@@ -808,12 +821,22 @@ def _abstract_short(abstract: str, max_len: int = 400) -> str:
     return abstract[:max_len].rsplit(" ", 1)[0] + "..."
 
 
+def _venue_link_label(url: str) -> str:
+    if "openreview.net" in url:
+        return "OpenReview"
+    if "thecvf.com" in url:
+        return "CVF"
+    if "roboticsproceedings.org" in url:
+        return "Proceedings"
+    return "Paper"
+
+
 def _paper_links(p: Paper) -> str:
-    """Build markdown links for arXiv/OpenReview/code/HF Papers."""
+    """Build markdown links for arXiv/OpenReview/CVF/code/HF Papers."""
     if p.arxiv_url:
         links = f"[ArXiv]({p.arxiv_url})"
     elif p.project_url:
-        links = f"[OpenReview]({p.project_url})"
+        links = f"[{_venue_link_label(p.project_url)}]({p.project_url})"
     else:
         links = ""
     if p.code_url:
@@ -1253,7 +1276,7 @@ def main():
     parser.add_argument("--max-per-cat",type=int, default=50,        help="max papers per category")
     parser.add_argument("--no-gitpage", action="store_true",         help="skip GitPage generation")
     parser.add_argument("--reset-db",   action="store_true",         help="reset DB and collect fresh")
-    parser.add_argument("--conferences",action="store_true",         help="include conference papers (OpenReview)")
+    parser.add_argument("--conferences",action="store_true",         help="include conference papers (OpenReview/CVF/RSS)")
     args = parser.parse_args()
 
     config = load_config(args.config)
